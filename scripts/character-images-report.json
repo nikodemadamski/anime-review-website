@@ -1,0 +1,170 @@
+[
+  {
+    "character": {
+      "id": "naruto",
+      "name": "Naruto Uzumaki",
+      "anime": "Naruto",
+      "description": "You're determined, energetic, and never give up! Like Naruto, you face challenges head-on with unwavering optimism and inspire others with your passion.",
+      "traits": [
+        "determined",
+        "brave",
+        "energetic",
+        "loyal",
+        "friendly"
+      ],
+      "image": "https://s4.anilist.co/file/anilistcdn/character/large/b17-IazKGogQwJ1p.png",
+      "color": "#FF6B35",
+      "emoji": "🍜"
+    },
+    "newImageUrl": "https://s4.anilist.co/file/anilistcdn/character/large/b17-IazKGogQwJ1p.png",
+    "source": "existing",
+    "valid": true
+  },
+  {
+    "character": {
+      "id": "light",
+      "name": "Light Yagami",
+      "anime": "Death Note",
+      "description": "You're highly intelligent, strategic, and analytical. Like Light, you think several steps ahead and approach problems with logic and careful planning.",
+      "traits": [
+        "intelligent",
+        "analytical",
+        "strategic",
+        "ambitious",
+        "calm"
+      ],
+      "image": "https://s4.anilist.co/file/anilistcdn/character/large/b71-VNdl22QF4KLJ.jpg",
+      "color": "#8B4513",
+      "emoji": "📓"
+    },
+    "newImageUrl": "https://cdn.myanimelist.net/images/characters/6/63870.jpg",
+    "source": "jikan",
+    "valid": true
+  },
+  {
+    "character": {
+      "id": "luffy",
+      "name": "Monkey D. Luffy",
+      "anime": "One Piece",
+      "description": "You're adventurous, free-spirited, and fiercely loyal to your friends! Like Luffy, you live life to the fullest and never back down from protecting those you care about.",
+      "traits": [
+        "brave",
+        "loyal",
+        "energetic",
+        "friendly",
+        "determined"
+      ],
+      "image": "https://s4.anilist.co/file/anilistcdn/character/large/b40-chR0gfYM8lMN.png",
+      "color": "#DC143C",
+      "emoji": "🏴‍☠️"
+    },
+    "newImageUrl": "https://cdn.myanimelist.net/images/characters/9/310307.jpg",
+    "source": "jikan",
+    "valid": true
+  },
+  {
+    "character": {
+      "id": "violet",
+      "name": "Violet Evergarden",
+      "anime": "Violet Evergarden",
+      "description": "You're kind, empathetic, and deeply caring. Like Violet, you may seem reserved but have a beautiful heart and help others understand their emotions.",
+      "traits": [
+        "kind",
+        "caring",
+        "empathetic",
+        "calm",
+        "loyal"
+      ],
+      "image": "https://s4.anilist.co/file/anilistcdn/character/large/b141354-hW0vfDKBGQNe.png",
+      "color": "#9370DB",
+      "emoji": "💌"
+    },
+    "newImageUrl": "https://cdn.myanimelist.net/images/characters/9/345616.jpg",
+    "source": "jikan",
+    "valid": true
+  },
+  {
+    "character": {
+      "id": "edward",
+      "name": "Edward Elric",
+      "anime": "Fullmetal Alchemist",
+      "description": "You're determined, intelligent, and never give up on your goals! Like Edward, you combine brains and bravery to overcome any obstacle.",
+      "traits": [
+        "determined",
+        "intelligent",
+        "brave",
+        "loyal",
+        "persistent"
+      ],
+      "image": "https://s4.anilist.co/file/anilistcdn/character/large/b11-sYfCoGJ1QzFj.png",
+      "color": "#FFD700",
+      "emoji": "⚗️"
+    },
+    "newImageUrl": "https://cdn.myanimelist.net/images/characters/9/72533.jpg",
+    "source": "jikan",
+    "valid": true
+  },
+  {
+    "character": {
+      "id": "gon",
+      "name": "Gon Freecss",
+      "anime": "Hunter x Hunter",
+      "description": "You're curious, friendly, and full of energy! Like Gon, you approach life with wonder and make friends wherever you go.",
+      "traits": [
+        "curious",
+        "friendly",
+        "energetic",
+        "brave",
+        "optimistic"
+      ],
+      "image": "https://s4.anilist.co/file/anilistcdn/character/large/b30-a1vkZTtr6oPP.png",
+      "color": "#228B22",
+      "emoji": "🎣"
+    },
+    "newImageUrl": "https://cdn.myanimelist.net/images/characters/11/174517.jpg",
+    "source": "jikan",
+    "valid": true
+  },
+  {
+    "character": {
+      "id": "shoto",
+      "name": "Shoto Todoroki",
+      "anime": "My Hero Academia",
+      "description": "You're calm, powerful, and introspective. Like Shoto, you have great strength but prefer to think things through carefully.",
+      "traits": [
+        "calm",
+        "strong",
+        "intelligent",
+        "introverted",
+        "determined"
+      ],
+      "image": "https://s4.anilist.co/file/anilistcdn/character/large/b89028-vPbRRPLMEsWJ.jpg",
+      "color": "#4682B4",
+      "emoji": "❄️🔥"
+    },
+    "newImageUrl": "https://cdn.myanimelist.net/images/characters/12/332527.jpg",
+    "source": "jikan",
+    "valid": true
+  },
+  {
+    "character": {
+      "id": "saitama",
+      "name": "Saitama",
+      "anime": "One Punch Man",
+      "description": "You're incredibly strong but surprisingly chill! Like Saitama, you don't need to show off - your actions speak louder than words.",
+      "traits": [
+        "strong",
+        "calm",
+        "humble",
+        "powerful",
+        "peaceful"
+      ],
+      "image": "https://s4.anilist.co/file/anilistcdn/character/large/b73935-HJyNGkdJyL5f.png",
+      "color": "#FFD700",
+      "emoji": "👊"
+    },
+    "newImageUrl": "https://cdn.myanimelist.net/images/characters/11/294388.jpg",
+    "source": "jikan",
+    "valid": true
+  }
+]

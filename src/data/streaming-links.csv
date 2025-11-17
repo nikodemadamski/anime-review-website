@@ -1,0 +1,9 @@
+id,animeId,platform,url,regions,subscriptionRequired,logoUrl,isActive
+1,1,"Crunchyroll","https://www.crunchyroll.com/one-piece","US,CA,UK,AU",true,"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&h=100&fit=crop",true
+2,1,"Funimation","https://www.funimation.com/shows/one-piece","US,CA",true,"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&h=100&fit=crop",true
+3,2,"Crunchyroll","https://www.crunchyroll.com/attack-on-titan","US,CA,UK,AU,DE,FR",true,"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&h=100&fit=crop",true
+4,2,"Hulu","https://www.hulu.com/series/attack-on-titan","US",true,"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&h=100&fit=crop",true
+5,3,"Crunchyroll","https://www.crunchyroll.com/demon-slayer","GLOBAL",true,"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&h=100&fit=crop",true
+6,4,"Crunchyroll","https://www.crunchyroll.com/my-hero-academia","GLOBAL",true,"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&h=100&fit=crop",true
+7,4,"Hulu","https://www.hulu.com/series/my-hero-academia","US",true,"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&h=100&fit=crop",true
+8,5,"Crunchyroll","https://www.crunchyroll.com/jujutsu-kaisen","GLOBAL",true,"https://images.unsplash.com/photo-1611162617474-5b21e879e113?w=100&h=100&fit=crop",true

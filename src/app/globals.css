@@ -1,0 +1,241 @@
+@import "tailwindcss";
+
+@variant dark (&:where(.dark, .dark *));
+
+:root {
+  /* Earthy color palette - Light Mode - EXACT HEX CODES */
+  --background: #FAF8F4;
+  --foreground: #2E2A25;
+  --secondary: #5A564E;
+  --muted: #8A867E;
+  --accent: #6D8A78;
+  --accent-hover: #4F6E62;
+  --border: #E0D8CC;
+  --card-background: #F7F3EC;
+  --text-block: #F2EDE6;
+  --header-bg: #EDE6DB;
+  --header-text: #2B2824;
+  --header-divider: #D3C8BA;
+  --footer-bg: #DDD4C6;
+  --footer-text: #3A3530;
+  --footer-link: #6D8A78;
+  --btn-primary: #8B6F47;
+  --btn-primary-text: #FFFFFF;
+  --btn-secondary: #EDE6DB;
+  --btn-secondary-text: #2E2A25;
+  --tag-bg: #E5D9C9;
+  
+  /* Rating colors - Your specified colors */
+  --rating-overall: #C8A34E;
+  --rating-story: #C26A4A;
+  --rating-art: #708B4B;
+  --rating-music: #4E6B5E;
+  --rating-characters: #B77A50;
+  
+  /* Vibrant contrasting colors for category badges - POP colors! */
+  --category-visual: #FF6B9D;
+  --category-music: #9D4EDD;
+  --category-story: #06B6D4;
+  --category-character: #F59E0B;
+  
+  /* Brand colors */
+  --brand-earth: #8B6F47;
+  --brand-olive: #556B2F;
+  --brand-sand: #D9CBB6;
+  --brand-terracotta: #C26A4A;
+  --brand-moss: #A8B098;
+  
+  --success: #708B4B;
+  --warning: #C8A34E;
+  --error: #C26A4A;
+  
+  /* Apple spacing system (8px grid) */
+  --spacing-xs: 0.25rem;   /* 4px */
+  --spacing-sm: 0.5rem;    /* 8px */
+  --spacing-md: 1rem;      /* 16px */
+  --spacing-lg: 1.5rem;    /* 24px */
+  --spacing-xl: 2rem;      /* 32px */
+  --spacing-2xl: 3rem;     /* 48px */
+  --spacing-3xl: 4rem;     /* 64px */
+  
+  /* Apple typography scale */
+  --text-xs: 0.75rem;      /* 12px */
+  --text-sm: 0.875rem;     /* 14px */
+  --text-base: 1rem;       /* 16px */
+  --text-lg: 1.125rem;     /* 18px */
+  --text-xl: 1.25rem;      /* 20px */
+  --text-2xl: 1.5rem;      /* 24px */
+  --text-3xl: 1.875rem;    /* 30px */
+  --text-4xl: 2.25rem;     /* 36px */
+  
+  /* Apple border radius */
+  --radius-sm: 0.375rem;   /* 6px */
+  --radius-md: 0.5rem;     /* 8px */
+  --radius-lg: 0.75rem;    /* 12px */
+  --radius-xl: 1rem;       /* 16px */
+  
+  /* Apple shadows */
+  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
+  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
+  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
+  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --color-secondary: var(--secondary);
+  --color-accent: var(--accent);
+  --color-border: var(--border);
+  --color-card: var(--card-background);
+  --font-sans: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+}
+
+.dark {
+  /* Earthy color palette - Dark Mode - LIGHTENED FOR BETTER CONTRAST */
+  --background: #2A2520;
+  --foreground: #E6E0D7;
+  --secondary: #B3ABA1;
+  --muted: #898278;
+  --accent: #9BC5AC;
+  --accent-hover: #B8D8C5;
+  --border: #3D3832;
+  --card-background: #342F2A;
+  --text-block: #1E1C19;
+  --header-bg: #2A2520;
+  --header-text: #EEE7DC;
+  --header-divider: #3D3832;
+  --footer-bg: #2A2520;
+  --footer-text: #CFC7BD;
+  --footer-link: #9BC5AC;
+  --btn-primary: #8B6F47;
+  --btn-primary-text: #F5EFE7;
+  --btn-secondary: #2A2824;
+  --btn-secondary-text: #E6E0D7;
+  --tag-bg: #463F36;
+  
+  /* Rating colors - Your specified colors */
+  --rating-overall: #D9B960;
+  --rating-story: #D98161;
+  --rating-art: #89A65A;
+  --rating-music: #6D8F80;
+  --rating-characters: #CF8C61;
+  
+  /* Vibrant contrasting colors for category badges - POP colors! */
+  --category-visual: #FF6B9D;
+  --category-music: #9D4EDD;
+  --category-story: #06B6D4;
+  --category-character: #F59E0B;
+  
+  /* Brand colors */
+  --brand-earth: #8B6F47;
+  --brand-olive: #556B2F;
+  --brand-sand: #D9CBB6;
+  --brand-terracotta: #C26A4A;
+  --brand-moss: #A8B098;
+  
+  --success: #89A65A;
+  --warning: #D9B960;
+  --error: #D98161;
+}
+
+* {
+  box-sizing: border-box;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  line-height: 1.6;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Apple-style focus states */
+*:focus {
+  outline: 2px solid var(--accent);
+  outline-offset: 2px;
+}
+
+/* Smooth transitions for interactive elements */
+button, a, [role="button"] {
+  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+/* Custom scrollbar (webkit) */
+::-webkit-scrollbar {
+  width: 8px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: var(--secondary);
+  border-radius: 4px;
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: var(--foreground);
+}
+
+/* Animation keyframes */
+@keyframes fadeInUp {
+  from {
+    opacity: 0;
+    transform: translateY(20px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
+  }
+}
+
+@keyframes slideInRight {
+  from {
+    transform: translateX(100%);
+  }
+  to {
+    transform: translateX(0);
+  }
+}
+
+.animate-fade-in-up {
+  animation: fadeInUp 0.6s ease-out;
+}
+
+.animate-fade-in {
+  animation: fadeIn 0.2s ease-out;
+}
+
+.animate-slide-in-right {
+  animation: slideInRight 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+}
+
+@keyframes shimmer {
+  0% {
+    transform: translateX(-100%);
+  }
+  100% {
+    transform: translateX(100%);
+  }
+}
+
+.shimmer {
+  animation: shimmer 1.5s infinite;
+}
