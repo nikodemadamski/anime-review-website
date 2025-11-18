@@ -1,15 +1,19 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { useSearchParams } from 'next/navigation';
+import { useSearchParams, useRouter } from 'next/navigation';
 import { Container, Card, CardContent, Badge } from '@/components/ui';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useWatchlist } from '@/hooks/useWatchlist';
 import { SkeletonGrid } from '@/components/loading/SkeletonGrid';
+import { getWatchingCount, isTrending } from '@/lib/trending';
+import { EmptyState } from '@/components/browse/EmptyState';
 import Image from 'next/image';
 import Link from 'next/link';
 
 type SortOption = 'site' | 'visual' | 'music' | 'story' | 'character';
+
+const ITEMS_PER_PAGE = 24;
 
 const sortOptions = [
   { value: 'site' as SortOption, label: 'Most Popular', icon: '⭐', color: '#C8A34E' },
@@ -51,17 +55,42 @@ type StatusOption = 'all' | 'airing' | 'finished' | 'upcoming';
 
 export function BrowseContent() {
   const searchParams = useSearchParams();
+  const router = useRouter();
   const [allAnime, setAllAnime] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
-  const [sortBy, setSortBy] = useState<SortOption>((searchParams.get('sort') as SortOption) || 'site');
-  const [searchQuery, setSearchQuery] = useState(searchParams.get('search') || '');
+  const [sortBy, setSortBy] = useState<SortOption>('site');
+  const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [statusFilter, setStatusFilter] = useState<StatusOption>('all');
   const [showMoreGenres, setShowMoreGenres] = useState(false);
   const [isSearchSticky, setIsSearchSticky] = useState(false);
+  const [page, setPage] = useState(1);
   const debouncedSearch = useDebounce(searchQuery, 300);
   const { watchlist, addAnime, removeAnime, isInWatchlist: checkWatchlist } = useWatchlist();
+
+  // Read URL params on mount
+  useEffect(() => {
+    const params = new URLSearchParams(window.location.search);
+    if (params.get('search')) setSearchQuery(params.get('search')!);
+    if (params.get('genres')) setSelectedGenres(params.get('genres')!.split(','));
+    if (params.get('sort')) setSortBy(params.get('sort') as SortOption);
+    if (params.get('status')) setStatusFilter(params.get('status') as StatusOption);
+    if (params.get('page')) setPage(parseInt(params.get('page')!));
+  }, []);
+
+  // Sync filters to URL params
+  useEffect(() => {
+    const params = new URLSearchParams();
+    if (searchQuery) params.set('search', searchQuery);
+    if (selectedGenres.length) params.set('genres', selectedGenres.join(','));
+    if (sortBy !== 'site') params.set('sort', sortBy);
+    if (statusFilter !== 'all') params.set('status', statusFilter);
+    if (page > 1) params.set('page', page.toString());
+    
+    const newUrl = `${window.location.pathname}${params.toString() ? '?' + params.toString() : ''}`;
+    window.history.replaceState({}, '', newUrl);
+  }, [searchQuery, selectedGenres, sortBy, statusFilter, page]);
 
   useEffect(() => {
     async function loadAnime() {
@@ -132,10 +161,46 @@ export function BrowseContent() {
     return filtered;
   }, [allAnime, debouncedSearch, selectedGenres, statusFilter, sortBy]);
 
+  // Paginated anime
+  const paginatedAnime = useMemo(() => {
+    const start = (page - 1) * ITEMS_PER_PAGE;
+    const end = start + ITEMS_PER_PAGE;
+    return filteredAndSortedAnime.slice(start, end);
+  }, [filteredAndSortedAnime, page]);
+
+  const totalPages = Math.ceil(filteredAndSortedAnime.length / ITEMS_PER_PAGE);
+
+  // Generate suggestions for empty state
+  const suggestions = useMemo(() => {
+    if (filteredAndSortedAnime.length > 0 || !Array.isArray(allAnime)) return [];
+    
+    // If user has selected genres, show popular anime from those genres
+    if (selectedGenres.length > 0) {
+      const genreMatches = allAnime
+        .filter(anime => 
+          anime.genres.some((g: string) => 
+            selectedGenres.some(selected => 
+              g.toLowerCase().includes(selected.toLowerCase())
+            )
+          )
+        )
+        .sort((a, b) => b.ratings.site - a.ratings.site)
+        .slice(0, 3);
+      
+      if (genreMatches.length > 0) return genreMatches;
+    }
+    
+    // Otherwise, show overall most popular anime
+    return [...allAnime]
+      .sort((a, b) => b.ratings.site - a.ratings.site)
+      .slice(0, 3);
+  }, [filteredAndSortedAnime, allAnime, selectedGenres]);
+
   const toggleGenre = (genreId: string) => {
     setSelectedGenres((prev) =>
       prev.includes(genreId) ? prev.filter((g) => g !== genreId) : [...prev, genreId]
     );
+    setPage(1); // Reset to first page when filters change
   };
 
   const toggleWatchlist = (animeId: string) => {
@@ -146,14 +211,29 @@ export function BrowseContent() {
     }
   };
 
+  // Reset page when filters change
+  useEffect(() => {
+    setPage(1);
+  }, [debouncedSearch, sortBy, statusFilter]);
+
   const clearAllFilters = () => {
     setSearchQuery('');
     setSelectedGenres([]);
     setStatusFilter('all');
     setSortBy('site');
+    setPage(1);
   };
 
-  const hasActiveFilters = searchQuery || selectedGenres.length > 0 || statusFilter !== 'all' || sortBy !== 'site';
+  const scrollToTop = () => {
+    window.scrollTo({ top: 0, behavior: 'smooth' });
+  };
+
+  const handlePageChange = (newPage: number) => {
+    setPage(newPage);
+    scrollToTop();
+  };
+
+  const hasActiveFilters = Boolean(searchQuery) || selectedGenres.length > 0 || statusFilter !== 'all' || sortBy !== 'site';
 
   if (loading) {
     return (
@@ -453,13 +533,13 @@ export function BrowseContent() {
       {/* Results Count */}
       <div className="mb-4">
         <p style={{ color: 'var(--secondary)' }}>
-          Showing {filteredAndSortedAnime.length} of {allAnime.length} anime
+          Showing {Math.min((page - 1) * ITEMS_PER_PAGE + 1, filteredAndSortedAnime.length)}-{Math.min(page * ITEMS_PER_PAGE, filteredAndSortedAnime.length)} of {filteredAndSortedAnime.length} anime
         </p>
       </div>
 
       {/* Anime Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
-        {filteredAndSortedAnime.map((anime) => (
+        {paginatedAnime.map((anime, index) => (
           <Card 
             key={anime.id} 
             className="group transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.05]"
@@ -483,7 +563,36 @@ export function BrowseContent() {
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
                   placeholder="blur"
                   blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzIwMjAyMCIvPjwvc3ZnPg=="
+                  priority={index < 8}
                 />
+                
+                {/* Social Proof Badge - Top Left */}
+                {(() => {
+                  const watchingCount = getWatchingCount(anime.id);
+                  const trending = isTrending(anime.id);
+                  
+                  if (watchingCount > 0 || trending) {
+                    return (
+                      <div className="absolute top-2 left-2">
+                        <div 
+                          className="px-2 py-1 rounded-full text-xs font-semibold backdrop-blur-sm flex items-center gap-1"
+                          style={{
+                            backgroundColor: trending ? 'rgba(239, 68, 68, 0.9)' : 'rgba(0, 0, 0, 0.7)',
+                            color: '#FFFFFF',
+                          }}
+                        >
+                          {trending && <span>🔥</span>}
+                          {watchingCount > 0 && (
+                            <span>{watchingCount} watching</span>
+                          )}
+                        </div>
+                      </div>
+                    );
+                  }
+                  return null;
+                })()}
+                
+                {/* Rating Badge - Top Right */}
                 <div className="absolute top-2 right-2">
                   <Badge variant="info">{anime.ratings[sortBy].toFixed(1)}</Badge>
                 </div>
@@ -525,10 +634,78 @@ export function BrowseContent() {
       </div>
 
       {filteredAndSortedAnime.length === 0 && (
-        <div className="text-center py-12">
-          <p className="text-xl" style={{ color: 'var(--secondary)' }}>
-            No anime found matching your filters
-          </p>
+        <EmptyState 
+          onClearFilters={clearAllFilters}
+          suggestions={suggestions}
+          hasActiveFilters={hasActiveFilters}
+        />
+      )}
+
+      {/* Pagination */}
+      {totalPages > 1 && (
+        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+          {/* Previous Button */}
+          <button
+            onClick={() => handlePageChange(page - 1)}
+            disabled={page === 1}
+            className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] min-w-[44px] disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{
+              backgroundColor: page === 1 ? 'var(--card-background)' : 'var(--btn-primary)',
+              color: page === 1 ? 'var(--secondary)' : '#FFFFFF',
+              borderWidth: '2px',
+              borderColor: 'var(--border)',
+            }}
+          >
+            ← Previous
+          </button>
+
+          {/* Page Numbers */}
+          <div className="flex gap-2 flex-wrap justify-center">
+            {Array.from({ length: Math.min(totalPages, 5) }, (_, i) => {
+              let pageNum;
+              if (totalPages <= 5) {
+                pageNum = i + 1;
+              } else if (page <= 3) {
+                pageNum = i + 1;
+              } else if (page >= totalPages - 2) {
+                pageNum = totalPages - 4 + i;
+              } else {
+                pageNum = page - 2 + i;
+              }
+
+              return (
+                <button
+                  key={pageNum}
+                  onClick={() => handlePageChange(pageNum)}
+                  className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] min-w-[44px]"
+                  style={{
+                    backgroundColor: page === pageNum ? 'var(--accent)' : 'var(--card-background)',
+                    color: page === pageNum ? '#FFFFFF' : 'var(--foreground)',
+                    borderWidth: '2px',
+                    borderColor: page === pageNum ? 'var(--accent)' : 'var(--border)',
+                    boxShadow: page === pageNum ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
+                  }}
+                >
+                  {pageNum}
+                </button>
+              );
+            })}
+          </div>
+
+          {/* Next Button */}
+          <button
+            onClick={() => handlePageChange(page + 1)}
+            disabled={page === totalPages}
+            className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] min-w-[44px] disabled:opacity-50 disabled:cursor-not-allowed"
+            style={{
+              backgroundColor: page === totalPages ? 'var(--card-background)' : 'var(--btn-primary)',
+              color: page === totalPages ? 'var(--secondary)' : '#FFFFFF',
+              borderWidth: '2px',
+              borderColor: 'var(--border)',
+            }}
+          >
+            Next →
+          </button>
         </div>
       )}
       </Container>

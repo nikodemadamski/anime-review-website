@@ -1,4 +1,5 @@
 // Watchlist utilities for localStorage management
+import { trackWatchlistEvent } from './trending';
 
 const WATCHLIST_KEY = 'anime-watchlist';
 
@@ -49,6 +50,9 @@ export function addToWatchlist(animeId: string): void {
     
     localStorage.setItem(WATCHLIST_KEY, JSON.stringify(items));
     
+    // Track event for trending calculation
+    trackWatchlistEvent(animeId, 'add');
+    
     // Dispatch custom event for cross-component updates
     window.dispatchEvent(new CustomEvent('watchlistUpdated', { detail: { animeId, action: 'add' } }));
   } catch (error) {
@@ -72,6 +76,9 @@ export function removeFromWatchlist(animeId: string): void {
     }));
     
     localStorage.setItem(WATCHLIST_KEY, JSON.stringify(items));
+    
+    // Track event for trending calculation
+    trackWatchlistEvent(animeId, 'remove');
     
     // Dispatch custom event for cross-component updates
     window.dispatchEvent(new CustomEvent('watchlistUpdated', { detail: { animeId, action: 'remove' } }));
