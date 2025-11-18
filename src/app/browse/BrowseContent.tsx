@@ -49,9 +49,10 @@ export function BrowseContent() {
         const response = await fetch('/api/anime');
         if (!response.ok) throw new Error('Failed to fetch anime');
         const data = await response.json();
-        setAllAnime(data);
+        setAllAnime(Array.isArray(data) ? data : []);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load anime');
+        setAllAnime([]);
       } finally {
         setLoading(false);
       }
@@ -60,6 +61,7 @@ export function BrowseContent() {
   }, []);
 
   const filteredAndSortedAnime = useMemo(() => {
+    if (!Array.isArray(allAnime)) return [];
     let filtered = [...allAnime];
 
     if (debouncedSearch) {
