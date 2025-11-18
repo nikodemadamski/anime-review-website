@@ -12,7 +12,10 @@ import { NewsletterPrompt } from '@/components/browse/NewsletterPrompt';
 import { TrendingAnimeSection } from '@/components/homepage/TrendingAnimeSection';
 import { FilterModal } from '@/components/browse/FilterModal';
 import { AnimeCardLarge } from '@/components/browse/AnimeCardLarge';
+import { AnimeCardList } from '@/components/browse/AnimeCardList';
+import ViewModeToggle from '@/components/browse/ViewModeToggle';
 import { useViewMode } from '@/hooks/useViewMode';
+import { useIsMobile } from '@/hooks/useIsMobile';
 import { 
   trackFilterUsage, 
   trackSearch, 
@@ -93,6 +96,58 @@ export function BrowseContent() {
   const debouncedSearch = useDebounce(searchQuery, 300);
   const { addAnime, removeAnime, isInWatchlist: checkWatchlist } = useWatchlist();
   const [viewMode, updateViewMode] = useViewMode();
+  const isMobile = useIsMobile();
+  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
+  const [previousViewMode, setPreviousViewMode] = useState<'large' | 'grid' | 'list'>(viewMode);
+
+  // Handle scroll position maintenance when view mode changes
+  useEffect(() => {
+    // Only run if view mode actually changed
+    if (previousViewMode === viewMode) {
+      return;
+    }
+    
+    // Determine scroll behavior based on view mode transition
+    const fromLarge = previousViewMode === 'large';
+    const toLarge = viewMode === 'large';
+    const gridListTransition = 
+      (previousViewMode === 'grid' && viewMode === 'list') ||
+      (previousViewMode === 'list' && viewMode === 'grid');
+    
+    if (toLarge || fromLarge) {
+      // Reset scroll to top when switching to/from large view
+      window.scrollTo({ top: 0, behavior: 'smooth' });
+      setSavedScrollPosition(0);
+    } else if (gridListTransition && savedScrollPosition > 0) {
+      // Restore scroll position for grid ↔ list transitions
+      window.scrollTo({ top: savedScrollPosition, behavior: 'smooth' });
+    }
+    
+    // Update previous view mode for next comparison
+    setPreviousViewMode(viewMode);
+  }, [viewMode, previousViewMode, savedScrollPosition]);
+
+  // Save scroll position before view mode changes (for grid/list views only)
+  useEffect(() => {
+    const handleScroll = () => {
+      if (viewMode === 'grid' || viewMode === 'list') {
+        setSavedScrollPosition(window.scrollY);
+      }
+    };
+    
+    // Throttle scroll events to avoid excessive updates
+    let timeoutId: NodeJS.Timeout;
+    const throttledHandleScroll = () => {
+      clearTimeout(timeoutId);
+      timeoutId = setTimeout(handleScroll, 100);
+    };
+    
+    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
+    return () => {
+      window.removeEventListener('scroll', throttledHandleScroll);
+      clearTimeout(timeoutId);
+    };
+  }, [viewMode]);
 
   // Read URL params on mount
   useEffect(() => {
@@ -934,10 +989,19 @@ export function BrowseContent() {
         )}
       </div>
 
-      {/* Anime Display - Large View or Grid */}
+      {/* View Mode Toggle - Mobile Only */}
+      {isMobile && (
+        <ViewModeToggle 
+          currentMode={viewMode} 
+          onChange={updateViewMode}
+        />
+      )}
+
+      {/* Anime Display - Large View, List View, or Grid */}
       {viewMode === 'large' ? (
         <div 
-          className="flex flex-col gap-6"
+          className="flex flex-col gap-6 transition-opacity transition-transform duration-200 ease-in-out animate-fade-in"
+          style={{ willChange: 'opacity, transform' }}
           role="list"
           aria-label="Anime results"
         >
@@ -953,122 +1017,153 @@ export function BrowseContent() {
             />
           ))}
         </div>
-      ) : (
+      ) : viewMode === 'list' ? (
         <div 
-          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          className="flex flex-col gap-2 transition-opacity transition-transform duration-200 ease-in-out animate-fade-in"
+          style={{ willChange: 'opacity, transform' }}
           role="list"
           aria-label="Anime results"
         >
-          {paginatedAnime.map((anime, index) => (
-          <Card 
-            key={anime.id}
-            role="listitem"
-            className="group transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.05] active:scale-[1.02]"
-            style={{
-              boxShadow: 'var(--card-shadow)',
-            }}
-            onMouseEnter={(e) => {
-              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
-            }}
-            onMouseLeave={(e) => {
-              e.currentTarget.style.boxShadow = 'var(--card-shadow)';
-            }}
-          >
-            <Link href={`/anime/${anime.id}`} className="block">
-              <div className="relative aspect-[2/3] overflow-hidden rounded-t-xl">
-                <Image
-                  src={imageErrors[anime.id] ? '/characters/placeholder.svg' : anime.coverImage}
-                  alt={anime.title}
-                  fill
-                  className="object-cover group-hover:scale-110 transition-transform duration-300"
-                  sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
-                  loading={index < 4 ? 'eager' : 'lazy'}
-                  placeholder="blur"
-                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YwZjBmMCIvPjwvc3ZnPg=="
-                  onError={() => setImageErrors(prev => ({ ...prev, [anime.id]: true }))}
-                />
-                
-                {/* Social Proof Badge - Top Left */}
-                {(() => {
-                  const watchingCount = getWatchingCount(anime.id);
-                  const trending = isTrending(anime.id);
-                  
-                  if (watchingCount > 0 || trending) {
-                    return (
-                      <div className="absolute top-2 left-2">
-                        <div 
-                          className="px-2 py-1 rounded-full text-xs font-semibold backdrop-blur-sm flex items-center gap-1"
-                          style={{
-                            backgroundColor: trending ? 'rgba(239, 68, 68, 0.9)' : 'rgba(0, 0, 0, 0.7)',
-                            color: '#FFFFFF',
-                          }}
-                        >
-                          {trending && <span>🔥</span>}
-                          {watchingCount > 0 && (
-                            <span>{watchingCount} watching</span>
-                          )}
-                        </div>
-                      </div>
-                    );
-                  }
-                  return null;
-                })()}
-                
-                {/* Rating Badge - Top Right */}
-                <div className="absolute top-2 right-2">
-                  <Badge variant={getBadgeVariant(sortBy)}>{anime.ratings[sortBy].toFixed(1)}</Badge>
-                </div>
-              </div>
-              <CardContent className="p-3">
-                <h3 className="font-bold text-base mb-2 line-clamp-2 group-hover:underline" style={{ color: 'var(--foreground)' }}>
-                  {anime.title}
-                </h3>
-                <div className="flex flex-wrap gap-1 mb-3">
-                  {anime.genres.slice(0, 3).map((genre: string) => (
-                    <span
-                      key={genre}
-                      className="text-xs px-2 py-1 rounded-full"
-                      style={{
-                        backgroundColor: 'var(--text-block)',
-                        color: 'var(--secondary)',
-                      }}
-                    >
-                      {genre}
-                    </span>
-                  ))}
-                </div>
-              </CardContent>
-            </Link>
-            <CardContent className="p-3 pt-0">
-              <button
-                onClick={(e) => {
-                  e.preventDefault();
-                  toggleWatchlist(anime.id);
-                }}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    toggleWatchlist(anime.id);
-                  }
-                }}
-                aria-label={checkWatchlist(anime.id) ? `Remove ${anime.title} from watchlist` : `Add ${anime.title} to watchlist`}
-                aria-pressed={checkWatchlist(anime.id)}
-                className="w-full py-2 rounded-lg font-medium transition-all mb-2 min-h-[40px] text-sm active:scale-95"
+          {paginatedAnime.map((anime, index) => {
+            const rank = (page - 1) * ITEMS_PER_PAGE + index + 1;
+            return (
+              <AnimeCardList
+                key={anime.id}
+                anime={anime}
+                rank={rank}
+                imageError={imageErrors[anime.id]}
+                onImageError={() => setImageErrors(prev => ({ ...prev, [anime.id]: true }))}
+              />
+            );
+          })}
+        </div>
+      ) : (
+        <div 
+          className={`grid ${viewMode === 'grid' && isMobile ? 'grid-cols-2 gap-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'} transition-opacity transition-transform duration-200 ease-in-out animate-fade-in`}
+          style={{ willChange: 'opacity, transform' }}
+          role="list"
+          aria-label="Anime results"
+        >
+          {paginatedAnime.map((anime, index) => {
+            const isGridView = viewMode === 'grid' && isMobile;
+            
+            return (
+              <Card 
+                key={anime.id}
+                role="listitem"
+                className="group transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.05] active:scale-[1.02]"
                 style={{
-                  backgroundColor: checkWatchlist(anime.id) ? 'var(--accent)' : 'var(--btn-primary)',
-                  color: '#FFFFFF',
+                  boxShadow: 'var(--card-shadow)',
+                }}
+                onMouseEnter={(e) => {
+                  e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+                }}
+                onMouseLeave={(e) => {
+                  e.currentTarget.style.boxShadow = 'var(--card-shadow)';
                 }}
               >
-                <span aria-hidden="true">{checkWatchlist(anime.id) ? '✓' : '+'}</span> {checkWatchlist(anime.id) ? 'In Watchlist' : 'Add to Watchlist'}
-              </button>
-              <WatchNowButton 
-                animeId={anime.id}
-                animeTitle={anime.title}
-                onWatchNowClick={(id) => handleWatchNowClick(id, anime.title)}
-              />
-            </CardContent>
-          </Card>
-        ))}
+                <Link href={`/anime/${anime.id}`} className="block">
+                  <div className="relative aspect-[2/3] overflow-hidden rounded-t-xl">
+                    <Image
+                      src={imageErrors[anime.id] ? '/characters/placeholder.svg' : anime.coverImage}
+                      alt={anime.title}
+                      fill
+                      className="object-cover group-hover:scale-110 transition-transform duration-300"
+                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                      loading={index < 4 ? 'eager' : 'lazy'}
+                      placeholder="blur"
+                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YwZjBmMCIvPjwvc3ZnPg=="
+                      onError={() => setImageErrors(prev => ({ ...prev, [anime.id]: true }))}
+                    />
+                    
+                    {/* Social Proof Badge - Top Left */}
+                    {(() => {
+                      const watchingCount = getWatchingCount(anime.id);
+                      const trending = isTrending(anime.id);
+                      
+                      if (watchingCount > 0 || trending) {
+                        return (
+                          <div className="absolute top-2 left-2">
+                            <div 
+                              className="px-2 py-1 rounded-full text-xs font-semibold backdrop-blur-sm flex items-center gap-1"
+                              style={{
+                                backgroundColor: trending ? 'rgba(239, 68, 68, 0.9)' : 'rgba(0, 0, 0, 0.7)',
+                                color: '#FFFFFF',
+                              }}
+                            >
+                              {trending && <span>🔥</span>}
+                              {watchingCount > 0 && (
+                                <span>{watchingCount} watching</span>
+                              )}
+                            </div>
+                          </div>
+                        );
+                      }
+                      return null;
+                    })()}
+                    
+                    {/* Rating Badge - Top Right */}
+                    <div className="absolute top-2 right-2">
+                      <Badge variant={getBadgeVariant(sortBy)}>{anime.ratings[sortBy].toFixed(1)}</Badge>
+                    </div>
+                  </div>
+                  <CardContent className="p-3">
+                    <h3 className={`font-bold text-base mb-2 ${isGridView ? 'line-clamp-1' : 'line-clamp-2'} group-hover:underline`} style={{ color: 'var(--foreground)' }}>
+                      {anime.title}
+                    </h3>
+                    {/* Hide genre tags in grid view mode */}
+                    {!isGridView && (
+                      <div className="flex flex-wrap gap-1 mb-3">
+                        {anime.genres.slice(0, 3).map((genre: string) => (
+                          <span
+                            key={genre}
+                            className="text-xs px-2 py-1 rounded-full"
+                            style={{
+                              backgroundColor: 'var(--text-block)',
+                              color: 'var(--secondary)',
+                            }}
+                          >
+                            {genre}
+                          </span>
+                        ))}
+                      </div>
+                    )}
+                  </CardContent>
+                </Link>
+                {/* Hide action buttons in grid view mode */}
+                {!isGridView && (
+                  <CardContent className="p-3 pt-0">
+                    <button
+                      onClick={(e) => {
+                        e.preventDefault();
+                        toggleWatchlist(anime.id);
+                      }}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Enter' || e.key === ' ') {
+                          e.preventDefault();
+                          toggleWatchlist(anime.id);
+                        }
+                      }}
+                      aria-label={checkWatchlist(anime.id) ? `Remove ${anime.title} from watchlist` : `Add ${anime.title} to watchlist`}
+                      aria-pressed={checkWatchlist(anime.id)}
+                      className="w-full py-2 rounded-lg font-medium transition-all mb-2 min-h-[40px] text-sm active:scale-95"
+                      style={{
+                        backgroundColor: checkWatchlist(anime.id) ? 'var(--accent)' : 'var(--btn-primary)',
+                        color: '#FFFFFF',
+                      }}
+                    >
+                      <span aria-hidden="true">{checkWatchlist(anime.id) ? '✓' : '+'}</span> {checkWatchlist(anime.id) ? 'In Watchlist' : 'Add to Watchlist'}
+                    </button>
+                    <WatchNowButton 
+                      animeId={anime.id}
+                      animeTitle={anime.title}
+                      onWatchNowClick={(id) => handleWatchNowClick(id, anime.title)}
+                    />
+                  </CardContent>
+                )}
+              </Card>
+            );
+          })}
         </div>
       )}
 

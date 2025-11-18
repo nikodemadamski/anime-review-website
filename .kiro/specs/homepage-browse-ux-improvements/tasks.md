@@ -90,7 +90,7 @@
     - Maintain existing ranking order
     - _Requirements: 5.5, 9.3_
 
-- [ ] 6. Implement Grid View mode
+- [x] 6. Implement Grid View mode
   - Modify existing grid layout in BrowseContent.tsx for grid view mode
   - Change grid from 4 columns to 2 columns when viewMode === 'grid' and isMobile
   - Update grid gap from gap-4 to gap-3 for tighter spacing
@@ -100,8 +100,8 @@
   - Ensure entire card is clickable and navigates to detail page
   - _Requirements: 6.1, 6.2, 6.3, 6.4, 6.5_
 
-- [ ] 7. Create List View mode component
-  - [ ] 7.1 Create AnimeCardList component
+- [x] 7. Create List View mode component
+  - [x] 7.1 Create AnimeCardList component
     - Create src/components/browse/AnimeCardList.tsx file
     - Define AnimeCardListProps interface with anime and rank
     - Implement horizontal card layout with max height 120px
@@ -114,14 +114,14 @@
     - Add hover shadow effect
     - _Requirements: 7.1, 7.2, 7.3, 7.4, 7.5, 7.6_
 
-  - [ ] 7.2 Add xs size variant to Badge component
+  - [x] 7.2 Add xs size variant to Badge component
     - Modify src/components/ui/Badge.tsx
     - Add 'xs' to size type definition
     - Add xs size styles: text-[10px] px-1.5 py-0.5
     - Update sizeStyles object with xs variant
     - _Requirements: 7.3_
 
-  - [ ] 7.3 Integrate List View into BrowseContent
+  - [x] 7.3 Integrate List View into BrowseContent
     - Import AnimeCardList component
     - Add conditional rendering for viewMode === 'list'
     - Use flex flex-col gap-2 layout for list view
@@ -130,7 +130,7 @@
     - Maintain current sort order
     - _Requirements: 7.6_
 
-- [ ] 8. Integrate ViewModeToggle into BrowseContent
+- [x] 8. Integrate ViewModeToggle into BrowseContent
   - Import ViewModeToggle component into BrowseContent.tsx
   - Import useViewMode and useIsMobile hooks
   - Add viewMode and isMobile state at component level
@@ -139,7 +139,7 @@
   - Only render ViewModeToggle when isMobile is true
   - _Requirements: 4.1, 4.2, 9.1_
 
-- [ ] 9. Add view mode transitions and animations
+- [x] 9. Add view mode transitions and animations
   - Add CSS transition classes for view mode changes in BrowseContent.tsx
   - Use transition-opacity and transition-transform with 200ms duration
   - Add will-change: opacity, transform for GPU acceleration
@@ -147,7 +147,7 @@
   - Ensure transitions complete within 300ms
   - _Requirements: 9.1, 9.2, 10.1, 10.2_
 
-- [ ] 10. Implement scroll position maintenance
+- [x] 10. Implement scroll position maintenance
   - Add useEffect to save scroll position before view mode change
   - Restore scroll position after view mode change (for grid ↔ list only)
   - Reset scroll to top when switching to/from large view
