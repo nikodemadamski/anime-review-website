@@ -1,3 +1,4 @@
+import { Suspense } from 'react';
 import { Container, Badge } from '@/components/ui';
 import { GitHubDataAccess } from '@/lib/github-data-access';
 import { HowWeRateSection } from '@/components/homepage/HowWeRateSection';
@@ -50,11 +51,15 @@ export default async function Home() {
 
           {/* Category Filter Pills */}
           <div className="mb-6">
-            <CategoryFilterPills />
+            <Suspense fallback={<div className="h-12" />}>
+              <CategoryFilterPills />
+            </Suspense>
           </div>
 
           {/* Filtered Content - Dynamically sorted by category */}
-          <FilteredContent allAnime={topAnime} />
+          <Suspense fallback={<div className="h-64 flex items-center justify-center">Loading...</div>}>
+            <FilteredContent allAnime={topAnime} />
+          </Suspense>
         </Container>
       </section>
 

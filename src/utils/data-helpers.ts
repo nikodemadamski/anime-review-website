@@ -43,7 +43,7 @@ export function filterAnime(anime: Anime[], filters: SearchFilters): Anime[] {
     filtered = filtered.filter(
       (item) =>
         item.title.toLowerCase().includes(query) ||
-        item.description.toLowerCase().includes(query) ||
+        item.description?.toLowerCase().includes(query) ||
         item.genres.some((genre) => genre.toLowerCase().includes(query))
     );
   }

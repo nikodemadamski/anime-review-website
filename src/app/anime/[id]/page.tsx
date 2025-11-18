@@ -10,6 +10,8 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { useParams, useSearchParams } from 'next/navigation';
 
+export const dynamic = 'force-dynamic';
+
 export default function AnimeDetailPage() {
   const params = useParams();
   const searchParams = useSearchParams();
