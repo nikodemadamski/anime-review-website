@@ -84,7 +84,6 @@ export function BrowseContent() {
   const [searchQuery, setSearchQuery] = useState('');
   const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
   const [statusFilter, setStatusFilter] = useState<StatusOption>('all');
-  const [showMoreGenres, setShowMoreGenres] = useState(false);
   const [isSearchSticky, setIsSearchSticky] = useState(false);
   const [page, setPage] = useState(1);
   const [showFilterModal, setShowFilterModal] = useState(false);
@@ -97,7 +96,6 @@ export function BrowseContent() {
   const { addAnime, removeAnime, isInWatchlist: checkWatchlist } = useWatchlist();
   const [viewMode, updateViewMode] = useViewMode();
   const isMobile = useIsMobile();
-  const [savedScrollPosition, setSavedScrollPosition] = useState(0);
   const [previousViewMode, setPreviousViewMode] = useState<'large' | 'grid' | 'list'>(viewMode);
 
   // Handle scroll position maintenance when view mode changes
@@ -107,47 +105,10 @@ export function BrowseContent() {
       return;
     }
     
-    // Determine scroll behavior based on view mode transition
-    const fromLarge = previousViewMode === 'large';
-    const toLarge = viewMode === 'large';
-    const gridListTransition = 
-      (previousViewMode === 'grid' && viewMode === 'list') ||
-      (previousViewMode === 'list' && viewMode === 'grid');
-    
-    if (toLarge || fromLarge) {
-      // Reset scroll to top when switching to/from large view
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-      setSavedScrollPosition(0);
-    } else if (gridListTransition && savedScrollPosition > 0) {
-      // Restore scroll position for grid ↔ list transitions
-      window.scrollTo({ top: savedScrollPosition, behavior: 'smooth' });
-    }
-    
     // Update previous view mode for next comparison
+    // Don't scroll to top - maintain current position
     setPreviousViewMode(viewMode);
-  }, [viewMode, previousViewMode, savedScrollPosition]);
-
-  // Save scroll position before view mode changes (for grid/list views only)
-  useEffect(() => {
-    const handleScroll = () => {
-      if (viewMode === 'grid' || viewMode === 'list') {
-        setSavedScrollPosition(window.scrollY);
-      }
-    };
-    
-    // Throttle scroll events to avoid excessive updates
-    let timeoutId: NodeJS.Timeout;
-    const throttledHandleScroll = () => {
-      clearTimeout(timeoutId);
-      timeoutId = setTimeout(handleScroll, 100);
-    };
-    
-    window.addEventListener('scroll', throttledHandleScroll, { passive: true });
-    return () => {
-      window.removeEventListener('scroll', throttledHandleScroll);
-      clearTimeout(timeoutId);
-    };
-  }, [viewMode]);
+  }, [viewMode, previousViewMode]);
 
   // Read URL params on mount
   useEffect(() => {
@@ -734,238 +695,9 @@ export function BrowseContent() {
             })}
           </div>
         </div>
-
-        {/* Genre Filters - with border */}
-        <div className="pb-6 border-b" style={{ borderColor: 'var(--border)' }}>
-          <span className="font-semibold mb-3 block" style={{ color: 'var(--foreground)' }} id="genre-label">
-            Genres:
-          </span>
-          <div className="flex flex-wrap gap-3" role="group" aria-label="Genre filters">
-            {topGenres.map((genre) => {
-              const isActive = selectedGenres.includes(genre.id);
-              return (
-                <button
-                  key={genre.id}
-                  onClick={() => toggleGenre(genre.id)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      toggleGenre(genre.id);
-                    }
-                  }}
-                  aria-label={`Filter by ${genre.label} genre`}
-                  aria-pressed={isActive}
-                  aria-describedby="genre-label"
-                  className={`px-4 py-3 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1 active:scale-95 ${
-                    isActive ? 'shadow-lg scale-105' : 'hover:scale-102'
-                  }`}
-                  style={{
-                    backgroundColor: isActive ? 'var(--accent)' : 'var(--card-background)',
-                    color: isActive ? '#FFFFFF' : 'var(--foreground)',
-                    borderWidth: '2px',
-                    borderColor: isActive ? 'var(--accent)' : 'var(--border)',
-                  }}
-                >
-                  {isActive && <span className="text-white" aria-hidden="true">✓</span>}
-                  <span aria-hidden="true">{genre.icon}</span> {genre.label}
-                </button>
-              );
-            })}
-            
-            {/* More Genres Button */}
-            <button
-              onClick={() => setShowMoreGenres(!showMoreGenres)}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  setShowMoreGenres(!showMoreGenres);
-                } else if (e.key === 'Escape' && showMoreGenres) {
-                  e.preventDefault();
-                  setShowMoreGenres(false);
-                }
-              }}
-              aria-label={showMoreGenres ? 'Hide additional genres' : 'Show more genres'}
-              aria-expanded={showMoreGenres}
-              aria-controls="more-genres-panel"
-              className="px-4 py-3 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1 active:scale-95"
-              style={{
-                backgroundColor: 'var(--card-background)',
-                color: 'var(--foreground)',
-                borderWidth: '2px',
-                borderColor: 'var(--border)',
-              }}
-            >
-              More Genres <span aria-hidden="true">{showMoreGenres ? '▲' : '▼'}</span>
-            </button>
-          </div>
-          
-          {/* More Genres Dropdown/Bottom Sheet */}
-          {showMoreGenres && (
-            <>
-              {/* Backdrop */}
-              <div 
-                className="fixed inset-0 bg-black/50 z-40 md:hidden"
-                onClick={() => setShowMoreGenres(false)}
-                aria-hidden="true"
-              />
-              
-              {/* Mobile Bottom Sheet */}
-              <div 
-                id="more-genres-panel"
-                role="dialog"
-                aria-label="Additional genre filters"
-                className="fixed bottom-0 left-0 right-0 z-50 md:hidden animate-slide-up"
-              >
-                <div 
-                  className="rounded-t-3xl p-6 max-h-[70vh] overflow-y-auto"
-                  style={{
-                    backgroundColor: 'var(--card-background)',
-                    boxShadow: '0 -4px 20px rgba(0, 0, 0, 0.2)',
-                  }}
-                >
-                  <div className="flex justify-between items-center mb-4">
-                    <h3 className="text-lg font-bold" style={{ color: 'var(--foreground)' }}>
-                      More Genres
-                    </h3>
-                    <button
-                      onClick={() => setShowMoreGenres(false)}
-                      onKeyDown={(e) => {
-                        if (e.key === 'Escape') {
-                          e.preventDefault();
-                          setShowMoreGenres(false);
-                        }
-                      }}
-                      aria-label="Close genre panel"
-                      className="text-2xl w-8 h-8 flex items-center justify-center"
-                      style={{ color: 'var(--secondary)' }}
-                    >
-                      <span aria-hidden="true">✕</span>
-                    </button>
-                  </div>
-                  <div className="flex flex-wrap gap-3" role="group" aria-label="Additional genres">
-                    {moreGenres.map((genre) => {
-                      const isActive = selectedGenres.includes(genre.id);
-                      return (
-                        <button
-                          key={genre.id}
-                          onClick={() => toggleGenre(genre.id)}
-                          onKeyDown={(e) => {
-                            if (e.key === 'Enter' || e.key === ' ') {
-                              e.preventDefault();
-                              toggleGenre(genre.id);
-                            }
-                          }}
-                          aria-label={`Filter by ${genre.label} genre`}
-                          aria-pressed={isActive}
-                          className={`px-4 py-3 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1 active:scale-95 ${
-                            isActive ? 'shadow-lg scale-105' : ''
-                          }`}
-                          style={{
-                            backgroundColor: isActive ? 'var(--accent)' : 'var(--text-block)',
-                            color: isActive ? '#FFFFFF' : 'var(--foreground)',
-                            borderWidth: '2px',
-                            borderColor: isActive ? 'var(--accent)' : 'transparent',
-                          }}
-                        >
-                          {isActive && <span className="text-white" aria-hidden="true">✓</span>}
-                          <span aria-hidden="true">{genre.icon}</span> {genre.label}
-                        </button>
-                      );
-                    })}
-                  </div>
-                </div>
-              </div>
-              
-              {/* Desktop Dropdown */}
-              <div 
-                id="more-genres-panel"
-                role="region"
-                aria-label="Additional genre filters"
-                className="hidden md:block mt-2 p-4 rounded-xl" 
-                style={{
-                  backgroundColor: 'var(--card-background)',
-                  borderWidth: '2px',
-                  borderColor: 'var(--border)',
-                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-                }}
-              >
-                <div className="flex flex-wrap gap-3" role="group" aria-label="Additional genres">
-                  {moreGenres.map((genre) => {
-                    const isActive = selectedGenres.includes(genre.id);
-                    return (
-                      <button
-                        key={genre.id}
-                        onClick={() => toggleGenre(genre.id)}
-                        onKeyDown={(e) => {
-                          if (e.key === 'Enter' || e.key === ' ') {
-                            e.preventDefault();
-                            toggleGenre(genre.id);
-                          } else if (e.key === 'Escape') {
-                            e.preventDefault();
-                            setShowMoreGenres(false);
-                          }
-                        }}
-                        aria-label={`Filter by ${genre.label} genre`}
-                        aria-pressed={isActive}
-                        className={`px-4 py-3 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1 active:scale-95 ${
-                          isActive ? 'shadow-lg scale-105' : ''
-                        }`}
-                        style={{
-                          backgroundColor: isActive ? 'var(--accent)' : 'var(--text-block)',
-                          color: isActive ? '#FFFFFF' : 'var(--foreground)',
-                          borderWidth: '2px',
-                          borderColor: isActive ? 'var(--accent)' : 'transparent',
-                        }}
-                      >
-                        {isActive && <span className="text-white" aria-hidden="true">✓</span>}
-                        <span aria-hidden="true">{genre.icon}</span> {genre.label}
-                      </button>
-                    );
-                  })}
-                </div>
-              </div>
-            </>
-          )}
-        </div>
-
-        {/* Status Filter */}
-        <div>
-          <span className="font-semibold mb-3 block" style={{ color: 'var(--foreground)' }} id="status-label">
-            Status:
-          </span>
-          <div className="flex flex-wrap gap-3" role="group" aria-label="Status filters">
-            {(['all', 'airing', 'finished', 'upcoming'] as StatusOption[]).map((status) => {
-              const isActive = statusFilter === status;
-              const statusLabel = status.charAt(0).toUpperCase() + status.slice(1);
-              return (
-                <button
-                  key={status}
-                  onClick={() => setStatusFilter(status)}
-                  onKeyDown={(e) => {
-                    if (e.key === 'Enter' || e.key === ' ') {
-                      e.preventDefault();
-                      setStatusFilter(status);
-                    }
-                  }}
-                  aria-label={`Filter by ${statusLabel} status`}
-                  aria-pressed={isActive}
-                  aria-describedby="status-label"
-                  className="px-4 py-3 rounded-lg font-medium transition-all min-h-[44px] min-w-[80px] active:scale-95"
-                  style={{
-                    backgroundColor: isActive ? 'var(--btn-primary)' : 'var(--card-background)',
-                    color: isActive ? 'var(--btn-primary-text)' : 'var(--foreground)',
-                    borderWidth: '2px',
-                    borderColor: isActive ? 'var(--btn-primary)' : 'var(--border)',
-                    boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
-                  }}
-                >
-                  {statusLabel}
-                </button>
-              );
-            })}
-          </div>
-        </div>
       </div>
+
+
 
       {/* Results Count and Clear Filters */}
       <div className="mb-6 flex items-center justify-between flex-wrap gap-4">
@@ -1003,13 +735,11 @@ export function BrowseContent() {
         )}
       </div>
 
-      {/* View Mode Toggle - Mobile Only */}
-      {isMobile && (
-        <ViewModeToggle 
-          currentMode={viewMode} 
-          onChange={updateViewMode}
-        />
-      )}
+      {/* View Mode Toggle - Always visible */}
+      <ViewModeToggle 
+        currentMode={viewMode} 
+        onChange={updateViewMode}
+      />
 
       {/* Anime Display - Large View, List View, or Grid */}
       {/* On mobile: respect view mode. On desktop: always use grid */}
