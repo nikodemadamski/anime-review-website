@@ -48,7 +48,9 @@ export function BrowseContent() {
       try {
         const response = await fetch('/api/anime');
         if (!response.ok) throw new Error('Failed to fetch anime');
-        const data = await response.json();
+        const result = await response.json();
+        // Handle both array response and object with data property
+        const data = result.data || result;
         setAllAnime(Array.isArray(data) ? data : []);
       } catch (err) {
         setError(err instanceof Error ? err.message : 'Failed to load anime');
