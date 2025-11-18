@@ -13,7 +13,6 @@
   },
   "dependencies": {
     "@types/papaparse": "^5.3.16",
-    "@types/uuid": "^11.0.0",
     "clsx": "^2.1.1",
     "html2canvas": "^1.4.1",
     "next": "15.5.6",
