@@ -25,27 +25,27 @@
     - Ensure contrast meets accessibility standards
     - _Requirements: 1.4_
 
-- [ ] 2. Simplified Filtering UX
-  - [ ] 2.1 Implement top 6 genre display with "More Genres" dropdown
+- [x] 2. Simplified Filtering UX
+  - [x] 2.1 Implement top 6 genre display with "More Genres" dropdown
     - Show Action, Adventure, Comedy, Drama, Fantasy, Romance by default
     - Create dropdown/modal for remaining genres
     - Use bottom sheet on mobile for better UX
     - _Requirements: 2.1_
   
-  - [ ] 2.2 Update sort options with user-friendly labels
+  - [x] 2.2 Update sort options with user-friendly labels
     - Map technical values to friendly labels (site → Most Popular, visual → Best Visuals, etc.)
     - Add icons to sort buttons (⭐, 🎨, 🎵, 📖, 👥)
     - Update UI to display new labels
     - _Requirements: 2.2_
   
-  - [ ] 2.3 Make search bar sticky and prominent
+  - [x] 2.3 Make search bar sticky and prominent
     - Implement scroll detection for sticky behavior
     - Add backdrop blur effect when sticky
     - Ensure proper z-index and positioning
     - Test smooth transition animation
     - _Requirements: 2.3, 6.3_
   
-  - [ ] 2.4 Add "Clear All Filters" button
+  - [x] 2.4 Add "Clear All Filters" button
     - Create button that resets all filters, search, and sort
     - Show only when filters are active
     - Position prominently near filter section
