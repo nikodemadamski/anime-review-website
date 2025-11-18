@@ -251,8 +251,8 @@
     - Test cards show icon and name only
     - _Requirements: 2.2, 2.3, 2.5_
 
-- [ ] 16. Perform integration testing
-  - [ ] 16.1 Test view mode switching
+- [x] 16. Perform integration testing
+  - [x] 16.1 Test view mode switching
     - Test switching from Large to Grid updates layout correctly
     - Test switching from Grid to List updates layout correctly
     - Test switching from List to Large updates layout correctly
@@ -260,61 +260,61 @@
     - Test desktop ignores mobile view mode preferences
     - _Requirements: 4.5, 7.1, 7.2, 9.1, 9.2_
 
-  - [ ] 16.2 Test homepage mobile layout
+  - [x] 16.2 Test homepage mobile layout
     - Test category cards appear above the fold on mobile
     - Test horizontal scroll works smoothly
     - Test scroll-snap behavior works correctly
     - Test category card links navigate to correct pages
     - _Requirements: 2.1, 2.2, 3.1, 3.2_
 
-  - [ ] 16.3 Test responsive behavior
+  - [x] 16.3 Test responsive behavior
     - Test ViewModeToggle shows on mobile, hides on desktop
     - Test CategoryCardRow shows on mobile, hides on desktop
     - Test window resize updates layout appropriately
     - Test no layout shift during transitions
     - _Requirements: 9.1, 9.2, 9.3_
 
-- [ ] 17. Perform accessibility audit
-  - [ ] 17.1 Test keyboard navigation
+- [x] 17. Perform accessibility audit
+  - [x] 17.1 Test keyboard navigation
     - Test tab order through ViewModeToggle is logical
     - Test Enter/Space keys activate buttons
     - Test focus indicators are visible on all interactive elements
     - Test keyboard navigation works in all view modes
     - _Requirements: 7.3, 8.3_
 
-  - [ ] 17.2 Test screen reader compatibility
+  - [x] 17.2 Test screen reader compatibility
     - Test ViewModeToggle announces correctly
     - Test view mode changes are announced
     - Test anime cards have proper labels in all views
     - Test ARIA attributes are correct
     - _Requirements: 7.4, 8.3_
 
-  - [ ] 17.3 Test touch targets
+  - [x] 17.3 Test touch targets
     - Test all buttons meet 44×44px minimum size
     - Test adequate spacing between touch targets
     - Test no accidental taps occur
     - _Requirements: 7.5_
 
-  - [ ] 17.4 Test color contrast
+  - [x] 17.4 Test color contrast
     - Test all text meets WCAG AA standards (4.5:1)
     - Test interactive elements have 3:1 contrast with background
     - Test focus indicators are visible (2px outline, 3:1 contrast)
     - _Requirements: 8.3_
 
-- [ ] 18. Perform performance testing
-  - [ ] 18.1 Test view mode transition performance
+- [x] 18. Perform performance testing
+  - [x] 18.1 Test view mode transition performance
     - Test transitions complete within 300ms
     - Test no layout thrashing occurs
     - Test CSS transitions are smooth
     - _Requirements: 9.1, 10.1, 10.2_
 
-  - [ ] 18.2 Test image loading performance
+  - [x] 18.2 Test image loading performance
     - Test lazy loading works in all view modes
     - Test placeholder prevents layout shift
     - Test progressive loading in large view
     - _Requirements: 10.4, 10.5_
 
-  - [ ] 18.3 Test scroll performance
+  - [x] 18.3 Test scroll performance
     - Test horizontal scroll is smooth on mobile (category cards)
     - Test vertical scroll maintains 60fps in all view modes
     - Test no jank during view mode switches
