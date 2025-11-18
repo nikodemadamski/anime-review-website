@@ -44,33 +44,41 @@ export function HowWeRateSection() {
       style={{ backgroundColor: 'var(--background)' }}
     >
       <Container size="xl">
-        {/* Logo at the top - closer to top and text */}
-        <div className="text-center mb-4">
-          <Image
-            src="/logo-dark.png"
-            alt="Anime Reviews Logo"
-            width={240}
-            height={120}
-            className="mx-auto dark:hidden"
-            priority
-          />
-          <Image
-            src="/logo-light.png"
-            alt="Anime Reviews Logo"
-            width={240}
-            height={120}
-            className="mx-auto hidden dark:block"
-            priority
-          />
-        </div>
-
+        {/* Title with logo hat on top */}
         <div className="text-center mb-10">
-          <h2
-            className="text-2xl md:text-4xl font-black mb-3"
-            style={{ color: 'var(--foreground)' }}
-          >
-            How We Rate Anime
-          </h2>
+          <div className="relative inline-block mb-3">
+            {/* Logo hat positioned on the "e" in "Anime" with backflip animation */}
+            <div 
+              className="absolute -top-7 md:-top-9 -right-7 md:-right-9 hat-backflip"
+              style={{ 
+                transform: 'rotate(18deg)',
+                transformOrigin: 'center center'
+              }}
+            >
+              <Image
+                src="/logo-dark.png"
+                alt="Anime Reviews Logo"
+                width={75}
+                height={60}
+                className="dark:hidden md:w-[100px] md:h-[80px]"
+                priority
+              />
+              <Image
+                src="/logo-light.png"
+                alt="Anime Reviews Logo"
+                width={75}
+                height={60}
+                className="hidden dark:block md:w-[100px] md:h-[80px]"
+                priority
+              />
+            </div>
+            <h2
+              className="text-2xl md:text-4xl font-black"
+              style={{ color: 'var(--foreground)' }}
+            >
+              How We Rate Anime
+            </h2>
+          </div>
           <p
             className="text-lg"
             style={{ color: 'var(--secondary)' }}
@@ -78,6 +86,32 @@ export function HowWeRateSection() {
             We rate anime across four key categories
           </p>
         </div>
+
+        <style jsx>{`
+          @keyframes hatBackflip {
+            0% {
+              transform: translateY(-100px) rotate(-180deg);
+              opacity: 0;
+            }
+            40% {
+              transform: translateY(-20px) rotate(-90deg);
+              opacity: 1;
+            }
+            70% {
+              transform: translateY(3px) rotate(10deg);
+            }
+            85% {
+              transform: translateY(-1px) rotate(15deg);
+            }
+            100% {
+              transform: translateY(0) rotate(18deg);
+            }
+          }
+
+          .hat-backflip {
+            animation: hatBackflip 1.2s cubic-bezier(0.34, 1.56, 0.64, 1);
+          }
+        `}</style>
 
         {/* Category explanations - always show grid */}
         <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-6">

@@ -77,7 +77,6 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           <Link 
             href="/" 
             className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
-            style={{ color: 'var(--header-text)' }}
           >
             <Image
               src={theme === 'dark' ? '/logo-dark.png' : '/logo-light.png'}
@@ -86,7 +85,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               height={40}
               className="rounded-xl"
             />
-            <Typography variant="h5" component="span" className="hidden sm:block font-bold">
+            <Typography variant="h5" component="span" className="hidden sm:block font-bold" style={{ color: 'var(--foreground)' }}>
               Anime Review
             </Typography>
           </Link>

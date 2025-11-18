@@ -1,17 +1,23 @@
 'use client';
 
-import { useParams } from 'next/navigation';
-import { useState } from 'react';
+import { useParams, useSearchParams } from 'next/navigation';
+import { useState, useEffect } from 'react';
 import { Container } from '@/components/ui';
 import { characterResults, RARITY_CONFIG } from '@/data/quiz-data';
 import { generateFallbackUrl } from '@/lib/character-images';
+import { ShareableResultCard } from '@/components/quiz/ShareableResultCard';
+import { ShareResultSection } from '@/components/quiz/ShareResultSection';
+import { useShareableCard } from '@/hooks/useShareableCard';
+import { trackResultCardViewed, trackResultCardDownloaded, trackShareLinkClicked } from '@/lib/analytics-events';
 import Image from 'next/image';
 import Link from 'next/link';
 
 export default function QuizResultPage() {
   const params = useParams();
+  const searchParams = useSearchParams();
   const characterId = params.character as string;
   const [imageError, setImageError] = useState(false);
+  const [showShareableCard, setShowShareableCard] = useState(false);
 
   const result = characterResults.find(c => c.id === characterId);
   
@@ -22,6 +28,55 @@ export default function QuizResultPage() {
     console.warn(`Failed to load image for ${result?.name}, using fallback`);
     setImageError(true);
   };
+
+  // Shareable card hook
+  const {
+    generateCard,
+    downloadCard,
+    imageDataUrl,
+    isGenerating,
+    error: cardError,
+  } = useShareableCard({
+    elementId: 'shareable-card',
+    filename: `my-anime-character-${result?.name.toLowerCase().replace(/\s+/g, '-')}.png`,
+    onSuccess: () => {
+      if (result) {
+        trackResultCardDownloaded(
+          result.id,
+          result.name,
+          'button_click'
+        );
+      }
+    },
+  });
+
+  // Track page view and share link clicks
+  useEffect(() => {
+    if (result) {
+      const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+      trackResultCardViewed(result.id, result.name, isMobile ? 'mobile' : 'desktop');
+
+      // Check if user came from a shared link
+      const refCharacter = searchParams.get('ref');
+      if (refCharacter === 'share') {
+        trackShareLinkClicked(result.id);
+      }
+    }
+  }, [result, searchParams]);
+
+  // Generate card on mount
+  useEffect(() => {
+    if (result && showShareableCard) {
+      const timer = setTimeout(() => {
+        generateCard();
+      }, 500); // Small delay to ensure DOM is ready
+      return () => clearTimeout(timer);
+    }
+  }, [result, showShareableCard, generateCard]);
+
+  const shareUrl = typeof window !== 'undefined' 
+    ? `${window.location.origin}/quiz?ref=share&char=${characterId}`
+    : '';
 
   if (!result) {
     return (
@@ -43,18 +98,6 @@ export default function QuizResultPage() {
       </div>
     );
   }
-
-  const shareResult = () => {
-    const text = `I got ${result.name} from ${result.anime}! ${result.emoji} Take the quiz to find your anime character!`;
-    const url = window.location.href;
-
-    if (navigator.share) {
-      navigator.share({ title: 'Which Anime Character Are You?', text, url });
-    } else {
-      const twitterUrl = `https://twitter.com/intent/tweet?text=${encodeURIComponent(text)}&url=${encodeURIComponent(url)}&hashtags=AnimeQuiz,WhichAnimeCharacter`;
-      window.open(twitterUrl, '_blank');
-    }
-  };
 
   return (
     <div className="min-h-screen py-12" style={{ backgroundColor: 'var(--background)' }}>
@@ -152,34 +195,69 @@ export default function QuizResultPage() {
               </div>
             </div>
 
+            {/* Share Section */}
+            <div className="mb-8">
+              {!showShareableCard ? (
+                <button
+                  onClick={() => setShowShareableCard(true)}
+                  className="w-full px-6 py-4 rounded-xl font-bold text-lg text-center transition-all duration-300 hover:scale-105 shadow-lg"
+                  style={{
+                    backgroundColor: result.color,
+                    color: '#FFFFFF'
+                  }}
+                >
+                  📱 Create Shareable Card
+                </button>
+              ) : (
+                <div className="space-y-6">
+                  {/* Shareable Card Preview (hidden, used for generation) */}
+                  <div className="hidden">
+                    <ShareableResultCard
+                      character={result}
+                      showForDownload={true}
+                    />
+                  </div>
+
+                  {/* Share Actions */}
+                  <ShareResultSection
+                    characterName={result.name}
+                    characterId={result.id}
+                    shareUrl={shareUrl}
+                    imageDataUrl={imageDataUrl}
+                    onDownload={downloadCard}
+                    isGenerating={isGenerating}
+                  />
+
+                  {cardError && (
+                    <div
+                      className="p-4 rounded-xl text-center"
+                      style={{
+                        backgroundColor: '#FEE2E2',
+                        color: '#991B1B',
+                      }}
+                    >
+                      <p className="font-semibold">Failed to generate card</p>
+                      <p className="text-sm mt-1">Please try again or use the share buttons below</p>
+                    </div>
+                  )}
+                </div>
+              )}
+            </div>
+
             {/* CTAs */}
             <div className="space-y-4">
               <Link
                 href="/quiz"
                 className="block w-full px-6 py-4 rounded-xl font-bold text-lg text-center transition-all duration-300 hover:scale-105 shadow-lg"
                 style={{
-                  backgroundColor: result.color,
-                  color: '#FFFFFF'
-                }}
-              >
-                Take the Quiz Yourself! 🎭
-              </Link>
-
-              <button
-                onClick={shareResult}
-                className="w-full px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105 flex items-center justify-center gap-2"
-                style={{
-                  backgroundColor: 'var(--card-background)',
+                  backgroundColor: 'var(--text-block)',
                   borderWidth: '2px',
-                  borderColor: 'var(--border)',
+                  borderColor: result.color,
                   color: 'var(--foreground)'
                 }}
               >
-                <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
-                  <path strokeLinecap="round" strokeLinejoin="round" d="M8.684 13.342C8.886 12.938 9 12.482 9 12c0-.482-.114-.938-.316-1.342m0 2.684a3 3 0 110-2.684m0 2.684l6.632 3.316m-6.632-6l6.632-3.316m0 0a3 3 0 105.367-2.684 3 3 0 00-5.367 2.684zm0 9.316a3 3 0 105.368 2.684 3 3 0 00-5.368-2.684z" />
-                </svg>
-                Share This Result
-              </button>
+                Take the Quiz Again 🎭
+              </Link>
 
               <Link
                 href="/browse"

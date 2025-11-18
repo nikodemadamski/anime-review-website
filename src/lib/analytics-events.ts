@@ -219,3 +219,79 @@ export function trackCategoryClick(
     position,
   });
 }
+
+/**
+ * Track result card viewed
+ */
+export function trackResultCardViewed(
+  characterId: string,
+  characterName: string,
+  deviceType: 'mobile' | 'desktop'
+): void {
+  trackEvent('result_card_viewed', {
+    characterId,
+    characterName,
+    deviceType,
+    timestamp: Date.now(),
+  });
+}
+
+/**
+ * Track result card downloaded
+ */
+export function trackResultCardDownloaded(
+  characterId: string,
+  characterName: string,
+  downloadMethod: 'button_click' | 'auto'
+): void {
+  trackEvent('result_card_downloaded', {
+    characterId,
+    characterName,
+    downloadMethod,
+    timestamp: Date.now(),
+  });
+}
+
+/**
+ * Track result card shared
+ */
+export function trackResultCardShared(
+  characterId: string,
+  characterName: string,
+  platform: 'native' | 'twitter' | 'facebook' | 'whatsapp' | 'copy',
+  includesImage?: boolean
+): void {
+  trackEvent('result_card_shared', {
+    characterId,
+    characterName,
+    platform,
+    includesImage,
+    timestamp: Date.now(),
+  });
+}
+
+/**
+ * Track share button clicked
+ */
+export function trackShareButtonClicked(
+  characterId: string,
+  platform: string
+): void {
+  trackEvent('share_button_clicked', {
+    characterId,
+    platform,
+    timestamp: Date.now(),
+  });
+}
+
+/**
+ * Track share link clicked (when someone clicks a shared link)
+ */
+export function trackShareLinkClicked(
+  referrerCharacter: string
+): void {
+  trackEvent('share_link_clicked', {
+    referrerCharacter,
+    timestamp: Date.now(),
+  });
+}
