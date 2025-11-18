@@ -2,9 +2,10 @@
 
 import { useState, useEffect, useMemo } from 'react';
 import { useSearchParams } from 'next/navigation';
-import { Container, Typography, Card, CardContent, Badge } from '@/components/ui';
+import { Container, Card, CardContent, Badge } from '@/components/ui';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useWatchlist } from '@/hooks/useWatchlist';
+import { SkeletonGrid } from '@/components/loading/SkeletonGrid';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -118,14 +119,19 @@ export function BrowseContent() {
 
   if (loading) {
     return (
-      <Container size="xl" className="py-12">
-        <div className="flex items-center justify-center min-h-[400px]">
-          <div className="text-center">
-            <div className="animate-spin rounded-full h-12 w-12 border-b-2 mx-auto mb-4" style={{ borderColor: 'var(--accent)' }}></div>
-            <p style={{ color: 'var(--secondary)' }}>Loading anime...</p>
+      <div style={{ backgroundColor: 'var(--background)', minHeight: '100vh' }}>
+        <Container size="xl" className="py-12">
+          <div className="mb-8">
+            <h1 className="text-4xl font-black mb-2" style={{ color: 'var(--foreground)' }}>
+              Browse Anime
+            </h1>
+            <p style={{ color: 'var(--secondary)' }}>
+              Loading anime collection...
+            </p>
           </div>
-        </div>
-      </Container>
+          <SkeletonGrid count={12} columns={4} />
+        </Container>
+      </div>
     );
   }
 
@@ -179,25 +185,29 @@ export function BrowseContent() {
         </div>
 
         {/* Sort Options */}
-        <div className="flex flex-wrap gap-2">
-          <span className="font-semibold mr-2" style={{ color: 'var(--foreground)' }}>
+        <div className="flex flex-wrap gap-2 items-center">
+          <span className="font-semibold" style={{ color: 'var(--foreground)' }}>
             Sort by:
           </span>
-          {(['site', 'visual', 'music', 'story', 'character'] as SortOption[]).map((option) => (
-            <button
-              key={option}
-              onClick={() => setSortBy(option)}
-              className="px-4 py-2 rounded-lg font-medium transition-all"
-              style={{
-                backgroundColor: sortBy === option ? categoryColors[option]?.color || 'var(--btn-primary)' : 'var(--card-background)',
-                color: sortBy === option ? '#FFFFFF' : 'var(--foreground)',
-                borderWidth: '2px',
-                borderColor: sortBy === option ? 'transparent' : 'var(--border)',
-              }}
-            >
-              {option.charAt(0).toUpperCase() + option.slice(1)}
-            </button>
-          ))}
+          {(['site', 'visual', 'music', 'story', 'character'] as SortOption[]).map((option) => {
+            const isActive = sortBy === option;
+            return (
+              <button
+                key={option}
+                onClick={() => setSortBy(option)}
+                className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] min-w-[44px]"
+                style={{
+                  backgroundColor: isActive ? categoryColors[option]?.color || 'var(--btn-primary)' : 'var(--card-background)',
+                  color: isActive ? '#FFFFFF' : 'var(--foreground)',
+                  borderWidth: '2px',
+                  borderColor: isActive ? categoryColors[option]?.color || 'var(--btn-primary)' : 'var(--border)',
+                  boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
+                }}
+              >
+                {option.charAt(0).toUpperCase() + option.slice(1)}
+              </button>
+            );
+          })}
         </div>
 
         {/* Genre Filters */}
@@ -206,44 +216,53 @@ export function BrowseContent() {
             Genres:
           </span>
           <div className="flex flex-wrap gap-2">
-            {genres.map((genre) => (
-              <button
-                key={genre.id}
-                onClick={() => toggleGenre(genre.id)}
-                className="px-3 py-1.5 rounded-full text-sm font-medium transition-all"
-                style={{
-                  backgroundColor: selectedGenres.includes(genre.id) ? 'var(--accent)' : 'var(--card-background)',
-                  color: selectedGenres.includes(genre.id) ? '#FFFFFF' : 'var(--foreground)',
-                  borderWidth: '2px',
-                  borderColor: selectedGenres.includes(genre.id) ? 'transparent' : 'var(--border)',
-                }}
-              >
-                {genre.icon} {genre.label}
-              </button>
-            ))}
+            {genres.map((genre) => {
+              const isActive = selectedGenres.includes(genre.id);
+              return (
+                <button
+                  key={genre.id}
+                  onClick={() => toggleGenre(genre.id)}
+                  className="px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1"
+                  style={{
+                    backgroundColor: isActive ? 'var(--accent)' : 'var(--card-background)',
+                    color: isActive ? '#FFFFFF' : 'var(--foreground)',
+                    borderWidth: '2px',
+                    borderColor: isActive ? 'var(--accent)' : 'var(--border)',
+                    boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
+                  }}
+                >
+                  {isActive && <span className="text-white">✓</span>}
+                  {genre.icon} {genre.label}
+                </button>
+              );
+            })}
           </div>
         </div>
 
         {/* Status Filter */}
-        <div className="flex flex-wrap gap-2">
-          <span className="font-semibold mr-2" style={{ color: 'var(--foreground)' }}>
+        <div className="flex flex-wrap gap-2 items-center">
+          <span className="font-semibold" style={{ color: 'var(--foreground)' }}>
             Status:
           </span>
-          {(['all', 'airing', 'finished', 'upcoming'] as StatusOption[]).map((status) => (
-            <button
-              key={status}
-              onClick={() => setStatusFilter(status)}
-              className="px-4 py-2 rounded-lg font-medium transition-all"
-              style={{
-                backgroundColor: statusFilter === status ? 'var(--btn-primary)' : 'var(--card-background)',
-                color: statusFilter === status ? 'var(--btn-primary-text)' : 'var(--foreground)',
-                borderWidth: '2px',
-                borderColor: statusFilter === status ? 'transparent' : 'var(--border)',
-              }}
-            >
-              {status.charAt(0).toUpperCase() + status.slice(1)}
-            </button>
-          ))}
+          {(['all', 'airing', 'finished', 'upcoming'] as StatusOption[]).map((status) => {
+            const isActive = statusFilter === status;
+            return (
+              <button
+                key={status}
+                onClick={() => setStatusFilter(status)}
+                className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] min-w-[44px]"
+                style={{
+                  backgroundColor: isActive ? 'var(--btn-primary)' : 'var(--card-background)',
+                  color: isActive ? 'var(--btn-primary-text)' : 'var(--foreground)',
+                  borderWidth: '2px',
+                  borderColor: isActive ? 'var(--btn-primary)' : 'var(--border)',
+                  boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
+                }}
+              >
+                {status.charAt(0).toUpperCase() + status.slice(1)}
+              </button>
+            );
+          })}
         </div>
       </div>
 
@@ -257,7 +276,19 @@ export function BrowseContent() {
       {/* Anime Grid */}
       <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
         {filteredAndSortedAnime.map((anime) => (
-          <Card key={anime.id} className="group hover:scale-105 transition-transform duration-300">
+          <Card 
+            key={anime.id} 
+            className="group transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.05]"
+            style={{
+              boxShadow: 'var(--card-shadow)',
+            }}
+            onMouseEnter={(e) => {
+              e.currentTarget.style.boxShadow = '0 10px 30px rgba(0, 0, 0, 0.2)';
+            }}
+            onMouseLeave={(e) => {
+              e.currentTarget.style.boxShadow = 'var(--card-shadow)';
+            }}
+          >
             <Link href={`/anime/${anime.id}`}>
               <div className="relative aspect-[2/3] overflow-hidden rounded-t-xl">
                 <Image
@@ -266,6 +297,8 @@ export function BrowseContent() {
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-300"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  placeholder="blur"
+                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzIwMjAyMCIvPjwvc3ZnPg=="
                 />
                 <div className="absolute top-2 right-2">
                   <Badge variant="info">{anime.ratings[sortBy].toFixed(1)}</Badge>
