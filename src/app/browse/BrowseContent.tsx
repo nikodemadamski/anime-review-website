@@ -140,15 +140,16 @@ export function BrowseContent() {
   }
 
   return (
-    <Container size="xl" className="py-12">
-      <div className="mb-8">
-        <h1 className="text-4xl font-black mb-2" style={{ color: 'var(--foreground)' }}>
-          Browse Anime
-        </h1>
-        <p style={{ color: 'var(--secondary)' }}>
-          Discover and explore our collection of {allAnime.length} anime titles
-        </p>
-      </div>
+    <div style={{ backgroundColor: 'var(--background)', minHeight: '100vh' }}>
+      <Container size="xl" className="py-12">
+        <div className="mb-8">
+          <h1 className="text-4xl font-black mb-2" style={{ color: 'var(--foreground)' }}>
+            Browse Anime
+          </h1>
+          <p style={{ color: 'var(--secondary)' }}>
+            Discover and explore our collection of {allAnime.length} anime titles
+          </p>
+        </div>
 
       {/* Search and Filters */}
       <div className="mb-8 space-y-6">
@@ -313,6 +314,7 @@ export function BrowseContent() {
           </p>
         </div>
       )}
-    </Container>
+      </Container>
+    </div>
   );
 }
