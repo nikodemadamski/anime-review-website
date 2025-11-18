@@ -92,7 +92,7 @@ export function BrowseContent() {
   const [announcement, setAnnouncement] = useState('');
   const [isOnline, setIsOnline] = useState(true);
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
-  const [showTrendingOnly, setShowTrendingOnly] = useState(false);
+  const [showTrendingSection, setShowTrendingSection] = useState(true);
   const [trendingAnime, setTrendingAnime] = useState<any[]>([]);
   const debouncedSearch = useDebounce(searchQuery, 300);
   const { addAnime, removeAnime, isInWatchlist: checkWatchlist } = useWatchlist();
@@ -228,10 +228,8 @@ export function BrowseContent() {
   }, []);
 
   const filteredAndSortedAnime = useMemo(() => {
-    // Use trending anime if toggle is on, otherwise use all anime
-    const sourceAnime = showTrendingOnly && trendingAnime.length > 0 ? trendingAnime : allAnime;
-    if (!Array.isArray(sourceAnime)) return [];
-    let filtered = [...sourceAnime];
+    if (!Array.isArray(allAnime)) return [];
+    let filtered = [...allAnime];
 
     if (debouncedSearch) {
       const query = debouncedSearch.toLowerCase();
@@ -267,7 +265,7 @@ export function BrowseContent() {
     });
 
     return filtered;
-  }, [allAnime, trendingAnime, showTrendingOnly, debouncedSearch, selectedGenres, statusFilter, sortBy]);
+  }, [allAnime, debouncedSearch, selectedGenres, statusFilter, sortBy]);
 
   // Paginated anime
   const paginatedAnime = useMemo(() => {
@@ -637,8 +635,115 @@ export function BrowseContent() {
       {/* Spacer when search is sticky */}
       {isSearchSticky && <div className="h-20" />}
 
-      {/* Trending Section */}
-      <TrendingAnimeSection allAnime={allAnime} />
+      {/* Trending Now Section - Collapsible */}
+      {trendingAnime.length > 0 && (
+        <div className="mb-8">
+          {/* Toggle Header */}
+          <button
+            onClick={() => setShowTrendingSection(!showTrendingSection)}
+            className="flex items-center gap-2 mb-4 transition-colors hover:opacity-80"
+            style={{ color: 'var(--foreground)' }}
+          >
+            <h2 className="text-2xl font-black">
+              🔥 Trending Now
+            </h2>
+            {showTrendingSection ? (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M15 12a3 3 0 11-6 0 3 3 0 016 0z M2.458 12C3.732 7.943 7.523 5 12 5c4.478 0 8.268 2.943 9.542 7-1.274 4.057-5.064 7-9.542 7-4.477 0-8.268-2.943-9.542-7z" />
+              </svg>
+            ) : (
+              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2}>
+                <path strokeLinecap="round" strokeLinejoin="round" d="M13.875 18.825A10.05 10.05 0 0112 19c-4.478 0-8.268-2.943-9.543-7a9.97 9.97 0 011.563-3.029m5.858.908a3 3 0 114.243 4.243M9.878 9.878l4.242 4.242M9.88 9.88l-3.29-3.29m7.532 7.532l3.29 3.29M3 3l3.59 3.59m0 0A9.953 9.953 0 0112 5c4.478 0 8.268 2.943 9.543 7a10.025 10.025 0 01-4.132 5.411m0 0L21 21" />
+              </svg>
+            )}
+          </button>
+
+          {/* Horizontal Scrolling Cards */}
+          {showTrendingSection && (
+            <div className="relative">
+              <div 
+                className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+                style={{
+                  scrollbarWidth: 'none',
+                  msOverflowStyle: 'none',
+                }}
+              >
+                {trendingAnime.slice(0, 15).map((anime) => (
+                  <Link
+                    key={anime.id}
+                    href={`/anime/${anime.id}`}
+                    className="flex-shrink-0 w-48 snap-start group"
+                  >
+                    <div className="relative h-64 rounded-xl overflow-hidden mb-2 shadow-lg transition-transform duration-300 group-hover:scale-105">
+                      {/* Trending Badge */}
+                      <div className="absolute top-2 left-2 z-10">
+                        <div 
+                          className="px-2 py-1 rounded-full text-xs font-bold flex items-center gap-1"
+                          style={{
+                            backgroundColor: '#FF6B9D',
+                            color: '#FFFFFF',
+                          }}
+                        >
+                          <span>🔥</span>
+                          <span>Trending</span>
+                        </div>
+                      </div>
+
+                      {/* Cover Image */}
+                      <Image
+                        src={anime.coverImage}
+                        alt={anime.title}
+                        fill
+                        className="object-cover"
+                        sizes="192px"
+                      />
+
+                      {/* Gradient Overlay */}
+                      <div 
+                        className="absolute inset-0"
+                        style={{
+                          background: 'linear-gradient(180deg, transparent 50%, rgba(0, 0, 0, 0.8) 100%)',
+                        }}
+                      />
+
+                      {/* Rating Badge */}
+                      <div className="absolute bottom-2 right-2">
+                        <Badge variant="site" size="sm">
+                          {anime.ratings.site.toFixed(1)}
+                        </Badge>
+                      </div>
+                    </div>
+
+                    {/* Title */}
+                    <h3 
+                      className="font-bold text-sm line-clamp-2 group-hover:underline"
+                      style={{ color: 'var(--foreground)' }}
+                    >
+                      {anime.title}
+                    </h3>
+                  </Link>
+                ))}
+              </div>
+
+              {/* Scroll Indicators */}
+              <div className="absolute top-1/2 -translate-y-1/2 left-0 right-0 pointer-events-none flex justify-between px-2">
+                <div 
+                  className="w-8 h-16 rounded-r-lg"
+                  style={{
+                    background: 'linear-gradient(90deg, var(--background) 0%, transparent 100%)',
+                  }}
+                />
+                <div 
+                  className="w-8 h-16 rounded-l-lg"
+                  style={{
+                    background: 'linear-gradient(270deg, var(--background) 0%, transparent 100%)',
+                  }}
+                />
+              </div>
+            </div>
+          )}
+        </div>
+      )}
 
       {/* Sort and Filter Bar */}
       <div className="mb-8">
@@ -647,28 +752,8 @@ export function BrowseContent() {
             Sort by:
           </span>
           
-          <div className="flex items-center gap-3">
-            {/* Trending Toggle */}
-            <button
-              onClick={() => {
-                setShowTrendingOnly(!showTrendingOnly);
-                setPage(1);
-              }}
-              className="px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
-              style={{
-                backgroundColor: showTrendingOnly ? '#FF6B9D' : 'var(--card-background)',
-                color: showTrendingOnly ? '#FFFFFF' : 'var(--foreground)',
-                borderWidth: '2px',
-                borderColor: showTrendingOnly ? '#FF6B9D' : 'var(--border)',
-              }}
-              aria-label={showTrendingOnly ? 'Showing trending anime' : 'Show trending anime'}
-            >
-              <span className="text-lg">🔥</span>
-              <span>Trending Now</span>
-            </button>
-
-            {/* Filter Button */}
-            <button
+          {/* Filter Button */}
+          <button
               onClick={() => setShowFilterModal(true)}
               className="px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
               style={{
@@ -695,7 +780,6 @@ export function BrowseContent() {
               </span>
             )}
           </button>
-          </div>
         </div>
 
         {/* Sort Options */}
