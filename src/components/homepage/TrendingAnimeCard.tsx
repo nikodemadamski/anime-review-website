@@ -1,5 +1,6 @@
 'use client';
 
+import { memo } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Anime } from '@/types/anime';
@@ -9,7 +10,7 @@ interface TrendingAnimeCardProps {
   anime: Anime;
 }
 
-export function TrendingAnimeCard({ anime }: TrendingAnimeCardProps) {
+export const TrendingAnimeCard = memo(function TrendingAnimeCard({ anime }: TrendingAnimeCardProps) {
   return (
     <Link
       href={`/anime/${anime.id}`}
@@ -61,4 +62,4 @@ export function TrendingAnimeCard({ anime }: TrendingAnimeCardProps) {
       </div>
     </Link>
   );
-}
+});

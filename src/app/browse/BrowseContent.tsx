@@ -1,13 +1,24 @@
 'use client';
 
 import { useState, useEffect, useMemo } from 'react';
-import { useSearchParams, useRouter } from 'next/navigation';
 import { Container, Card, CardContent, Badge } from '@/components/ui';
 import { useDebounce } from '@/hooks/useDebounce';
 import { useWatchlist } from '@/hooks/useWatchlist';
 import { SkeletonGrid } from '@/components/loading/SkeletonGrid';
 import { getWatchingCount, isTrending } from '@/lib/trending';
 import { EmptyState } from '@/components/browse/EmptyState';
+import { WatchNowButton } from '@/components/anime/WatchNowButton';
+import { NewsletterPrompt } from '@/components/browse/NewsletterPrompt';
+import { TrendingAnimeSection } from '@/components/homepage/TrendingAnimeSection';
+import { 
+  trackFilterUsage, 
+  trackSearch, 
+  trackSortChange, 
+  trackWatchlistAction,
+  trackWatchNowClick,
+  trackNewsletterSignup,
+  trackPageView 
+} from '@/lib/analytics-events';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -22,14 +33,6 @@ const sortOptions = [
   { value: 'story' as SortOption, label: 'Best Story', icon: '📖', color: '#06B6D4' },
   { value: 'character' as SortOption, label: 'Best Characters', icon: '👥', color: '#F59E0B' },
 ];
-
-const categoryColors = {
-  visual: { color: '#FF6B9D', bg: '#FFE4EF' },
-  music: { color: '#9D4EDD', bg: '#F3E8FF' },
-  story: { color: '#06B6D4', bg: '#CFFAFE' },
-  character: { color: '#F59E0B', bg: '#FEF3C7' },
-  site: { color: '#C8A34E', bg: '#FEF3C7' },
-};
 
 const topGenres = [
   { id: 'action', label: 'Action', icon: '⚔️' },
@@ -54,8 +57,6 @@ const moreGenres = [
 type StatusOption = 'all' | 'airing' | 'finished' | 'upcoming';
 
 export function BrowseContent() {
-  const searchParams = useSearchParams();
-  const router = useRouter();
   const [allAnime, setAllAnime] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState<string | null>(null);
@@ -66,8 +67,12 @@ export function BrowseContent() {
   const [showMoreGenres, setShowMoreGenres] = useState(false);
   const [isSearchSticky, setIsSearchSticky] = useState(false);
   const [page, setPage] = useState(1);
+  const [watchlistAddCount, setWatchlistAddCount] = useState(0);
+  const [showNewsletterPrompt, setShowNewsletterPrompt] = useState(false);
+  const [announcement, setAnnouncement] = useState('');
+  const [isOnline, setIsOnline] = useState(true);
   const debouncedSearch = useDebounce(searchQuery, 300);
-  const { watchlist, addAnime, removeAnime, isInWatchlist: checkWatchlist } = useWatchlist();
+  const { addAnime, removeAnime, isInWatchlist: checkWatchlist } = useWatchlist();
 
   // Read URL params on mount
   useEffect(() => {
@@ -77,6 +82,14 @@ export function BrowseContent() {
     if (params.get('sort')) setSortBy(params.get('sort') as SortOption);
     if (params.get('status')) setStatusFilter(params.get('status') as StatusOption);
     if (params.get('page')) setPage(parseInt(params.get('page')!));
+    
+    // Track page view
+    trackPageView('browse', {
+      search: params.get('search'),
+      genres: params.get('genres'),
+      sort: params.get('sort'),
+      status: params.get('status'),
+    });
   }, []);
 
   // Sync filters to URL params
@@ -96,14 +109,28 @@ export function BrowseContent() {
     async function loadAnime() {
       try {
         const response = await fetch('/api/anime');
-        if (!response.ok) throw new Error('Failed to fetch anime');
+        if (!response.ok) {
+          // Provide more specific error messages based on status code
+          if (response.status === 404) {
+            throw new Error('Anime data not found. Please try again later.');
+          } else if (response.status === 500) {
+            throw new Error('Server error. Our team has been notified.');
+          } else if (response.status >= 400 && response.status < 500) {
+            throw new Error('Unable to load anime. Please check your connection.');
+          } else {
+            throw new Error('Network error. Please check your internet connection.');
+          }
+        }
         const result = await response.json();
         // Handle both array response and object with data property
         const data = result.data || result;
         setAllAnime(Array.isArray(data) ? data : []);
+        setError(null); // Clear any previous errors
       } catch (err) {
-        setError(err instanceof Error ? err.message : 'Failed to load anime');
+        const errorMessage = err instanceof Error ? err.message : 'Unable to load anime. Please try again.';
+        setError(errorMessage);
         setAllAnime([]);
+        console.error('Failed to load anime:', err);
       } finally {
         setLoading(false);
       }
@@ -117,8 +144,32 @@ export function BrowseContent() {
       setIsSearchSticky(window.scrollY > 200);
     };
     
-    window.addEventListener('scroll', handleScroll);
+    window.addEventListener('scroll', handleScroll, { passive: true });
     return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
+  
+  // Monitor online/offline status
+  useEffect(() => {
+    const handleOnline = () => {
+      setIsOnline(true);
+      setAnnouncement('Connection restored');
+    };
+    
+    const handleOffline = () => {
+      setIsOnline(false);
+      setAnnouncement('Connection lost. Some features may not work.');
+    };
+    
+    // Set initial state
+    setIsOnline(navigator.onLine);
+    
+    window.addEventListener('online', handleOnline);
+    window.addEventListener('offline', handleOffline);
+    
+    return () => {
+      window.removeEventListener('online', handleOnline);
+      window.removeEventListener('offline', handleOffline);
+    };
   }, []);
 
   const filteredAndSortedAnime = useMemo(() => {
@@ -197,17 +248,67 @@ export function BrowseContent() {
   }, [filteredAndSortedAnime, allAnime, selectedGenres]);
 
   const toggleGenre = (genreId: string) => {
+    const isAdding = !selectedGenres.includes(genreId);
+    const genreName = [...topGenres, ...moreGenres].find(g => g.id === genreId)?.label || genreId;
+    
     setSelectedGenres((prev) =>
       prev.includes(genreId) ? prev.filter((g) => g !== genreId) : [...prev, genreId]
     );
     setPage(1); // Reset to first page when filters change
+    
+    // Announce filter change
+    setAnnouncement(isAdding ? `${genreName} filter added` : `${genreName} filter removed`);
+    
+    // Track filter usage
+    trackFilterUsage('genre', genreId);
   };
 
   const toggleWatchlist = (animeId: string) => {
     if (checkWatchlist(animeId)) {
       removeAnime(animeId);
+      trackWatchlistAction(animeId, 'remove');
     } else {
       addAnime(animeId);
+      trackWatchlistAction(animeId, 'add');
+      
+      // Increment watchlist add count
+      const newCount = watchlistAddCount + 1;
+      setWatchlistAddCount(newCount);
+      
+      // Show newsletter prompt after 3 additions
+      if (newCount === 3) {
+        setShowNewsletterPrompt(true);
+      }
+    }
+  };
+
+  const handleWatchNowClick = (animeId: string, animeTitle: string) => {
+    trackWatchNowClick(animeId, animeTitle);
+  };
+
+  const handleNewsletterSignup = async (email: string) => {
+    try {
+      // Call the newsletter API
+      const response = await fetch('/api/newsletter/subscribe', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ email }),
+      });
+
+      if (!response.ok) {
+        throw new Error('Failed to subscribe');
+      }
+
+      // Track successful signup
+      trackNewsletterSignup(email, 'browse_prompt');
+      
+      // Reset watchlist add count
+      setWatchlistAddCount(0);
+    } catch (error) {
+      console.error('Newsletter signup error:', error);
+      throw error;
     }
   };
 
@@ -216,12 +317,52 @@ export function BrowseContent() {
     setPage(1);
   }, [debouncedSearch, sortBy, statusFilter]);
 
+  // Track search queries
+  useEffect(() => {
+    if (debouncedSearch) {
+      trackSearch(debouncedSearch, filteredAndSortedAnime.length);
+    }
+  }, [debouncedSearch, filteredAndSortedAnime.length]);
+
+  // Track sort changes and announce
+  useEffect(() => {
+    if (sortBy !== 'site') {
+      const sortLabel = sortOptions.find(opt => opt.value === sortBy)?.label || sortBy;
+      setAnnouncement(`Sorted by ${sortLabel}`);
+      trackSortChange(sortBy);
+    }
+  }, [sortBy]);
+
+  // Track status filter changes and announce
+  useEffect(() => {
+    if (statusFilter !== 'all') {
+      const statusLabel = statusFilter.charAt(0).toUpperCase() + statusFilter.slice(1);
+      setAnnouncement(`Filtered by ${statusLabel} status`);
+      trackFilterUsage('status', statusFilter);
+    }
+  }, [statusFilter]);
+  
+  // Announce result count changes
+  useEffect(() => {
+    if (!loading && filteredAndSortedAnime.length >= 0) {
+      const count = filteredAndSortedAnime.length;
+      if (count === 0) {
+        setAnnouncement('No anime found matching your filters');
+      } else {
+        setAnnouncement(`${count} anime ${count === 1 ? 'result' : 'results'} found`);
+      }
+    }
+  }, [filteredAndSortedAnime.length, loading]);
+
   const clearAllFilters = () => {
     setSearchQuery('');
     setSelectedGenres([]);
     setStatusFilter('all');
     setSortBy('site');
     setPage(1);
+    
+    // Announce filter clear
+    setAnnouncement('All filters cleared');
   };
 
   const scrollToTop = () => {
@@ -243,7 +384,11 @@ export function BrowseContent() {
             <h1 className="text-4xl font-black mb-2" style={{ color: 'var(--foreground)' }}>
               Browse Anime
             </h1>
-            <p style={{ color: 'var(--secondary)' }}>
+            <p 
+              style={{ color: 'var(--secondary)' }}
+              role="status"
+              aria-live="polite"
+            >
               Loading anime collection...
             </p>
           </div>
@@ -253,13 +398,83 @@ export function BrowseContent() {
     );
   }
 
+  const handleRetry = () => {
+    setLoading(true);
+    setError(null);
+    
+    // Reload the page to retry fetching data
+    window.location.reload();
+  };
+
   if (error) {
     return (
-      <Container size="xl" className="py-12">
-        <div className="text-center">
-          <p className="text-red-500">{error}</p>
-        </div>
-      </Container>
+      <div style={{ backgroundColor: 'var(--background)', minHeight: '100vh' }}>
+        <Container size="xl" className="py-12">
+          <div 
+            className="text-center max-w-md mx-auto p-8 rounded-xl"
+            style={{
+              backgroundColor: 'var(--card-background)',
+              borderWidth: '2px',
+              borderColor: 'var(--error)',
+            }}
+            role="alert"
+            aria-live="assertive"
+          >
+            <div className="text-6xl mb-4" aria-hidden="true">⚠️</div>
+            <h2 className="text-2xl font-bold mb-3" style={{ color: 'var(--foreground)' }}>
+              Oops! Something went wrong
+            </h2>
+            <p className="mb-6" style={{ color: 'var(--secondary)' }}>
+              {error}
+            </p>
+            <div className="flex flex-col sm:flex-row gap-3 justify-center">
+              <button
+                onClick={handleRetry}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    handleRetry();
+                  }
+                }}
+                aria-label="Retry loading anime"
+                className="px-6 py-3 rounded-lg font-medium transition-all"
+                style={{
+                  backgroundColor: 'var(--btn-primary)',
+                  color: '#FFFFFF',
+                }}
+              >
+                🔄 Retry
+              </button>
+              <a
+                href="/"
+                className="px-6 py-3 rounded-lg font-medium transition-all"
+                style={{
+                  backgroundColor: 'var(--card-background)',
+                  color: 'var(--foreground)',
+                  borderWidth: '2px',
+                  borderColor: 'var(--border)',
+                  textDecoration: 'none',
+                  display: 'inline-block',
+                }}
+              >
+                Go Home
+              </a>
+            </div>
+            
+            {/* Connection status indicator */}
+            <div className="mt-6 pt-6" style={{ borderTop: '1px solid var(--border)' }}>
+              <p 
+                className="text-sm" 
+                style={{ color: 'var(--muted)' }}
+                role="status"
+                aria-live="polite"
+              >
+                Connection status: {isOnline ? '🟢 Online' : '🔴 Offline'}
+              </p>
+            </div>
+          </div>
+        </Container>
+      </div>
     );
   }
 
@@ -267,12 +482,32 @@ export function BrowseContent() {
     <div style={{ backgroundColor: 'var(--background)', minHeight: '100vh' }}>
       <Container size="xl" className="py-12">
         <div className="mb-8">
-          <h1 className="text-4xl font-black mb-2" style={{ color: 'var(--foreground)' }}>
-            Browse Anime
-          </h1>
-          <p style={{ color: 'var(--secondary)' }}>
-            Discover and explore our collection of {allAnime.length} anime titles
-          </p>
+          <div className="flex items-center justify-between flex-wrap gap-4">
+            <div>
+              <h1 className="text-4xl font-black mb-2" style={{ color: 'var(--foreground)' }}>
+                Browse Anime
+              </h1>
+              <p style={{ color: 'var(--secondary)' }}>
+                Discover and explore our collection of {allAnime.length} anime titles
+              </p>
+            </div>
+            
+            {/* Connection status indicator - only show when offline */}
+            {!isOnline && (
+              <div 
+                className="px-3 py-2 rounded-lg flex items-center gap-2"
+                style={{
+                  backgroundColor: 'var(--error)',
+                  color: '#FFFFFF',
+                }}
+                role="status"
+                aria-live="polite"
+              >
+                <span aria-hidden="true">🔴</span>
+                <span className="text-sm font-medium">Offline</span>
+              </div>
+            )}
+          </div>
         </div>
 
       {/* Sticky Search Bar */}
@@ -286,11 +521,17 @@ export function BrowseContent() {
       >
         <Container size="xl">
           <div className="relative">
+            <label htmlFor="anime-search" className="sr-only">
+              Search anime by title, description, or genre
+            </label>
             <input
+              id="anime-search"
               type="text"
               placeholder="Search anime by title, description, or genre..."
               value={searchQuery}
               onChange={(e) => setSearchQuery(e.target.value)}
+              aria-label="Search anime by title, description, or genre"
+              aria-describedby="search-results-count"
               className="w-full px-4 py-3 rounded-xl border-2 transition-all focus:outline-none focus:ring-2"
               style={{
                 backgroundColor: 'var(--card-background)',
@@ -327,6 +568,9 @@ export function BrowseContent() {
       {/* Spacer when search is sticky */}
       {isSearchSticky && <div className="h-20" />}
 
+      {/* Trending Section */}
+      <TrendingAnimeSection allAnime={allAnime} />
+
       {/* Filters */}
       <div className="mb-8 space-y-6">
         {/* Clear All Filters Button */}
@@ -334,6 +578,13 @@ export function BrowseContent() {
           <div className="flex justify-end">
             <button
               onClick={clearAllFilters}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  clearAllFilters();
+                }
+              }}
+              aria-label="Clear all active filters and reset search"
               className="px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
               style={{
                 backgroundColor: 'var(--error)',
@@ -341,15 +592,15 @@ export function BrowseContent() {
                 boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
               }}
             >
-              <span>✕</span>
+              <span aria-hidden="true">✕</span>
               <span>Clear All Filters</span>
             </button>
           </div>
         )}
 
         {/* Sort Options */}
-        <div className="flex flex-wrap gap-2 items-center">
-          <span className="font-semibold" style={{ color: 'var(--foreground)' }}>
+        <div className="flex flex-wrap gap-2 items-center" role="group" aria-label="Sort options">
+          <span className="font-semibold" style={{ color: 'var(--foreground)' }} id="sort-label">
             Sort by:
           </span>
           {sortOptions.map((option) => {
@@ -358,6 +609,15 @@ export function BrowseContent() {
               <button
                 key={option.value}
                 onClick={() => setSortBy(option.value)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setSortBy(option.value);
+                  }
+                }}
+                aria-label={`Sort by ${option.label}`}
+                aria-pressed={isActive}
+                aria-describedby="sort-label"
                 className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] flex items-center gap-2"
                 style={{
                   backgroundColor: isActive ? option.color : 'var(--card-background)',
@@ -367,7 +627,7 @@ export function BrowseContent() {
                   boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
                 }}
               >
-                <span>{option.icon}</span>
+                <span aria-hidden="true">{option.icon}</span>
                 <span>{option.label}</span>
               </button>
             );
@@ -376,16 +636,25 @@ export function BrowseContent() {
 
         {/* Genre Filters */}
         <div>
-          <span className="font-semibold mb-2 block" style={{ color: 'var(--foreground)' }}>
+          <span className="font-semibold mb-2 block" style={{ color: 'var(--foreground)' }} id="genre-label">
             Genres:
           </span>
-          <div className="flex flex-wrap gap-2">
+          <div className="flex flex-wrap gap-2" role="group" aria-label="Genre filters">
             {topGenres.map((genre) => {
               const isActive = selectedGenres.includes(genre.id);
               return (
                 <button
                   key={genre.id}
                   onClick={() => toggleGenre(genre.id)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      toggleGenre(genre.id);
+                    }
+                  }}
+                  aria-label={`Filter by ${genre.label} genre`}
+                  aria-pressed={isActive}
+                  aria-describedby="genre-label"
                   className="px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1"
                   style={{
                     backgroundColor: isActive ? 'var(--accent)' : 'var(--card-background)',
@@ -395,8 +664,8 @@ export function BrowseContent() {
                     boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
                   }}
                 >
-                  {isActive && <span className="text-white">✓</span>}
-                  {genre.icon} {genre.label}
+                  {isActive && <span className="text-white" aria-hidden="true">✓</span>}
+                  <span aria-hidden="true">{genre.icon}</span> {genre.label}
                 </button>
               );
             })}
@@ -404,6 +673,18 @@ export function BrowseContent() {
             {/* More Genres Button */}
             <button
               onClick={() => setShowMoreGenres(!showMoreGenres)}
+              onKeyDown={(e) => {
+                if (e.key === 'Enter' || e.key === ' ') {
+                  e.preventDefault();
+                  setShowMoreGenres(!showMoreGenres);
+                } else if (e.key === 'Escape' && showMoreGenres) {
+                  e.preventDefault();
+                  setShowMoreGenres(false);
+                }
+              }}
+              aria-label={showMoreGenres ? 'Hide additional genres' : 'Show more genres'}
+              aria-expanded={showMoreGenres}
+              aria-controls="more-genres-panel"
               className="px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1"
               style={{
                 backgroundColor: 'var(--card-background)',
@@ -412,7 +693,7 @@ export function BrowseContent() {
                 borderColor: 'var(--border)',
               }}
             >
-              More Genres {showMoreGenres ? '▲' : '▼'}
+              More Genres <span aria-hidden="true">{showMoreGenres ? '▲' : '▼'}</span>
             </button>
           </div>
           
@@ -423,10 +704,16 @@ export function BrowseContent() {
               <div 
                 className="fixed inset-0 bg-black/50 z-40 md:hidden"
                 onClick={() => setShowMoreGenres(false)}
+                aria-hidden="true"
               />
               
               {/* Mobile Bottom Sheet */}
-              <div className="fixed bottom-0 left-0 right-0 z-50 md:hidden animate-slide-up">
+              <div 
+                id="more-genres-panel"
+                role="dialog"
+                aria-label="Additional genre filters"
+                className="fixed bottom-0 left-0 right-0 z-50 md:hidden animate-slide-up"
+              >
                 <div 
                   className="rounded-t-3xl p-6 max-h-[70vh] overflow-y-auto"
                   style={{
@@ -440,19 +727,34 @@ export function BrowseContent() {
                     </h3>
                     <button
                       onClick={() => setShowMoreGenres(false)}
+                      onKeyDown={(e) => {
+                        if (e.key === 'Escape') {
+                          e.preventDefault();
+                          setShowMoreGenres(false);
+                        }
+                      }}
+                      aria-label="Close genre panel"
                       className="text-2xl w-8 h-8 flex items-center justify-center"
                       style={{ color: 'var(--secondary)' }}
                     >
-                      ✕
+                      <span aria-hidden="true">✕</span>
                     </button>
                   </div>
-                  <div className="flex flex-wrap gap-2">
+                  <div className="flex flex-wrap gap-2" role="group" aria-label="Additional genres">
                     {moreGenres.map((genre) => {
                       const isActive = selectedGenres.includes(genre.id);
                       return (
                         <button
                           key={genre.id}
                           onClick={() => toggleGenre(genre.id)}
+                          onKeyDown={(e) => {
+                            if (e.key === 'Enter' || e.key === ' ') {
+                              e.preventDefault();
+                              toggleGenre(genre.id);
+                            }
+                          }}
+                          aria-label={`Filter by ${genre.label} genre`}
+                          aria-pressed={isActive}
                           className="px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1"
                           style={{
                             backgroundColor: isActive ? 'var(--accent)' : 'var(--text-block)',
@@ -461,8 +763,8 @@ export function BrowseContent() {
                             borderColor: isActive ? 'var(--accent)' : 'transparent',
                           }}
                         >
-                          {isActive && <span className="text-white">✓</span>}
-                          {genre.icon} {genre.label}
+                          {isActive && <span className="text-white" aria-hidden="true">✓</span>}
+                          <span aria-hidden="true">{genre.icon}</span> {genre.label}
                         </button>
                       );
                     })}
@@ -471,19 +773,36 @@ export function BrowseContent() {
               </div>
               
               {/* Desktop Dropdown */}
-              <div className="hidden md:block mt-2 p-4 rounded-xl" style={{
-                backgroundColor: 'var(--card-background)',
-                borderWidth: '2px',
-                borderColor: 'var(--border)',
-                boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
-              }}>
-                <div className="flex flex-wrap gap-2">
+              <div 
+                id="more-genres-panel"
+                role="region"
+                aria-label="Additional genre filters"
+                className="hidden md:block mt-2 p-4 rounded-xl" 
+                style={{
+                  backgroundColor: 'var(--card-background)',
+                  borderWidth: '2px',
+                  borderColor: 'var(--border)',
+                  boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
+                }}
+              >
+                <div className="flex flex-wrap gap-2" role="group" aria-label="Additional genres">
                   {moreGenres.map((genre) => {
                     const isActive = selectedGenres.includes(genre.id);
                     return (
                       <button
                         key={genre.id}
                         onClick={() => toggleGenre(genre.id)}
+                        onKeyDown={(e) => {
+                          if (e.key === 'Enter' || e.key === ' ') {
+                            e.preventDefault();
+                            toggleGenre(genre.id);
+                          } else if (e.key === 'Escape') {
+                            e.preventDefault();
+                            setShowMoreGenres(false);
+                          }
+                        }}
+                        aria-label={`Filter by ${genre.label} genre`}
+                        aria-pressed={isActive}
                         className="px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1"
                         style={{
                           backgroundColor: isActive ? 'var(--accent)' : 'var(--text-block)',
@@ -492,8 +811,8 @@ export function BrowseContent() {
                           borderColor: isActive ? 'var(--accent)' : 'transparent',
                         }}
                       >
-                        {isActive && <span className="text-white">✓</span>}
-                        {genre.icon} {genre.label}
+                        {isActive && <span className="text-white" aria-hidden="true">✓</span>}
+                        <span aria-hidden="true">{genre.icon}</span> {genre.label}
                       </button>
                     );
                   })}
@@ -504,16 +823,26 @@ export function BrowseContent() {
         </div>
 
         {/* Status Filter */}
-        <div className="flex flex-wrap gap-2 items-center">
-          <span className="font-semibold" style={{ color: 'var(--foreground)' }}>
+        <div className="flex flex-wrap gap-2 items-center" role="group" aria-label="Status filters">
+          <span className="font-semibold" style={{ color: 'var(--foreground)' }} id="status-label">
             Status:
           </span>
           {(['all', 'airing', 'finished', 'upcoming'] as StatusOption[]).map((status) => {
             const isActive = statusFilter === status;
+            const statusLabel = status.charAt(0).toUpperCase() + status.slice(1);
             return (
               <button
                 key={status}
                 onClick={() => setStatusFilter(status)}
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    setStatusFilter(status);
+                  }
+                }}
+                aria-label={`Filter by ${statusLabel} status`}
+                aria-pressed={isActive}
+                aria-describedby="status-label"
                 className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] min-w-[44px]"
                 style={{
                   backgroundColor: isActive ? 'var(--btn-primary)' : 'var(--card-background)',
@@ -523,7 +852,7 @@ export function BrowseContent() {
                   boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
                 }}
               >
-                {status.charAt(0).toUpperCase() + status.slice(1)}
+                {statusLabel}
               </button>
             );
           })}
@@ -532,16 +861,27 @@ export function BrowseContent() {
 
       {/* Results Count */}
       <div className="mb-4">
-        <p style={{ color: 'var(--secondary)' }}>
+        <p 
+          id="search-results-count"
+          role="status" 
+          aria-live="polite" 
+          aria-atomic="true"
+          style={{ color: 'var(--secondary)' }}
+        >
           Showing {Math.min((page - 1) * ITEMS_PER_PAGE + 1, filteredAndSortedAnime.length)}-{Math.min(page * ITEMS_PER_PAGE, filteredAndSortedAnime.length)} of {filteredAndSortedAnime.length} anime
         </p>
       </div>
 
       {/* Anime Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6">
+      <div 
+        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-6"
+        role="list"
+        aria-label="Anime results"
+      >
         {paginatedAnime.map((anime, index) => (
           <Card 
-            key={anime.id} 
+            key={anime.id}
+            role="listitem"
             className="group transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.05]"
             style={{
               boxShadow: 'var(--card-shadow)',
@@ -620,14 +960,27 @@ export function BrowseContent() {
               </div>
               <button
                 onClick={() => toggleWatchlist(anime.id)}
-                className="w-full py-2 rounded-lg font-medium transition-all"
+                onKeyDown={(e) => {
+                  if (e.key === 'Enter' || e.key === ' ') {
+                    e.preventDefault();
+                    toggleWatchlist(anime.id);
+                  }
+                }}
+                aria-label={checkWatchlist(anime.id) ? `Remove ${anime.title} from watchlist` : `Add ${anime.title} to watchlist`}
+                aria-pressed={checkWatchlist(anime.id)}
+                className="w-full py-2 rounded-lg font-medium transition-all mb-2"
                 style={{
                   backgroundColor: checkWatchlist(anime.id) ? 'var(--accent)' : 'var(--btn-primary)',
                   color: '#FFFFFF',
                 }}
               >
-                {checkWatchlist(anime.id) ? '✓ In Watchlist' : '+ Add to Watchlist'}
+                <span aria-hidden="true">{checkWatchlist(anime.id) ? '✓' : '+'}</span> {checkWatchlist(anime.id) ? 'In Watchlist' : 'Add to Watchlist'}
               </button>
+              <WatchNowButton 
+                animeId={anime.id}
+                animeTitle={anime.title}
+                onWatchNowClick={(id) => handleWatchNowClick(id, anime.title)}
+              />
             </CardContent>
           </Card>
         ))}
@@ -643,11 +996,19 @@ export function BrowseContent() {
 
       {/* Pagination */}
       {totalPages > 1 && (
-        <div className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
+        <nav aria-label="Pagination navigation" className="mt-12 flex flex-col sm:flex-row items-center justify-center gap-4">
           {/* Previous Button */}
           <button
             onClick={() => handlePageChange(page - 1)}
+            onKeyDown={(e) => {
+              if ((e.key === 'Enter' || e.key === ' ') && page > 1) {
+                e.preventDefault();
+                handlePageChange(page - 1);
+              }
+            }}
             disabled={page === 1}
+            aria-label="Go to previous page"
+            aria-disabled={page === 1}
             className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] min-w-[44px] disabled:opacity-50 disabled:cursor-not-allowed"
             style={{
               backgroundColor: page === 1 ? 'var(--card-background)' : 'var(--btn-primary)',
@@ -656,7 +1017,7 @@ export function BrowseContent() {
               borderColor: 'var(--border)',
             }}
           >
-            ← Previous
+            <span aria-hidden="true">←</span> Previous
           </button>
 
           {/* Page Numbers */}
@@ -677,6 +1038,14 @@ export function BrowseContent() {
                 <button
                   key={pageNum}
                   onClick={() => handlePageChange(pageNum)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      handlePageChange(pageNum);
+                    }
+                  }}
+                  aria-label={`Go to page ${pageNum}`}
+                  aria-current={page === pageNum ? 'page' : undefined}
                   className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] min-w-[44px]"
                   style={{
                     backgroundColor: page === pageNum ? 'var(--accent)' : 'var(--card-background)',
@@ -695,7 +1064,15 @@ export function BrowseContent() {
           {/* Next Button */}
           <button
             onClick={() => handlePageChange(page + 1)}
+            onKeyDown={(e) => {
+              if ((e.key === 'Enter' || e.key === ' ') && page < totalPages) {
+                e.preventDefault();
+                handlePageChange(page + 1);
+              }
+            }}
             disabled={page === totalPages}
+            aria-label="Go to next page"
+            aria-disabled={page === totalPages}
             className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] min-w-[44px] disabled:opacity-50 disabled:cursor-not-allowed"
             style={{
               backgroundColor: page === totalPages ? 'var(--card-background)' : 'var(--btn-primary)',
@@ -704,11 +1081,29 @@ export function BrowseContent() {
               borderColor: 'var(--border)',
             }}
           >
-            Next →
+            Next <span aria-hidden="true">→</span>
           </button>
-        </div>
+        </nav>
       )}
       </Container>
+
+      {/* Newsletter Prompt */}
+      {showNewsletterPrompt && (
+        <NewsletterPrompt
+          onClose={() => setShowNewsletterPrompt(false)}
+          onSignup={handleNewsletterSignup}
+        />
+      )}
+      
+      {/* Screen Reader Announcements */}
+      <div
+        role="status"
+        aria-live="polite"
+        aria-atomic="true"
+        className="sr-only"
+      >
+        {announcement}
+      </div>
     </div>
   );
 }
