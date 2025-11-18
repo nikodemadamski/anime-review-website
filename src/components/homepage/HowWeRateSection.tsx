@@ -3,6 +3,7 @@
 import { Container } from '@/components/ui';
 import Link from 'next/link';
 import Image from 'next/image';
+import { CategoryCardRow } from './CategoryCardRow';
 
 interface CategoryExplanation {
   category: 'Visual' | 'Music' | 'Story' | 'Character';
@@ -55,16 +56,16 @@ export function HowWeRateSection() {
           <Image
             src="/logo-dark.png"
             alt="Anime Reviews Logo"
-            width={400}
-            height={200}
+            width={240}
+            height={120}
             className="mx-auto dark:hidden"
             priority
           />
           <Image
             src="/logo-light.png"
             alt="Anime Reviews Logo"
-            width={400}
-            height={200}
+            width={240}
+            height={120}
             className="mx-auto hidden dark:block"
             priority
           />
@@ -72,7 +73,7 @@ export function HowWeRateSection() {
 
         <div className="text-center mb-10">
           <h2
-            className="text-3xl md:text-4xl font-black mb-3"
+            className="text-2xl md:text-4xl font-black mb-3"
             style={{ color: 'var(--foreground)' }}
           >
             How We Rate Anime
@@ -85,12 +86,18 @@ export function HowWeRateSection() {
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-6">
+        {/* Mobile: Horizontal scrollable row */}
+        <div className="md:hidden">
+          <CategoryCardRow categories={categories} />
+        </div>
+
+        {/* Desktop: Grid layout */}
+        <div className="hidden md:grid md:grid-cols-2 lg:grid-cols-4 gap-6">
           {categories.map((cat) => (
             <Link
               key={cat.category}
               href={cat.href}
-              className="group p-6 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 cursor-pointer"
+              className="group p-4 rounded-2xl transition-all duration-300 hover:scale-105 hover:shadow-2xl border-2 cursor-pointer"
               style={{
                 backgroundColor: 'var(--card-background)',
                 borderColor: 'var(--border)',
@@ -98,11 +105,11 @@ export function HowWeRateSection() {
             >
               {/* Icon */}
               <div
-                className="w-16 h-16 mx-auto mb-4 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
+                className="w-14 h-14 mx-auto mb-4 rounded-2xl flex items-center justify-center shadow-lg group-hover:scale-110 transition-transform duration-300"
                 style={{ backgroundColor: cat.color }}
               >
                 <svg
-                  className="w-8 h-8 text-white"
+                  className="w-7 h-7 text-white"
                   fill="none"
                   stroke="currentColor"
                   viewBox="0 0 24 24"
@@ -118,7 +125,7 @@ export function HowWeRateSection() {
 
               {/* Category Name */}
               <h3
-                className="text-xl font-bold text-center mb-2"
+                className="text-lg font-bold text-center mb-2"
                 style={{ color: cat.color }}
               >
                 {cat.category}

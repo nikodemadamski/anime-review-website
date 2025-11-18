@@ -11,6 +11,8 @@ import { WatchNowButton } from '@/components/anime/WatchNowButton';
 import { NewsletterPrompt } from '@/components/browse/NewsletterPrompt';
 import { TrendingAnimeSection } from '@/components/homepage/TrendingAnimeSection';
 import { FilterModal } from '@/components/browse/FilterModal';
+import { AnimeCardLarge } from '@/components/browse/AnimeCardLarge';
+import { useViewMode } from '@/hooks/useViewMode';
 import { 
   trackFilterUsage, 
   trackSearch, 
@@ -90,6 +92,7 @@ export function BrowseContent() {
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const debouncedSearch = useDebounce(searchQuery, 300);
   const { addAnime, removeAnime, isInWatchlist: checkWatchlist } = useWatchlist();
+  const [viewMode, updateViewMode] = useViewMode();
 
   // Read URL params on mount
   useEffect(() => {
@@ -931,13 +934,32 @@ export function BrowseContent() {
         )}
       </div>
 
-      {/* Anime Grid - Reduced card sizes */}
-      <div 
-        className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
-        role="list"
-        aria-label="Anime results"
-      >
-        {paginatedAnime.map((anime, index) => (
+      {/* Anime Display - Large View or Grid */}
+      {viewMode === 'large' ? (
+        <div 
+          className="flex flex-col gap-6"
+          role="list"
+          aria-label="Anime results"
+        >
+          {paginatedAnime.map((anime, index) => (
+            <AnimeCardLarge
+              key={anime.id}
+              anime={anime}
+              onWatchlistToggle={toggleWatchlist}
+              onWatchNowClick={handleWatchNowClick}
+              isInWatchlist={checkWatchlist(anime.id)}
+              imageError={imageErrors[anime.id]}
+              onImageError={() => setImageErrors(prev => ({ ...prev, [anime.id]: true }))}
+            />
+          ))}
+        </div>
+      ) : (
+        <div 
+          className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4"
+          role="list"
+          aria-label="Anime results"
+        >
+          {paginatedAnime.map((anime, index) => (
           <Card 
             key={anime.id}
             role="listitem"
@@ -1047,7 +1069,8 @@ export function BrowseContent() {
             </CardContent>
           </Card>
         ))}
-      </div>
+        </div>
+      )}
 
       {filteredAndSortedAnime.length === 0 && (
         <EmptyState 
