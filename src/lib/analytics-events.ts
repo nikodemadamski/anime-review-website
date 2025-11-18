@@ -188,3 +188,34 @@ export function clearOldEvents(daysToKeep: number = 30): void {
     console.error('Error clearing old events:', error);
   }
 }
+
+/**
+ * Track view mode change
+ */
+export function trackViewModeChange(
+  mode: 'large' | 'grid' | 'list',
+  isMobile: boolean,
+  fromMode?: 'large' | 'grid' | 'list'
+): void {
+  trackEvent('view_mode_change', {
+    mode,
+    isMobile,
+    fromMode,
+    timestamp: Date.now(),
+  });
+}
+
+/**
+ * Track category card click
+ */
+export function trackCategoryClick(
+  category: string,
+  device: 'mobile' | 'desktop',
+  position?: number
+): void {
+  trackEvent('category_click', {
+    category,
+    device,
+    position,
+  });
+}

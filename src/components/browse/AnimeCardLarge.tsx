@@ -25,6 +25,7 @@ interface AnimeCardLargeProps {
   isInWatchlist: boolean;
   imageError?: boolean;
   onImageError?: () => void;
+  priority?: boolean;
 }
 
 export function AnimeCardLarge({
@@ -34,12 +35,15 @@ export function AnimeCardLarge({
   isInWatchlist,
   imageError = false,
   onImageError,
+  priority = false,
 }: AnimeCardLargeProps) {
   const watchingCount = getWatchingCount(anime.id);
   const trending = isTrending(anime.id);
 
   return (
     <div 
+      role="listitem"
+      aria-label={`${anime.title}, rated ${anime.ratings.site.toFixed(1)} overall. Visual: ${anime.ratings.visual.toFixed(1)}, Music: ${anime.ratings.music.toFixed(1)}, Story: ${anime.ratings.story.toFixed(1)}, Character: ${anime.ratings.character.toFixed(1)}`}
       className="bg-card-background rounded-xl overflow-hidden shadow-lg"
       style={{
         backgroundColor: 'var(--card-background)',
@@ -55,7 +59,7 @@ export function AnimeCardLarge({
             fill
             className="object-cover"
             sizes="(max-width: 768px) 100vw, 50vw"
-            loading="eager"
+            loading={priority ? 'eager' : 'lazy'}
             placeholder="blur"
             blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YwZjBmMCIvPjwvc3ZnPg=="
             onError={onImageError}

@@ -158,12 +158,14 @@ export function BrowseContent() {
     if (params.get('status')) setStatusFilter(params.get('status') as StatusOption);
     if (params.get('page')) setPage(parseInt(params.get('page')!));
     
-    // Track page view
+    // Track page view with view mode
     trackPageView('browse', {
       search: params.get('search'),
       genres: params.get('genres'),
       sort: params.get('sort'),
       status: params.get('status'),
+      viewMode: viewMode,
+      isMobile: isMobile,
     });
   }, []);
 
@@ -416,6 +418,18 @@ export function BrowseContent() {
       trackFilterUsage('status', statusFilter);
     }
   }, [statusFilter]);
+  
+  // Announce view mode changes
+  useEffect(() => {
+    if (isMobile && previousViewMode !== viewMode) {
+      const viewModeLabels = {
+        large: 'large view - one anime per screen',
+        grid: 'grid view - four anime per screen',
+        list: 'list view - compact list with all ratings'
+      };
+      setAnnouncement(`View mode changed to ${viewModeLabels[viewMode]}`);
+    }
+  }, [viewMode, previousViewMode, isMobile]);
   
   // Announce result count changes
   useEffect(() => {
@@ -998,7 +1012,8 @@ export function BrowseContent() {
       )}
 
       {/* Anime Display - Large View, List View, or Grid */}
-      {viewMode === 'large' ? (
+      {/* On mobile: respect view mode. On desktop: always use grid */}
+      {isMobile && viewMode === 'large' ? (
         <div 
           className="flex flex-col gap-6 transition-opacity transition-transform duration-200 ease-in-out animate-fade-in"
           style={{ willChange: 'opacity, transform' }}
@@ -1014,10 +1029,11 @@ export function BrowseContent() {
               isInWatchlist={checkWatchlist(anime.id)}
               imageError={imageErrors[anime.id]}
               onImageError={() => setImageErrors(prev => ({ ...prev, [anime.id]: true }))}
+              priority={index < 2}
             />
           ))}
         </div>
-      ) : viewMode === 'list' ? (
+      ) : isMobile && viewMode === 'list' ? (
         <div 
           className="flex flex-col gap-2 transition-opacity transition-transform duration-200 ease-in-out animate-fade-in"
           style={{ willChange: 'opacity, transform' }}
@@ -1039,18 +1055,19 @@ export function BrowseContent() {
         </div>
       ) : (
         <div 
-          className={`grid ${viewMode === 'grid' && isMobile ? 'grid-cols-2 gap-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'} transition-opacity transition-transform duration-200 ease-in-out animate-fade-in`}
+          className={`grid ${isMobile && viewMode === 'grid' ? 'grid-cols-2 gap-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'} transition-opacity transition-transform duration-200 ease-in-out animate-fade-in`}
           style={{ willChange: 'opacity, transform' }}
           role="list"
           aria-label="Anime results"
         >
           {paginatedAnime.map((anime, index) => {
-            const isGridView = viewMode === 'grid' && isMobile;
+            const isGridView = isMobile && viewMode === 'grid';
             
             return (
               <Card 
                 key={anime.id}
                 role="listitem"
+                aria-label={`${anime.title}, rated ${anime.ratings[sortBy].toFixed(1)} for ${sortOptions.find(opt => opt.value === sortBy)?.label || sortBy}`}
                 className="group transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.05] active:scale-[1.02]"
                 style={{
                   boxShadow: 'var(--card-shadow)',
@@ -1069,7 +1086,7 @@ export function BrowseContent() {
                       alt={anime.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
-                      sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                      sizes={viewMode === 'grid' && isMobile ? '(max-width: 768px) 50vw, 25vw' : '(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw'}
                       loading={index < 4 ? 'eager' : 'lazy'}
                       placeholder="blur"
                       blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YwZjBmMCIvPjwvc3ZnPg=="

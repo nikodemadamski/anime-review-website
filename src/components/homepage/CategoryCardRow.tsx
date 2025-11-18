@@ -1,6 +1,7 @@
 'use client';
 
 import Link from 'next/link';
+import { trackCategoryClick } from '@/lib/analytics-events';
 
 interface CategoryExplanation {
   category: 'Visual' | 'Music' | 'Story' | 'Character';
@@ -14,6 +15,11 @@ interface CategoryCardRowProps {
 }
 
 export function CategoryCardRow({ categories }: CategoryCardRowProps) {
+  const handleCategoryClick = (category: string, position: number) => {
+    const isMobile = typeof window !== 'undefined' && window.innerWidth < 768;
+    trackCategoryClick(category, isMobile ? 'mobile' : 'desktop', position);
+  };
+
   return (
     <div className="overflow-x-auto px-4 -mx-4">
       <div 
@@ -23,10 +29,11 @@ export function CategoryCardRow({ categories }: CategoryCardRowProps) {
           WebkitOverflowScrolling: 'touch',
         }}
       >
-        {categories.map((cat) => (
+        {categories.map((cat, index) => (
           <Link
             key={cat.category}
             href={cat.href}
+            onClick={() => handleCategoryClick(cat.category, index)}
             className="flex-shrink-0 snap-start w-[120px] h-[140px] rounded-2xl flex flex-col items-center justify-center gap-3 transition-all duration-300 hover:scale-105 border-2"
             style={{
               backgroundColor: 'var(--card-background)',

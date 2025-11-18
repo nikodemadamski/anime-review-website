@@ -31,6 +31,8 @@ export function AnimeCardList({
   return (
     <Link href={`/anime/${anime.id}`}>
       <div 
+        role="listitem"
+        aria-label={`Rank ${rank}: ${anime.title}. Visual: ${anime.ratings.visual.toFixed(1)}, Music: ${anime.ratings.music.toFixed(1)}, Story: ${anime.ratings.story.toFixed(1)}, Character: ${anime.ratings.character.toFixed(1)}`}
         className="flex gap-3 bg-card-background rounded-lg overflow-hidden h-[120px] hover:shadow-lg transition-shadow"
         style={{
           backgroundColor: 'var(--card-background)',
