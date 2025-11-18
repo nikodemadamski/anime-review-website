@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Mobile Menu Scroll Lock Test</title>
+    <style>
+        body {
+            margin: 0;
+            font-family: system-ui, -apple-system, sans-serif;
+            min-height: 200vh; /* Make page scrollable */
+            padding: 20px;
+        }
+        
+        .header {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            background: white;
+            border-bottom: 1px solid #ddd;
+            padding: 1rem;
+            z-index: 40;
+        }
+        
+        .menu-button {
+            padding: 0.5rem 1rem;
+            background: #3b82f6;
+            color: white;
+            border: none;
+            border-radius: 0.5rem;
+            cursor: pointer;
+        }
+        
+        .backdrop {
+            position: fixed;
+            inset: 0;
+            background: rgba(0, 0, 0, 0.5);
+            backdrop-filter: blur(4px);
+            z-index: 50;
+            display: none;
+        }
+        
+        .backdrop.active {
+            display: block;
+        }
+        
+        .mobile-menu {
+            position: fixed;
+            top: 4rem;
+            right: 0;
+            width: 280px;
+            height: calc(100vh - 4rem);
+            background: white;
+            box-shadow: -2px 0 10px rgba(0, 0, 0, 0.1);
+            z-index: 50;
+            transform: translateX(100%);
+            transition: transform 0.3s ease-out;
+        }
+        
+        .mobile-menu.active {
+            transform: translateX(0);
+        }
+        
+        .content {
+            margin-top: 5rem;
+            padding: 2rem;
+        }
+        
+        .content-box {
+            background: #f3f4f6;
+            padding: 2rem;
+            margin-bottom: 2rem;
+            border-radius: 0.5rem;
+        }
+        
+        .status {
+            position: fixed;
+            bottom: 20px;
+            left: 20px;
+            background: #1f2937;
+            color: white;
+            padding: 1rem;
+            border-radius: 0.5rem;
+            font-family: monospace;
+            z-index: 100;
+        }
+        
+        .status.locked {
+            background: #dc2626;
+        }
+        
+        .status.unlocked {
+            background: #16a34a;
+        }
+    </style>
+</head>
+<body>
+    <div class="header">
+        <button class="menu-button" id="menuButton">Open Menu</button>
+    </div>
+    
+    <div class="backdrop" id="backdrop"></div>
+    
+    <div class="mobile-menu" id="mobileMenu">
+        <div style="padding: 1rem;">
+            <h2>Mobile Menu</h2>
+            <p>Menu content here</p>
+            <button class="menu-button" id="closeButton">Close Menu</button>
+        </div>
+    </div>
+    
+    <div class="content">
+        <h1>Scroll Lock Test</h1>
+        <p><strong>Instructions:</strong></p>
+        <ol>
+            <li>Try scrolling this page - it should scroll normally</li>
+            <li>Click "Open Menu" button</li>
+            <li>Try scrolling - the page should NOT scroll (body scroll is locked)</li>
+            <li>The status indicator at the bottom shows the current scroll lock state</li>
+            <li>Click the backdrop (dark area) or "Close Menu" to close</li>
+            <li>After closing, scrolling should work again</li>
+        </ol>
+        
+        <div class="content-box">
+            <h3>Content Box 1</h3>
+            <p>This is some content to make the page scrollable.</p>
+        </div>
+        
+        <div class="content-box">
+            <h3>Content Box 2</h3>
+            <p>More content here.</p>
+        </div>
+        
+        <div class="content-box">
+            <h3>Content Box 3</h3>
+            <p>Even more content.</p>
+        </div>
+        
+        <div class="content-box">
+            <h3>Content Box 4</h3>
+            <p>Keep scrolling...</p>
+        </div>
+        
+        <div class="content-box">
+            <h3>Content Box 5</h3>
+            <p>Almost there...</p>
+        </div>
+        
+        <div class="content-box">
+            <h3>Content Box 6</h3>
+            <p>You've reached the bottom!</p>
+        </div>
+    </div>
+    
+    <div class="status unlocked" id="status">
+        Body Scroll: <span id="scrollStatus">UNLOCKED</span>
+    </div>
+    
+    <script>
+        const menuButton = document.getElementById('menuButton');
+        const closeButton = document.getElementById('closeButton');
+        const backdrop = document.getElementById('backdrop');
+        const mobileMenu = document.getElementById('mobileMenu');
+        const status = document.getElementById('status');
+        const scrollStatus = document.getElementById('scrollStatus');
+        
+        let isMenuOpen = false;
+        
+        function updateStatus() {
+            const isLocked = document.body.style.overflow === 'hidden';
+            scrollStatus.textContent = isLocked ? 'LOCKED ✓' : 'UNLOCKED';
+            status.className = isLocked ? 'status locked' : 'status unlocked';
+        }
+        
+        function openMenu() {
+            isMenuOpen = true;
+            backdrop.classList.add('active');
+            mobileMenu.classList.add('active');
+            // Lock body scroll - this is what we're testing
+            document.body.style.overflow = 'hidden';
+            updateStatus();
+        }
+        
+        function closeMenu() {
+            isMenuOpen = false;
+            backdrop.classList.remove('active');
+            mobileMenu.classList.remove('active');
+            // Restore body scroll
+            document.body.style.overflow = '';
+            updateStatus();
+        }
+        
+        menuButton.addEventListener('click', openMenu);
+        closeButton.addEventListener('click', closeMenu);
+        backdrop.addEventListener('click', closeMenu);
+        
+        // ESC key to close
+        document.addEventListener('keydown', (e) => {
+            if (e.key === 'Escape' && isMenuOpen) {
+                closeMenu();
+            }
+        });
+        
+        // Update status on page load
+        updateStatus();
+        
+        // Monitor body overflow changes
+        const observer = new MutationObserver(() => {
+            updateStatus();
+        });
+        
+        observer.observe(document.body, {
+            attributes: true,
+            attributeFilter: ['style']
+        });
+    </script>
+</body>
+</html>

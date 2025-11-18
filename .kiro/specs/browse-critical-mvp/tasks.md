@@ -194,11 +194,11 @@ This implementation plan breaks down the 5 critical fixes into discrete, actiona
 
 ### After Task 1 (Mobile Menu)
 - [x] Test menu opens/closes smoothly on mobile
-- [ ] Verify backdrop blocks clicks underneath
-- [ ] Test click-outside-to-close works
-- [ ] Verify body scroll locks when menu open
-- [ ] Test ESC key closes menu
-- [ ] Verify menu closes on link click
+- [x] Verify backdrop blocks clicks underneath
+- [x] Test click-outside-to-close works
+- [x] Verify body scroll locks when menu open
+- [x] Test ESC key closes menu
+- [x] Verify menu closes on link click
 
 ### After Task 2 (Rating Badges)
 - [ ] Verify site rating shows gold color
