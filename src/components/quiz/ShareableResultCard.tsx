@@ -107,11 +107,11 @@ export function ShareableResultCard({
   return (
     <div
       id="shareable-card"
-      className="relative overflow-hidden"
+      className="relative overflow-hidden mx-auto"
       style={{
         width: showForDownload ? '1080px' : '100%',
         aspectRatio: '9/16',
-        maxWidth: showForDownload ? '1080px' : '600px',
+        maxWidth: showForDownload ? '1080px' : 'min(100vw - 2rem, 600px)',
         background: gradient,
         fontFamily: '-apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif',
       }}

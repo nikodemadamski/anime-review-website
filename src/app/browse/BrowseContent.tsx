@@ -92,6 +92,8 @@ export function BrowseContent() {
   const [announcement, setAnnouncement] = useState('');
   const [isOnline, setIsOnline] = useState(true);
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
+  const [showTrendingOnly, setShowTrendingOnly] = useState(false);
+  const [trendingAnime, setTrendingAnime] = useState<any[]>([]);
   const debouncedSearch = useDebounce(searchQuery, 300);
   const { addAnime, removeAnime, isInWatchlist: checkWatchlist } = useWatchlist();
   const [viewMode, updateViewMode] = useViewMode();
@@ -146,6 +148,7 @@ export function BrowseContent() {
   useEffect(() => {
     async function loadAnime() {
       try {
+        // Load regular anime
         const response = await fetch('/api/anime');
         if (!response.ok) {
           // Provide more specific error messages based on status code
@@ -163,6 +166,20 @@ export function BrowseContent() {
         // Handle both array response and object with data property
         const data = result.data || result;
         setAllAnime(Array.isArray(data) ? data : []);
+        
+        // Load trending anime
+        try {
+          const trendingResponse = await fetch('/api/trending');
+          if (trendingResponse.ok) {
+            const trendingResult = await trendingResponse.json();
+            const trendingData = trendingResult.data || trendingResult;
+            setTrendingAnime(Array.isArray(trendingData) ? trendingData : []);
+          }
+        } catch (trendingErr) {
+          console.log('Trending anime not available:', trendingErr);
+          setTrendingAnime([]);
+        }
+        
         setError(null); // Clear any previous errors
       } catch (err) {
         const errorMessage = err instanceof Error ? err.message : 'Unable to load anime. Please try again.';
@@ -211,8 +228,10 @@ export function BrowseContent() {
   }, []);
 
   const filteredAndSortedAnime = useMemo(() => {
-    if (!Array.isArray(allAnime)) return [];
-    let filtered = [...allAnime];
+    // Use trending anime if toggle is on, otherwise use all anime
+    const sourceAnime = showTrendingOnly && trendingAnime.length > 0 ? trendingAnime : allAnime;
+    if (!Array.isArray(sourceAnime)) return [];
+    let filtered = [...sourceAnime];
 
     if (debouncedSearch) {
       const query = debouncedSearch.toLowerCase();
@@ -248,7 +267,7 @@ export function BrowseContent() {
     });
 
     return filtered;
-  }, [allAnime, debouncedSearch, selectedGenres, statusFilter, sortBy]);
+  }, [allAnime, trendingAnime, showTrendingOnly, debouncedSearch, selectedGenres, statusFilter, sortBy]);
 
   // Paginated anime
   const paginatedAnime = useMemo(() => {
@@ -628,18 +647,38 @@ export function BrowseContent() {
             Sort by:
           </span>
           
-          {/* Filter Button */}
-          <button
-            onClick={() => setShowFilterModal(true)}
-            className="px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
-            style={{
-              backgroundColor: 'var(--card-background)',
-              color: 'var(--foreground)',
-              borderWidth: '2px',
-              borderColor: 'var(--border)',
-            }}
-            aria-label={`Open filters${(selectedGenres.length + (statusFilter !== 'all' ? 1 : 0)) > 0 ? ` (${selectedGenres.length + (statusFilter !== 'all' ? 1 : 0)} active)` : ''}`}
-          >
+          <div className="flex items-center gap-3">
+            {/* Trending Toggle */}
+            <button
+              onClick={() => {
+                setShowTrendingOnly(!showTrendingOnly);
+                setPage(1);
+              }}
+              className="px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+              style={{
+                backgroundColor: showTrendingOnly ? '#FF6B9D' : 'var(--card-background)',
+                color: showTrendingOnly ? '#FFFFFF' : 'var(--foreground)',
+                borderWidth: '2px',
+                borderColor: showTrendingOnly ? '#FF6B9D' : 'var(--border)',
+              }}
+              aria-label={showTrendingOnly ? 'Showing trending anime' : 'Show trending anime'}
+            >
+              <span className="text-lg">🔥</span>
+              <span>Trending Now</span>
+            </button>
+
+            {/* Filter Button */}
+            <button
+              onClick={() => setShowFilterModal(true)}
+              className="px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
+              style={{
+                backgroundColor: 'var(--card-background)',
+                color: 'var(--foreground)',
+                borderWidth: '2px',
+                borderColor: 'var(--border)',
+              }}
+              aria-label={`Open filters${(selectedGenres.length + (statusFilter !== 'all' ? 1 : 0)) > 0 ? ` (${selectedGenres.length + (statusFilter !== 'all' ? 1 : 0)} active)` : ''}`}
+            >
             <svg className="w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M3 4a1 1 0 011-1h16a1 1 0 011 1v2.586a1 1 0 01-.293.707l-6.414 6.414a1 1 0 00-.293.707V17l-4 4v-6.586a1 1 0 00-.293-.707L3.293 7.293A1 1 0 013 6.586V4z" />
             </svg>
@@ -656,6 +695,7 @@ export function BrowseContent() {
               </span>
             )}
           </button>
+          </div>
         </div>
 
         {/* Sort Options */}

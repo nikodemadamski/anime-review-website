@@ -47,18 +47,19 @@ export function ImageUpgradeButton() {
 
   return (
     <>
-      {/* Hidden Dev Button - Bottom Left Corner */}
+      {/* Hidden Dev Button - Inline text style, bottom left */}
       <button
         onClick={handleUpgrade}
         disabled={loading}
-        className="fixed bottom-2 left-2 z-[9999] px-3 py-2 rounded-lg text-xs font-mono font-bold transition-all duration-300 hover:scale-105 shadow-lg opacity-20 hover:opacity-100"
+        className="fixed bottom-2 left-2 z-[9999] text-[10px] font-mono transition-opacity duration-300 opacity-5 hover:opacity-100"
         style={{
-          backgroundColor: '#FF6B9D',
-          color: '#FFFFFF',
+          color: '#FF6B9D',
+          textDecoration: 'underline',
+          background: 'transparent',
         }}
         title="Dev Tool: Upgrade anime cover images to high quality"
       >
-        {loading ? '⏳ Upgrading...' : '🔧 Upgrade Images'}
+        {loading ? 'upgrading...' : 'dev:upgrade'}
       </button>
 
       {/* Success/Error Message Toast */}

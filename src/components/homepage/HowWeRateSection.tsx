@@ -49,7 +49,7 @@ export function HowWeRateSection() {
           <div className="relative inline-block mb-3">
             {/* Logo hat positioned on the "e" in "Anime" with backflip animation */}
             <div 
-              className="absolute -top-7 md:-top-9 -right-7 md:-right-9 hat-backflip"
+              className="absolute -top-8 -right-5 md:-top-9 md:-right-9 hat-backflip"
               style={{ 
                 transform: 'rotate(18deg)',
                 transformOrigin: 'center center'
