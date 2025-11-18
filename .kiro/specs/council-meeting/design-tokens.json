@@ -1,0 +1,170 @@
+{
+  "dimensions": {
+    "width": 1080,
+    "height": 1920,
+    "aspectRatio": "9:16",
+    "safeZoneTop": 150,
+    "safeZoneBottom": 150,
+    "comment": "Instagram Story format with safe zones for UI elements"
+  },
+  
+  "sections": {
+    "rarity": {
+      "top": 150,
+      "height": 100,
+      "description": "Rarity badge at top of card"
+    },
+    "hero": {
+      "top": 280,
+      "height": 700,
+      "description": "Character image - 50% of visible area"
+    },
+    "personality": {
+      "top": 1050,
+      "height": 350,
+      "description": "Personality traits and character info - 30%"
+    },
+    "branding": {
+      "top": 1450,
+      "height": 320,
+      "description": "Logo, QR code, URL - 20%"
+    }
+  },
+  
+  "spacing": {
+    "horizontal": 60,
+    "vertical": 40,
+    "elementGap": 24,
+    "traitGridGap": {
+      "vertical": 20,
+      "horizontal": 32
+    }
+  },
+  
+  "borderRadius": {
+    "small": 20,
+    "medium": 40,
+    "large": 50,
+    "full": 9999
+  },
+  
+  "typography": {
+    "fontFamily": "-apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Helvetica Neue', Arial, sans-serif",
+    "sizes": {
+      "characterName": {
+        "desktop": 72,
+        "mobile": "clamp(32px, 8vw, 48px)",
+        "lineHeight": 1.1,
+        "fontWeight": 900,
+        "letterSpacing": "-0.02em"
+      },
+      "animeTitle": {
+        "desktop": 36,
+        "mobile": "clamp(18px, 4vw, 28px)",
+        "lineHeight": 1.2,
+        "fontWeight": 700
+      },
+      "resultHeading": {
+        "desktop": 48,
+        "mobile": "clamp(24px, 6vw, 36px)",
+        "lineHeight": 1.2,
+        "fontWeight": 800
+      },
+      "traitText": {
+        "desktop": 28,
+        "mobile": "clamp(14px, 3vw, 20px)",
+        "lineHeight": 1.3,
+        "fontWeight": 600
+      },
+      "rarityBadge": {
+        "desktop": 24,
+        "mobile": "clamp(16px, 4vw, 24px)",
+        "lineHeight": 1,
+        "fontWeight": 900,
+        "letterSpacing": "0.05em"
+      },
+      "brandText": {
+        "desktop": 32,
+        "mobile": "clamp(16px, 3.5vw, 24px)",
+        "lineHeight": 1.2,
+        "fontWeight": 700
+      },
+      "ctaText": {
+        "desktop": 28,
+        "mobile": "clamp(14px, 3vw, 20px)",
+        "lineHeight": 1.3,
+        "fontWeight": 600
+      }
+    }
+  },
+  
+  "colors": {
+    "text": {
+      "primary": "#FFFFFF",
+      "secondary": "rgba(255, 255, 255, 0.9)",
+      "muted": "rgba(255, 255, 255, 0.7)"
+    },
+    "shadows": {
+      "textStrong": "0 4px 12px rgba(0, 0, 0, 0.5)",
+      "textSubtle": "0 2px 8px rgba(0, 0, 0, 0.3)",
+      "element": "0 8px 32px rgba(0, 0, 0, 0.2)",
+      "card": "0 20px 60px rgba(0, 0, 0, 0.3)"
+    },
+    "overlays": {
+      "gradientTop": "linear-gradient(180deg, rgba(0, 0, 0, 0.3) 0%, transparent 30%)",
+      "gradientBottom": "linear-gradient(180deg, transparent 70%, rgba(0, 0, 0, 0.4) 100%)"
+    }
+  },
+  
+  "components": {
+    "rarityBadge": {
+      "padding": {
+        "horizontal": 32,
+        "vertical": 16
+      },
+      "border": {
+        "width": 4,
+        "style": "solid"
+      },
+      "borderRadius": 50,
+      "animation": "pulse 2s infinite"
+    },
+    "characterImage": {
+      "width": 700,
+      "height": 700,
+      "borderRadius": 40,
+      "border": {
+        "width": 8,
+        "color": "rgba(255, 255, 255, 0.3)"
+      }
+    },
+    "traitBadge": {
+      "padding": {
+        "horizontal": 24,
+        "vertical": 12
+      },
+      "borderRadius": 9999,
+      "background": "rgba(255, 255, 255, 0.2)",
+      "backdropFilter": "blur(10px)",
+      "border": {
+        "width": 2,
+        "color": "rgba(255, 255, 255, 0.3)"
+      }
+    },
+    "qrCode": {
+      "size": 180,
+      "padding": 16,
+      "borderRadius": 24,
+      "background": "#FFFFFF",
+      "level": "H"
+    }
+  },
+  
+  "export": {
+    "format": "PNG",
+    "quality": 1.0,
+    "pixelRatio": 2,
+    "maxFileSize": "2MB",
+    "comment": "High quality for social media sharing"
+  }
+}

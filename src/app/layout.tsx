@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Layout } from "@/components/layout";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { ImageUpgradeButton } from "@/components/dev/ImageUpgradeButton";
 
 export const metadata: Metadata = {
   title: "Anime Review Website | Discover the Best Anime of 2025",
@@ -36,6 +37,8 @@ export default function RootLayout({
           <Layout>
             {children}
           </Layout>
+          {/* Dev Tools - Hidden button for image upgrades */}
+          <ImageUpgradeButton />
         </ThemeProvider>
       </body>
     </html>

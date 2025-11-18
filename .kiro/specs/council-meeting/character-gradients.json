@@ -1,0 +1,205 @@
+{
+  "gradients": {
+    "legendary": {
+      "goku": {
+        "gradient": "linear-gradient(135deg, #FF6B35 0%, #FF8C00 100%)",
+        "theme": "Warm orange - energetic and powerful",
+        "primaryColor": "#FF8C00",
+        "secondaryColor": "#FF6B35"
+      },
+      "naruto": {
+        "gradient": "linear-gradient(135deg, #FF6B35 0%, #FF8C00 100%)",
+        "theme": "Orange - determined and optimistic",
+        "primaryColor": "#FF6B35",
+        "secondaryColor": "#FF8C00"
+      },
+      "luffy": {
+        "gradient": "linear-gradient(135deg, #DC143C 0%, #FF6B35 100%)",
+        "theme": "Red to orange - adventurous and bold",
+        "primaryColor": "#DC143C",
+        "secondaryColor": "#FF6B35"
+      },
+      "saitama": {
+        "gradient": "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
+        "theme": "Gold - powerful and legendary",
+        "primaryColor": "#FFD700",
+        "secondaryColor": "#FFA500"
+      },
+      "levi": {
+        "gradient": "linear-gradient(135deg, #2F4F4F 0%, #4A5568 100%)",
+        "theme": "Dark slate - serious and disciplined",
+        "primaryColor": "#2F4F4F",
+        "secondaryColor": "#4A5568"
+      },
+      "sailor-moon": {
+        "gradient": "linear-gradient(135deg, #FFB6C1 0%, #FF69B4 100%)",
+        "theme": "Pink - magical and feminine",
+        "primaryColor": "#FFB6C1",
+        "secondaryColor": "#FF69B4"
+      },
+      "mikasa": {
+        "gradient": "linear-gradient(135deg, #DC143C 0%, #8B0000 100%)",
+        "theme": "Deep red - fierce and protective",
+        "primaryColor": "#DC143C",
+        "secondaryColor": "#8B0000"
+      },
+      "nezuko": {
+        "gradient": "linear-gradient(135deg, #FF1493 0%, #FF69B4 100%)",
+        "theme": "Hot pink - cute and strong",
+        "primaryColor": "#FF1493",
+        "secondaryColor": "#FF69B4"
+      },
+      "anya": {
+        "gradient": "linear-gradient(135deg, #FFB6C1 0%, #FFC0CB 100%)",
+        "theme": "Light pink - innocent and adorable",
+        "primaryColor": "#FFB6C1",
+        "secondaryColor": "#FFC0CB"
+      },
+      "pikachu": {
+        "gradient": "linear-gradient(135deg, #FFD700 0%, #FFA500 100%)",
+        "theme": "Electric yellow - energetic and iconic",
+        "primaryColor": "#FFD700",
+        "secondaryColor": "#FFA500"
+      }
+    },
+    "ultra-rare": {
+      "violet": {
+        "gradient": "linear-gradient(135deg, #9370DB 0%, #DDA0DD 100%)",
+        "theme": "Purple - elegant and emotional",
+        "primaryColor": "#9370DB",
+        "secondaryColor": "#DDA0DD"
+      },
+      "yor": {
+        "gradient": "linear-gradient(135deg, #DC143C 0%, #8B0000 100%)",
+        "theme": "Crimson - elegant and deadly",
+        "primaryColor": "#DC143C",
+        "secondaryColor": "#8B0000"
+      },
+      "makima": {
+        "gradient": "linear-gradient(135deg, #FFD700 0%, #FF6B9D 100%)",
+        "theme": "Gold to pink - mysterious and powerful",
+        "primaryColor": "#FFD700",
+        "secondaryColor": "#FF6B9D"
+      },
+      "mai": {
+        "gradient": "linear-gradient(135deg, #9370DB 0%, #B19CD9 100%)",
+        "theme": "Lavender - elegant and mysterious",
+        "primaryColor": "#9370DB",
+        "secondaryColor": "#B19CD9"
+      },
+      "death-note": {
+        "gradient": "linear-gradient(135deg, #000000 0%, #2C2C2C 100%)",
+        "theme": "Black - dark and ominous",
+        "primaryColor": "#000000",
+        "secondaryColor": "#2C2C2C"
+      }
+    },
+    "rare": {
+      "light": {
+        "gradient": "linear-gradient(135deg, #8B4513 0%, #A0522D 100%)",
+        "theme": "Brown - intellectual and strategic",
+        "primaryColor": "#8B4513",
+        "secondaryColor": "#A0522D"
+      },
+      "edward": {
+        "gradient": "linear-gradient(135deg, #FFD700 0%, #DAA520 100%)",
+        "theme": "Gold - alchemist and determined",
+        "primaryColor": "#FFD700",
+        "secondaryColor": "#DAA520"
+      },
+      "ichigo": {
+        "gradient": "linear-gradient(135deg, #FF8C00 0%, #FF6347 100%)",
+        "theme": "Orange-red - brave and protective",
+        "primaryColor": "#FF8C00",
+        "secondaryColor": "#FF6347"
+      },
+      "eren": {
+        "gradient": "linear-gradient(135deg, #228B22 0%, #32CD32 100%)",
+        "theme": "Green - freedom and determination",
+        "primaryColor": "#228B22",
+        "secondaryColor": "#32CD32"
+      },
+      "tanjiro": {
+        "gradient": "linear-gradient(135deg, #228B22 0%, #006400 100%)",
+        "theme": "Forest green - kind and determined",
+        "primaryColor": "#228B22",
+        "secondaryColor": "#006400"
+      },
+      "zero-two": {
+        "gradient": "linear-gradient(135deg, #FF1493 0%, #FF69B4 100%)",
+        "theme": "Hot pink - unique and passionate",
+        "primaryColor": "#FF1493",
+        "secondaryColor": "#FF69B4"
+      },
+      "rem": {
+        "gradient": "linear-gradient(135deg, #87CEEB 0%, #B0E0E6 100%)",
+        "theme": "Sky blue - loyal and caring",
+        "primaryColor": "#87CEEB",
+        "secondaryColor": "#B0E0E6"
+      },
+      "hinata": {
+        "gradient": "linear-gradient(135deg, #9370DB 0%, #BA55D3 100%)",
+        "theme": "Purple - shy and determined",
+        "primaryColor": "#9370DB",
+        "secondaryColor": "#BA55D3"
+      },
+      "power": {
+        "gradient": "linear-gradient(135deg, #FF69B4 0%, #FFB6C1 100%)",
+        "theme": "Pink - chaotic and lovable",
+        "primaryColor": "#FF69B4",
+        "secondaryColor": "#FFB6C1"
+      },
+      "nami": {
+        "gradient": "linear-gradient(135deg, #FF8C00 0%, #FFA500 100%)",
+        "theme": "Orange - smart and resourceful",
+        "primaryColor": "#FF8C00",
+        "secondaryColor": "#FFA500"
+      }
+    }
+  },
+  
+  "rarityColors": {
+    "legendary": {
+      "background": "#FFD700",
+      "text": "#000000",
+      "glow": "rgba(255, 215, 0, 0.5)",
+      "emoji": "👑"
+    },
+    "ultra-rare": {
+      "background": "#9D4EDD",
+      "text": "#FFFFFF",
+      "glow": "rgba(157, 78, 221, 0.5)",
+      "emoji": "💎"
+    },
+    "rare": {
+      "background": "#FF6B9D",
+      "text": "#FFFFFF",
+      "glow": "rgba(255, 107, 157, 0.5)",
+      "emoji": "⭐"
+    },
+    "uncommon": {
+      "background": "#06B6D4",
+      "text": "#FFFFFF",
+      "glow": "rgba(6, 182, 212, 0.5)",
+      "emoji": "✨"
+    },
+    "common": {
+      "background": "#8A867E",
+      "text": "#FFFFFF",
+      "glow": "rgba(138, 134, 126, 0.5)",
+      "emoji": "🎭"
+    }
+  },
+  
+  "usage": {
+    "description": "Character-specific gradient backgrounds for shareable result cards",
+    "implementation": "Apply as CSS background property",
+    "fallback": "linear-gradient(135deg, #667eea 0%, #764ba2 100%)",
+    "notes": [
+      "Gradients are designed to be vibrant but not oversaturated",
+      "All gradients use 135deg angle for consistency",
+      "Colors are chosen to match character personality and anime themes",
+      "Text shadows ensure readability on all gradients"
+    ]
+  }
+}

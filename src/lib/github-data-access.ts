@@ -82,18 +82,6 @@ async function loadReviewsData(): Promise<Map<string, any>> {
   }
 }
 
-// Upgrade image URL to higher quality
-function upgradeImageQuality(url: string): string {
-  if (!url || url.includes('placeholder')) return url;
-  
-  // AniList images: upgrade from /medium/ to /large/
-  if (url.includes('anilist.co') && url.includes('/medium/')) {
-    return url.replace('/medium/', '/large/');
-  }
-  
-  return url;
-}
-
 // Transform CSV row to Anime object
 function transformAnimeRow(row: any, index: number, reviewsMap: Map<string, any>): Anime {
   const title = row.franchise_root_title || 'Unknown Title';
@@ -111,7 +99,7 @@ function transformAnimeRow(row: any, index: number, reviewsMap: Map<string, any>
   return {
     id: String(index + 1),
     title,
-    coverImage: upgradeImageQuality(row.cover_image_url) || 'https://via.placeholder.com/400x600',
+    coverImage: row.cover_image_url || 'https://via.placeholder.com/400x600',
     ratings,
     description: reviewData.synopsis || `${title} is a popular anime series from 2025.`,
     releaseYear: parseInt(reviewData.year) || 2025,

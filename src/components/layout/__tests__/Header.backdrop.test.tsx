@@ -48,7 +48,7 @@ describe('Header - Backdrop Click Blocking', () => {
     const backdrop = closeElements.find(el => el.tagName === 'DIV');
     
     expect(backdrop).toBeInTheDocument();
-    expect(backdrop).toHaveStyle({ zIndex: '50' });
+    expect(backdrop).toHaveStyle({ zIndex: '40' });
   });
 
   it('should have backdrop properties that block clicks to underlying content', async () => {
@@ -68,8 +68,8 @@ describe('Header - Backdrop Click Blocking', () => {
     expect(backdrop).toHaveClass('fixed');
     expect(backdrop).toHaveClass('inset-0');
     
-    // 2. High z-index to be above content
-    expect(backdrop).toHaveStyle({ zIndex: '50' });
+    // 2. High z-index to be above content (z-40, below menu at z-50)
+    expect(backdrop).toHaveStyle({ zIndex: '40' });
     
     // 3. Semi-transparent background that's visible
     expect(backdrop).toHaveClass('bg-black/50');
@@ -116,7 +116,7 @@ describe('Header - Backdrop Click Blocking', () => {
     const closeElements = screen.getAllByLabelText('Close menu');
     const backdrop = closeElements.find(el => el.tagName === 'DIV');
     
-    expect(backdrop).toHaveStyle({ zIndex: '50' });
+    expect(backdrop).toHaveStyle({ zIndex: '40' });
     
     // Check that backdrop has fixed positioning
     expect(backdrop).toHaveClass('fixed');
@@ -143,13 +143,16 @@ describe('Header - Backdrop Click Blocking', () => {
     
     // Initially, body should not have overflow hidden
     expect(document.body.style.overflow).toBe('');
+    expect(document.body.style.position).toBe('');
     
     // Open mobile menu
     const menuButton = screen.getByLabelText('Open menu');
     fireEvent.click(menuButton);
     
-    // Body scroll should be locked
+    // Body scroll should be locked (iOS Safari compatible)
     expect(document.body.style.overflow).toBe('hidden');
+    expect(document.body.style.position).toBe('fixed');
+    expect(document.body.style.width).toBe('100%');
   });
 
   it('should restore body scroll when menu is closed', async () => {
@@ -161,6 +164,7 @@ describe('Header - Backdrop Click Blocking', () => {
     
     // Body scroll should be locked
     expect(document.body.style.overflow).toBe('hidden');
+    expect(document.body.style.position).toBe('fixed');
     
     // Close menu by clicking backdrop (the div, not the button)
     const closeElements = screen.getAllByLabelText('Close menu');
@@ -170,6 +174,8 @@ describe('Header - Backdrop Click Blocking', () => {
     // Wait for menu to close and body scroll to be restored
     await waitFor(() => {
       expect(document.body.style.overflow).toBe('');
+      expect(document.body.style.position).toBe('');
+      expect(document.body.style.width).toBe('');
     });
   });
 
@@ -183,6 +189,7 @@ describe('Header - Backdrop Click Blocking', () => {
     // Verify menu is open
     expect(screen.getByText('Menu')).toBeInTheDocument();
     expect(document.body.style.overflow).toBe('hidden');
+    expect(document.body.style.position).toBe('fixed');
     
     // Press ESC key
     fireEvent.keyDown(document, { key: 'Escape' });
@@ -194,6 +201,7 @@ describe('Header - Backdrop Click Blocking', () => {
     
     // Verify body scroll is restored
     expect(document.body.style.overflow).toBe('');
+    expect(document.body.style.position).toBe('');
   });
 
   it('should not close menu when other keys are pressed', async () => {
@@ -230,6 +238,7 @@ describe('Header - Backdrop Click Blocking', () => {
     // Verify menu is open
     expect(screen.getByText('Menu')).toBeInTheDocument();
     expect(document.body.style.overflow).toBe('hidden');
+    expect(document.body.style.position).toBe('fixed');
     
     // Click on a navigation link (Browse All)
     const browseLink = screen.getAllByText('Browse All')[1]; // Get the mobile menu link (second one)
@@ -242,6 +251,7 @@ describe('Header - Backdrop Click Blocking', () => {
     
     // Verify body scroll is restored
     expect(document.body.style.overflow).toBe('');
+    expect(document.body.style.position).toBe('');
   });
 
   it('should close menu when any navigation link is clicked', async () => {
@@ -271,6 +281,7 @@ describe('Header - Backdrop Click Blocking', () => {
       
       // Verify body scroll is restored
       expect(document.body.style.overflow).toBe('');
+      expect(document.body.style.position).toBe('');
     }
   });
 });

@@ -194,10 +194,17 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         <>
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden animate-fade-in"
-            style={{ zIndex: 50 }}
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden transition-opacity duration-200 ease-out"
+            style={{ zIndex: 40 }}
             onClick={closeMobileMenu}
             aria-label="Close menu"
+            role="button"
+            tabIndex={0}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                closeMobileMenu();
+              }
+            }}
           />
           
           {/* Slide-in Menu */}
@@ -210,6 +217,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               top: '4rem',
               transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
             }}
+            role="dialog"
+            aria-modal="true"
+            aria-label="Mobile navigation menu"
           >
             {/* Menu Header */}
             <div 
