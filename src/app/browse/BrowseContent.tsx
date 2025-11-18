@@ -56,6 +56,20 @@ const moreGenres = [
 
 type StatusOption = 'all' | 'airing' | 'finished' | 'upcoming';
 
+type BadgeVariant = 'default' | 'success' | 'warning' | 'error' | 'info' | 'site' | 'visual' | 'music' | 'story' | 'character';
+
+// Helper function to map sort type to badge variant
+function getBadgeVariant(sortBy: SortOption): BadgeVariant {
+  const variantMap: Record<SortOption, BadgeVariant> = {
+    site: 'site',
+    visual: 'visual',
+    music: 'music',
+    story: 'story',
+    character: 'character',
+  };
+  return variantMap[sortBy];
+}
+
 export function BrowseContent() {
   const [allAnime, setAllAnime] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
@@ -71,6 +85,7 @@ export function BrowseContent() {
   const [showNewsletterPrompt, setShowNewsletterPrompt] = useState(false);
   const [announcement, setAnnouncement] = useState('');
   const [isOnline, setIsOnline] = useState(true);
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const debouncedSearch = useDebounce(searchQuery, 300);
   const { addAnime, removeAnime, isInWatchlist: checkWatchlist } = useWatchlist();
 
@@ -573,73 +588,54 @@ export function BrowseContent() {
 
       {/* Filters */}
       <div className="mb-8 space-y-6">
-        {/* Clear All Filters Button */}
-        {hasActiveFilters && (
-          <div className="flex justify-end">
-            <button
-              onClick={clearAllFilters}
-              onKeyDown={(e) => {
-                if (e.key === 'Enter' || e.key === ' ') {
-                  e.preventDefault();
-                  clearAllFilters();
-                }
-              }}
-              aria-label="Clear all active filters and reset search"
-              className="px-4 py-2 rounded-lg font-medium transition-all flex items-center gap-2"
-              style={{
-                backgroundColor: 'var(--error)',
-                color: '#FFFFFF',
-                boxShadow: '0 2px 8px rgba(0, 0, 0, 0.15)',
-              }}
-            >
-              <span aria-hidden="true">✕</span>
-              <span>Clear All Filters</span>
-            </button>
-          </div>
-        )}
 
-        {/* Sort Options */}
-        <div className="flex flex-wrap gap-2 items-center" role="group" aria-label="Sort options">
-          <span className="font-semibold" style={{ color: 'var(--foreground)' }} id="sort-label">
+        {/* Sort Options - with border */}
+        <div className="pb-6 border-b" style={{ borderColor: 'var(--border)' }}>
+          <span className="font-semibold mb-3 block" style={{ color: 'var(--foreground)' }} id="sort-label">
             Sort by:
           </span>
-          {sortOptions.map((option) => {
-            const isActive = sortBy === option.value;
-            return (
-              <button
-                key={option.value}
-                onClick={() => setSortBy(option.value)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setSortBy(option.value);
-                  }
-                }}
-                aria-label={`Sort by ${option.label}`}
-                aria-pressed={isActive}
-                aria-describedby="sort-label"
-                className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] flex items-center gap-2"
-                style={{
-                  backgroundColor: isActive ? option.color : 'var(--card-background)',
-                  color: isActive ? '#FFFFFF' : 'var(--foreground)',
-                  borderWidth: '2px',
-                  borderColor: isActive ? option.color : 'var(--border)',
-                  boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
-                }}
-              >
-                <span aria-hidden="true">{option.icon}</span>
-                <span>{option.label}</span>
-              </button>
-            );
-          })}
+          <div className="flex flex-wrap gap-3" role="group" aria-label="Sort options">
+            {sortOptions.map((option) => {
+              const isActive = sortBy === option.value;
+              return (
+                <button
+                  key={option.value}
+                  onClick={() => setSortBy(option.value)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setSortBy(option.value);
+                    }
+                  }}
+                  aria-label={`Sort by ${option.label}`}
+                  aria-pressed={isActive}
+                  aria-describedby="sort-label"
+                  className={`px-4 py-3 rounded-lg font-medium transition-all min-h-[44px] min-w-[80px] flex items-center gap-2 active:scale-95 ${
+                    isActive ? 'ring-2 ring-offset-2' : ''
+                  }`}
+                  style={{
+                    backgroundColor: isActive ? option.color : 'var(--card-background)',
+                    color: isActive ? '#FFFFFF' : 'var(--foreground)',
+                    borderWidth: '2px',
+                    borderColor: isActive ? option.color : 'var(--border)',
+                    boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
+                    ['--tw-ring-color' as any]: isActive ? option.color : 'transparent',
+                  }}
+                >
+                  <span aria-hidden="true">{option.icon}</span>
+                  <span>{option.label}</span>
+                </button>
+              );
+            })}
+          </div>
         </div>
 
-        {/* Genre Filters */}
-        <div>
-          <span className="font-semibold mb-2 block" style={{ color: 'var(--foreground)' }} id="genre-label">
+        {/* Genre Filters - with border */}
+        <div className="pb-6 border-b" style={{ borderColor: 'var(--border)' }}>
+          <span className="font-semibold mb-3 block" style={{ color: 'var(--foreground)' }} id="genre-label">
             Genres:
           </span>
-          <div className="flex flex-wrap gap-2" role="group" aria-label="Genre filters">
+          <div className="flex flex-wrap gap-3" role="group" aria-label="Genre filters">
             {topGenres.map((genre) => {
               const isActive = selectedGenres.includes(genre.id);
               return (
@@ -655,13 +651,14 @@ export function BrowseContent() {
                   aria-label={`Filter by ${genre.label} genre`}
                   aria-pressed={isActive}
                   aria-describedby="genre-label"
-                  className="px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1"
+                  className={`px-4 py-3 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1 active:scale-95 ${
+                    isActive ? 'shadow-lg scale-105' : 'hover:scale-102'
+                  }`}
                   style={{
                     backgroundColor: isActive ? 'var(--accent)' : 'var(--card-background)',
                     color: isActive ? '#FFFFFF' : 'var(--foreground)',
                     borderWidth: '2px',
                     borderColor: isActive ? 'var(--accent)' : 'var(--border)',
-                    boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
                   }}
                 >
                   {isActive && <span className="text-white" aria-hidden="true">✓</span>}
@@ -685,7 +682,7 @@ export function BrowseContent() {
               aria-label={showMoreGenres ? 'Hide additional genres' : 'Show more genres'}
               aria-expanded={showMoreGenres}
               aria-controls="more-genres-panel"
-              className="px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1"
+              className="px-4 py-3 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1 active:scale-95"
               style={{
                 backgroundColor: 'var(--card-background)',
                 color: 'var(--foreground)',
@@ -740,7 +737,7 @@ export function BrowseContent() {
                       <span aria-hidden="true">✕</span>
                     </button>
                   </div>
-                  <div className="flex flex-wrap gap-2" role="group" aria-label="Additional genres">
+                  <div className="flex flex-wrap gap-3" role="group" aria-label="Additional genres">
                     {moreGenres.map((genre) => {
                       const isActive = selectedGenres.includes(genre.id);
                       return (
@@ -755,7 +752,9 @@ export function BrowseContent() {
                           }}
                           aria-label={`Filter by ${genre.label} genre`}
                           aria-pressed={isActive}
-                          className="px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1"
+                          className={`px-4 py-3 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1 active:scale-95 ${
+                            isActive ? 'shadow-lg scale-105' : ''
+                          }`}
                           style={{
                             backgroundColor: isActive ? 'var(--accent)' : 'var(--text-block)',
                             color: isActive ? '#FFFFFF' : 'var(--foreground)',
@@ -785,7 +784,7 @@ export function BrowseContent() {
                   boxShadow: '0 4px 12px rgba(0, 0, 0, 0.1)',
                 }}
               >
-                <div className="flex flex-wrap gap-2" role="group" aria-label="Additional genres">
+                <div className="flex flex-wrap gap-3" role="group" aria-label="Additional genres">
                   {moreGenres.map((genre) => {
                     const isActive = selectedGenres.includes(genre.id);
                     return (
@@ -803,7 +802,9 @@ export function BrowseContent() {
                         }}
                         aria-label={`Filter by ${genre.label} genre`}
                         aria-pressed={isActive}
-                        className="px-4 py-2 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1"
+                        className={`px-4 py-3 rounded-full text-sm font-medium transition-all min-h-[44px] flex items-center gap-1 active:scale-95 ${
+                          isActive ? 'shadow-lg scale-105' : ''
+                        }`}
                         style={{
                           backgroundColor: isActive ? 'var(--accent)' : 'var(--text-block)',
                           color: isActive ? '#FFFFFF' : 'var(--foreground)',
@@ -823,53 +824,78 @@ export function BrowseContent() {
         </div>
 
         {/* Status Filter */}
-        <div className="flex flex-wrap gap-2 items-center" role="group" aria-label="Status filters">
-          <span className="font-semibold" style={{ color: 'var(--foreground)' }} id="status-label">
+        <div>
+          <span className="font-semibold mb-3 block" style={{ color: 'var(--foreground)' }} id="status-label">
             Status:
           </span>
-          {(['all', 'airing', 'finished', 'upcoming'] as StatusOption[]).map((status) => {
-            const isActive = statusFilter === status;
-            const statusLabel = status.charAt(0).toUpperCase() + status.slice(1);
-            return (
-              <button
-                key={status}
-                onClick={() => setStatusFilter(status)}
-                onKeyDown={(e) => {
-                  if (e.key === 'Enter' || e.key === ' ') {
-                    e.preventDefault();
-                    setStatusFilter(status);
-                  }
-                }}
-                aria-label={`Filter by ${statusLabel} status`}
-                aria-pressed={isActive}
-                aria-describedby="status-label"
-                className="px-4 py-2 rounded-lg font-medium transition-all min-h-[44px] min-w-[44px]"
-                style={{
-                  backgroundColor: isActive ? 'var(--btn-primary)' : 'var(--card-background)',
-                  color: isActive ? 'var(--btn-primary-text)' : 'var(--foreground)',
-                  borderWidth: '2px',
-                  borderColor: isActive ? 'var(--btn-primary)' : 'var(--border)',
-                  boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
-                }}
-              >
-                {statusLabel}
-              </button>
-            );
-          })}
+          <div className="flex flex-wrap gap-3" role="group" aria-label="Status filters">
+            {(['all', 'airing', 'finished', 'upcoming'] as StatusOption[]).map((status) => {
+              const isActive = statusFilter === status;
+              const statusLabel = status.charAt(0).toUpperCase() + status.slice(1);
+              return (
+                <button
+                  key={status}
+                  onClick={() => setStatusFilter(status)}
+                  onKeyDown={(e) => {
+                    if (e.key === 'Enter' || e.key === ' ') {
+                      e.preventDefault();
+                      setStatusFilter(status);
+                    }
+                  }}
+                  aria-label={`Filter by ${statusLabel} status`}
+                  aria-pressed={isActive}
+                  aria-describedby="status-label"
+                  className="px-4 py-3 rounded-lg font-medium transition-all min-h-[44px] min-w-[80px] active:scale-95"
+                  style={{
+                    backgroundColor: isActive ? 'var(--btn-primary)' : 'var(--card-background)',
+                    color: isActive ? 'var(--btn-primary-text)' : 'var(--foreground)',
+                    borderWidth: '2px',
+                    borderColor: isActive ? 'var(--btn-primary)' : 'var(--border)',
+                    boxShadow: isActive ? '0 2px 8px rgba(0, 0, 0, 0.15)' : 'none',
+                  }}
+                >
+                  {statusLabel}
+                </button>
+              );
+            })}
+          </div>
         </div>
       </div>
 
-      {/* Results Count */}
-      <div className="mb-4">
+      {/* Results Count and Clear Filters */}
+      <div className="mb-6 flex items-center justify-between flex-wrap gap-4">
+        {/* Results count */}
         <p 
           id="search-results-count"
+          className="text-lg font-semibold" 
           role="status" 
           aria-live="polite" 
           aria-atomic="true"
-          style={{ color: 'var(--secondary)' }}
+          style={{ color: 'var(--foreground)' }}
         >
-          Showing {Math.min((page - 1) * ITEMS_PER_PAGE + 1, filteredAndSortedAnime.length)}-{Math.min(page * ITEMS_PER_PAGE, filteredAndSortedAnime.length)} of {filteredAndSortedAnime.length} anime
+          Showing {filteredAndSortedAnime.length} of {allAnime.length} anime
         </p>
+        
+        {/* Clear filters button - only show if filters active */}
+        {hasActiveFilters && (
+          <button
+            onClick={clearAllFilters}
+            onKeyDown={(e) => {
+              if (e.key === 'Enter' || e.key === ' ') {
+                e.preventDefault();
+                clearAllFilters();
+              }
+            }}
+            aria-label="Clear all active filters and reset search"
+            className="px-4 py-2 rounded-lg font-medium transition-all"
+            style={{
+              backgroundColor: 'var(--text-block)',
+              color: 'var(--accent)',
+            }}
+          >
+            ✕ Clear all filters
+          </button>
+        )}
       </div>
 
       {/* Anime Grid */}
@@ -882,7 +908,7 @@ export function BrowseContent() {
           <Card 
             key={anime.id}
             role="listitem"
-            className="group transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.05]"
+            className="group transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.05] active:scale-[1.02]"
             style={{
               boxShadow: 'var(--card-shadow)',
             }}
@@ -893,17 +919,18 @@ export function BrowseContent() {
               e.currentTarget.style.boxShadow = 'var(--card-shadow)';
             }}
           >
-            <Link href={`/anime/${anime.id}`}>
+            <Link href={`/anime/${anime.id}`} className="block">
               <div className="relative aspect-[2/3] overflow-hidden rounded-t-xl">
                 <Image
-                  src={anime.coverImage}
+                  src={imageErrors[anime.id] ? '/characters/placeholder.svg' : anime.coverImage}
                   alt={anime.title}
                   fill
                   className="object-cover group-hover:scale-110 transition-transform duration-300"
                   sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, (max-width: 1280px) 33vw, 25vw"
+                  loading={index < 4 ? 'eager' : 'lazy'}
                   placeholder="blur"
-                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzIwMjAyMCIvPjwvc3ZnPg=="
-                  priority={index < 8}
+                  blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YwZjBmMCIvPjwvc3ZnPg=="
+                  onError={() => setImageErrors(prev => ({ ...prev, [anime.id]: true }))}
                 />
                 
                 {/* Social Proof Badge - Top Left */}
@@ -934,32 +961,35 @@ export function BrowseContent() {
                 
                 {/* Rating Badge - Top Right */}
                 <div className="absolute top-2 right-2">
-                  <Badge variant="info">{anime.ratings[sortBy].toFixed(1)}</Badge>
+                  <Badge variant={getBadgeVariant(sortBy)}>{anime.ratings[sortBy].toFixed(1)}</Badge>
                 </div>
               </div>
-            </Link>
-            <CardContent className="p-4">
-              <Link href={`/anime/${anime.id}`}>
+              <CardContent className="p-4">
                 <h3 className="font-bold text-lg mb-2 line-clamp-2 group-hover:underline" style={{ color: 'var(--foreground)' }}>
                   {anime.title}
                 </h3>
-              </Link>
-              <div className="flex flex-wrap gap-1 mb-3">
-                {anime.genres.slice(0, 3).map((genre: string) => (
-                  <span
-                    key={genre}
-                    className="text-xs px-2 py-1 rounded-full"
-                    style={{
-                      backgroundColor: 'var(--text-block)',
-                      color: 'var(--secondary)',
-                    }}
-                  >
-                    {genre}
-                  </span>
-                ))}
-              </div>
+                <div className="flex flex-wrap gap-1 mb-3">
+                  {anime.genres.slice(0, 3).map((genre: string) => (
+                    <span
+                      key={genre}
+                      className="text-xs px-2 py-1 rounded-full"
+                      style={{
+                        backgroundColor: 'var(--text-block)',
+                        color: 'var(--secondary)',
+                      }}
+                    >
+                      {genre}
+                    </span>
+                  ))}
+                </div>
+              </CardContent>
+            </Link>
+            <CardContent className="p-4 pt-0">
               <button
-                onClick={() => toggleWatchlist(anime.id)}
+                onClick={(e) => {
+                  e.preventDefault();
+                  toggleWatchlist(anime.id);
+                }}
                 onKeyDown={(e) => {
                   if (e.key === 'Enter' || e.key === ' ') {
                     e.preventDefault();
@@ -968,7 +998,7 @@ export function BrowseContent() {
                 }}
                 aria-label={checkWatchlist(anime.id) ? `Remove ${anime.title} from watchlist` : `Add ${anime.title} to watchlist`}
                 aria-pressed={checkWatchlist(anime.id)}
-                className="w-full py-2 rounded-lg font-medium transition-all mb-2"
+                className="w-full py-3 rounded-lg font-medium transition-all mb-2 min-h-[44px] active:scale-95"
                 style={{
                   backgroundColor: checkWatchlist(anime.id) ? 'var(--accent)' : 'var(--btn-primary)',
                   color: '#FFFFFF',

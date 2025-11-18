@@ -7,6 +7,7 @@ import { Container, Typography } from '@/components/ui';
 import { cn } from '@/utils/cn';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useTheme } from '@/components/ThemeProvider';
+import { useMobileMenu } from '@/hooks/useMobileMenu';
 
 interface HeaderProps {
   className?: string;
@@ -14,20 +15,8 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const { theme } = useTheme();
-  const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const { isOpen: mobileMenuOpen, open: openMobileMenu, close: closeMobileMenu } = useMobileMenu();
   const [watchlistCount, setWatchlistCount] = useState(0);
-
-  // Prevent body scroll when mobile menu is open
-  useEffect(() => {
-    if (mobileMenuOpen) {
-      document.body.style.overflow = 'hidden';
-    } else {
-      document.body.style.overflow = 'unset';
-    }
-    return () => {
-      document.body.style.overflow = 'unset';
-    };
-  }, [mobileMenuOpen]);
 
   // Load watchlist count
   useEffect(() => {
@@ -59,7 +48,20 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
     };
   }, []);
 
-  const closeMobileMenu = () => setMobileMenuOpen(false);
+  // ESC key handler to close menu
+  useEffect(() => {
+    const handleEscKey = (event: KeyboardEvent) => {
+      if (event.key === 'Escape' && mobileMenuOpen) {
+        closeMobileMenu();
+      }
+    };
+
+    document.addEventListener('keydown', handleEscKey);
+
+    return () => {
+      document.removeEventListener('keydown', handleEscKey);
+    };
+  }, [mobileMenuOpen, closeMobileMenu]);
   
   return (
     <header 
@@ -173,10 +175,11 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
             <button 
-              onClick={() => setMobileMenuOpen(true)}
+              onClick={openMobileMenu}
               className="p-2 rounded-lg transition-colors"
               style={{ color: 'var(--foreground)' }}
               aria-label="Open menu"
+              aria-expanded={mobileMenuOpen}
             >
               <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
                 <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
@@ -191,15 +194,21 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
         <>
           {/* Backdrop */}
           <div 
-            className="fixed inset-0 bg-black/50 backdrop-blur-sm z-40 md:hidden animate-fade-in"
+            className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden animate-fade-in"
+            style={{ zIndex: 50 }}
             onClick={closeMobileMenu}
+            aria-label="Close menu"
           />
           
           {/* Slide-in Menu */}
           <div 
-            className="fixed top-0 right-0 bottom-0 w-[280px] z-50 md:hidden shadow-2xl animate-slide-in-right"
+            className="fixed right-0 w-[280px] md:hidden shadow-2xl transition-transform duration-300 ease-out"
             style={{
               backgroundColor: 'var(--card-background)',
+              zIndex: 50,
+              height: 'calc(100vh - 4rem)',
+              top: '4rem',
+              transform: mobileMenuOpen ? 'translateX(0)' : 'translateX(100%)',
             }}
           >
             {/* Menu Header */}

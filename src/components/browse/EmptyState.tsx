@@ -1,5 +1,6 @@
 'use client';
 
+import { useState } from 'react';
 import { Anime } from '@/types/anime';
 import { Card, CardContent, Badge } from '@/components/ui';
 import Image from 'next/image';
@@ -12,6 +13,7 @@ interface EmptyStateProps {
 }
 
 export function EmptyState({ onClearFilters, suggestions, hasActiveFilters }: EmptyStateProps) {
+  const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   return (
     <div className="text-center py-12">
       {/* Empty State Icon and Message */}
@@ -50,7 +52,7 @@ export function EmptyState({ onClearFilters, suggestions, hasActiveFilters }: Em
             You might like these:
           </h4>
           <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-6 max-w-5xl mx-auto">
-            {suggestions.map((anime) => (
+            {suggestions.map((anime, index) => (
               <Card 
                 key={anime.id}
                 className="group transition-all duration-300 ease-[cubic-bezier(0.4,0,0.2,1)] hover:scale-[1.05]"
@@ -67,13 +69,15 @@ export function EmptyState({ onClearFilters, suggestions, hasActiveFilters }: Em
                 <Link href={`/anime/${anime.id}`}>
                   <div className="relative aspect-[2/3] overflow-hidden rounded-t-xl">
                     <Image
-                      src={anime.coverImage}
+                      src={imageErrors[anime.id] ? '/characters/placeholder.svg' : anime.coverImage}
                       alt={anime.title}
                       fill
                       className="object-cover group-hover:scale-110 transition-transform duration-300"
                       sizes="(max-width: 640px) 100vw, (max-width: 1024px) 50vw, 33vw"
+                      loading="lazy"
                       placeholder="blur"
-                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iIzIwMjAyMCIvPjwvc3ZnPg=="
+                      blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YwZjBmMCIvPjwvc3ZnPg=="
+                      onError={() => setImageErrors(prev => ({ ...prev, [anime.id]: true }))}
                     />
                     <div className="absolute top-2 right-2">
                       <Badge variant="info">{anime.ratings.site.toFixed(1)}</Badge>

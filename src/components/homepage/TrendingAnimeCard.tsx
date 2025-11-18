@@ -1,6 +1,6 @@
 'use client';
 
-import { memo } from 'react';
+import { memo, useState } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Anime } from '@/types/anime';
@@ -8,9 +8,12 @@ import { Badge } from '@/components/ui/Badge';
 
 interface TrendingAnimeCardProps {
   anime: Anime;
+  index?: number;
 }
 
-export const TrendingAnimeCard = memo(function TrendingAnimeCard({ anime }: TrendingAnimeCardProps) {
+export const TrendingAnimeCard = memo(function TrendingAnimeCard({ anime, index = 0 }: TrendingAnimeCardProps) {
+  const [imageError, setImageError] = useState(false);
+  
   return (
     <Link
       href={`/anime/${anime.id}`}
@@ -19,11 +22,15 @@ export const TrendingAnimeCard = memo(function TrendingAnimeCard({ anime }: Tren
       {/* 16:9 aspect ratio image */}
       <div className="relative aspect-video overflow-hidden bg-muted">
         <Image
-          src={anime.coverImage}
+          src={imageError ? '/characters/placeholder.svg' : anime.coverImage}
           alt={anime.title}
           fill
           className="object-cover transition-transform duration-300 group-hover:scale-110"
           sizes="(max-width: 640px) 280px, 320px"
+          loading={index < 4 ? 'eager' : 'lazy'}
+          placeholder="blur"
+          blurDataURL="data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iNDAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI2YwZjBmMCIvPjwvc3ZnPg=="
+          onError={() => setImageError(true)}
         />
         
         {/* Trending badge overlay */}

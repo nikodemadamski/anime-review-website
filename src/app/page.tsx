@@ -114,7 +114,7 @@ export default async function Home() {
                         {anime.title}
                       </p>
                       <div className="flex items-center gap-2 mt-1">
-                        <Badge variant="info" size="sm">{anime.ratings.site.toFixed(1)}</Badge>
+                        <Badge variant="site" size="sm">{anime.ratings.site.toFixed(1)}</Badge>
                       </div>
                     </div>
                   </div>
@@ -136,7 +136,7 @@ export default async function Home() {
                           >
                             {review.username}
                           </p>
-                          <Badge variant="info" size="sm">{review.score.toFixed(1)}</Badge>
+                          <Badge variant="site" size="sm">{review.score.toFixed(1)}</Badge>
                         </div>
                         <p
                           className="text-sm line-clamp-3"

@@ -37,7 +37,7 @@ export function WatchNowButton({
       onClick={handleClick}
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
-      className={`w-full py-2 rounded-lg font-medium transition-all flex items-center justify-center gap-2 ${className}`}
+      className={`w-full py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 min-h-[44px] active:scale-95 ${className}`}
       style={{
         backgroundColor: isHovered ? 'var(--card-background)' : 'transparent',
         color: 'var(--accent)',

@@ -1,103 +1,89 @@
-# Requirements Document
+# Critical MVP Requirements - Browse Page & Mobile
 
 ## Introduction
 
-The Browse Page is the primary discovery interface where users explore the anime catalog. Based on council review, the current implementation is functional but lacks the visual polish, performance optimization, and engagement features needed to compete in the market and drive user retention. This spec focuses on 5 critical MVP enhancements identified by cross-functional stakeholders to ship immediately.
+Based on user testing and council review, we have identified 5 critical issues that must be addressed immediately to ensure a functional, usable mobile experience and improve the browse page's visual communication. These are P0/P1 priorities that directly impact user engagement and conversion.
 
 ## Glossary
 
-- **Browse Page**: The main catalog page where users view, search, and filter anime
-- **Filter Pills**: Interactive buttons for filtering anime by genre or status
-- **Sort Options**: Buttons that reorder anime results by different criteria
-- **Anime Card**: Individual card component displaying anime information
-- **Skeleton Loader**: Placeholder UI shown while content loads
-- **Infinite Scroll**: Progressive loading of content as user scrolls
-- **Social Proof**: Display of user engagement metrics (trending, watching count)
-- **CTA**: Call-to-action button (e.g., "Watch Now", "Add to Watchlist")
-- **URL Params**: Query parameters in URL for shareable filter states
+- **Mobile Menu**: The hamburger menu navigation that appears on mobile devices (< 768px width)
+- **Backdrop Overlay**: A semi-transparent layer that appears behind the mobile menu to block interaction with page content
+- **Rating Badge**: The colored pill/badge that displays anime ratings (site, visual, music, story, character)
+- **Touch Target**: The clickable/tappable area of interactive elements (minimum 44x44px for accessibility)
+- **Z-Index Layer**: The stacking order of elements (higher numbers appear on top)
+- **Lazy Loading**: Technique to defer loading images until they're needed (improves performance)
 
 ## Requirements
 
-### Requirement 1: Visual Polish and Hierarchy
+### Requirement 1: Mobile Menu Overlay Fix (CRITICAL BUG)
 
-**User Story:** As a user, I want the browse page to feel modern and polished with clear visual feedback, so that I trust the platform and enjoy the browsing experience.
-
-#### Acceptance Criteria
-
-1. WHEN a user hovers over an anime card, THE Browse Page SHALL apply a scale transform and shadow effect with smooth transition
-2. WHILE anime data is loading, THE Browse Page SHALL display skeleton loaders matching the card grid layout instead of a centered spinner
-3. THE Browse Page SHALL display filter pills that wrap gracefully on mobile screens (320px minimum width)
-4. WHEN a filter is active, THE Browse Page SHALL highlight it with distinct background color and visual indicator
-5. THE anime card images SHALL load with blur placeholder effect using Next.js Image optimization
-
-### Requirement 2: Simplified Filtering UX
-
-**User Story:** As a user who finds too many options overwhelming, I want a cleaner filtering interface with user-friendly labels, so that I can quickly find anime without cognitive overload.
+**User Story:** As a mobile user, I want the navigation menu to work properly when opened, so that I can navigate the site without confusion or accidental clicks.
 
 #### Acceptance Criteria
 
-1. THE Browse Page SHALL display only the top 6 most popular genres by default with remaining genres in a "More Genres" dropdown
-2. THE Browse Page SHALL replace technical sort labels ("site", "visual") with user-friendly labels ("Most Popular", "Top Rated", "Best Visuals", "Best Music", "Best Story")
-3. THE search bar SHALL be positioned prominently at the top and remain sticky when scrolling
-4. THE Browse Page SHALL include a "Clear All Filters" button that resets all active filters and search query
-5. WHEN filters are active, THE "Clear All Filters" button SHALL be visually prominent and easily accessible
+1. WHEN the mobile menu is opened, THE System SHALL display a backdrop overlay that prevents interaction with content beneath
+2. WHEN the mobile menu is open, THE System SHALL lock body scrolling to prevent background page scroll
+3. WHEN a user taps outside the mobile menu, THE System SHALL close the menu
+4. WHEN a user taps a menu link, THE System SHALL close the menu and navigate to the selected page
+5. THE mobile menu SHALL have a z-index value higher than all other page content (z-50 or above)
+6. THE backdrop overlay SHALL have a semi-transparent background (e.g., rgba(0,0,0,0.5))
+7. THE menu open/close animation SHALL be smooth (200-300ms transition)
+8. WHEN the menu is closed, THE System SHALL restore body scrolling
 
-### Requirement 3: Performance and Scalability
+### Requirement 2: Color-Coded Rating Badges
 
-**User Story:** As a user, I want the browse page to load quickly and handle large catalogs smoothly, so that I don't experience lag or slow performance.
-
-#### Acceptance Criteria
-
-1. THE Browse Page SHALL implement pagination or infinite scroll displaying 24 anime items initially
-2. WHEN a user applies filters or search, THE Browse Page SHALL update the URL with query parameters for shareable links
-3. THE Browse Page SHALL load anime images with blur placeholders and priority loading for above-the-fold content
-4. WHEN a user navigates back using browser history, THE Browse Page SHALL restore the previous filter state from URL params
-5. THE filtering and sorting operations SHALL complete within 100ms for smooth user experience
-
-### Requirement 4: Engagement Features
-
-**User Story:** As a user, I want to discover trending anime and get personalized suggestions, so that I stay engaged and find content I'll enjoy.
+**User Story:** As a user browsing anime, I want rating badges to use distinct, meaningful colors, so that I can quickly identify which aspect of an anime is being rated.
 
 #### Acceptance Criteria
 
-1. THE Browse Page SHALL display a "Trending Now" section at the top showing anime with most recent watchlist additions
-2. WHEN displaying anime cards, THE Browse Page SHALL show social proof indicators (e.g., "X people watching")
-3. WHEN no results match the current filters, THE Browse Page SHALL display suggested anime based on popular genres instead of just an error message
-4. THE Browse Page SHALL track which anime appear in "Trending Now" based on watchlist activity from the last 7 days
-5. THE empty state SHALL include a "Clear Filters" button and show at least 3 suggested anime
+1. THE Site Rating badge SHALL use gold color (#C8A34E)
+2. THE Visual rating badge SHALL use pink color (#FF6B9D)
+3. THE Music rating badge SHALL use purple color (#9D4EDD)
+4. THE Story rating badge SHALL use cyan color (#06B6D4)
+5. THE Character rating badge SHALL use orange color (#F59E0B)
+6. THE rating badges SHALL maintain sufficient contrast for readability (WCAG AA minimum)
+7. THE rating badge colors SHALL be consistent across all pages (homepage, browse, detail)
+8. THE Badge component SHALL accept a category prop to determine color
 
-### Requirement 5: Conversion and Data Capture
+### Requirement 3: Mobile-First Touch Targets
 
-**User Story:** As a business stakeholder, I want to convert browsers into engaged users and capture behavioral data, so that we can improve recommendations and drive revenue.
-
-#### Acceptance Criteria
-
-1. THE Browse Page SHALL include "Watch Now" buttons on anime cards that link to streaming platforms
-2. THE Browse Page SHALL track filter usage, search queries, and sort preferences using analytics
-3. WHEN a user adds 3 or more anime to their watchlist, THE Browse Page SHALL display a newsletter signup prompt
-4. THE Browse Page SHALL implement error boundaries to gracefully handle API failures without crashing
-5. THE Browse Page SHALL log user interactions (filter clicks, search queries, watchlist adds) for future recommendation engine
-
-### Requirement 6: Mobile Optimization
-
-**User Story:** As a mobile user, I want the browse page to work smoothly on my phone with touch-friendly controls, so that I can browse comfortably on any device.
+**User Story:** As a mobile user, I want all interactive elements to be easy to tap accurately, so that I don't accidentally tap the wrong thing or struggle to interact with the interface.
 
 #### Acceptance Criteria
 
-1. THE Browse Page SHALL be fully functional on screen sizes from 320px to 1920px wide
-2. THE filter pills SHALL have minimum 44px touch targets for mobile accessibility
-3. THE sticky search bar SHALL remain accessible and not overlap content on mobile
-4. THE anime grid SHALL display 1 column on mobile, 2 on tablet, 3-4 on desktop
-5. THE page SHALL not require horizontal scrolling on any supported screen size
+1. THE filter pills SHALL have a minimum touch target size of 44x44 pixels
+2. THE sort buttons SHALL have a minimum touch target size of 44x44 pixels
+3. THE watchlist buttons SHALL have a minimum touch target size of 44x44 pixels
+4. THE interactive elements SHALL have adequate spacing between them (minimum 8px gap)
+5. THE text within buttons SHALL be readable at mobile sizes (minimum 14px font size)
+6. THE anime cards SHALL be tappable across their entire surface area
+7. THE touch targets SHALL provide visual feedback on tap (active state)
 
-### Requirement 7: Accessibility and Error Handling
+### Requirement 4: Lazy Load Anime Cover Images
 
-**User Story:** As a user relying on assistive technology, I want the browse page to be fully accessible, so that I can navigate and use all features effectively.
+**User Story:** As a user on a mobile connection, I want the browse page to load quickly, so that I don't waste data or wait unnecessarily for images to load.
 
 #### Acceptance Criteria
 
-1. THE Browse Page SHALL include ARIA labels on all interactive filter buttons and controls
-2. THE Browse Page SHALL support full keyboard navigation for all filtering and sorting actions
-3. WHEN an API error occurs, THE Browse Page SHALL display a user-friendly error message with retry option
-4. THE Browse Page SHALL maintain focus management when filters update content
-5. THE Browse Page SHALL provide screen reader announcements when filter results update
+1. THE anime cover images SHALL use Next.js Image component with loading="lazy"
+2. THE images SHALL display blur placeholders while loading
+3. THE images SHALL be optimized for their display size (responsive srcset)
+4. THE images above the fold (first 4-6 cards) SHALL load immediately (loading="eager")
+5. THE images below the fold SHALL load as the user scrolls near them
+6. WHEN an image fails to load, THE System SHALL display a fallback placeholder
+7. THE image optimization SHALL reduce initial page load by at least 40%
+
+### Requirement 5: Clear Visual Hierarchy on Browse Page
+
+**User Story:** As a user, I want the browse page to clearly communicate what's happening with my filters and search, so that I understand the results I'm seeing.
+
+#### Acceptance Criteria
+
+1. THE results count SHALL be prominently displayed (e.g., "Showing 5 of 10 anime")
+2. THE active filter pills SHALL have high contrast styling distinct from inactive pills
+3. THE active sort button SHALL be clearly highlighted with color and/or border
+4. WHEN no results match the filters, THE System SHALL display a clear "No anime found" message with suggestions
+5. WHEN filters are applied, THE System SHALL provide a "Clear all filters" button
+6. THE filter sections SHALL have clear visual separation (borders, spacing, or backgrounds)
+7. THE page sections SHALL follow a clear hierarchy: Title → Search → Filters → Results Count → Grid
+8. THE empty state SHALL include helpful messaging (e.g., "Try removing some filters" or "Browse all anime")

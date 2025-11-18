@@ -91,8 +91,8 @@ export function TrendingAnimeSection({ allAnime }: TrendingAnimeSectionProps) {
             msOverflowStyle: 'none',
           }}
         >
-          {trendingAnime.map(anime => (
-            <TrendingAnimeCard key={anime.id} anime={anime} />
+          {trendingAnime.map((anime, index) => (
+            <TrendingAnimeCard key={anime.id} anime={anime} index={index} />
           ))}
         </div>
 
