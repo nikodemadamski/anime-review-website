@@ -1,6 +1,6 @@
 'use client';
 
-import { useMemo } from 'react';
+import { useMemo, useEffect, useState } from 'react';
 import { useCategoryFilter } from '@/hooks/useCategoryFilter';
 import { TopRatedGrid } from './TopRatedGrid';
 import { FeaturedAnimeCard } from './FeaturedAnimeCard';
@@ -12,6 +12,11 @@ interface FilteredContentProps {
 
 export function FilteredContent({ allAnime }: FilteredContentProps) {
   const { activeCategory } = useCategoryFilter();
+  const [mounted, setMounted] = useState(false);
+
+  useEffect(() => {
+    setMounted(true);
+  }, []);
 
   // Filter and sort anime based on active category (default to overall/site rating)
   const { featuredAnime, gridAnime } = useMemo(() => {
@@ -30,6 +35,19 @@ export function FilteredContent({ allAnime }: FilteredContentProps) {
       gridAnime: sorted.slice(1, 7), // Next 6 anime
     };
   }, [allAnime, activeCategory]);
+
+  // Prevent hydration mismatch
+  if (!mounted) {
+    const sorted = [...allAnime].sort((a, b) => b.ratings.site - a.ratings.site);
+    return (
+      <>
+        <div className="mb-6">
+          <FeaturedAnimeCard anime={sorted[0]} rank={1} />
+        </div>
+        <TopRatedGrid anime={sorted.slice(1, 7)} />
+      </>
+    );
+  }
 
   return (
     <>

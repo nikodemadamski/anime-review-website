@@ -7,7 +7,7 @@ import { type Anime, type AnimeListItem } from '@/types';
 const CSV_FILE_PATH = path.join(process.cwd(), 'src', 'data', 'anime-2025.csv');
 
 // Load reviews data
-const REVIEWS_CSV_PATH = path.join(process.cwd(), 'src', 'data', 'jikan-reviews.csv');
+const REVIEWS_CSV_PATH = path.join(process.cwd(), 'src', 'data', 'jikan_reviews.csv');
 let reviewsData: Map<string, any> | null = null;
 
 async function loadReviewsData(): Promise<Map<string, any>> {
@@ -125,10 +125,7 @@ function transformAnimeRow(row: any, index: number, reviewsMap: Map<string, any>
 // Read and parse CSV from local file
 async function fetchGitHubCSV(): Promise<Anime[]> {
   try {
-    console.log('Reading CSV from:', CSV_FILE_PATH);
     const csvText = await fs.readFile(CSV_FILE_PATH, 'utf-8');
-    console.log('CSV text length:', csvText.length);
-
     const reviewsMap = await loadReviewsData();
     
     return new Promise((resolve, reject) => {
@@ -138,10 +135,6 @@ async function fetchGitHubCSV(): Promise<Anime[]> {
         complete: (results) => {
           try {
             const animeData = results.data.map((row, index) => transformAnimeRow(row, index, reviewsMap));
-            console.log('Parsed anime count:', animeData.length);
-            if (animeData.length > 0) {
-              console.log('Sample anime:', animeData[0]);
-            }
             resolve(animeData);
           } catch (error) {
             console.error('Error transforming anime data:', error);

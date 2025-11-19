@@ -12,7 +12,10 @@
     "validate-images": "ts-node --project tsconfig.scripts.json scripts/validate-character-images.ts",
     "fetch-images": "ts-node --project tsconfig.scripts.json scripts/fetch-character-images.ts",
     "update-images": "ts-node --project tsconfig.scripts.json scripts/update-character-images.ts",
-    "fetch-trending": "ts-node --project tsconfig.scripts.json scripts/fetch-trending.ts"
+    "fetch-trending": "ts-node --project tsconfig.scripts.json scripts/fetch-trending.ts",
+    "update-trending": "ts-node --project tsconfig.scripts.json scripts/update-trending.ts",
+    "update-data": "ts-node --project tsconfig.scripts.json scripts/update-data.ts",
+    "collect-covers": "ts-node --project tsconfig.scripts.json scripts/collect-anime-covers.ts"
   },
   "dependencies": {
     "@types/papaparse": "^5.3.16",

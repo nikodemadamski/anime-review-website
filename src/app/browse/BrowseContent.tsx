@@ -712,11 +712,11 @@ export function BrowseContent() {
                 {trendingAnime.slice(0, 15).map((anime) => {
                   const animeLink = getTrendingAnimeLink(anime, allAnime);
                   return (
-                  <Link
-                    key={anime.id}
-                    href={animeLink}
-                    className="flex-shrink-0 w-48 snap-start group"
-                  >
+                    <Link
+                      key={anime.id}
+                      href={animeLink}
+                      className="flex-shrink-0 w-48 snap-start group"
+                    >
                     <div className="relative h-64 rounded-xl overflow-hidden mb-2 shadow-lg transition-transform duration-300 group-hover:scale-105">
                       {/* Trending Badge */}
                       <div className="absolute top-2 left-2 z-10">
@@ -757,14 +757,14 @@ export function BrowseContent() {
                       </div>
                     </div>
 
-                    {/* Title */}
-                    <h3 
-                      className="font-bold text-sm line-clamp-2 group-hover:underline"
-                      style={{ color: 'var(--foreground)' }}
-                    >
-                      {anime.title}
-                    </h3>
-                  </Link>
+                      {/* Title */}
+                      <h3 
+                        className="font-bold text-sm line-clamp-2 group-hover:underline"
+                        style={{ color: 'var(--foreground)' }}
+                      >
+                        {anime.title}
+                      </h3>
+                    </Link>
                   );
                 })}
               </div>

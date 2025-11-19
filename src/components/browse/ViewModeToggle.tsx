@@ -17,7 +17,7 @@ const ViewModeToggle: React.FC<ViewModeToggleProps> = ({ currentMode, onChange }
 
   return (
     <div 
-      className="flex gap-2 mb-4 md:hidden" 
+      className="flex gap-2 mb-4" 
       role="group" 
       aria-label="View mode toggle"
     >
