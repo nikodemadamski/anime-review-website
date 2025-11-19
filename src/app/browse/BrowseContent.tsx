@@ -910,8 +910,8 @@ export function BrowseContent() {
       />
 
       {/* Anime Display - Large View, List View, or Grid */}
-      {/* On mobile: respect view mode. On desktop: always use grid */}
-      {isMobile && viewMode === 'large' ? (
+      {/* Respect view mode on all devices */}
+      {viewMode === 'large' ? (
         <div 
           className="flex flex-col gap-6 transition-opacity transition-transform duration-200 ease-in-out animate-fade-in"
           style={{ willChange: 'opacity, transform' }}
@@ -931,7 +931,7 @@ export function BrowseContent() {
             />
           ))}
         </div>
-      ) : isMobile && viewMode === 'list' ? (
+      ) : viewMode === 'list' ? (
         <div 
           className="flex flex-col gap-2 transition-opacity transition-transform duration-200 ease-in-out animate-fade-in"
           style={{ willChange: 'opacity, transform' }}
@@ -953,13 +953,13 @@ export function BrowseContent() {
         </div>
       ) : (
         <div 
-          className={`grid ${isMobile && viewMode === 'grid' ? 'grid-cols-2 gap-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'} transition-opacity transition-transform duration-200 ease-in-out animate-fade-in`}
+          className={`grid ${viewMode === 'grid' ? 'grid-cols-2 gap-3' : 'grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-4'} transition-opacity transition-transform duration-200 ease-in-out animate-fade-in`}
           style={{ willChange: 'opacity, transform' }}
           role="list"
           aria-label="Anime results"
         >
           {paginatedAnime.map((anime, index) => {
-            const isGridView = isMobile && viewMode === 'grid';
+            const isGridView = viewMode === 'grid';
             
             return (
               <Card 

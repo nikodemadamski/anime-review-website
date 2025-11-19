@@ -27,11 +27,13 @@ const ViewModeToggle: React.FC<ViewModeToggleProps> = ({ currentMode, onChange }
         onKeyDown={(e) => handleKeyDown(e, 'large')}
         aria-label="Large view - one anime per screen"
         aria-pressed={currentMode === 'large'}
-        className={`flex-1 h-11 py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 ${
-          currentMode === 'large' 
-            ? 'bg-accent text-white' 
-            : 'bg-card-background border-2 border-border hover:border-accent/50'
-        }`}
+        style={{
+          backgroundColor: currentMode === 'large' ? 'var(--accent)' : 'var(--card-background)',
+          color: currentMode === 'large' ? '#FFFFFF' : 'var(--foreground)',
+          borderWidth: '2px',
+          borderColor: currentMode === 'large' ? 'var(--accent)' : 'var(--border)',
+        }}
+        className="flex-1 h-11 py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 hover:opacity-80"
       >
         {/* Large view icon - single square */}
         <svg 
@@ -61,11 +63,13 @@ const ViewModeToggle: React.FC<ViewModeToggleProps> = ({ currentMode, onChange }
         onKeyDown={(e) => handleKeyDown(e, 'grid')}
         aria-label="Grid view - four anime per screen"
         aria-pressed={currentMode === 'grid'}
-        className={`flex-1 h-11 py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 ${
-          currentMode === 'grid' 
-            ? 'bg-accent text-white' 
-            : 'bg-card-background border-2 border-border hover:border-accent/50'
-        }`}
+        style={{
+          backgroundColor: currentMode === 'grid' ? 'var(--accent)' : 'var(--card-background)',
+          color: currentMode === 'grid' ? '#FFFFFF' : 'var(--foreground)',
+          borderWidth: '2px',
+          borderColor: currentMode === 'grid' ? 'var(--accent)' : 'var(--border)',
+        }}
+        className="flex-1 h-11 py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 hover:opacity-80"
       >
         {/* Grid view icon - 2x2 grid */}
         <svg 
@@ -90,11 +94,13 @@ const ViewModeToggle: React.FC<ViewModeToggleProps> = ({ currentMode, onChange }
         onKeyDown={(e) => handleKeyDown(e, 'list')}
         aria-label="List view - compact list with all ratings"
         aria-pressed={currentMode === 'list'}
-        className={`flex-1 h-11 py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 ${
-          currentMode === 'list' 
-            ? 'bg-accent text-white' 
-            : 'bg-card-background border-2 border-border hover:border-accent/50'
-        }`}
+        style={{
+          backgroundColor: currentMode === 'list' ? 'var(--accent)' : 'var(--card-background)',
+          color: currentMode === 'list' ? '#FFFFFF' : 'var(--foreground)',
+          borderWidth: '2px',
+          borderColor: currentMode === 'list' ? 'var(--accent)' : 'var(--border)',
+        }}
+        className="flex-1 h-11 py-3 rounded-lg font-medium transition-all flex items-center justify-center gap-2 hover:opacity-80"
       >
         {/* List view icon - three horizontal lines */}
         <svg 
