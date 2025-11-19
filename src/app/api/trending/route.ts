@@ -25,6 +25,7 @@ export async function GET() {
 
     const anime = result.data.map((row: any) => ({
       id: String(row.id),
+      mal_id: parseInt(row.id) || 0, // MAL ID for linking
       title: row.title,
       coverImage: row.coverImage,
       ratings: {

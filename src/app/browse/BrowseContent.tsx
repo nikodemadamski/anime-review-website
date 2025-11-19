@@ -25,6 +25,7 @@ import {
   trackNewsletterSignup,
   trackPageView 
 } from '@/lib/analytics-events';
+import { getTrendingAnimeLink } from '@/lib/match-trending-anime';
 import Image from 'next/image';
 import Link from 'next/link';
 
@@ -94,6 +95,7 @@ export function BrowseContent() {
   const [imageErrors, setImageErrors] = useState<Record<string, boolean>>({});
   const [showTrendingSection, setShowTrendingSection] = useState(true);
   const [trendingAnime, setTrendingAnime] = useState<any[]>([]);
+  const [trendingScrollRef, setTrendingScrollRef] = useState<HTMLDivElement | null>(null);
   const debouncedSearch = useDebounce(searchQuery, 300);
   const { addAnime, removeAnime, isInWatchlist: checkWatchlist } = useWatchlist();
   const [viewMode, updateViewMode] = useViewMode();
@@ -661,17 +663,58 @@ export function BrowseContent() {
           {/* Horizontal Scrolling Cards */}
           {showTrendingSection && (
             <div className="relative">
+              {/* Left Scroll Button */}
+              <button
+                onClick={() => {
+                  if (trendingScrollRef) {
+                    trendingScrollRef.scrollBy({ left: -400, behavior: 'smooth' });
+                  }
+                }}
+                className="absolute left-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+                style={{
+                  backgroundColor: 'var(--card-background)',
+                  color: 'var(--foreground)',
+                }}
+                aria-label="Scroll left"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M15 19l-7-7 7-7" />
+                </svg>
+              </button>
+
+              {/* Right Scroll Button */}
+              <button
+                onClick={() => {
+                  if (trendingScrollRef) {
+                    trendingScrollRef.scrollBy({ left: 400, behavior: 'smooth' });
+                  }
+                }}
+                className="absolute right-0 top-1/2 -translate-y-1/2 z-10 w-10 h-10 rounded-full flex items-center justify-center shadow-lg transition-all hover:scale-110"
+                style={{
+                  backgroundColor: 'var(--card-background)',
+                  color: 'var(--foreground)',
+                }}
+                aria-label="Scroll right"
+              >
+                <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24" strokeWidth={2.5}>
+                  <path strokeLinecap="round" strokeLinejoin="round" d="M9 5l7 7-7 7" />
+                </svg>
+              </button>
+
               <div 
-                className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide"
+                ref={setTrendingScrollRef}
+                className="flex gap-4 overflow-x-auto pb-4 snap-x snap-mandatory scrollbar-hide px-12"
                 style={{
                   scrollbarWidth: 'none',
                   msOverflowStyle: 'none',
                 }}
               >
-                {trendingAnime.slice(0, 15).map((anime) => (
+                {trendingAnime.slice(0, 15).map((anime) => {
+                  const animeLink = getTrendingAnimeLink(anime, allAnime);
+                  return (
                   <Link
                     key={anime.id}
-                    href={`/anime/${anime.id}`}
+                    href={animeLink}
                     className="flex-shrink-0 w-48 snap-start group"
                   >
                     <div className="relative h-64 rounded-xl overflow-hidden mb-2 shadow-lg transition-transform duration-300 group-hover:scale-105">
@@ -722,7 +765,8 @@ export function BrowseContent() {
                       {anime.title}
                     </h3>
                   </Link>
-                ))}
+                  );
+                })}
               </div>
 
               {/* Scroll Indicators */}
