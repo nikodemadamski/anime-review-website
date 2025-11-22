@@ -1,11 +1,11 @@
 'use client';
 
 import Image from 'next/image';
-import { useTheme } from './ThemeProvider';
+import { useTheme } from 'next-themes';
 
 export function HeroLogo() {
   const { theme } = useTheme();
-  
+
   return (
     <div className="flex justify-center mb-6">
       <Image

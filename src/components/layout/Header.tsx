@@ -6,7 +6,7 @@ import Image from 'next/image';
 import { Container, Typography } from '@/components/ui';
 import { cn } from '@/utils/cn';
 import { ThemeToggle } from '@/components/ThemeToggle';
-import { useTheme } from '@/components/ThemeProvider';
+import { useTheme } from 'next-themes';
 import { useMobileMenu } from '@/hooks/useMobileMenu';
 
 interface HeaderProps {
@@ -62,40 +62,37 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       document.removeEventListener('keydown', handleEscKey);
     };
   }, [mobileMenuOpen, closeMobileMenu]);
-  
+
   return (
-    <header 
-      className={cn('sticky top-0 z-50 backdrop-blur-md border-b', className)}
-      style={{
-        backgroundColor: 'var(--header-bg)',
-        borderColor: 'var(--header-divider)',
-      }}
+    <header
+      className={cn(
+        'sticky top-0 z-50 backdrop-blur-md border-b transition-colors duration-300',
+        'bg-white/80 border-slate-200', // Light mode
+        'dark:bg-slate-900/80 dark:border-slate-800', // Dark mode
+        className
+      )}
     >
       <Container>
         <div className="flex items-center justify-between h-16">
           {/* Logo */}
-          <Link 
-            href="/" 
-            className="flex items-center space-x-3 hover:opacity-80 transition-opacity"
+          <Link
+            href="/"
+            className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            <Image
-              src={theme === 'dark' ? '/logo-dark.png' : '/logo-light.png'}
-              alt="Anime Review Logo"
-              width={40}
-              height={40}
-              className="rounded-xl"
-            />
-            <Typography variant="h5" component="span" className="hidden sm:block font-bold" style={{ color: 'var(--foreground)' }}>
-              Anime Review
+            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-red-500/20">
+              H
+            </div>
+            <Typography variant="h5" component="span" className="hidden sm:block font-black tracking-tight" style={{ color: 'var(--foreground)' }}>
+              Haki
             </Typography>
           </Link>
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-8">
-            <Link 
-              href="/" 
+            <Link
+              href="/"
               className="transition-colors font-medium"
-              style={{ 
+              style={{
                 color: 'var(--secondary)',
               }}
               onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -103,10 +100,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             >
               Home
             </Link>
-            <Link 
-              href="/browse" 
+            <Link
+              href="/browse"
               className="transition-colors font-medium"
-              style={{ 
+              style={{
                 color: 'var(--secondary)',
               }}
               onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -114,17 +111,17 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             >
               Browse All
             </Link>
-            <Link 
-              href="/quiz" 
+            <Link
+              href="/quiz"
               className="transition-colors font-medium flex items-center gap-1"
-              style={{ 
+              style={{
                 color: 'var(--secondary)',
               }}
               onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
               onMouseLeave={(e) => e.currentTarget.style.color = 'var(--secondary)'}
             >
               <span>🎭 Quiz</span>
-              <span 
+              <span
                 className="px-1.5 py-0.5 rounded text-xs font-bold animate-pulse"
                 style={{
                   backgroundColor: '#FF6B9D',
@@ -134,10 +131,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                 NEW
               </span>
             </Link>
-            <Link 
-              href="/watchlist" 
+            <Link
+              href="/watchlist"
               className="transition-colors font-medium flex items-center gap-1.5"
-              style={{ 
+              style={{
                 color: 'var(--secondary)',
               }}
               onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -145,7 +142,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             >
               <span>❤️ Watchlist</span>
               {watchlistCount > 0 && (
-                <span 
+                <span
                   className="px-2 py-0.5 rounded-full text-xs font-bold"
                   style={{
                     backgroundColor: '#FF6B9D',
@@ -156,10 +153,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                 </span>
               )}
             </Link>
-            <Link 
-              href="/contact" 
+            <Link
+              href="/contact"
               className="transition-colors font-medium"
-              style={{ 
+              style={{
                 color: 'var(--secondary)',
               }}
               onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -173,7 +170,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           {/* Mobile menu */}
           <div className="md:hidden flex items-center gap-2">
             <ThemeToggle />
-            <button 
+            <button
               onClick={openMobileMenu}
               className="p-2 rounded-lg transition-colors"
               style={{ color: 'var(--foreground)' }}
@@ -192,7 +189,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       {mobileMenuOpen && (
         <>
           {/* Backdrop */}
-          <div 
+          <div
             className="fixed inset-0 bg-black/50 backdrop-blur-sm md:hidden transition-opacity duration-200 ease-out"
             style={{ zIndex: 40 }}
             onClick={closeMobileMenu}
@@ -205,9 +202,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               }
             }}
           />
-          
+
           {/* Slide-in Menu */}
-          <div 
+          <div
             className="fixed right-0 w-[280px] md:hidden shadow-2xl transition-transform duration-300 ease-out"
             style={{
               backgroundColor: 'var(--card-background)',
@@ -221,7 +218,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             aria-label="Mobile navigation menu"
           >
             {/* Menu Header */}
-            <div 
+            <div
               className="flex items-center justify-between p-4 border-b"
               style={{ borderColor: 'var(--border)' }}
             >
@@ -282,7 +279,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                   <span className="text-xl">🎭</span>
                   <span>Personality Quiz</span>
                 </div>
-                <span 
+                <span
                   className="px-2 py-0.5 rounded text-xs font-bold animate-pulse"
                   style={{
                     backgroundColor: '#FF6B9D',
@@ -308,7 +305,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
                   <span>❤️ Watchlist</span>
                 </div>
                 {watchlistCount > 0 && (
-                  <span 
+                  <span
                     className="px-2 py-0.5 rounded-full text-xs font-bold"
                     style={{
                       backgroundColor: '#FF6B9D',
@@ -336,7 +333,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </nav>
 
             {/* Theme Toggle in Menu */}
-            <div 
+            <div
               className="absolute bottom-0 left-0 right-0 p-4 border-t"
               style={{ borderColor: 'var(--border)' }}
             >

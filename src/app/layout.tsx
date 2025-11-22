@@ -5,9 +5,9 @@ import { ThemeProvider } from "@/components/ThemeProvider";
 import { ImageUpgradeButton } from "@/components/dev/ImageUpgradeButton";
 
 export const metadata: Metadata = {
-  title: "Anime Review Website | Discover the Best Anime of 2025",
-  description: "Discover and review the best anime of 2025. Rate shows across Visual, Music, Story, and Character categories to help fellow anime fans find their next favorite series.",
-  keywords: "anime, reviews, 2025, ratings, visual, music, story, character, streaming",
+  title: "Haki | The Ultimate Anime Rating System",
+  description: "Haki is the definitive way to rate and discover anime. Analyze shows through our four pillars: Visuals, Music, Story, and Characters.",
+  keywords: "haki, anime, reviews, ratings, visual, music, story, character, one piece",
 };
 
 export default function RootLayout({
@@ -17,21 +17,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className="scroll-smooth" suppressHydrationWarning>
-      <head>
-        <script
-          dangerouslySetInnerHTML={{
-            __html: `
-              try {
-                const theme = localStorage.getItem('theme') || 
-                  (window.matchMedia('(prefers-color-scheme: dark)').matches ? 'dark' : 'light');
-                if (theme === 'dark') {
-                  document.documentElement.classList.add('dark');
-                }
-              } catch (e) {}
-            `,
-          }}
-        />
-      </head>
+      <head />
       <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider>
           <Layout>

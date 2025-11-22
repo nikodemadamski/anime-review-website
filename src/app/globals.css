@@ -10,149 +10,76 @@ html {
 /* Prevent browser zoom from affecting layout */
 @media screen and (min-width: 1920px) {
   html {
-    font-size: 16px; /* Keep consistent on large monitors */
+    font-size: 16px;
   }
 }
 
 @media screen and (min-width: 1440px) and (max-width: 1919px) {
   html {
-    font-size: 16px; /* Standard for most laptops */
+    font-size: 16px;
   }
 }
 
 @media screen and (min-width: 1024px) and (max-width: 1439px) {
   html {
-    font-size: 15px; /* Slightly smaller for smaller laptops */
+    font-size: 15px;
   }
 }
 
 :root {
-  /* Earthy color palette - Light Mode - EXACT HEX CODES */
-  --background: #FAF8F4;
-  --foreground: #2E2A25;
-  --secondary: #5A564E;
-  --muted: #8A867E;
-  --accent: #6D8A78;
-  --accent-hover: #4F6E62;
-  --border: #E0D8CC;
-  --card-background: #F7F3EC;
-  --text-block: #F2EDE6;
-  --header-bg: #EDE6DB;
-  --header-text: #2B2824;
-  --header-divider: #D3C8BA;
-  --footer-bg: #DDD4C6;
-  --footer-text: #3A3530;
-  --footer-link: #6D8A78;
-  --btn-primary: #8B6F47;
-  --btn-primary-text: #FFFFFF;
-  --btn-secondary: #EDE6DB;
-  --btn-secondary-text: #2E2A25;
-  --tag-bg: #E5D9C9;
+  /* 2025 Modern Palette - Light Mode (Clean/Tech) */
+  --background: #F8FAFC;
+  --foreground: #0F172A;
+  --secondary: #64748B;
+  --muted: #94A3B8;
   
-  /* Rating colors - Your specified colors */
-  --rating-overall: #C8A34E;
-  --rating-story: #C26A4A;
-  --rating-art: #708B4B;
-  --rating-music: #4E6B5E;
-  --rating-characters: #B77A50;
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(255, 255, 255, 0.7);
+  --glass-border: rgba(255, 255, 255, 0.5);
+  --glass-shadow: 0 8px 32px 0 rgba(31, 38, 135, 0.1);
   
-  /* Vibrant contrasting colors for category badges - POP colors! */
-  --category-visual: #FF6B9D;
-  --category-music: #9D4EDD;
-  --category-story: #06B6D4;
-  --category-character: #F59E0B;
+  /* Brand Colors */
+  --accent: #6366F1; /* Indigo */
+  --accent-glow: rgba(99, 102, 241, 0.5);
   
-  /* Brand colors */
-  --brand-earth: #8B6F47;
-  --brand-olive: #556B2F;
-  --brand-sand: #D9CBB6;
-  --brand-terracotta: #C26A4A;
-  --brand-moss: #A8B098;
+  /* Rating Colors (Vibrant) */
+  --rating-visual: #EC4899; /* Pink */
+  --rating-music: #8B5CF6; /* Violet */
+  --rating-story: #06B6D4; /* Cyan */
+  --rating-character: #F59E0B; /* Amber */
   
-  --success: #708B4B;
-  --warning: #C8A34E;
-  --error: #C26A4A;
-  
-  /* Apple spacing system (8px grid) */
-  --spacing-xs: 0.25rem;   /* 4px */
-  --spacing-sm: 0.5rem;    /* 8px */
-  --spacing-md: 1rem;      /* 16px */
-  --spacing-lg: 1.5rem;    /* 24px */
-  --spacing-xl: 2rem;      /* 32px */
-  --spacing-2xl: 3rem;     /* 48px */
-  --spacing-3xl: 4rem;     /* 64px */
-  
-  /* Apple typography scale */
-  --text-xs: 0.75rem;      /* 12px */
-  --text-sm: 0.875rem;     /* 14px */
-  --text-base: 1rem;       /* 16px */
-  --text-lg: 1.125rem;     /* 18px */
-  --text-xl: 1.25rem;      /* 20px */
-  --text-2xl: 1.5rem;      /* 24px */
-  --text-3xl: 1.875rem;    /* 30px */
-  --text-4xl: 2.25rem;     /* 36px */
-  
-  /* Apple border radius */
-  --radius-sm: 0.375rem;   /* 6px */
-  --radius-md: 0.5rem;     /* 8px */
-  --radius-lg: 0.75rem;    /* 12px */
-  --radius-xl: 1rem;       /* 16px */
-  
-  /* Apple shadows */
-  --shadow-sm: 0 1px 3px rgba(0, 0, 0, 0.1);
-  --shadow-md: 0 4px 6px rgba(0, 0, 0, 0.07);
-  --shadow-lg: 0 10px 15px rgba(0, 0, 0, 0.1);
-  --shadow-xl: 0 20px 25px rgba(0, 0, 0, 0.1);
+  /* UI Elements */
+  --card-bg: #FFFFFF;
+  --border: #E2E8F0;
+  --input-bg: #F1F5F9;
 }
 
-
-
 .dark {
-  /* Earthy color palette - Dark Mode - LIGHTENED FOR BETTER CONTRAST */
-  --background: #2A2520;
-  --foreground: #E6E0D7;
-  --secondary: #B3ABA1;
-  --muted: #898278;
-  --accent: #9BC5AC;
-  --accent-hover: #B8D8C5;
-  --border: #3D3832;
-  --card-background: #342F2A;
-  --text-block: #1E1C19;
-  --header-bg: #2A2520;
-  --header-text: #EEE7DC;
-  --header-divider: #3D3832;
-  --footer-bg: #2A2520;
-  --footer-text: #CFC7BD;
-  --footer-link: #9BC5AC;
-  --btn-primary: #8B6F47;
-  --btn-primary-text: #F5EFE7;
-  --btn-secondary: #2A2824;
-  --btn-secondary-text: #E6E0D7;
-  --tag-bg: #463F36;
+  /* 2025 Modern Palette - Dark Mode (Midnight/Neon) */
+  --background: #030712; /* Deepest Blue/Black */
+  --foreground: #F8FAFC;
+  --secondary: #94A3B8;
+  --muted: #64748B;
   
-  /* Rating colors - Your specified colors */
-  --rating-overall: #D9B960;
-  --rating-story: #D98161;
-  --rating-art: #89A65A;
-  --rating-music: #6D8F80;
-  --rating-characters: #CF8C61;
+  /* Glassmorphism Variables */
+  --glass-bg: rgba(15, 23, 42, 0.6);
+  --glass-border: rgba(255, 255, 255, 0.1);
+  --glass-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.37);
   
-  /* Vibrant contrasting colors for category badges - POP colors! */
-  --category-visual: #FF6B9D;
-  --category-music: #9D4EDD;
-  --category-story: #06B6D4;
-  --category-character: #F59E0B;
+  /* Brand Colors */
+  --accent: #818CF8; /* Indigo-400 */
+  --accent-glow: rgba(129, 140, 248, 0.3);
   
-  /* Brand colors */
-  --brand-earth: #8B6F47;
-  --brand-olive: #556B2F;
-  --brand-sand: #D9CBB6;
-  --brand-terracotta: #C26A4A;
-  --brand-moss: #A8B098;
+  /* Rating Colors (Neon) */
+  --rating-visual: #F472B6; /* Pink-400 */
+  --rating-music: #A78BFA; /* Violet-400 */
+  --rating-story: #22D3EE; /* Cyan-400 */
+  --rating-character: #FBBF24; /* Amber-400 */
   
-  --success: #89A65A;
-  --warning: #D9B960;
-  --error: #D98161;
+  /* UI Elements */
+  --card-bg: #111827;
+  --border: #1E293B;
+  --input-bg: #1E293B;
 }
 
 * {
@@ -166,26 +93,43 @@ html {
 body {
   background: var(--background);
   color: var(--foreground);
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, sans-serif;
+  font-family: 'Inter', -apple-system, BlinkMacSystemFont, sans-serif;
   line-height: 1.6;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  overflow-x: hidden; /* Prevent horizontal scroll from animations */
 }
 
-/* Apple-style focus states */
-*:focus {
-  outline: 2px solid var(--accent);
-  outline-offset: 2px;
+/* Modern Utilities */
+.glass-panel {
+  background: var(--glass-bg);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  border: 1px solid var(--glass-border);
+  box-shadow: var(--glass-shadow);
 }
 
-/* Smooth transitions for interactive elements */
-button, a, [role="button"] {
-  transition: all 0.2s cubic-bezier(0.25, 0.46, 0.45, 0.94);
+.text-gradient {
+  background: linear-gradient(135deg, var(--rating-visual), var(--rating-music));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
 }
 
-/* Custom scrollbar (webkit) */
+.text-gradient-gold {
+  background: linear-gradient(135deg, #FBBF24, #F59E0B);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.glow-text {
+  text-shadow: 0 0 20px var(--accent-glow);
+}
+
+/* Custom Scrollbar */
 ::-webkit-scrollbar {
-  width: 8px;
+  width: 6px;
 }
 
 ::-webkit-scrollbar-track {
@@ -194,152 +138,26 @@ button, a, [role="button"] {
 
 ::-webkit-scrollbar-thumb {
   background: var(--secondary);
-  border-radius: 4px;
+  border-radius: 10px;
 }
 
 ::-webkit-scrollbar-thumb:hover {
-  background: var(--foreground);
+  background: var(--accent);
 }
 
-/* Animation keyframes */
-@keyframes fadeInUp {
-  from {
-    opacity: 0;
-    transform: translateY(20px);
-  }
-  to {
-    opacity: 1;
-    transform: translateY(0);
-  }
+/* Animation Utilities */
+.hover-lift {
+  transition: transform 0.3s cubic-bezier(0.34, 1.56, 0.64, 1);
 }
 
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
+.hover-lift:hover {
+  transform: translateY(-5px);
 }
 
-@keyframes slideInRight {
-  from {
-    transform: translateX(100%);
-  }
-  to {
-    transform: translateX(0);
-  }
+.hover-glow {
+  transition: box-shadow 0.3s ease;
 }
 
-.animate-fade-in-up {
-  animation: fadeInUp 0.6s ease-out;
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.2s ease-out;
-}
-
-.animate-slide-in-right {
-  animation: slideInRight 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-@keyframes shimmer {
-  0% {
-    transform: translateX(-100%);
-  }
-  100% {
-    transform: translateX(100%);
-  }
-}
-
-.shimmer {
-  animation: shimmer 1.5s infinite;
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-.animate-slide-up {
-  animation: slideUp 0.3s cubic-bezier(0.25, 0.46, 0.45, 0.94);
-}
-
-/* Hide scrollbar utility */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
-}
-
-/* Screen reader only utility */
-.sr-only {
-  position: absolute;
-  width: 1px;
-  height: 1px;
-  padding: 0;
-  margin: -1px;
-  overflow: hidden;
-  clip: rect(0, 0, 0, 0);
-  white-space: nowrap;
-  border-width: 0;
-}
-
-/* Animation classes for modals and transitions */
-@keyframes fadeIn {
-  from {
-    opacity: 0;
-  }
-  to {
-    opacity: 1;
-  }
-}
-
-@keyframes slideUp {
-  from {
-    transform: translateY(100%);
-  }
-  to {
-    transform: translateY(0);
-  }
-}
-
-@keyframes scaleIn {
-  from {
-    opacity: 0;
-    transform: translate(-50%, -50%) scale(0.95);
-  }
-  to {
-    opacity: 1;
-    transform: translate(-50%, -50%) scale(1);
-  }
-}
-
-.animate-fade-in {
-  animation: fadeIn 0.2s ease-out;
-}
-
-.animate-slide-up {
-  animation: slideUp 0.3s ease-out;
-}
-
-.animate-scale-in {
-  animation: scaleIn 0.2s ease-out;
-}
-
-/* Hide scrollbar for horizontal scrolling */
-.scrollbar-hide {
-  -ms-overflow-style: none;
-  scrollbar-width: none;
-}
-
-.scrollbar-hide::-webkit-scrollbar {
-  display: none;
+.hover-glow:hover {
+  box-shadow: 0 0 20px var(--accent-glow);
 }
