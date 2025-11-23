@@ -139,7 +139,9 @@ export function TopRatedCategorySection() {
                                                 <div className="flex items-center justify-between">
                                                     <div className={`flex items-center gap-1 font-black text-sm md:text-lg ${activeCatInfo.color}`}>
                                                         <activeCatInfo.icon className="w-3 h-3 md:w-5 md:h-5 fill-current" />
-                                                        {anime.ratings[activeCategory === 'overall' ? 'site' : activeCategory].toFixed(1)}
+                                                        {(activeCategory === 'overall' && anime.malScore)
+                                                            ? anime.malScore.toFixed(2)
+                                                            : anime.ratings[activeCategory === 'overall' ? 'site' : activeCategory].toFixed(1)}
                                                     </div>
                                                 </div>
                                             </div>

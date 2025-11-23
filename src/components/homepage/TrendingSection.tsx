@@ -17,6 +17,7 @@ interface TrendingAnime {
     site: number;
   };
   members?: number;
+  malScore?: number;
 }
 
 const container = {
@@ -164,7 +165,7 @@ export function TrendingSection() {
                     <div className="flex items-center justify-between text-xs md:text-sm text-muted">
                       <div className="flex items-center gap-1 text-yellow-500 font-bold">
                         <Star className="w-3 h-3 fill-current" />
-                        {anime.ratings.site.toFixed(1)}
+                        {anime.malScore ? anime.malScore.toFixed(2) : anime.ratings.site.toFixed(1)}
                       </div>
                       {anime.members && (
                         <div className="flex items-center gap-1">
