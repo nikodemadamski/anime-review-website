@@ -12,7 +12,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import { Star, Eye, Music, BookOpen, Users } from 'lucide-react';
 import { LongCard } from '@/components/mobile/LongCard';
-import { MobileBrowseLayout } from '@/components/mobile/MobileBrowseLayout';
+import { BrowseContainer } from '@/components/mobile/BrowseContainer';
 
 type StatusOption = 'all' | 'airing' | 'finished' | 'upcoming';
 
@@ -186,40 +186,7 @@ export function BrowseContent() {
 
       {/* Mobile View - Dedicated Layout */}
       <div className="md:hidden">
-        <MobileBrowseLayout
-          filters={
-            <BrowseFilters
-              selectedGenres={selectedGenres}
-              toggleGenre={toggleGenre}
-              sortBy={activeCategory}
-              setSortBy={() => { }}
-              statusFilter={statusFilter}
-              setStatusFilter={setStatusFilter}
-              clearFilters={clearFilters}
-            />
-          }
-        >
-          {loading ? (
-            <div className="space-y-4">
-              {[...Array(6)].map((_, i) => (
-                <div key={i} className="h-32 rounded-2xl bg-secondary/10 animate-pulse" />
-              ))}
-            </div>
-          ) : (
-            filteredAnime.map((anime, index) => (
-              <LongCard
-                key={anime.id}
-                id={anime.id}
-                title={anime.title}
-                image={anime.coverImage}
-                score={anime.malScore || anime.ratings.site}
-                rank={index + 1}
-                genres={anime.genres}
-                description={anime.description}
-              />
-            ))
-          )}
-        </MobileBrowseLayout>
+        <BrowseContainer />
       </div>
     </div>
   );

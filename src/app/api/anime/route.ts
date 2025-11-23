@@ -6,7 +6,7 @@ export async function GET(request: Request) {
     const { searchParams } = new URL(request.url);
     const query = searchParams.get('q');
     const limit = searchParams.get('limit');
-    const sortBy = searchParams.get('sortBy') as 'site' | 'visual' | 'music' | 'story' | 'character' || 'site';
+    const sortBy = searchParams.get('sortBy') as 'site' | 'visual' | 'music' | 'story' | 'character' | 'mal' || 'site';
 
     let anime;
 

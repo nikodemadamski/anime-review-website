@@ -228,17 +228,27 @@ export class GitHubDataAccess {
   }
 
   // Get top rated anime with sorting options
-  static async getTopRated(limit: number = 10, sortBy: 'site' | 'visual' | 'music' | 'story' | 'character' = 'site'): Promise<Anime[]> {
+  static async getTopRated(limit: number = 10, sortBy: 'site' | 'visual' | 'music' | 'story' | 'character' | 'mal' = 'site'): Promise<Anime[]> {
     const allAnime = await this.getAllAnime();
     return [...allAnime]
-      .sort((a, b) => b.ratings[sortBy] - a.ratings[sortBy])
+      .sort((a, b) => {
+        if (sortBy === 'mal') {
+          return (b.malScore || 0) - (a.malScore || 0);
+        }
+        return b.ratings[sortBy] - a.ratings[sortBy];
+      })
       .slice(0, limit);
   }
 
   // Get all anime with sorting
-  static async getAllAnimeSorted(sortBy: 'site' | 'visual' | 'music' | 'story' | 'character' = 'site'): Promise<Anime[]> {
+  static async getAllAnimeSorted(sortBy: 'site' | 'visual' | 'music' | 'story' | 'character' | 'mal' = 'site'): Promise<Anime[]> {
     const allAnime = await this.getAllAnime();
-    return [...allAnime].sort((a, b) => b.ratings[sortBy] - a.ratings[sortBy]);
+    return [...allAnime].sort((a, b) => {
+      if (sortBy === 'mal') {
+        return (b.malScore || 0) - (a.malScore || 0);
+      }
+      return b.ratings[sortBy] - a.ratings[sortBy];
+    });
   }
 
   // Clear cache (useful for development)

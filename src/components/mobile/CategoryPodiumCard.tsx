@@ -16,64 +16,52 @@ interface Anime {
 interface CategoryPodiumCardProps {
     category: string;
     items: Anime[];
+    color?: string;
 }
 
-export function CategoryPodiumCard({ category, items }: CategoryPodiumCardProps) {
-    const medals = [
-        { color: 'from-yellow-300 to-yellow-600', shadow: 'shadow-yellow-500/50', label: '1' }, // Gold
-        { color: 'from-slate-300 to-slate-500', shadow: 'shadow-slate-500/50', label: '2' },   // Silver
-        { color: 'from-orange-300 to-orange-600', shadow: 'shadow-orange-500/50', label: '3' }, // Bronze
-    ];
+export function CategoryPodiumCard({ category, items, color = 'bg-primary' }: CategoryPodiumCardProps) {
+    const topAnime = items[0];
+    if (!topAnime) return null;
+
+    const score = topAnime.malScore || topAnime.ratings?.site || 0;
 
     return (
-        <div className="w-full p-5 rounded-[32px] bg-secondary/5 border border-white/5 relative overflow-hidden">
-            {/* Background Blur/Gradient */}
-            <div className="absolute top-0 right-0 w-32 h-32 bg-primary/10 blur-[60px] rounded-full pointer-events-none" />
+        <Link href={`/browse?sort=${category.toLowerCase()}`} className="block relative w-full aspect-[4/3] rounded-2xl overflow-hidden group">
+            {/* Background Image */}
+            <Image
+                src={topAnime.coverImage}
+                alt={topAnime.title}
+                fill
+                className="object-cover transition-transform duration-500 group-hover:scale-110"
+            />
 
-            <div className="flex items-center justify-between mb-4 relative z-10">
-                <h3 className="font-black text-xl tracking-tight">{category}</h3>
-                <Link href={`/browse?genre=${category}`} className="text-xs font-bold text-primary px-3 py-1 rounded-full bg-primary/10">
-                    See All
-                </Link>
+            {/* Overlay */}
+            <div className="absolute inset-0 bg-black/40 group-hover:bg-black/50 transition-colors" />
+            <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-black/20 to-transparent" />
+
+            {/* Content */}
+            <div className="absolute inset-0 p-3 flex flex-col justify-between">
+                {/* Category Badge */}
+                <div className="self-start px-2 py-1 rounded-lg bg-white/20 backdrop-blur-md border border-white/10 text-white text-[10px] font-bold uppercase tracking-wider">
+                    {category}
+                </div>
+
+                {/* Anime Info */}
+                <div>
+                    <div className="flex items-center gap-1 mb-1">
+                        <div className="w-5 h-5 rounded-full bg-yellow-400 flex items-center justify-center text-[10px] font-black text-black shadow-lg shadow-yellow-400/20">
+                            1
+                        </div>
+                        <div className="flex items-center gap-0.5 px-1.5 py-0.5 rounded-md bg-black/40 backdrop-blur-sm border border-white/10">
+                            <Star className="w-2.5 h-2.5 text-yellow-400 fill-current" />
+                            <span className="text-white text-[10px] font-bold">{score.toFixed(1)}</span>
+                        </div>
+                    </div>
+                    <h3 className="text-white font-bold text-sm line-clamp-2 leading-tight">
+                        {topAnime.title}
+                    </h3>
+                </div>
             </div>
-
-            <div className="grid grid-cols-3 gap-3">
-                {items.slice(0, 3).map((anime, index) => {
-                    const medal = medals[index];
-                    const score = anime.malScore || anime.ratings?.site || 0;
-
-                    return (
-                        <Link key={anime.id} href={`/anime/${anime.id}`} className="flex flex-col gap-2 group">
-                            <div className="relative aspect-[3/4] rounded-2xl overflow-hidden shadow-lg transition-transform duration-300 group-active:scale-95">
-                                <Image
-                                    src={anime.coverImage}
-                                    alt={anime.title}
-                                    fill
-                                    className="object-cover"
-                                />
-
-                                {/* Medal Badge */}
-                                <div className={`absolute top-0 left-0 w-7 h-7 rounded-br-xl bg-gradient-to-br ${medal.color} flex items-center justify-center text-white font-black text-xs shadow-lg z-10`}>
-                                    {medal.label}
-                                </div>
-
-                                {/* Gradient Overlay */}
-                                <div className="absolute inset-0 bg-gradient-to-t from-black/60 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity" />
-                            </div>
-
-                            <div className="text-center">
-                                <h4 className="font-bold text-[11px] leading-tight line-clamp-2 h-8 mb-1 text-foreground/90">
-                                    {anime.title}
-                                </h4>
-                                <div className="inline-flex items-center gap-1 px-1.5 py-0.5 rounded-md bg-secondary/10 border border-white/5">
-                                    <Star className="w-3 h-3 text-yellow-500 fill-current" />
-                                    <span className="text-[10px] font-black">{score.toFixed(1)}</span>
-                                </div>
-                            </div>
-                        </Link>
-                    );
-                })}
-            </div>
-        </div>
+        </Link>
     );
 }

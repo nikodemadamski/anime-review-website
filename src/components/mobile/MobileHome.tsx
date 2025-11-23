@@ -17,11 +17,18 @@ export function MobileHome() {
     useEffect(() => {
         async function fetchData() {
             try {
-                const categories = ['Action', 'Romance', 'Fantasy'];
+                // Map display names to API sort keys
+                const categoryMap = {
+                    'Art': 'visual',
+                    'Music': 'music',
+                    'Character': 'character',
+                    'Story': 'story'
+                };
+
                 const promises = [
                     fetch('/api/trending'),
-                    fetch('/api/anime?limit=10&sortBy=site'),
-                    ...categories.map(cat => fetch(`/api/anime?limit=3&sortBy=site&genre=${cat}`))
+                    fetch('/api/anime?limit=10&sortBy=mal'), // Use MAL sort for All Time Best
+                    ...Object.values(categoryMap).map(sortKey => fetch(`/api/anime?limit=3&sortBy=${sortKey}`))
                 ];
 
                 const responses = await Promise.all(promises);
@@ -30,9 +37,11 @@ export function MobileHome() {
                 const topRatedRes = await responses[1].json();
 
                 const catResults: Record<string, any[]> = {};
-                for (let i = 0; i < categories.length; i++) {
+                const catKeys = Object.keys(categoryMap);
+
+                for (let i = 0; i < catKeys.length; i++) {
                     const res = await responses[i + 2].json();
-                    catResults[categories[i]] = res.data || res;
+                    catResults[catKeys[i]] = res.data || res;
                 }
 
                 setTrending(trendingRes.data || trendingRes);
@@ -92,18 +101,32 @@ export function MobileHome() {
                 </section>
             )}
 
-            {/* Category Podiums (Replacing old Trending) */}
-            <section className="space-y-6 px-4">
-                {Object.entries(categoryData).map(([category, items]) => (
-                    <CategoryPodiumCard key={category} category={category} items={items} />
-                ))}
+            {/* Category Podiums (2x2 Scrollable Grid) */}
+            <section>
+                <div className="px-4 flex items-center justify-between mb-3">
+                    <h2 className="font-bold text-xl tracking-tight">Top Categories</h2>
+                </div>
+                {/* 
+                    Grid Layout:
+                    - grid-rows-2: 2 rows fixed
+                    - grid-flow-col: Fills columns first (so items go 1,2 down, then 3,4 next col)
+                    - auto-cols-[minmax(45%,1fr)]: Columns take up ~45% of screen width
+                    - overflow-x-auto: Horizontal scroll
+                */}
+                <div className="grid grid-rows-2 grid-flow-col auto-cols-[minmax(45%,1fr)] gap-3 px-4 pb-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+                    {Object.entries(categoryData).map(([category, items]) => (
+                        <div key={category} className="snap-start h-full">
+                            <CategoryPodiumCard category={category} items={items} />
+                        </div>
+                    ))}
+                </div>
             </section>
 
-            {/* All Time Best (Now using WidgetCard) */}
+            {/* All Time Best (Sorted by MAL Score) */}
             <section>
                 <div className="px-4 flex items-center justify-between mb-3">
                     <h2 className="font-bold text-xl tracking-tight">All Time Best</h2>
-                    <Link href="/browse?sort=site" className="p-1 rounded-full bg-secondary/10 hover:bg-secondary/20 transition-colors">
+                    <Link href="/browse?sort=mal" className="p-1 rounded-full bg-secondary/10 hover:bg-secondary/20 transition-colors">
                         <ChevronRight className="w-5 h-5 text-muted-foreground" />
                     </Link>
                 </div>
