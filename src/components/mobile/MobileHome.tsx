@@ -3,6 +3,7 @@
 import React, { useEffect, useState } from 'react';
 import { WidgetCard } from './WidgetCard';
 import { LongCard } from './LongCard';
+import { CategoryPodiumCard } from './CategoryPodiumCard';
 import { SkeletonGrid } from '@/components/loading/SkeletonGrid';
 import Link from 'next/link';
 import { ChevronRight, Flame, Trophy, Sparkles } from 'lucide-react';
@@ -10,32 +11,34 @@ import { ChevronRight, Flame, Trophy, Sparkles } from 'lucide-react';
 export function MobileHome() {
     const [trending, setTrending] = useState<any[]>([]);
     const [topRated, setTopRated] = useState<any[]>([]);
+    const [categoryData, setCategoryData] = useState<Record<string, any[]>>({});
     const [loading, setLoading] = useState(true);
 
     useEffect(() => {
         async function fetchData() {
             try {
-                const [trendingRes, animeRes] = await Promise.all([
+                const categories = ['Action', 'Romance', 'Fantasy'];
+                const promises = [
                     fetch('/api/trending'),
-                    fetch('/api/anime?limit=10&sortBy=site')
-                ]);
+                    fetch('/api/anime?limit=10&sortBy=site'),
+                    ...categories.map(cat => fetch(`/api/anime?limit=3&sortBy=site&genre=${cat}`))
+                ];
 
-                if (trendingRes.ok && animeRes.ok) {
-                    const trendingData = await trendingRes.json();
-                    const animeData = await animeRes.json();
+                const responses = await Promise.all(promises);
 
-                    const tData = trendingData.data || trendingData;
-                    const aData = animeData.data || animeData;
+                const trendingRes = await responses[0].json();
+                const topRatedRes = await responses[1].json();
 
-                    // Process Trending
-                    const topTrending = (Array.isArray(tData) ? tData : [])
-                        .filter((anime: any) => anime.ratings?.site > 0)
-                        .sort((a: any, b: any) => b.ratings.site - a.ratings.site)
-                        .slice(0, 8);
-
-                    setTrending(topTrending);
-                    setTopRated(Array.isArray(aData) ? aData : []);
+                const catResults: Record<string, any[]> = {};
+                for (let i = 0; i < categories.length; i++) {
+                    const res = await responses[i + 2].json();
+                    catResults[categories[i]] = res.data || res;
                 }
+
+                setTrending(trendingRes.data || trendingRes);
+                setTopRated(topRatedRes.data || topRatedRes);
+                setCategoryData(catResults);
+
             } catch (error) {
                 console.error('Error loading mobile home data:', error);
             } finally {
@@ -60,7 +63,7 @@ export function MobileHome() {
     }
 
     return (
-        <div className="pb-24 pt-2 space-y-6 overflow-x-hidden bg-background min-h-screen">
+        <div className="pb-24 pt-2 space-y-8 overflow-x-hidden bg-background min-h-screen">
 
             {/* Hero / Featured Widget (Top 1 Trending) */}
             {trending.length > 0 && (
@@ -89,32 +92,14 @@ export function MobileHome() {
                 </section>
             )}
 
-            {/* Trending Widgets (Horizontal Scroll) */}
-            <section>
-                <div className="px-4 flex items-center justify-between mb-3">
-                    <h2 className="font-bold text-xl tracking-tight">Trending Now</h2>
-                    <Link href="/browse?sort=trending" className="p-1 rounded-full bg-secondary/10 hover:bg-secondary/20 transition-colors">
-                        <ChevronRight className="w-5 h-5 text-muted-foreground" />
-                    </Link>
-                </div>
-
-                <div className="flex overflow-x-auto snap-x snap-mandatory gap-3 px-4 pb-4 scrollbar-hide -mr-4 pr-8">
-                    {trending.slice(1).map((anime, index) => (
-                        <div key={anime.id} className="snap-start">
-                            <WidgetCard
-                                id={anime.id}
-                                title={anime.title}
-                                image={anime.coverImage}
-                                score={anime.malScore ?? anime.ratings.site}
-                                rank={index + 2}
-                                subtitle={anime.genres?.[0]}
-                            />
-                        </div>
-                    ))}
-                </div>
+            {/* Category Podiums (Replacing old Trending) */}
+            <section className="space-y-6 px-4">
+                {Object.entries(categoryData).map(([category, items]) => (
+                    <CategoryPodiumCard key={category} category={category} items={items} />
+                ))}
             </section>
 
-            {/* Top Rated Long Cards (Horizontal Scroll) */}
+            {/* All Time Best (Now using WidgetCard) */}
             <section>
                 <div className="px-4 flex items-center justify-between mb-3">
                     <h2 className="font-bold text-xl tracking-tight">All Time Best</h2>
@@ -126,14 +111,13 @@ export function MobileHome() {
                 <div className="flex overflow-x-auto snap-x snap-mandatory gap-3 px-4 pb-4 scrollbar-hide -mr-4 pr-8">
                     {topRated.map((anime, index) => (
                         <div key={anime.id} className="snap-start">
-                            <LongCard
+                            <WidgetCard
                                 id={anime.id}
                                 title={anime.title}
                                 image={anime.coverImage}
                                 score={anime.malScore ?? anime.ratings.site}
-                                description={anime.description}
-                                genres={anime.genres}
                                 rank={index + 1}
+                                subtitle={anime.genres?.[0]}
                             />
                         </div>
                     ))}
