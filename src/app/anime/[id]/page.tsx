@@ -7,6 +7,8 @@ import Link from 'next/link';
 import { Star, Calendar, Clock, PlayCircle, ArrowLeft, ExternalLink, MapPin, Play, ChevronDown, ChevronUp } from 'lucide-react';
 import { CharactersList, MusicList, GalleryGrid, RecommendationsList, EpisodeList, Synopsis, SeasonsList } from '@/components/anime/AnimeComponents';
 import { SegmentedProgressBar } from '@/components/anime/RatingSystem';
+import { MobileParallaxHeader } from '@/components/mobile/MobileParallaxHeader';
+import { MobileActionDock } from '@/components/mobile/MobileActionDock';
 
 interface Review {
   username: string;
@@ -67,22 +69,7 @@ export default async function AnimePage({ params }: PageProps) {
       </div>
 
       {/* Mobile Compact Header */}
-      <div className="md:hidden relative h-48 w-full">
-        <Image
-          src={anime.coverImage}
-          alt={anime.title}
-          fill
-          className="object-cover"
-          priority
-        />
-        <div className="absolute inset-0 bg-gradient-to-t from-background via-black/40 to-transparent" />
-        <Link
-          href="/browse"
-          className="absolute top-4 left-4 p-2 rounded-full bg-black/40 text-white backdrop-blur-md z-20"
-        >
-          <ArrowLeft className="w-5 h-5" />
-        </Link>
-      </div>
+      <MobileParallaxHeader image={anime.coverImage} title={anime.title} />
 
       <Container className="-mt-12 md:-mt-32 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
@@ -276,7 +263,11 @@ export default async function AnimePage({ params }: PageProps) {
                   className="md:col-span-2 lg:col-span-1"
                 >
                   {anime.characters && anime.characters.length > 0 && (
-                    <CharactersList characters={anime.characters} />
+                    <div className="md:block overflow-x-auto -mx-6 px-6 md:mx-0 md:px-0 scrollbar-hide snap-x snap-mandatory">
+                      <div className="flex md:block w-max md:w-auto gap-4">
+                        <CharactersList characters={anime.characters} />
+                      </div>
+                    </div>
                   )}
                 </RatingCard>
 
@@ -381,6 +372,7 @@ export default async function AnimePage({ params }: PageProps) {
           </div>
         </div>
       </Container>
+      <MobileActionDock title={anime.title} />
     </div>
   );
 }

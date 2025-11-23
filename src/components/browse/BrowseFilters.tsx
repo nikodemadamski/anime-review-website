@@ -43,9 +43,9 @@ export function BrowseFilters({
                 <div className="flex flex-col md:flex-row items-start md:items-center justify-between gap-4">
 
                     {/* Genre Pills */}
-                    <div className="flex-1 overflow-x-auto pb-2 md:pb-0 scrollbar-hide w-full">
-                        <div className="flex items-center gap-2">
-                            <div className="flex items-center gap-2 text-sm font-bold text-muted mr-2">
+                    <div className="flex-1 overflow-x-auto pb-2 md:pb-0 scrollbar-hide w-full -mx-4 px-4 md:mx-0 md:px-0 snap-x snap-mandatory">
+                        <div className="flex items-center gap-2 w-max">
+                            <div className="flex items-center gap-2 text-sm font-bold text-muted mr-2 sticky left-0 bg-card z-10 pr-2 md:static md:bg-transparent md:pr-0">
                                 <Filter className="w-4 h-4" />
                                 <span>Genres:</span>
                             </div>
@@ -55,7 +55,7 @@ export function BrowseFilters({
                                     <button
                                         key={genre}
                                         onClick={() => toggleGenre(genre.toLowerCase())}
-                                        className={`px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap
+                                        className={`snap-start px-3 py-1.5 rounded-lg text-sm font-medium transition-all whitespace-nowrap active:scale-95
                       ${isSelected
                                                 ? 'bg-indigo-500 text-white shadow-lg shadow-indigo-500/25'
                                                 : 'bg-secondary/10 text-secondary hover:bg-secondary/20'}`}

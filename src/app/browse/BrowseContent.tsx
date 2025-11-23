@@ -11,6 +11,7 @@ import { motion, AnimatePresence } from 'framer-motion';
 import Link from 'next/link';
 import Image from 'next/image';
 import { Star, Eye, Music, BookOpen, Users } from 'lucide-react';
+import { LongCard } from '@/components/mobile/LongCard';
 
 type StatusOption = 'all' | 'airing' | 'finished' | 'upcoming';
 
@@ -177,36 +178,17 @@ export function BrowseContent() {
                     key={anime.id}
                   >
                     <Link href={`/anime/${anime.id}`} className="group block relative h-full">
-                      {/* Mobile: Dense List Item */}
-                      <div className="flex md:hidden gap-3 p-2 rounded-xl bg-card border border-border/50">
-                        <div className="relative w-20 h-28 flex-shrink-0 rounded-lg overflow-hidden">
-                          <Image
-                            src={anime.coverImage}
-                            alt={anime.title}
-                            fill
-                            className="object-cover"
-                          />
-                          <div className="absolute top-1 left-1 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-1.5 rounded">
-                            #{index + 1}
-                          </div>
-                        </div>
-                        <div className="flex-1 flex flex-col justify-between py-1">
-                          <div>
-                            <h3 className="font-bold text-sm line-clamp-2 leading-tight mb-1">
-                              {anime.title}
-                            </h3>
-                            <p className="text-xs text-muted-foreground line-clamp-1 mb-2">
-                              {anime.genres.slice(0, 3).join(', ')}
-                            </p>
-                          </div>
-                          <div className="flex items-center justify-between">
-                            <div className="flex items-center gap-1 bg-secondary/20 px-2 py-0.5 rounded text-xs font-bold">
-                              <Icon className={`w-3 h-3 ${colorClass} fill-current`} />
-                              <span>{anime.malScore ? anime.malScore.toFixed(2) : score}</span>
-                            </div>
-                            <span className="text-[10px] text-muted-foreground capitalize">{anime.status}</span>
-                          </div>
-                        </div>
+                      {/* Mobile: Dense List Item using LongCard */}
+                      <div className="md:hidden mb-3">
+                        <LongCard
+                          id={anime.id}
+                          title={anime.title}
+                          image={anime.coverImage}
+                          score={anime.malScore || anime.ratings.site}
+                          rank={index + 1}
+                          genres={anime.genres}
+                          description={anime.description}
+                        />
                       </div>
 
                       {/* Desktop: Card Grid */}
