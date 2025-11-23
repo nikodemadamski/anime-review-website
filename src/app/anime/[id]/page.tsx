@@ -4,8 +4,9 @@ import { GitHubDataAccess } from '@/lib/github-data-access';
 import { Container, Badge } from '@/components/ui';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Star, Calendar, Clock, PlayCircle, ArrowLeft, ExternalLink, MapPin, Play } from 'lucide-react';
+import { Star, Calendar, Clock, PlayCircle, ArrowLeft, ExternalLink, MapPin, Play, ChevronDown, ChevronUp } from 'lucide-react';
 import { CharactersList, MusicList, GalleryGrid, RecommendationsList, EpisodeList, Synopsis, SeasonsList } from '@/components/anime/AnimeComponents';
+import { SegmentedProgressBar } from '@/components/anime/RatingSystem';
 
 interface Review {
   username: string;
@@ -101,20 +102,7 @@ export default async function AnimePage({ params }: PageProps) {
                   <span className="font-medium">{anime.episodes || '?'} eps</span>
                 </div>
 
-                <div className="relative aspect-[2/3] rounded-2xl overflow-hidden shadow-2xl border-4 border-white/10 group">
-                  <Image
-                    src={anime.coverImage}
-                    alt={anime.title}
-                    fill
-                    className="object-cover transition-transform duration-500 group-hover:scale-105"
-                    priority
-                  />
-                  <div className="absolute top-4 left-4 bg-black/60 backdrop-blur-md px-3 py-1 rounded-lg border border-white/10">
-                    <span className="text-sm font-bold text-white">
-                      Rank #{anime.rank || 'N/A'}
-                    </span>
-                  </div>
-                </div>
+
 
                 <div className="grid grid-cols-2 gap-3">
                   <div className="glass-panel p-4 rounded-xl text-center">
@@ -123,7 +111,7 @@ export default async function AnimePage({ params }: PageProps) {
                   </div>
                   <div className="glass-panel p-4 rounded-xl text-center">
                     <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold mb-1">Status</p>
-                    <p className="text-xl font-black capitalize">{anime.status}</p>
+                    <p className="text-xl font-black capitalize truncate">{anime.status}</p>
                   </div>
                 </div>
 
@@ -178,8 +166,8 @@ export default async function AnimePage({ params }: PageProps) {
                   description="Plot development, pacing, and narrative structure."
                 >
                   <div className="mt-4 p-4 rounded-xl bg-blue-500/5 border border-blue-500/10">
-                    <p className="text-sm text-muted-foreground italic">
-                      "A compelling narrative that keeps you engaged from start to finish."
+                    <p className="text-sm text-muted-foreground italic line-clamp-4">
+                      "{anime.description || 'No story summary available.'}"
                     </p>
                   </div>
                 </RatingCard>
@@ -352,23 +340,23 @@ function RatingCard({
             {description}
           </p>
         </div>
-        <div className={`w-12 h-12 rounded-full flex items-center justify-center font-black text-lg bg-secondary/5 ${color}`}>
-          {Math.round(score)}
-        </div>
       </div>
 
-      {/* Progress Bar */}
-      <div className="h-2 w-full bg-secondary/10 rounded-full overflow-hidden mb-4">
-        <div
-          className={`h-full rounded-full ${color.replace('text-', 'bg-')}`}
-          style={{ width: `${(score / 10) * 100}%` }}
-        />
+      {/* Segmented Progress Bar */}
+      <div className="mb-6">
+        <SegmentedProgressBar score={score} color={color} />
       </div>
 
       {children && (
-        <div className="pt-4 border-t border-border/50">
-          {children}
-        </div>
+        <details className="group">
+          <summary className="flex items-center gap-2 text-xs font-bold uppercase tracking-wider cursor-pointer select-none text-muted-foreground hover:text-foreground transition-colors">
+            <span>Find out more</span>
+            <ChevronDown className="w-4 h-4 transition-transform group-open:rotate-180" />
+          </summary>
+          <div className="pt-4 mt-2 border-t border-border/50 animate-in slide-in-from-top-2 fade-in duration-200">
+            {children}
+          </div>
+        </details>
       )}
     </div>
   );

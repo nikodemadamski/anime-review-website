@@ -13,7 +13,7 @@ function Lightbox({ image, onClose }: { image: string; onClose: () => void }) {
             initial={{ opacity: 0 }}
             animate={{ opacity: 1 }}
             exit={{ opacity: 0 }}
-            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4"
+            className="fixed inset-0 z-[100] bg-black/90 backdrop-blur-xl flex items-center justify-center p-4"
             onClick={onClose}
         >
             <button
@@ -297,11 +297,14 @@ export function EpisodeList({ episodes }: { episodes: Array<{ number: number; ti
 
             <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-3">
                 {displayEpisodes.map((ep) => (
-                    <div
+                    <a
                         key={ep.number}
-                        className={`p-4 rounded-lg border transition-colors ${ep.filler
+                        href={`https://www.crunchyroll.com/search?q=${encodeURIComponent(ep.title)}`}
+                        target="_blank"
+                        rel="noopener noreferrer"
+                        className={`block p-4 rounded-lg border transition-all hover:scale-[1.02] ${ep.filler
                             ? 'bg-yellow-500/5 border-yellow-500/20 hover:bg-yellow-500/10'
-                            : 'bg-card border-border hover:bg-card/80'
+                            : 'bg-card border-border hover:bg-card/80 hover:shadow-md'
                             }`}
                     >
                         <div className="flex items-start justify-between gap-2 mb-2">
@@ -313,7 +316,7 @@ export function EpisodeList({ episodes }: { episodes: Array<{ number: number; ti
                                 </div>
                             )}
                         </div>
-                        <h4 className="font-medium text-sm line-clamp-2 mb-1">{ep.title}</h4>
+                        <h4 className="font-medium text-sm line-clamp-2 mb-1 group-hover:text-indigo-400 transition-colors">{ep.title}</h4>
                         {ep.airDate && (
                             <p className="text-xs text-muted-foreground">{new Date(ep.airDate).toLocaleDateString()}</p>
                         )}
@@ -322,7 +325,7 @@ export function EpisodeList({ episodes }: { episodes: Array<{ number: number; ti
                                 Filler
                             </span>
                         )}
-                    </div>
+                    </a>
                 ))}
             </div>
         </section>
