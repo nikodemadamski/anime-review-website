@@ -9,6 +9,7 @@ import { cn } from '@/utils/cn';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useTheme } from 'next-themes';
 import { useMobileMenu } from '@/hooks/useMobileMenu';
+import { MobileSearchPage } from '@/components/mobile/MobileSearchPage';
 
 interface HeaderProps {
   className?: string;
@@ -78,6 +79,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
 
   const [isVisible, setIsVisible] = useState(true);
   const [lastScrollY, setLastScrollY] = useState(0);
+  const [isSearchOpen, setIsSearchOpen] = useState(false);
 
   useEffect(() => {
     const controlNavbar = () => {
@@ -141,10 +143,14 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               <input
                 type="text"
                 placeholder="Search..."
-                className="w-full pl-10 pr-4 py-2 rounded-full bg-secondary/10 border-none focus:ring-2 focus:ring-indigo-500 text-sm font-medium transition-all"
+                onClick={() => window.innerWidth < 768 && setIsSearchOpen(true)}
+                readOnly={typeof window !== 'undefined' && window.innerWidth < 768}
+                className="w-full pl-10 pr-4 py-2 rounded-full bg-secondary/10 border-none focus:ring-2 focus:ring-indigo-500 text-sm font-medium transition-all cursor-pointer md:cursor-text"
               />
             </div>
           </div>
+
+          <MobileSearchPage isOpen={isSearchOpen} onClose={() => setIsSearchOpen(false)} />
 
           {/* Navigation */}
           <nav className="hidden md:flex items-center space-x-10">

@@ -3,7 +3,6 @@
 import React, { useState, useRef } from 'react';
 import { motion, useScroll, useTransform } from 'framer-motion';
 import { Search, Filter } from 'lucide-react';
-import { LongCard } from './LongCard';
 
 interface MobileBrowseLayoutProps {
     children: React.ReactNode; // The list of anime
@@ -11,8 +10,7 @@ interface MobileBrowseLayoutProps {
 }
 
 export function MobileBrowseLayout({ children, filters }: MobileBrowseLayoutProps) {
-    const containerRef = useRef<HTMLDivElement>(null);
-    const { scrollY } = useScroll({ container: containerRef });
+    const { scrollY } = useScroll();
 
     const headerHeight = useTransform(scrollY, [0, 100], [120, 60]);
     const titleScale = useTransform(scrollY, [0, 100], [1, 0.8]);

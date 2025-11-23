@@ -123,70 +123,17 @@ export function BrowseContent() {
     return { score, Icon, colorClass };
   };
 
-  <div className="min-h-screen bg-background text-foreground">
-    {/* Desktop View */}
-    <div className="hidden md:block">
-      <BrowseHero
-        searchQuery={searchQuery}
-        setSearchQuery={setSearchQuery}
-        resultCount={filteredAnime.length}
-      />
-      <Container size="xl" className="pb-20">
-        <CategoryTabs activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
-        <BrowseFilters
-          selectedGenres={selectedGenres}
-          toggleGenre={toggleGenre}
-          sortBy={activeCategory}
-          setSortBy={() => { }}
-          statusFilter={statusFilter}
-          setStatusFilter={setStatusFilter}
-          clearFilters={clearFilters}
+  return (
+    <div className="min-h-screen bg-background text-foreground">
+      {/* Desktop View */}
+      <div className="hidden md:block">
+        <BrowseHero
+          searchQuery={searchQuery}
+          setSearchQuery={setSearchQuery}
+          resultCount={filteredAnime.length}
         />
-        {/* Desktop Grid */}
-        {loading ? (
-          <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
-            {[...Array(12)].map((_, i) => (
-              <div key={i} className="aspect-[2/3] rounded-2xl bg-secondary/10 animate-pulse" />
-            ))}
-          </div>
-        ) : filteredAnime.length === 0 ? (
-          <div className="text-center py-20">
-            <div className="text-6xl mb-4">🔍</div>
-            <h3 className="text-2xl font-bold mb-2">No anime found</h3>
-            <p className="text-muted mb-6">Try adjusting your filters or search query.</p>
-            <button onClick={clearFilters} className="px-6 py-2 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-colors">
-              Clear All Filters
-            </button>
-          </div>
-        ) : (
-          <div className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
-            {filteredAnime.map((anime, index) => {
-              const { score, Icon, colorClass } = getScoreDisplay(anime);
-              return (
-                <Link key={anime.id} href={`/anime/${anime.id}`} className="group block relative aspect-[2/3] rounded-2xl overflow-hidden mb-3 glass-panel transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-indigo-500/20">
-                  <div className="absolute top-2 left-2 z-10 w-8 h-8 rounded-lg bg-black/60 backdrop-blur-md flex items-center justify-center text-white font-bold text-sm border border-white/10">
-                    #{index + 1}
-                  </div>
-                  <Image src={anime.coverImage} alt={anime.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
-                  <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
-                    <p className="text-white text-xs font-bold mb-1 line-clamp-2">{anime.description}</p>
-                  </div>
-                  <div className="absolute bottom-2 right-2 bg-black/80 backdrop-blur-md text-white px-2 py-1 rounded-lg text-sm font-black flex items-center gap-1 border border-white/10 shadow-lg">
-                    <Icon className={`w-4 h-4 ${colorClass} fill-current`} />
-                    {anime.malScore ? anime.malScore.toFixed(2) : score}
-                  </div>
-                </Link>
-              );
-            })}
-          </div>
-        )}
-      </Container>
-    </div>
-
-    {/* Mobile View - Dedicated Layout */}
-    <div className="md:hidden">
-      <MobileBrowseLayout
-        filters={
+        <Container size="xl" className="pb-20">
+          <CategoryTabs activeCategory={activeCategory} setActiveCategory={setActiveCategory} />
           <BrowseFilters
             selectedGenres={selectedGenres}
             toggleGenre={toggleGenre}
@@ -196,30 +143,84 @@ export function BrowseContent() {
             setStatusFilter={setStatusFilter}
             clearFilters={clearFilters}
           />
-        }
-      >
-        {loading ? (
-          <div className="space-y-4">
-            {[...Array(6)].map((_, i) => (
-              <div key={i} className="h-32 rounded-2xl bg-secondary/10 animate-pulse" />
-            ))}
-          </div>
-        ) : (
-          filteredAnime.map((anime, index) => (
-            <LongCard
-              key={anime.id}
-              id={anime.id}
-              title={anime.title}
-              image={anime.coverImage}
-              score={anime.malScore || anime.ratings.site}
-              rank={index + 1}
-              genres={anime.genres}
-              description={anime.description}
+          {/* Desktop Grid */}
+          {loading ? (
+            <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-4 gap-6">
+              {[...Array(12)].map((_, i) => (
+                <div key={i} className="aspect-[2/3] rounded-2xl bg-secondary/10 animate-pulse" />
+              ))}
+            </div>
+          ) : filteredAnime.length === 0 ? (
+            <div className="text-center py-20">
+              <div className="text-6xl mb-4">🔍</div>
+              <h3 className="text-2xl font-bold mb-2">No anime found</h3>
+              <p className="text-muted mb-6">Try adjusting your filters or search query.</p>
+              <button onClick={clearFilters} className="px-6 py-2 rounded-xl bg-indigo-600 text-white font-bold hover:bg-indigo-700 transition-colors">
+                Clear All Filters
+              </button>
+            </div>
+          ) : (
+            <div className="grid grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6">
+              {filteredAnime.map((anime, index) => {
+                const { score, Icon, colorClass } = getScoreDisplay(anime);
+                return (
+                  <Link key={anime.id} href={`/anime/${anime.id}`} className="group block relative aspect-[2/3] rounded-2xl overflow-hidden mb-3 glass-panel transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-indigo-500/20">
+                    <div className="absolute top-2 left-2 z-10 w-8 h-8 rounded-lg bg-black/60 backdrop-blur-md flex items-center justify-center text-white font-bold text-sm border border-white/10">
+                      #{index + 1}
+                    </div>
+                    <Image src={anime.coverImage} alt={anime.title} fill className="object-cover transition-transform duration-500 group-hover:scale-110" />
+                    <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-transparent to-transparent opacity-0 group-hover:opacity-100 transition-opacity duration-300 flex flex-col justify-end p-4">
+                      <p className="text-white text-xs font-bold mb-1 line-clamp-2">{anime.description}</p>
+                    </div>
+                    <div className="absolute bottom-2 right-2 bg-black/80 backdrop-blur-md text-white px-2 py-1 rounded-lg text-sm font-black flex items-center gap-1 border border-white/10 shadow-lg">
+                      <Icon className={`w-4 h-4 ${colorClass} fill-current`} />
+                      {anime.malScore ? anime.malScore.toFixed(2) : score}
+                    </div>
+                  </Link>
+                );
+              })}
+            </div>
+          )}
+        </Container>
+      </div>
+
+      {/* Mobile View - Dedicated Layout */}
+      <div className="md:hidden">
+        <MobileBrowseLayout
+          filters={
+            <BrowseFilters
+              selectedGenres={selectedGenres}
+              toggleGenre={toggleGenre}
+              sortBy={activeCategory}
+              setSortBy={() => { }}
+              statusFilter={statusFilter}
+              setStatusFilter={setStatusFilter}
+              clearFilters={clearFilters}
             />
-          ))
-        )}
-      </MobileBrowseLayout>
+          }
+        >
+          {loading ? (
+            <div className="space-y-4">
+              {[...Array(6)].map((_, i) => (
+                <div key={i} className="h-32 rounded-2xl bg-secondary/10 animate-pulse" />
+              ))}
+            </div>
+          ) : (
+            filteredAnime.map((anime, index) => (
+              <LongCard
+                key={anime.id}
+                id={anime.id}
+                title={anime.title}
+                image={anime.coverImage}
+                score={anime.malScore || anime.ratings.site}
+                rank={index + 1}
+                genres={anime.genres}
+                description={anime.description}
+              />
+            ))
+          )}
+        </MobileBrowseLayout>
+      </div>
     </div>
-  </div>
   );
 }
