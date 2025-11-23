@@ -2,7 +2,7 @@
 
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
-import { Home, Search, Compass, Heart } from 'lucide-react';
+import { Home, Search, Compass, Heart, Sparkles } from 'lucide-react';
 import { cn } from '@/utils/cn';
 
 export function MobileNavbar() {
@@ -11,7 +11,7 @@ export function MobileNavbar() {
     const navItems = [
         { href: '/', label: 'Home', icon: Home },
         { href: '/browse', label: 'Browse', icon: Compass },
-        { href: '/search', label: 'Search', icon: Search },
+        { href: '/quiz', label: 'Quiz', icon: Sparkles },
         { href: '/watchlist', label: 'Watchlist', icon: Heart },
     ];
 

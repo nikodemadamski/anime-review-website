@@ -43,8 +43,8 @@ export default async function AnimePage({ params }: PageProps) {
 
   return (
     <div className="min-h-screen bg-background pb-20">
-      {/* Hero Header */}
-      <div className="relative h-[40vh] w-full overflow-hidden">
+      {/* Hero Header - Desktop Only */}
+      <div className="hidden md:block relative h-[40vh] w-full overflow-hidden">
         <div className="absolute inset-0 bg-gradient-to-b from-transparent to-background z-10" />
         <Image
           src={anime.coverImage}
@@ -66,11 +66,30 @@ export default async function AnimePage({ params }: PageProps) {
         </Container>
       </div>
 
-      <Container className="-mt-32 relative z-20">
+      {/* Mobile Compact Header */}
+      <div className="md:hidden relative h-48 w-full">
+        <Image
+          src={anime.coverImage}
+          alt={anime.title}
+          fill
+          className="object-cover"
+          priority
+        />
+        <div className="absolute inset-0 bg-gradient-to-t from-background via-black/40 to-transparent" />
+        <Link
+          href="/browse"
+          className="absolute top-4 left-4 p-2 rounded-full bg-black/40 text-white backdrop-blur-md z-20"
+        >
+          <ArrowLeft className="w-5 h-5" />
+        </Link>
+      </div>
+
+      <Container className="-mt-12 md:-mt-32 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
           {/* Sidebar - Poster & Key Info */}
           <div className="lg:col-span-3 space-y-6">
-            <div className="rounded-xl overflow-hidden shadow-2xl border-4 border-background">
+            {/* Poster - Hidden on Mobile, shown in header */}
+            <div className="hidden md:block rounded-xl overflow-hidden shadow-2xl border-4 border-background">
               <div className="aspect-[2/3] relative">
                 <Image
                   src={anime.coverImage}
@@ -82,22 +101,43 @@ export default async function AnimePage({ params }: PageProps) {
               </div>
             </div>
 
-            {/* Key Stats Card */}
-            <div className="bg-card rounded-xl p-4 border border-border space-y-4 shadow-lg">
+            {/* Mobile Title & Info Block */}
+            <div className="md:hidden mb-6">
+              <h1 className="text-2xl font-black mb-2 leading-tight">{anime.title}</h1>
+              <div className="flex flex-wrap gap-2 text-xs text-muted-foreground mb-4">
+                <span>{anime.year}</span>
+                <span>•</span>
+                <span>{anime.episodes} eps</span>
+                <span>•</span>
+                <span className="capitalize">{anime.status}</span>
+              </div>
+              <div className="flex items-center gap-4 mb-4">
+                <div className="flex items-center gap-1">
+                  <Star className="w-5 h-5 text-yellow-500 fill-current" />
+                  <span className="text-2xl font-black">{anime.malScore ? anime.malScore.toFixed(2) : anime.ratings.site.toFixed(1)}</span>
+                  <span className="text-xs text-muted-foreground ml-1">Overall</span>
+                </div>
+              </div>
+              <div className="flex gap-2">
+                <a
+                  href={`https://www.crunchyroll.com/search?q=${encodeURIComponent(anime.title)}`}
+                  target="_blank"
+                  rel="noopener noreferrer"
+                  className="flex-1 py-3 bg-[#F47521] text-white font-bold rounded-xl flex items-center justify-center gap-2 text-sm"
+                >
+                  <Play className="w-4 h-4 fill-current" />
+                  Watch
+                </a>
+              </div>
+            </div>
+
+            {/* Key Stats Card - Desktop Layout mostly, simplified for mobile */}
+            <div className="bg-card rounded-xl p-4 border border-border space-y-4 shadow-lg hidden md:block">
               <div className="flex items-center justify-between border-b border-border pb-3">
                 <span className="text-muted-foreground text-sm font-medium">Overall Score</span>
                 <div className="flex items-center gap-1 text-yellow-500 font-black text-lg">
                   <Star className="w-5 h-5 fill-current" />
                   {anime.malScore ? anime.malScore.toFixed(2) : anime.ratings.site.toFixed(1)}
-                </div>
-              </div>
-
-              {/* Haki Score Display (Secondary) */}
-              <div className="flex items-center justify-between border-b border-border pb-3">
-                <span className="text-muted-foreground text-sm font-medium">Haki Score</span>
-                <div className="flex items-center gap-1 text-indigo-500 font-black text-lg">
-                  <span className="text-xs font-bold bg-indigo-500/10 px-2 py-0.5 rounded text-indigo-500 mr-1">SITE</span>
-                  {anime.ratings.site.toFixed(1)}
                 </div>
               </div>
 
@@ -111,7 +151,7 @@ export default async function AnimePage({ params }: PageProps) {
                   <span className="font-bold">#{anime.popularity || 'N/A'}</span>
                 </div>
                 <div className="flex justify-between">
-                  <span className="text-muted-foreground">Members</span>
+                  <span className="text-muted-foreground">Total Viewers</span>
                   <span className="font-bold">{anime.members?.toLocaleString() || 'N/A'}</span>
                 </div>
                 <div className="flex justify-between">

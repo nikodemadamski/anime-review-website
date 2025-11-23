@@ -163,7 +163,7 @@ export function BrowseContent() {
           </div>
         ) : (
           <motion.div
-            className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
+            className="flex flex-col md:grid md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6"
           >
             <AnimatePresence mode='popLayout'>
               {filteredAnime.map((anime, index) => {
@@ -177,7 +177,40 @@ export function BrowseContent() {
                     key={anime.id}
                   >
                     <Link href={`/anime/${anime.id}`} className="group block relative h-full">
-                      <div className="relative aspect-[2/3] rounded-2xl overflow-hidden mb-3 glass-panel transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-indigo-500/20">
+                      {/* Mobile: Dense List Item */}
+                      <div className="flex md:hidden gap-3 p-2 rounded-xl bg-card border border-border/50">
+                        <div className="relative w-20 h-28 flex-shrink-0 rounded-lg overflow-hidden">
+                          <Image
+                            src={anime.coverImage}
+                            alt={anime.title}
+                            fill
+                            className="object-cover"
+                          />
+                          <div className="absolute top-1 left-1 bg-black/60 backdrop-blur-md text-white text-[10px] font-bold px-1.5 rounded">
+                            #{index + 1}
+                          </div>
+                        </div>
+                        <div className="flex-1 flex flex-col justify-between py-1">
+                          <div>
+                            <h3 className="font-bold text-sm line-clamp-2 leading-tight mb-1">
+                              {anime.title}
+                            </h3>
+                            <p className="text-xs text-muted-foreground line-clamp-1 mb-2">
+                              {anime.genres.slice(0, 3).join(', ')}
+                            </p>
+                          </div>
+                          <div className="flex items-center justify-between">
+                            <div className="flex items-center gap-1 bg-secondary/20 px-2 py-0.5 rounded text-xs font-bold">
+                              <Icon className={`w-3 h-3 ${colorClass} fill-current`} />
+                              <span>{anime.malScore ? anime.malScore.toFixed(2) : score}</span>
+                            </div>
+                            <span className="text-[10px] text-muted-foreground capitalize">{anime.status}</span>
+                          </div>
+                        </div>
+                      </div>
+
+                      {/* Desktop: Card Grid */}
+                      <div className="hidden md:block relative aspect-[2/3] rounded-2xl overflow-hidden mb-3 glass-panel transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-indigo-500/20">
                         {/* Rank Badge */}
                         <div className="absolute top-2 left-2 z-10 w-8 h-8 rounded-lg bg-black/60 backdrop-blur-md flex items-center justify-center text-white font-bold text-sm border border-white/10">
                           #{index + 1}
@@ -201,14 +234,14 @@ export function BrowseContent() {
                         {/* Score Badge - Dynamic based on Category */}
                         <div className="absolute bottom-2 right-2 bg-black/80 backdrop-blur-md text-white px-2 py-1 rounded-lg text-sm font-black flex items-center gap-1 border border-white/10 shadow-lg">
                           <Icon className={`w-4 h-4 ${colorClass} fill-current`} />
-                          {score}
+                          {anime.malScore ? anime.malScore.toFixed(2) : score}
                         </div>
                       </div>
 
-                      <h3 className="font-bold text-sm md:text-base line-clamp-1 group-hover:text-indigo-500 transition-colors">
+                      <h3 className="hidden md:block font-bold text-sm md:text-base line-clamp-1 group-hover:text-indigo-500 transition-colors">
                         {anime.title}
                       </h3>
-                      <p className="text-xs text-muted line-clamp-1">
+                      <p className="hidden md:block text-xs text-muted line-clamp-1">
                         {anime.genres.join(', ')}
                       </p>
                     </Link>
