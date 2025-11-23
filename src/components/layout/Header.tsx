@@ -190,20 +190,9 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             <ThemeToggle />
           </nav>
 
-          {/* Mobile menu */}
+          {/* Mobile menu - Hidden as we use Bottom Nav */}
           <div className="md:hidden flex items-center gap-4">
             <ThemeToggle />
-            <button
-              onClick={openMobileMenu}
-              className="p-3 rounded-xl bg-secondary/10 hover:bg-secondary/20 transition-colors"
-              style={{ color: 'var(--foreground)' }}
-              aria-label="Open menu"
-              aria-expanded={mobileMenuOpen}
-            >
-              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
-              </svg>
-            </button>
           </div>
         </div>
       </Container>

@@ -85,23 +85,21 @@ export default async function AnimePage({ params }: PageProps) {
             {/* Key Stats Card */}
             <div className="bg-card rounded-xl p-4 border border-border space-y-4 shadow-lg">
               <div className="flex items-center justify-between border-b border-border pb-3">
-                <span className="text-muted-foreground text-sm font-medium">Haki Score</span>
+                <span className="text-muted-foreground text-sm font-medium">Overall Score</span>
                 <div className="flex items-center gap-1 text-yellow-500 font-black text-lg">
                   <Star className="w-5 h-5 fill-current" />
-                  {anime.ratings.site.toFixed(1)}
+                  {anime.malScore ? anime.malScore.toFixed(2) : anime.ratings.site.toFixed(1)}
                 </div>
               </div>
 
-              {/* MAL Score Display */}
-              {anime.malScore && (
-                <div className="flex items-center justify-between border-b border-border pb-3">
-                  <span className="text-muted-foreground text-sm font-medium">Overall Score</span>
-                  <div className="flex items-center gap-1 text-indigo-500 font-black text-lg">
-                    <span className="text-xs font-bold bg-indigo-500/10 px-2 py-0.5 rounded text-indigo-500 mr-1">MAL</span>
-                    {anime.malScore.toFixed(2)}
-                  </div>
+              {/* Haki Score Display (Secondary) */}
+              <div className="flex items-center justify-between border-b border-border pb-3">
+                <span className="text-muted-foreground text-sm font-medium">Haki Score</span>
+                <div className="flex items-center gap-1 text-indigo-500 font-black text-lg">
+                  <span className="text-xs font-bold bg-indigo-500/10 px-2 py-0.5 rounded text-indigo-500 mr-1">SITE</span>
+                  {anime.ratings.site.toFixed(1)}
                 </div>
-              )}
+              </div>
 
               <div className="space-y-3 text-sm">
                 <div className="flex justify-between">
@@ -143,7 +141,7 @@ export default async function AnimePage({ params }: PageProps) {
                   </div>
                   <div className="glass-panel p-4 rounded-xl text-center">
                     <p className="text-xs text-muted-foreground uppercase tracking-wider font-bold mb-1">Status</p>
-                    <p className="text-xl font-black capitalize truncate">{anime.status}</p>
+                    <p className="text-sm font-black capitalize leading-tight">{anime.status}</p>
                   </div>
                 </div>
 
