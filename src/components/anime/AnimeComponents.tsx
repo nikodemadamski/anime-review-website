@@ -6,6 +6,34 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { Play, Music, User, Palette, ThumbsUp, Star, ChevronDown, ChevronUp } from 'lucide-react';
 
+// --- Lightbox Component ---
+function Lightbox({ image, onClose }: { image: string; onClose: () => void }) {
+    return (
+        <motion.div
+            initial={{ opacity: 0 }}
+            animate={{ opacity: 1 }}
+            exit={{ opacity: 0 }}
+            className="fixed inset-0 z-50 bg-black/90 backdrop-blur-xl flex items-center justify-center p-4"
+            onClick={onClose}
+        >
+            <button
+                onClick={onClose}
+                className="absolute top-4 right-4 p-2 bg-white/10 hover:bg-white/20 rounded-full text-white transition-colors"
+            >
+                <ChevronDown className="w-6 h-6 rotate-45" />
+            </button>
+            <div className="relative w-full max-w-5xl aspect-video rounded-xl overflow-hidden shadow-2xl">
+                <Image
+                    src={image}
+                    alt="Full size preview"
+                    fill
+                    className="object-contain"
+                />
+            </div>
+        </motion.div>
+    );
+}
+
 // --- Synopsis Section ---
 export function Synopsis({ text }: { text: string }) {
     const [isExpanded, setIsExpanded] = useState(false);
@@ -48,12 +76,19 @@ export function CharactersList({ characters }: { characters: any[] }) {
             <div className="grid grid-cols-1 gap-3">
                 {characters.slice(0, 4).map((char, i) => (
                     <div key={i} className="flex items-center gap-3 p-2 rounded-lg bg-secondary/5 hover:bg-secondary/10 transition-colors">
-                        <div className="w-10 h-10 rounded-full overflow-hidden relative bg-gray-800 flex-shrink-0">
-                            {/* Placeholder for Character Image */}
-                            <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20" />
-                            <div className="absolute inset-0 flex items-center justify-center text-xs font-bold text-white/40">
-                                {char.name.charAt(0)}
-                            </div>
+                        <div className="w-12 h-12 rounded-full overflow-hidden relative bg-gray-800 flex-shrink-0 border border-border">
+                            {char.image ? (
+                                <Image
+                                    src={char.image}
+                                    alt={char.name}
+                                    fill
+                                    className="object-cover"
+                                />
+                            ) : (
+                                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center text-xs font-bold text-white/40">
+                                    {char.name.charAt(0)}
+                                </div>
+                            )}
                         </div>
                         <div className="min-w-0">
                             <p className="font-bold text-sm truncate">{char.name}</p>
@@ -72,7 +107,7 @@ export function CharactersList({ characters }: { characters: any[] }) {
 }
 
 // --- Music Section ---
-export function MusicList({ music }: { music: any }) {
+export function MusicList({ music, animeTitle }: { music: any, animeTitle?: string }) {
     if (!music) return null;
 
     const hasOpenings = music.openings && music.openings.length > 0;
@@ -80,16 +115,27 @@ export function MusicList({ music }: { music: any }) {
 
     if (!hasOpenings && !hasEndings) return null;
 
+    const getYoutubeLink = (song: string) => {
+        const query = encodeURIComponent(`${animeTitle || ''} ${song}`);
+        return `https://www.youtube.com/results?search_query=${query}`;
+    };
+
     return (
         <div className="space-y-3 mt-4">
             {hasOpenings && (
                 <div className="space-y-2">
                     <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Openings</p>
                     {music.openings.slice(0, 2).map((op: string, i: number) => (
-                        <div key={`op-${i}`} className="flex items-center gap-2 p-2 rounded-lg bg-violet-500/5 border border-violet-500/10">
-                            <Play className="w-3 h-3 text-violet-500 flex-shrink-0" />
-                            <p className="text-xs font-medium truncate">{op}</p>
-                        </div>
+                        <a
+                            key={`op-${i}`}
+                            href={getYoutubeLink(op)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 p-2 rounded-lg bg-violet-500/5 border border-violet-500/10 hover:bg-violet-500/10 transition-colors group"
+                        >
+                            <Play className="w-3 h-3 text-violet-500 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                            <p className="text-xs font-medium truncate group-hover:text-violet-400 transition-colors">{op}</p>
+                        </a>
                     ))}
                 </div>
             )}
@@ -97,10 +143,16 @@ export function MusicList({ music }: { music: any }) {
                 <div className="space-y-2">
                     <p className="text-xs font-bold text-muted-foreground uppercase tracking-wider">Endings</p>
                     {music.endings.slice(0, 2).map((ed: string, i: number) => (
-                        <div key={`ed-${i}`} className="flex items-center gap-2 p-2 rounded-lg bg-pink-500/5 border border-pink-500/10">
-                            <Music className="w-3 h-3 text-pink-500 flex-shrink-0" />
-                            <p className="text-xs font-medium truncate">{ed}</p>
-                        </div>
+                        <a
+                            key={`ed-${i}`}
+                            href={getYoutubeLink(ed)}
+                            target="_blank"
+                            rel="noopener noreferrer"
+                            className="flex items-center gap-2 p-2 rounded-lg bg-pink-500/5 border border-pink-500/10 hover:bg-pink-500/10 transition-colors group"
+                        >
+                            <Music className="w-3 h-3 text-pink-500 flex-shrink-0 group-hover:scale-110 transition-transform" />
+                            <p className="text-xs font-medium truncate group-hover:text-pink-400 transition-colors">{ed}</p>
+                        </a>
                     ))}
                 </div>
             )}
@@ -110,6 +162,8 @@ export function MusicList({ music }: { music: any }) {
 
 // --- Gallery Section ---
 export function GalleryGrid({ images }: { images: string[] }) {
+    const [selectedImage, setSelectedImage] = useState<string | null>(null);
+
     if (!images || images.length === 0) return null;
 
     return (
@@ -120,7 +174,11 @@ export function GalleryGrid({ images }: { images: string[] }) {
             </h3>
             <div className="grid grid-cols-2 md:grid-cols-4 gap-4">
                 {images.slice(0, 8).map((img, i) => (
-                    <div key={i} className="aspect-video rounded-xl overflow-hidden relative bg-gray-900 group cursor-pointer">
+                    <div
+                        key={i}
+                        className="aspect-video rounded-xl overflow-hidden relative bg-gray-900 group cursor-pointer"
+                        onClick={() => setSelectedImage(img)}
+                    >
                         <Image
                             src={img}
                             alt={`Gallery image ${i + 1}`}
@@ -128,12 +186,57 @@ export function GalleryGrid({ images }: { images: string[] }) {
                             className="object-cover group-hover:scale-110 transition-transform duration-300"
                         />
                         <div className="absolute inset-0 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity bg-black/40">
-                            <span className="text-white text-xs font-bold">View</span>
+                            <span className="text-white text-xs font-bold">View Full</span>
                         </div>
                     </div>
                 ))}
             </div>
+
+            <AnimatePresence>
+                {selectedImage && (
+                    <Lightbox image={selectedImage} onClose={() => setSelectedImage(null)} />
+                )}
+            </AnimatePresence>
         </section>
+    );
+}
+
+// --- Seasons/Relations Section ---
+export function SeasonsList({ seasons }: { seasons: any[] }) {
+    if (!seasons || seasons.length === 0) return null;
+
+    return (
+        <div className="bg-card rounded-xl p-4 border border-border space-y-4 shadow-lg">
+            <h3 className="text-sm font-bold text-muted-foreground uppercase tracking-wider">
+                Related Seasons
+            </h3>
+            <div className="space-y-3">
+                {seasons.map((season) => (
+                    <Link
+                        key={season.id}
+                        href={`/anime/${season.id}`}
+                        className="flex gap-3 group"
+                    >
+                        <div className="relative w-12 h-16 rounded-md overflow-hidden flex-shrink-0 bg-secondary/20">
+                            <Image
+                                src={season.coverImage}
+                                alt={season.title}
+                                fill
+                                className="object-cover group-hover:scale-110 transition-transform"
+                            />
+                        </div>
+                        <div className="min-w-0 py-1">
+                            <p className="text-sm font-bold line-clamp-2 group-hover:text-indigo-500 transition-colors">
+                                {season.title}
+                            </p>
+                            <p className="text-xs text-muted-foreground capitalize">
+                                {season.relationType || 'Sequel'} • {season.year}
+                            </p>
+                        </div>
+                    </Link>
+                ))}
+            </div>
+        </div>
     );
 }
 

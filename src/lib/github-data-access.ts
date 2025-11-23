@@ -141,6 +141,7 @@ async function fetchGitHubCSV(): Promise<Anime[]> {
         return {
           ...anime,
           reviews: reviewData.reviews || anime.reviews || [],
+          seasons: anime.seasons || [], // Ensure seasons is included
           // Ensure dates are Date objects
           createdAt: anime.createdAt ? new Date(anime.createdAt) : new Date(),
           updatedAt: anime.updatedAt ? new Date(anime.updatedAt) : new Date(),

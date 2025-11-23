@@ -54,7 +54,7 @@ export function TopRatedCategorySection() {
             <div className="absolute inset-0 bg-gradient-to-b from-transparent via-secondary/5 to-transparent pointer-events-none" />
 
             <Container size="xl">
-                <div className="flex flex-col md:flex-row items-end justify-between mb-10 gap-6">
+                <div className="flex flex-col md:flex-row md:items-end justify-between mb-10 gap-6">
                     <div>
                         <motion.div
                             initial={{ opacity: 0, y: 20 }}
