@@ -35,7 +35,7 @@ export function TopRatedCategorySection() {
                     const key = activeCategory === 'overall' ? 'site' : activeCategory;
                     const sorted = [...data].sort((a, b) => (b.ratings[key] || 0) - (a.ratings[key] || 0));
 
-                    setAnimeList(sorted.slice(0, 5));
+                    setAnimeList(sorted.slice(0, 6));
                 }
             } catch (error) {
                 console.error('Failed to fetch anime:', error);
@@ -86,8 +86,8 @@ export function TopRatedCategorySection() {
                                     key={cat.id}
                                     onClick={() => setActiveCategory(cat.id as CategoryType)}
                                     className={`px-4 py-2 rounded-xl flex items-center gap-2 text-sm font-bold transition-all ${isActive
-                                            ? 'bg-foreground text-background shadow-lg scale-105'
-                                            : 'bg-secondary/10 text-muted hover:bg-secondary/20'
+                                        ? 'bg-foreground text-background shadow-lg scale-105'
+                                        : 'bg-secondary/10 text-muted hover:bg-secondary/20'
                                         }`}
                                 >
                                     <Icon className={`w-4 h-4 ${isActive ? 'text-background' : ''}`} />
@@ -99,10 +99,10 @@ export function TopRatedCategorySection() {
                 </div>
 
                 {/* Anime Grid */}
-                <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-5 gap-6">
+                <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-6 gap-6">
                     <AnimatePresence mode='wait'>
                         {loading ? (
-                            [...Array(5)].map((_, i) => (
+                            [...Array(6)].map((_, i) => (
                                 <div key={i} className="aspect-[2/3] rounded-2xl bg-secondary/10 animate-pulse" />
                             ))
                         ) : (
@@ -118,9 +118,9 @@ export function TopRatedCategorySection() {
                                         <div className="relative aspect-[2/3] rounded-2xl overflow-hidden mb-3 glass-panel transition-all duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-indigo-500/20">
                                             {/* Rank Badge */}
                                             <div className={`absolute top-2 left-2 z-10 w-8 h-8 rounded-lg flex items-center justify-center font-black text-lg shadow-lg ${index === 0 ? 'bg-yellow-400 text-black' :
-                                                    index === 1 ? 'bg-slate-300 text-black' :
-                                                        index === 2 ? 'bg-amber-600 text-white' :
-                                                            'bg-black/60 text-white backdrop-blur-md border border-white/10'
+                                                index === 1 ? 'bg-slate-300 text-black' :
+                                                    index === 2 ? 'bg-amber-600 text-white' :
+                                                        'bg-black/60 text-white backdrop-blur-md border border-white/10'
                                                 }`}>
                                                 {index + 1}
                                             </div>

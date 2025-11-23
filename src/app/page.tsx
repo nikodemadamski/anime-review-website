@@ -23,14 +23,14 @@ export default function Home() {
         <TrendingSection />
       </div>
 
-      {/* How We Rate Section */}
-      <div className="relative z-10">
-        <HowWeRateSection />
-      </div>
-
       {/* Quiz CTA Section */}
       <div className="relative z-10">
         <QuizCTASection />
+      </div>
+
+      {/* How We Rate Section */}
+      <div className="relative z-10">
+        <HowWeRateSection />
       </div>
 
       {/* Email Signup Section */}

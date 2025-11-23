@@ -115,26 +115,26 @@ export function HowWeRateSection() {
             <motion.div
               key={cat.category}
               variants={item}
-              whileHover={{ y: -10, scale: 1.02 }}
-              className="group relative p-1 rounded-3xl bg-gradient-to-br from-black/5 to-black/0 dark:from-white/10 dark:to-white/5 hover:from-black/10 hover:to-black/5 dark:hover:from-white/20 dark:hover:to-white/10 transition-all duration-300"
+              whileHover={{ y: -5, scale: 1.02 }}
+              className="group relative p-1 rounded-2xl bg-gradient-to-br from-black/5 to-black/0 dark:from-white/10 dark:to-white/5 hover:from-black/10 hover:to-black/5 dark:hover:from-white/20 dark:hover:to-white/10 transition-all duration-300"
             >
-              <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-3xl"
+              <div className="absolute inset-0 bg-gradient-to-br opacity-0 group-hover:opacity-10 transition-opacity duration-300 rounded-2xl"
                 style={{ backgroundImage: `linear-gradient(to bottom right, ${cat.color}, transparent)` }} />
 
-              <div className="relative h-full glass-panel rounded-[20px] p-6 flex flex-col items-center text-center overflow-hidden">
+              <div className="relative h-full glass-panel rounded-xl p-5 flex flex-col items-center text-center overflow-hidden">
                 {/* Background Gradient Blob */}
-                <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-32 h-32 bg-gradient-to-br ${cat.gradient} opacity-20 blur-3xl rounded-full group-hover:opacity-40 transition-opacity duration-500`} />
+                <div className={`absolute top-0 left-1/2 -translate-x-1/2 w-24 h-24 bg-gradient-to-br ${cat.gradient} opacity-20 blur-2xl rounded-full group-hover:opacity-40 transition-opacity duration-500`} />
 
                 {/* Icon */}
-                <div className={`w-16 h-16 rounded-2xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center mb-6 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
-                  <cat.icon className="w-8 h-8 text-white" />
+                <div className={`w-12 h-12 rounded-xl bg-gradient-to-br ${cat.gradient} flex items-center justify-center mb-4 shadow-lg group-hover:scale-110 transition-transform duration-300`}>
+                  <cat.icon className="w-6 h-6 text-white" />
                 </div>
 
-                <h3 className="text-2xl font-bold mb-3 text-foreground">
+                <h3 className="text-lg font-bold mb-2 text-foreground">
                   {cat.category}
                 </h3>
 
-                <p className="text-muted text-sm leading-relaxed">
+                <p className="text-muted text-xs leading-relaxed">
                   {cat.description}
                 </p>
               </div>

@@ -79,12 +79,22 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             href="/"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            <div className="w-10 h-10 rounded-xl bg-gradient-to-br from-red-600 to-orange-600 flex items-center justify-center text-white font-black text-xl shadow-lg shadow-red-500/20">
-              H
+            <div className="relative w-32 h-10">
+              <Image
+                src="/images/light-logo.png"
+                alt="Haki Logo"
+                fill
+                className="object-contain dark:hidden"
+                priority
+              />
+              <Image
+                src="/images/dark-logo.png"
+                alt="Haki Logo"
+                fill
+                className="object-contain hidden dark:block"
+                priority
+              />
             </div>
-            <Typography variant="h5" component="span" className="hidden sm:block font-black tracking-tight" style={{ color: 'var(--foreground)' }}>
-              Haki
-            </Typography>
           </Link>
 
           {/* Navigation */}

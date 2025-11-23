@@ -5,7 +5,7 @@ import { Container, Badge } from '@/components/ui';
 import Image from 'next/image';
 import Link from 'next/link';
 import { Star, Calendar, Clock, PlayCircle, ArrowLeft, ExternalLink, MapPin } from 'lucide-react';
-import { CharactersList, MusicList, GalleryGrid, RecommendationsList, EpisodeList } from '@/components/anime/AnimeComponents';
+import { CharactersList, MusicList, GalleryGrid, RecommendationsList, EpisodeList, Synopsis } from '@/components/anime/AnimeComponents';
 
 interface PageProps {
   params: Promise<{ id: string }>;
@@ -146,40 +146,72 @@ export default async function AnimePage({ params }: PageProps) {
               <h1 className="text-4xl md:text-6xl font-black mb-6 tracking-tight">{anime.title}</h1>
 
               {/* Synopsis */}
-              <div className="glass-panel p-6 rounded-2xl relative overflow-hidden">
-                <div className="absolute top-0 left-0 w-1 h-full bg-gradient-to-b from-indigo-500 to-purple-500" />
-                <h3 className="text-xl font-bold mb-3">Synopsis</h3>
-                <p className="text-lg text-muted-foreground leading-relaxed">
-                  {anime.description}
-                </p>
-              </div>
+              <Synopsis text={anime.description || 'No synopsis available.'} />
             </div>
 
-            {/* Detailed Ratings */}
+            {/* Detailed Ratings & Content Groups */}
             <div>
               <h2 className="text-2xl font-bold mb-6 flex items-center gap-2">
                 <span className="w-2 h-8 bg-gradient-to-b from-pink-500 to-violet-500 rounded-full" />
                 Haki Analysis
               </h2>
-              <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-4 gap-4">
-                <RatingCard label="Visuals" score={anime.ratings.visual} color="text-pink-500" />
-                <RatingCard label="Music" score={anime.ratings.music} color="text-violet-500" />
-                <RatingCard label="Story" score={anime.ratings.story} color="text-blue-500" />
-                <RatingCard label="Characters" score={anime.ratings.character} color="text-orange-500" />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {/* Story Rating */}
+                <RatingCard
+                  label="Story"
+                  score={anime.ratings.story}
+                  color="text-blue-500"
+                  description="Plot development, pacing, and narrative structure."
+                />
+
+                {/* Visuals Rating + Gallery Preview */}
+                <RatingCard
+                  label="Visuals"
+                  score={anime.ratings.visual}
+                  color="text-pink-500"
+                  description="Animation quality, art style, and visual effects."
+                >
+                  {anime.gallery && anime.gallery.length > 0 && (
+                    <div className="mt-4 grid grid-cols-3 gap-2">
+                      {anime.gallery.slice(0, 3).map((img: string, i: number) => (
+                        <div key={i} className="aspect-video rounded-lg overflow-hidden relative bg-gray-900">
+                          <Image src={img} alt="Visual preview" fill className="object-cover" />
+                        </div>
+                      ))}
+                    </div>
+                  )}
+                </RatingCard>
+
+                {/* Characters Rating + List */}
+                <RatingCard
+                  label="Characters"
+                  score={anime.ratings.character}
+                  color="text-orange-500"
+                  description="Character development, design, and relationships."
+                  className="md:col-span-2 lg:col-span-1"
+                >
+                  {anime.characters && anime.characters.length > 0 && (
+                    <CharactersList characters={anime.characters} />
+                  )}
+                </RatingCard>
+
+                {/* Music Rating + List */}
+                <RatingCard
+                  label="Music"
+                  score={anime.ratings.music}
+                  color="text-violet-500"
+                  description="Opening/ending themes, soundtrack, and audio design."
+                  className="md:col-span-2 lg:col-span-1"
+                >
+                  {anime.music && (
+                    <MusicList music={anime.music} />
+                  )}
+                </RatingCard>
               </div>
             </div>
 
-            {/* New Sections Grid */}
-            <div className="grid grid-cols-1 md:grid-cols-2 gap-8">
-              {anime.characters && anime.characters.length > 0 && (
-                <CharactersList characters={anime.characters} />
-              )}
-              {anime.music && (anime.music.openings?.length || anime.music.endings?.length) ? (
-                <MusicList music={anime.music} />
-              ) : null}
-            </div>
-
-            {/* Gallery */}
+            {/* Gallery (Full) */}
             {anime.gallery && anime.gallery.length > 0 && (
               <GalleryGrid images={anime.gallery} />
             )}
@@ -267,17 +299,43 @@ export default async function AnimePage({ params }: PageProps) {
   );
 }
 
-function RatingCard({ label, score, color }: { label: string, score: number, color: string }) {
+function RatingCard({
+  label,
+  score,
+  color,
+  description,
+  children,
+  className
+}: {
+  label: string,
+  score: number,
+  color: string,
+  description?: string,
+  children?: React.ReactNode,
+  className?: string
+}) {
   return (
-    <div className="bg-card p-5 rounded-xl border border-border flex flex-col items-center justify-center text-center shadow-sm hover:shadow-md transition-shadow">
-      <span className="text-muted-foreground text-xs font-bold uppercase tracking-wider mb-2">{label}</span>
-      <span className={`text-4xl font-black ${color}`}>{score}</span>
-      <div className="w-full bg-secondary/30 h-2 rounded-full mt-4 overflow-hidden">
+    <div className={`bg-card p-6 rounded-2xl border border-border flex flex-col shadow-sm hover:shadow-md transition-shadow ${className}`}>
+      <div className="flex items-start justify-between mb-4">
+        <div>
+          <span className="text-muted-foreground text-xs font-bold uppercase tracking-wider block mb-1">{label}</span>
+          {description && <p className="text-xs text-muted-foreground/80 line-clamp-2 max-w-[200px]">{description}</p>}
+        </div>
+        <div className={`text-4xl font-black ${color}`}>{score}</div>
+      </div>
+
+      <div className="w-full bg-secondary/30 h-2 rounded-full mb-4 overflow-hidden">
         <div
           className={`h-full bg-current ${color.replace('text-', 'bg-')}`}
           style={{ width: `${(score / 10) * 100}%` }}
         />
       </div>
+
+      {children && (
+        <div className="mt-2 pt-4 border-t border-border/50">
+          {children}
+        </div>
+      )}
     </div>
   );
 }
