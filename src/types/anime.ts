@@ -41,6 +41,13 @@ export const AnimeSchema = z.object({
   popularity: z.number().optional(),
   members: z.number().optional(),
   reviews: z.array(z.any()).optional(),
+  seasons: z.array(z.object({
+    id: z.string(),
+    title: z.string(),
+    coverImage: z.string().optional(),
+    year: z.number().optional(),
+    relationType: z.string().optional(),
+  })).optional(),
 
   // New Enriched Fields
   characters: z.array(z.object({
