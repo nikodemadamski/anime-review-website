@@ -74,13 +74,13 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
       )}
     >
       <Container>
-        <div className="flex items-center justify-between h-16">
+        <div className="flex items-center justify-between h-20 md:h-24">
           {/* Logo */}
           <Link
             href="/"
             className="flex items-center gap-2 hover:opacity-80 transition-opacity"
           >
-            <div className="relative w-32 h-10">
+            <div className="relative w-40 h-12 md:w-48 md:h-14">
               <Image
                 src="/images/light-logo.png"
                 alt="Haki Logo"
@@ -99,10 +99,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           </Link>
 
           {/* Navigation */}
-          <nav className="hidden md:flex items-center space-x-8">
+          <nav className="hidden md:flex items-center space-x-10">
             <Link
               href="/"
-              className="transition-colors font-medium"
+              className="transition-colors font-bold text-lg"
               style={{
                 color: 'var(--secondary)',
               }}
@@ -113,7 +113,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </Link>
             <Link
               href="/browse"
-              className="transition-colors font-medium"
+              className="transition-colors font-bold text-lg"
               style={{
                 color: 'var(--secondary)',
               }}
@@ -124,7 +124,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </Link>
             <Link
               href="/quiz"
-              className="transition-colors font-medium flex items-center gap-1"
+              className="transition-colors font-bold text-lg flex items-center gap-1"
               style={{
                 color: 'var(--secondary)',
               }}
@@ -133,7 +133,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             >
               <span>🎭 Quiz</span>
               <span
-                className="px-1.5 py-0.5 rounded text-xs font-bold animate-pulse"
+                className="px-1.5 py-0.5 rounded text-xs font-black animate-pulse"
                 style={{
                   backgroundColor: '#FF6B9D',
                   color: '#FFFFFF'
@@ -144,7 +144,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </Link>
             <Link
               href="/watchlist"
-              className="transition-colors font-medium flex items-center gap-1.5"
+              className="transition-colors font-bold text-lg flex items-center gap-1.5"
               style={{
                 color: 'var(--secondary)',
               }}
@@ -154,7 +154,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               <span>❤️ Watchlist</span>
               {watchlistCount > 0 && (
                 <span
-                  className="px-2 py-0.5 rounded-full text-xs font-bold"
+                  className="px-2 py-0.5 rounded-full text-xs font-black"
                   style={{
                     backgroundColor: '#FF6B9D',
                     color: '#FFFFFF'
@@ -166,7 +166,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
             </Link>
             <Link
               href="/contact"
-              className="transition-colors font-medium"
+              className="transition-colors font-bold text-lg"
               style={{
                 color: 'var(--secondary)',
               }}
@@ -179,17 +179,17 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
           </nav>
 
           {/* Mobile menu */}
-          <div className="md:hidden flex items-center gap-2">
+          <div className="md:hidden flex items-center gap-4">
             <ThemeToggle />
             <button
               onClick={openMobileMenu}
-              className="p-2 rounded-lg transition-colors"
+              className="p-3 rounded-xl bg-secondary/10 hover:bg-secondary/20 transition-colors"
               style={{ color: 'var(--foreground)' }}
               aria-label="Open menu"
               aria-expanded={mobileMenuOpen}
             >
-              <svg className="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M4 6h16M4 12h16M4 18h16" />
+              <svg className="w-8 h-8" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+                <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2.5} d="M4 6h16M4 12h16M4 18h16" />
               </svg>
             </button>
           </div>

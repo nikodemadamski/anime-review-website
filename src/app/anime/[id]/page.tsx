@@ -228,10 +228,7 @@ export default async function AnimePage({ params }: PageProps) {
               <EpisodeList episodes={anime.episodeGuide} />
             )}
 
-            {/* Recommendations */}
-            {anime.recommendations && anime.recommendations.length > 0 && (
-              <RecommendationsList recommendations={anime.recommendations} />
-            )}
+
 
             {/* Trailer */}
             {anime.trailer && (
