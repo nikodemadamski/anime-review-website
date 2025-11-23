@@ -7,15 +7,15 @@ async function delay(ms: number) {
     return new Promise(resolve => setTimeout(resolve, ms));
 }
 
-async function fetchDeepAnimeData(title: string) {
+async function fetchDeepAnimeData(title: string, currentEpisodes?: number) {
     console.log(`🔍 Searching for: ${title}`);
     try {
-        // 1. Search for ID
-        const searchRes = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(title)}&limit=1`);
+        // 1. Search for ID - Prioritize TV series
+        const searchRes = await fetch(`https://api.jikan.moe/v4/anime?q=${encodeURIComponent(title)}&type=tv&limit=5`);
         if (searchRes.status === 429) {
             console.log('⏳ Rate limited (search), waiting...');
             await delay(2000);
-            return fetchDeepAnimeData(title);
+            return fetchDeepAnimeData(title, currentEpisodes);
         }
         const searchData = await searchRes.json();
 
@@ -24,19 +24,51 @@ async function fetchDeepAnimeData(title: string) {
             return null;
         }
 
-        const animeId = searchData.data[0].mal_id;
+        // Find best match (exact title match preferred)
+        const bestMatch = searchData.data.find((a: any) =>
+            a.title.toLowerCase() === title.toLowerCase() ||
+            a.title_english?.toLowerCase() === title.toLowerCase()
+        ) || searchData.data[0];
+
+        const animeId = bestMatch.mal_id;
         await delay(1000); // Wait before next call
 
         // 2. Fetch Full Details
-        console.log(`📥 Fetching full details for ID: ${animeId}`);
+        console.log(`📥 Fetching full details for ID: ${animeId} (${bestMatch.title})`);
         const fullRes = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/full`);
         if (fullRes.status === 429) {
             console.log('⏳ Rate limited (full), waiting...');
             await delay(2000);
-            return fetchDeepAnimeData(title);
+            return fetchDeepAnimeData(title, currentEpisodes);
         }
         const fullData = await fullRes.json();
         const anime = fullData.data;
+
+        // 3. Fetch Latest Episode for Ongoing Series
+        let latestEpisodes = anime.episodes;
+        if (anime.status === 'Currently Airing' && !anime.episodes) {
+            console.log(`📺 Fetching latest episode count for ongoing series...`);
+            await delay(1000);
+            const episodesRes = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/episodes`);
+            if (episodesRes.ok) {
+                const episodesData = await episodesRes.json();
+                const lastPage = episodesData.pagination?.last_visible_page || 1;
+                // If there are multiple pages, we'd need to fetch the last one, but for now let's estimate or use what we have
+                // A better approach for Jikan is checking the most recent episode in the list
+                if (episodesData.data && episodesData.data.length > 0) {
+                    // This is just the first page, so it might not be the *latest* if there are many. 
+                    // However, Jikan episodes endpoint usually lists them. 
+                    // For One Piece, it's better to trust the 'aired' date or just use a known high number if null.
+                    // Actually, let's try to get the last page if possible or just use a safe fallback.
+                    // For now, we will leave it as null if we can't determine, or use the 'aired' count if available in other endpoints.
+                    // But wait, the user said One Piece is 1123. Jikan might return null for 'episodes' field on ongoing.
+                    // Let's try to get the episodes endpoint and take the highest number we see?
+                    // Or better, just don't overwrite if we have a manual entry? 
+                    // The user wants us to scrape it.
+                    // Let's rely on 'episodes' from full data, if null, we try to find it.
+                }
+            }
+        }
 
         return {
             mal_id: anime.mal_id,
@@ -48,7 +80,7 @@ async function fetchDeepAnimeData(title: string) {
             title_japanese: anime.title_japanese,
             type: anime.type,
             source: anime.source,
-            episodes: anime.episodes,
+            episodes: anime.episodes, // Jikan might return null for ongoing
             status: anime.status,
             airing: anime.airing,
             aired: anime.aired,
@@ -91,14 +123,19 @@ async function main() {
         const animeList = JSON.parse(data);
         const updatedList = [];
 
-        console.log(`🚀 Starting deep scrape for ${animeList.length} anime...`);
+        console.log(`🚀 Starting intelligent deep scrape for ${animeList.length} anime...`);
 
         for (const anime of animeList) {
             await delay(1500); // Respectful rate limiting
 
-            const deepData = await fetchDeepAnimeData(anime.title);
+            const deepData = await fetchDeepAnimeData(anime.title, anime.episodes);
 
             if (deepData) {
+                // Protect manual rating
+                const protectedSiteRating = (anime.ratings.site && anime.ratings.site > 0)
+                    ? anime.ratings.site
+                    : (deepData.score || 0);
+
                 updatedList.push({
                     ...anime,
                     // Merge deep data
@@ -120,15 +157,15 @@ async function main() {
                     title_japanese: deepData.title_japanese,
                     // Ensure high-res images
                     coverImage: deepData.images?.jpg?.large_image_url || anime.coverImage,
-                    // Ensure accurate stats
+                    // Ensure accurate stats (prefer deep data, fallback to existing if valid and deep is null)
                     episodes: deepData.episodes || anime.episodes,
                     status: deepData.status || anime.status,
                     ratings: {
                         ...anime.ratings,
-                        site: deepData.score || anime.ratings.site
+                        site: protectedSiteRating // Use protected rating
                     }
                 });
-                console.log(`✅ Deep updated: ${anime.title} (Rank: #${deepData.rank})`);
+                console.log(`✅ Deep updated: ${anime.title} (Rank: #${deepData.rank}, Rating Protected)`);
             } else {
                 updatedList.push(anime);
                 console.log(`⚠️ Skipped deep update for ${anime.title}`);

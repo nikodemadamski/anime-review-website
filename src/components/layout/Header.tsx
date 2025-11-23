@@ -64,6 +64,18 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
     };
   }, [mobileMenuOpen, closeMobileMenu]);
 
+  // Lock body scroll when menu is open
+  useEffect(() => {
+    if (mobileMenuOpen) {
+      document.body.style.overflow = 'hidden';
+    } else {
+      document.body.style.overflow = 'unset';
+    }
+    return () => {
+      document.body.style.overflow = 'unset';
+    };
+  }, [mobileMenuOpen]);
+
   return (
     <header
       className={cn(
@@ -205,7 +217,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               initial={{ opacity: 0 }}
               animate={{ opacity: 1 }}
               exit={{ opacity: 0 }}
-              className="fixed inset-0 bg-black/60 backdrop-blur-md z-40 md:hidden"
+              className="fixed inset-0 bg-black/80 backdrop-blur-sm z-[60] md:hidden"
               onClick={closeMobileMenu}
             />
 
@@ -215,10 +227,10 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               animate={{ x: 0 }}
               exit={{ x: '100%' }}
               transition={{ type: 'spring', damping: 25, stiffness: 200 }}
-              className="fixed inset-y-0 right-0 w-full max-w-sm bg-background border-l border-border z-50 md:hidden flex flex-col shadow-2xl"
+              className="fixed inset-y-0 right-0 w-full max-w-sm bg-background border-l border-border z-[70] md:hidden flex flex-col shadow-2xl"
             >
               {/* Menu Header */}
-              <div className="flex items-center justify-between p-6 border-b border-border">
+              <div className="flex items-center justify-between p-6 border-b border-border bg-background">
                 <Typography variant="h5" className="font-black tracking-tight">
                   Menu
                 </Typography>
@@ -233,7 +245,7 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               </div>
 
               {/* Menu Links */}
-              <nav className="flex-1 overflow-y-auto p-6 space-y-2">
+              <nav className="flex-1 overflow-y-auto p-6 space-y-2 bg-background">
                 {[
                   { href: '/', label: 'Home', icon: '🏠' },
                   { href: '/browse', label: 'Browse All', icon: '🔍' },

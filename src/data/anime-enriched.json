@@ -327,7 +327,7 @@
         "\"Kibou Koudo (希望光度)\" by Shunichi Toki (土岐隼一)"
       ]
     },
-    "popularity": 3805,
+    "popularity": 3797,
     "favourites": 221,
     "episodeGuide": [
       {
@@ -381,9 +381,9 @@
       }
     ],
     "seasons": [],
-    "rank": 3620,
+    "rank": 3584,
     "malId": 60162,
-    "members": 43019,
+    "members": 43207,
     "favorites": 126,
     "source": "Web manga",
     "rating": "PG-13 - Teens 13 or older",
@@ -605,7 +605,7 @@
         "\"Arifuretetai (ありふれてたい)\" by KAF (花譜)"
       ]
     },
-    "popularity": 5384,
+    "popularity": 5374,
     "favourites": 113,
     "episodeGuide": [
       {
@@ -659,9 +659,9 @@
       }
     ],
     "seasons": [],
-    "rank": 3974,
+    "rank": 4040,
     "malId": 60781,
-    "members": 19913,
+    "members": 19991,
     "favorites": 30,
     "source": "Web manga",
     "rating": "PG-13 - Teens 13 or older",
@@ -2898,7 +2898,7 @@
         "\"Bukiyou ni Kimi no Tonari (不器用に 君のとなり)\" by Ami Maeshima (前島亜美) (eps 1-5,7-)"
       ]
     },
-    "popularity": 3557,
+    "popularity": 3554,
     "favourites": 244,
     "episodeGuide": [
       {
@@ -2952,9 +2952,9 @@
       }
     ],
     "seasons": [],
-    "rank": 5295,
+    "rank": 5296,
     "malId": 60531,
-    "members": 48153,
+    "members": 48276,
     "favorites": 142,
     "source": "Manga",
     "rating": "PG-13 - Teens 13 or older",
@@ -3872,9 +3872,9 @@
         "relationType": "Other"
       }
     ],
-    "rank": 1486,
+    "rank": 1497,
     "malId": 951,
-    "members": 13957,
+    "members": 13959,
     "favorites": 121,
     "source": "Manga",
     "rating": "G - All Ages",
@@ -4804,13 +4804,13 @@
   {
     "id": "15",
     "title": "Chou Futsuu Toshi Kashiwa Densetsu",
-    "coverImage": "https://cdn.myanimelist.net/images/anime/1772/108437l.jpg",
+    "coverImage": "https://cdn.myanimelist.net/images/anime/1113/113865l.jpg",
     "bannerImage": null,
     "description": "A surreal gag anime about female junior high school students who along with mysterious creatures attend a junior high school set in the real Kashiwa town, together loosely conveying the charm of Kashiwa with contents related to the town and its events.",
     "releaseYear": 2016,
-    "season": null,
+    "season": "summer",
     "episodes": 10,
-    "duration": "6 min per ep",
+    "duration": "5 min per ep",
     "status": "Finished Airing",
     "genres": [
       "Comedy",
@@ -4881,7 +4881,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 14592,
+    "popularity": 8788,
     "favourites": 2,
     "seasons": [
       {
@@ -4913,18 +4913,18 @@
         "relationType": "Other"
       }
     ],
-    "rank": 13641,
-    "malId": 42054,
-    "members": 1078,
-    "favorites": 0,
-    "source": "Original",
-    "rating": "G - All Ages",
-    "year": null,
+    "rank": 14214,
+    "malId": 40473,
+    "members": 5854,
+    "favorites": 4,
+    "source": "Other",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2020,
     "producers": [],
     "licensors": [],
-    "background": "Chou Futsuu Toshi Kashiwa Densetsu was funded through a successful FAAVO campaign in 2016.",
+    "background": "",
     "title_english": null,
-    "title_japanese": "超普通都市カシワ伝説"
+    "title_japanese": "超普通都市カシワ伝説R"
   },
   {
     "id": "16",
@@ -5968,13 +5968,13 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 6697,
+    "popularity": 6688,
     "favourites": 42,
     "seasons": [],
     "episodes": 12,
-    "rank": 8871,
+    "rank": 8872,
     "malId": 57189,
-    "members": 11353,
+    "members": 11404,
     "favorites": 36,
     "source": "Manga",
     "rating": "PG-13 - Teens 13 or older",
@@ -7236,7 +7236,7 @@
     ],
     "rank": 254,
     "malId": 41025,
-    "members": 967397,
+    "members": 967626,
     "favorites": 15910,
     "source": "Manga",
     "rating": "R - 17+ (violence & profanity)",
@@ -7431,7 +7431,7 @@
         "\"Futari Camp (ふたりキャンプ) feat. SPECIAL OTHERS\" by Masayoshi Ooishi"
       ]
     },
-    "popularity": 4362,
+    "popularity": 4361,
     "favourites": 176,
     "episodeGuide": [
       {
@@ -7576,9 +7576,9 @@
       }
     ],
     "seasons": [],
-    "rank": 6605,
+    "rank": 6623,
     "malId": 60665,
-    "members": 32425,
+    "members": 32472,
     "favorites": 85,
     "source": "Manga",
     "rating": "PG-13 - Teens 13 or older",
@@ -7975,12 +7975,12 @@
         "\"Miracle (ミラクル)\" by NIKO NIKO TAN TAN"
       ]
     },
-    "popularity": 8528,
+    "popularity": 8526,
     "favourites": 27,
     "seasons": [],
     "rank": 10249,
     "malId": 62378,
-    "members": 6246,
+    "members": 6258,
     "favorites": 16,
     "source": "Manga",
     "rating": "PG-13 - Teens 13 or older",
@@ -8179,7 +8179,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 4783,
+    "popularity": 4774,
     "favourites": 147,
     "episodeGuide": [
       {
@@ -8226,10 +8226,10 @@
       }
     ],
     "seasons": [],
-    "rank": 3131,
+    "rank": 3290,
     "malId": 60427,
-    "members": 26399,
-    "favorites": 86,
+    "members": 26591,
+    "favorites": 88,
     "source": "Game",
     "rating": "PG-13 - Teens 13 or older",
     "year": 2025,
@@ -8692,7 +8692,7 @@
   {
     "id": "28",
     "title": "Isekai Quartet Relay PVs",
-    "coverImage": "https://cdn.myanimelist.net/images/anime/1761/101647l.jpg",
+    "coverImage": "https://cdn.myanimelist.net/images/anime/1965/99667l.jpg",
     "description": "Relay PVs with original animation that was not reused in main series.",
     "releaseYear": 2025,
     "genres": [],
@@ -8755,22 +8755,36 @@
         "relationType": "Character"
       }
     ],
-    "episodes": 4,
-    "malId": 39993,
-    "rank": null,
-    "popularity": 7653,
-    "members": 8147,
-    "favorites": 3,
+    "episodes": 12,
+    "malId": 38472,
+    "rank": 2580,
+    "popularity": 641,
+    "members": 408614,
+    "favorites": 1042,
     "source": "Original",
-    "duration": "1 min per ep",
+    "duration": "11 min per ep",
     "rating": "PG-13 - Teens 13 or older",
-    "season": null,
-    "year": null,
-    "producers": [],
-    "licensors": [],
+    "season": "spring",
+    "year": 2019,
+    "producers": [
+      {
+        "mal_id": 1696,
+        "type": "anime",
+        "name": "Kadokawa",
+        "url": "https://myanimelist.net/anime/producer/1696/Kadokawa"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 102,
+        "type": "anime",
+        "name": "Funimation",
+        "url": "https://myanimelist.net/anime/producer/102/Funimation"
+      }
+    ],
     "background": "",
-    "title_english": null,
-    "title_japanese": "『異世界かるてっと』 リレーPV",
+    "title_english": "Isekai Quartet",
+    "title_japanese": "異世界かるてっと",
     "status": "Finished Airing"
   },
   {
@@ -9374,7 +9388,7 @@
         "\"Amanojaku Hero (あまのじゃくヒーロー)\" by Sangatsu no Phantasia (三月のパンタシア)"
       ]
     },
-    "popularity": 4340,
+    "popularity": 4336,
     "favourites": 145,
     "episodeGuide": [
       {
@@ -9437,10 +9451,10 @@
       }
     ],
     "episodes": 12,
-    "rank": 5864,
+    "rank": 5835,
     "malId": 61209,
-    "members": 32822,
-    "favorites": 108,
+    "members": 32931,
+    "favorites": 110,
     "source": "Web manga",
     "rating": "PG-13 - Teens 13 or older",
     "year": 2025,
@@ -10444,10 +10458,10 @@
         "relationType": "Sequel"
       }
     ],
-    "rank": 914,
+    "rank": 909,
     "malId": 12031,
-    "members": 250370,
-    "favorites": 2186,
+    "members": 250455,
+    "favorites": 2189,
     "source": "Manga",
     "rating": "R - 17+ (violence & profanity)",
     "year": 2012,
@@ -12257,11 +12271,11 @@
     ],
     "seasons": [],
     "episodes": 12,
-    "rank": 8736,
+    "rank": 8811,
     "malId": 61276,
-    "popularity": 3836,
-    "members": 42357,
-    "favorites": 62,
+    "popularity": 3823,
+    "members": 42686,
+    "favorites": 63,
     "source": "Light novel",
     "duration": "23 min per ep",
     "rating": "PG-13 - Teens 13 or older",
@@ -13695,12 +13709,12 @@
         "3: \"Inimini Maigo (イニミニまいご)\" by Mio Ookami (eps 27-)"
       ]
     },
-    "popularity": 15996,
+    "popularity": 15988,
     "favourites": 4,
     "seasons": [],
-    "rank": 9340,
+    "rank": 9341,
     "malId": 60947,
-    "members": 742,
+    "members": 744,
     "favorites": 1,
     "source": "Web manga",
     "rating": "PG-13 - Teens 13 or older",
@@ -13838,13 +13852,13 @@
   {
     "id": "44",
     "title": "One Piece",
-    "coverImage": "https://cdn.myanimelist.net/images/anime/1770/97704l.jpg",
+    "coverImage": "https://cdn.myanimelist.net/images/anime/1244/138851l.jpg",
     "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
     "description": "Gold Roger was known as the Pirate King, the strongest and most infamous being to have sailed the Grand Line. The capture and death of Roger by the World Government brought a change throughout the world. His last words before his death revealed the location of the greatest treasure in the world, One Piece. It was this revelation that brought about the Grand Age of Pirates, men who dreamed of finding One Piece (which promises an unlimited amount of riches and fame), and quite possibly the most coveted of titles for the person who found it, the title of the Pirate King.\nEnter Monkey D. Luffy, a 17-year-old boy that defies your standard definition of a pirate. Rather than the popular persona of a wicked, hardened, toothless pirate who ransacks villages for fun, Luffy’s reason for being a pirate is one of pure wonder; the thought of an exciting adventure and meeting new and intriguing people, along with finding One Piece, are his reasons of becoming a pirate. Following in the footsteps of his childhood hero, Luffy and his crew travel across the Grand Line, experiencing crazy adventures, unveiling dark mysteries and battling strong enemies, all in order to reach One Piece.\n*This includes following special episodes:\n- Chopperman to the Rescue! Protect the TV Station by the Shore! (Episode 336)\n- The Strongest Tag-Team! Luffy and Toriko's Hard Struggle! (Episode 492)\n- Team Formation! Save Chopper (Episode 542)\n- History's Strongest Collaboration vs. Glutton of the Sea (Episode 590)\n- 20th Anniversary! Special Romance Dawn (Episode 907)",
     "releaseYear": 1999,
-    "season": null,
-    "duration": "50 min",
-    "status": "Finished Airing",
+    "season": "fall",
+    "duration": "24 min",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Adventure",
@@ -13997,7 +14011,7 @@
         "\"Memories\" by Maki Otsuki"
       ]
     },
-    "popularity": 1708,
+    "popularity": 17,
     "favourites": 89602,
     "seasons": [
       {
@@ -14009,17 +14023,43 @@
       }
     ],
     "episodes": 1,
-    "rank": 4126,
-    "malId": 459,
-    "members": 151192,
-    "favorites": 458,
+    "rank": 51,
+    "malId": 21,
+    "members": 2600185,
+    "favorites": 245266,
     "source": "Manga",
     "rating": "PG-13 - Teens 13 or older",
-    "year": null,
-    "producers": [],
-    "licensors": [],
-    "background": "One Piece Movie 01 was aired in theaters as a double feature alongside Digimon Adventure: Bokura no War Game as part of Toei's Spring 2000 Anime fair.",
-    "title_english": "One Piece: The Movie",
+    "year": 1999,
+    "producers": [
+      {
+        "mal_id": 169,
+        "type": "anime",
+        "name": "Fuji TV",
+        "url": "https://myanimelist.net/anime/producer/169/Fuji_TV"
+      },
+      {
+        "mal_id": 416,
+        "type": "anime",
+        "name": "TAP",
+        "url": "https://myanimelist.net/anime/producer/416/TAP"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 102,
+        "type": "anime",
+        "name": "Funimation",
+        "url": "https://myanimelist.net/anime/producer/102/Funimation"
+      },
+      {
+        "mal_id": 252,
+        "type": "anime",
+        "name": "4Kids Entertainment",
+        "url": "https://myanimelist.net/anime/producer/252/4Kids_Entertainment"
+      }
+    ],
+    "background": "The anime had a hiatus from October 13, 2024, to April 6, 2025. The airing time was Wednesdays 19:00 between October 20, 1999 - March 2001. The airing time was changed to Sundays 19:30 between April 2001 - December 2004. The airing time was changed to Sundays 9:30 between October 6, 2006 - October 13, 2024. The airing time was again changed to Sundays 23:15 on April 6, 2025. Several anime-original arcs have been adapted into light novels, and the series has inspired 50+ video games as of 2023. In June 2004, One Piece was licensed in North America by 4Kids Entertainment, which partnered with Viz Media for home video distribution. As One Piece proved unsuitable for their target demographic, 4Kids Entertainment censored the show to meet their standards, and, in December 2006, they stopped its production. In April 2007, Funimation took over the series licensing, providing an uncut version that remained faithful to the original release. In Japan, the anime's first 574 episodes were released exclusively on DVD by Avex Pictures from February 21, 2001, to December 4, 2013. Blu-rays also became available with the DVDs starting on January 8, 2014. In North America, Viz Media released the anime on DVD between February 28, 2006, and June 26, 2007. Funimation has re-released and continued the series since May 27, 2008. From March 23, 2021, the DVDs were accompanied by Blu-rays as well.",
+    "title_english": "One Piece",
     "title_japanese": "ONE PIECE"
   },
   {
@@ -14310,9 +14350,9 @@
         "relationType": "Other"
       }
     ],
-    "rank": 160,
+    "rank": 161,
     "malId": 30276,
-    "members": 3451496,
+    "members": 3451777,
     "favorites": 66301,
     "source": "Web manga",
     "rating": "R - 17+ (violence & profanity)",
@@ -15596,12 +15636,12 @@
   {
     "id": "49",
     "title": "Ranma ½ (2024)",
-    "coverImage": "https://cdn.myanimelist.net/images/anime/13/6441l.jpg",
+    "coverImage": "https://cdn.myanimelist.net/images/anime/1155/144299l.jpg",
     "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/185731-LUMIdwsqtTrX.jpg",
     "description": "The second season of Ranma 1/2 (2024).\n\nBrace yourselves for the hilarious romantic comedy's return! What antics and arguments will Ranma and Akane get into next?\n\n(Source: Netflix Anime)",
     "releaseYear": 2025,
-    "season": "spring",
-    "duration": "24 min per ep",
+    "season": "fall",
+    "duration": "22 min per ep",
     "status": "Finished Airing",
     "genres": [
       "Action",
@@ -15610,10 +15650,10 @@
     ],
     "studios": [
       {
-        "mal_id": 37,
+        "mal_id": 569,
         "type": "anime",
-        "name": "Studio Deen",
-        "url": "https://myanimelist.net/anime/producer/37/Studio_Deen"
+        "name": "MAPPA",
+        "url": "https://myanimelist.net/anime/producer/569/MAPPA"
       }
     ],
     "ratings": {
@@ -15768,7 +15808,7 @@
         "9: \"Niji to Taiyou no Oka\" by Piyo Piyo (eps 136-161)"
       ]
     },
-    "popularity": 973,
+    "popularity": 1693,
     "favourites": 279,
     "seasons": [
       {
@@ -15870,44 +15910,43 @@
         "relationType": "Other"
       }
     ],
-    "episodes": 161,
-    "rank": 1169,
-    "malId": 210,
-    "members": 278993,
-    "favorites": 4616,
+    "episodes": 12,
+    "rank": 704,
+    "malId": 59145,
+    "members": 152749,
+    "favorites": 1179,
     "source": "Manga",
-    "rating": "R+ - Mild Nudity",
-    "year": 1989,
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2024,
     "producers": [
       {
-        "mal_id": 99,
+        "mal_id": 62,
         "type": "anime",
-        "name": "Kitty Films",
-        "url": "https://myanimelist.net/anime/producer/99/Kitty_Films"
+        "name": "Shogakukan-Shueisha Productions",
+        "url": "https://myanimelist.net/anime/producer/62/Shogakukan-Shueisha_Productions"
       },
       {
-        "mal_id": 169,
+        "mal_id": 1003,
         "type": "anime",
-        "name": "Fuji TV",
-        "url": "https://myanimelist.net/anime/producer/169/Fuji_TV"
+        "name": "Nippon Television Network",
+        "url": "https://myanimelist.net/anime/producer/1003/Nippon_Television_Network"
       },
       {
         "mal_id": 1430,
         "type": "anime",
         "name": "Shogakukan",
         "url": "https://myanimelist.net/anime/producer/1430/Shogakukan"
-      }
-    ],
-    "licensors": [
+      },
       {
-        "mal_id": 119,
+        "mal_id": 1856,
         "type": "anime",
-        "name": "VIZ Media",
-        "url": "https://myanimelist.net/anime/producer/119/VIZ_Media"
+        "name": "dugout",
+        "url": "https://myanimelist.net/anime/producer/1856/dugout"
       }
     ],
-    "background": "The 2011 live-action adaptation is produced by Nippon Television and is directed by Ryo Nishimura.",
-    "title_english": "Ranma ½",
+    "licensors": [],
+    "background": "",
+    "title_english": "Ranma ½ (2024)",
     "title_japanese": "らんま1/2"
   },
   {
@@ -16860,7 +16899,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 4688,
+    "popularity": 4677,
     "favourites": 156,
     "episodeGuide": [
       {
@@ -16922,9 +16961,9 @@
         "relationType": "Other"
       }
     ],
-    "rank": 8840,
+    "rank": 8842,
     "malId": 61142,
-    "members": 27802,
+    "members": 27911,
     "favorites": 80,
     "source": "Web manga",
     "rating": "R+ - Mild Nudity",
@@ -17309,7 +17348,7 @@
         "\"Myakumyaku (脈脈)\" by KAFUNÉ"
       ]
     },
-    "popularity": 6633,
+    "popularity": 6624,
     "favourites": 33,
     "episodeGuide": [
       {
@@ -17380,7 +17419,7 @@
     ],
     "rank": 9086,
     "malId": 60378,
-    "members": 11630,
+    "members": 11661,
     "favorites": 21,
     "source": "Novel",
     "rating": "PG-13 - Teens 13 or older",
@@ -17596,7 +17635,7 @@
         "2: \"Shirogarasu (シロガラス)\" by Nowlu (eps 2-)"
       ]
     },
-    "popularity": 3234,
+    "popularity": 3210,
     "favourites": 562,
     "episodeGuide": [
       {
@@ -17663,10 +17702,10 @@
       }
     ],
     "seasons": [],
-    "rank": 6740,
+    "rank": 6721,
     "malId": 60303,
-    "members": 56842,
-    "favorites": 177,
+    "members": 57487,
+    "favorites": 178,
     "source": "Light novel",
     "rating": "R - 17+ (violence & profanity)",
     "year": 2025,
@@ -18120,7 +18159,7 @@
         "7: \"DoReMiFa Anpanman\" by Dreaming (April 2003 ~ March 2010)"
       ]
     },
-    "popularity": 9213,
+    "popularity": 9210,
     "favourites": 33,
     "seasons": [
       {
@@ -18831,9 +18870,9 @@
         "relationType": "Other"
       }
     ],
-    "rank": 6657,
+    "rank": 6656,
     "malId": 1960,
-    "members": 5144,
+    "members": 5149,
     "favorites": 35,
     "source": "Picture book",
     "rating": "PG - Children",
@@ -18995,13 +19034,13 @@
         "\"Mugen Trip (夢幻トリップ)\" by Nakigoto (なきごと)"
       ]
     },
-    "popularity": 3921,
+    "popularity": 3913,
     "favourites": 284,
     "seasons": [],
-    "rank": 10268,
+    "rank": 10287,
     "malId": 61174,
-    "members": 40612,
-    "favorites": 80,
+    "members": 40791,
+    "favorites": 81,
     "source": "Light novel",
     "rating": "PG-13 - Teens 13 or older",
     "year": 2025,
@@ -22257,7 +22296,7 @@
         "2: \"Shippai Shinai Menhera no Sodatekata (失敗しないメンヘラの育て方)\" by Yurina Hirate (平手友梨奈)"
       ]
     },
-    "popularity": 3299,
+    "popularity": 3298,
     "favourites": 311,
     "episodeGuide": [
       {
@@ -22411,8 +22450,8 @@
     "seasons": [],
     "rank": 9459,
     "malId": 56693,
-    "members": 54894,
-    "favorites": 165,
+    "members": 54958,
+    "favorites": 167,
     "source": "Manga",
     "rating": "PG-13 - Teens 13 or older",
     "year": 2025,
@@ -22911,7 +22950,7 @@
         "\"Better Off\" by iScream"
       ]
     },
-    "popularity": 3875,
+    "popularity": 3866,
     "favourites": 204,
     "episodeGuide": [
       {
@@ -22974,7 +23013,7 @@
     "seasons": [],
     "rank": 3540,
     "malId": 60254,
-    "members": 41586,
+    "members": 41745,
     "favorites": 80,
     "source": "Web manga",
     "rating": "PG-13 - Teens 13 or older",
