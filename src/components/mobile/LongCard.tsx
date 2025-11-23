@@ -114,6 +114,7 @@ export function LongCard({ id, title, image, score, description, genres, rank }:
                     <div className="grid grid-cols-2 gap-3">
                         <Link
                             href={`/anime/${id}`}
+                            onClick={() => setIsOpen(false)}
                             className="flex items-center justify-center gap-2 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm"
                         >
                             <Info className="w-4 h-4" />

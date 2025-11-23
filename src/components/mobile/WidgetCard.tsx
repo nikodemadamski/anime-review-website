@@ -97,6 +97,7 @@ export function WidgetCard({ id, title, image, score, rank, subtitle }: WidgetCa
                     <div className="grid grid-cols-2 gap-3">
                         <Link
                             href={`/anime/${id}`}
+                            onClick={() => setIsOpen(false)}
                             className="flex items-center justify-center gap-2 py-3 rounded-xl bg-primary text-primary-foreground font-bold text-sm active:scale-95 transition-transform"
                         >
                             <Info className="w-4 h-4" />
