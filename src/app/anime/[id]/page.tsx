@@ -98,10 +98,31 @@ export default async function AnimePage({ params }: PageProps) {
                   <span className="font-bold">#{anime.rank || 'N/A'}</span>
                 </div>
                 <div className="flex justify-between">
+                  <span className="text-muted-foreground">Popularity</span>
+                  <span className="font-bold">#{anime.popularity || 'N/A'}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Members</span>
+                  <span className="font-bold">{anime.members?.toLocaleString() || 'N/A'}</span>
+                </div>
+                <div className="flex justify-between">
                   <span className="text-muted-foreground">Episodes</span>
                   <span className="font-medium">{anime.episodes || '?'} eps</span>
                 </div>
-
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Source</span>
+                  <span className="font-medium capitalize">{anime.source || 'Unknown'}</span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Studio</span>
+                  <span className="font-medium">
+                    {(typeof anime.studios?.[0] === 'string' ? anime.studios[0] : anime.studios?.[0]?.name) || 'Unknown'}
+                  </span>
+                </div>
+                <div className="flex justify-between">
+                  <span className="text-muted-foreground">Season</span>
+                  <span className="font-medium capitalize">{anime.season} {anime.year}</span>
+                </div>
 
 
                 <div className="grid grid-cols-2 gap-3">
@@ -329,11 +350,12 @@ function RatingCard({
         <div>
           <h3 className="text-xl font-bold flex items-center gap-2">
             {label}
-            <div className={`px-2 py-0.5 rounded text-xs font-black bg-secondary/10 ${color}`}>
-              {score.toFixed(1)}
-            </div>
           </h3>
-          <p className="text-sm text-muted-foreground mt-1 leading-relaxed">
+          <div className={`flex items-baseline gap-1 ${color}`}>
+            <span className="text-4xl font-black tracking-tighter">{score.toFixed(1)}</span>
+            <span className="text-sm font-bold opacity-60">/10</span>
+          </div>
+          <p className="text-sm text-muted-foreground mt-2 leading-relaxed">
             {description}
           </p>
         </div>

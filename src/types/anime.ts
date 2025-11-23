@@ -35,7 +35,11 @@ export const AnimeSchema = z.object({
   duration: z.string().optional(),
   episodes: z.number().optional(),
   season: z.string().optional(),
-  studios: z.array(z.string()).default([]),
+  year: z.number().optional(), // Added year
+  studios: z.array(z.union([
+    z.string(),
+    z.object({ name: z.string().optional() })
+  ])).default([]),
   source: z.string().optional(),
   rank: z.number().optional(),
   popularity: z.number().optional(),

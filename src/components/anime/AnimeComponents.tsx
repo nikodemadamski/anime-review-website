@@ -75,25 +75,52 @@ export function CharactersList({ characters }: { characters: any[] }) {
         <div className="space-y-3 mt-4">
             <div className="grid grid-cols-1 gap-3">
                 {characters.slice(0, 4).map((char, i) => (
-                    <div key={i} className="flex items-center gap-3 p-2 rounded-lg bg-secondary/5 hover:bg-secondary/10 transition-colors">
-                        <div className="w-12 h-12 rounded-full overflow-hidden relative bg-gray-800 flex-shrink-0 border border-border">
-                            {char.image ? (
-                                <Image
-                                    src={char.image}
-                                    alt={char.name}
-                                    fill
-                                    className="object-cover"
-                                />
-                            ) : (
-                                <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center text-xs font-bold text-white/40">
-                                    {char.name.charAt(0)}
+                    <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-secondary/5 hover:bg-secondary/10 transition-colors border border-border/50">
+                        {/* Character */}
+                        <div className="flex items-center gap-3 flex-1 min-w-0">
+                            <div className="w-12 h-12 rounded-full overflow-hidden relative bg-gray-800 flex-shrink-0 border border-border">
+                                {char.image ? (
+                                    <Image
+                                        src={char.image}
+                                        alt={char.name}
+                                        fill
+                                        className="object-cover"
+                                    />
+                                ) : (
+                                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center text-xs font-bold text-white/40">
+                                        {char.name.charAt(0)}
+                                    </div>
+                                )}
+                            </div>
+                            <div className="min-w-0">
+                                <p className="font-bold text-sm truncate">{char.name}</p>
+                                <p className="text-xs text-muted-foreground truncate">{char.role}</p>
+                            </div>
+                        </div>
+
+                        {/* Voice Actor */}
+                        {char.voiceActor && (
+                            <div className="flex items-center gap-3 flex-1 min-w-0 justify-end text-right">
+                                <div className="min-w-0">
+                                    <p className="font-bold text-sm truncate">{char.voiceActor.name}</p>
+                                    <p className="text-xs text-muted-foreground truncate">{char.voiceActor.language}</p>
                                 </div>
-                            )}
-                        </div>
-                        <div className="min-w-0">
-                            <p className="font-bold text-sm truncate">{char.name}</p>
-                            <p className="text-xs text-muted-foreground truncate">{char.role}</p>
-                        </div>
+                                <div className="w-12 h-12 rounded-full overflow-hidden relative bg-gray-800 flex-shrink-0 border border-border">
+                                    {char.voiceActor.image ? (
+                                        <Image
+                                            src={char.voiceActor.image}
+                                            alt={char.voiceActor.name}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    ) : (
+                                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-violet-500/20 flex items-center justify-center text-xs font-bold text-white/40">
+                                            VA
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        )}
                     </div>
                 ))}
             </div>

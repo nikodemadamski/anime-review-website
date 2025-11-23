@@ -7,23 +7,33 @@
     "description": "Takes place in the year 2200, where Japan has become a land of cats as the human population's birth rate has declined. In this future world, cats can talk, learn, and work. The story follows a high school girl and her argumentative cat.\n\n(Source: Anime News Network)",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 3,
-    "status": "releasing",
+    "duration": "2 min",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Sci-Fi",
       "Slice of Life"
     ],
     "studios": [
-      "Imageworks Studio",
-      "Imagica Infos"
+      {
+        "mal_id": 2844,
+        "type": "anime",
+        "name": "Imagica Infos",
+        "url": "https://myanimelist.net/anime/producer/2844/Imagica_Infos"
+      },
+      {
+        "mal_id": 2983,
+        "type": "anime",
+        "name": "Imageworks Studio",
+        "url": "https://myanimelist.net/anime/producer/2983/Imageworks_Studio"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8,
       "story": 8,
       "character": 2,
-      "site": 5.57
+      "site": 5.58
     },
     "characters": [
       {
@@ -141,10 +151,21 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 734,
+    "popularity": 13301,
     "favourites": 8,
     "seasons": [],
-    "rank": 12327
+    "rank": 12327,
+    "malId": 62496,
+    "members": 1506,
+    "favorites": 3,
+    "source": "4-koma manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "2200年ねこの国ニッポン"
   },
   {
     "id": "2",
@@ -155,21 +176,26 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "24 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Fantasy",
       "Romance"
     ],
     "studios": [
-      "Asahi Production"
+      {
+        "mal_id": 406,
+        "type": "anime",
+        "name": "Asahi Production",
+        "url": "https://myanimelist.net/anime/producer/406/Asahi_Production"
+      }
     ],
     "ratings": {
       "music": 9.66,
       "visual": 9.34,
       "story": 8.66,
       "character": 5.66,
-      "site": 7.21
+      "site": 7.18
     },
     "characters": [
       {
@@ -301,7 +327,7 @@
         "\"Kibou Koudo (希望光度)\" by Shunichi Toki (土岐隼一)"
       ]
     },
-    "popularity": 15735,
+    "popularity": 3805,
     "favourites": 221,
     "episodeGuide": [
       {
@@ -355,7 +381,67 @@
       }
     ],
     "seasons": [],
-    "rank": 3584
+    "rank": 3620,
+    "malId": 60162,
+    "members": 43019,
+    "favorites": 126,
+    "source": "Web manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 145,
+        "type": "anime",
+        "name": "TBS",
+        "url": "https://myanimelist.net/anime/producer/145/TBS"
+      },
+      {
+        "mal_id": 159,
+        "type": "anime",
+        "name": "Kodansha",
+        "url": "https://myanimelist.net/anime/producer/159/Kodansha"
+      },
+      {
+        "mal_id": 166,
+        "type": "anime",
+        "name": "Movic",
+        "url": "https://myanimelist.net/anime/producer/166/Movic"
+      },
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 1041,
+        "type": "anime",
+        "name": "Ai Addiction",
+        "url": "https://myanimelist.net/anime/producer/1041/Ai_Addiction"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      },
+      {
+        "mal_id": 1585,
+        "type": "anime",
+        "name": "Nichion",
+        "url": "https://myanimelist.net/anime/producer/1585/Nichion"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Pass the Monster Meat, Milady!",
+    "title_japanese": "悪食令嬢と狂血公爵"
   },
   {
     "id": "3",
@@ -366,8 +452,8 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 11,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Romance",
@@ -375,7 +461,12 @@
       "Slice of Life"
     ],
     "studios": [
-      "Studio Flad"
+      {
+        "mal_id": 1693,
+        "type": "anime",
+        "name": "Studio Flad",
+        "url": "https://myanimelist.net/anime/producer/1693/Studio_Flad"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -514,7 +605,7 @@
         "\"Arifuretetai (ありふれてたい)\" by KAF (花譜)"
       ]
     },
-    "popularity": 8766,
+    "popularity": 5384,
     "favourites": 113,
     "episodeGuide": [
       {
@@ -568,7 +659,73 @@
       }
     ],
     "seasons": [],
-    "rank": 3974
+    "rank": 3974,
+    "malId": 60781,
+    "members": 19913,
+    "favorites": 30,
+    "source": "Web manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 104,
+        "type": "anime",
+        "name": "Lantis",
+        "url": "https://myanimelist.net/anime/producer/104/Lantis"
+      },
+      {
+        "mal_id": 238,
+        "type": "anime",
+        "name": "AT-X",
+        "url": "https://myanimelist.net/anime/producer/238/AT-X"
+      },
+      {
+        "mal_id": 1355,
+        "type": "anime",
+        "name": "TV Aichi",
+        "url": "https://myanimelist.net/anime/producer/1355/TV_Aichi"
+      },
+      {
+        "mal_id": 1604,
+        "type": "anime",
+        "name": "Sun TV",
+        "url": "https://myanimelist.net/anime/producer/1604/Sun_TV"
+      },
+      {
+        "mal_id": 1696,
+        "type": "anime",
+        "name": "Kadokawa",
+        "url": "https://myanimelist.net/anime/producer/1696/Kadokawa"
+      },
+      {
+        "mal_id": 2185,
+        "type": "anime",
+        "name": "BS Asahi",
+        "url": "https://myanimelist.net/anime/producer/2185/BS_Asahi"
+      },
+      {
+        "mal_id": 2425,
+        "type": "anime",
+        "name": "Bandai Namco Music Live",
+        "url": "https://myanimelist.net/anime/producer/2425/Bandai_Namco_Music_Live"
+      },
+      {
+        "mal_id": 2545,
+        "type": "anime",
+        "name": "Kyoto Broadcasting System",
+        "url": "https://myanimelist.net/anime/producer/2545/Kyoto_Broadcasting_System"
+      },
+      {
+        "mal_id": 2640,
+        "type": "anime",
+        "name": "INSPION Edge",
+        "url": "https://myanimelist.net/anime/producer/2640/INSPION_Edge"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Alma-chan Wants to Be a Family!",
+    "title_japanese": "アルマちゃんは家族になりたい"
   },
   {
     "id": "4",
@@ -579,22 +736,27 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Adventure",
       "Fantasy"
     ],
     "studios": [
-      "Sunrise"
+      {
+        "mal_id": 14,
+        "type": "anime",
+        "name": "Sunrise",
+        "url": "https://myanimelist.net/anime/producer/14/Sunrise"
+      }
     ],
     "ratings": {
       "music": 9.3,
       "visual": 7.72,
       "story": 6.44,
       "character": 4.16,
-      "site": 7.07
+      "site": 7.04
     },
     "characters": [
       {
@@ -718,7 +880,7 @@
         "2: \"Like Gravity\" by BONNIE PINK (eps 2-)"
       ]
     },
-    "popularity": 46192,
+    "popularity": 2350,
     "favourites": 867,
     "episodeGuide": [
       {
@@ -772,7 +934,85 @@
       }
     ],
     "seasons": [],
-    "rank": 4343
+    "rank": 4343,
+    "malId": 61026,
+    "members": 98666,
+    "favorites": 311,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 15,
+        "type": "anime",
+        "name": "Sony Pictures Entertainment",
+        "url": "https://myanimelist.net/anime/producer/15/Sony_Pictures_Entertainment"
+      },
+      {
+        "mal_id": 73,
+        "type": "anime",
+        "name": "TMS Entertainment",
+        "url": "https://myanimelist.net/anime/producer/73/TMS_Entertainment"
+      },
+      {
+        "mal_id": 135,
+        "type": "anime",
+        "name": "MediaNet",
+        "url": "https://myanimelist.net/anime/producer/135/MediaNet"
+      },
+      {
+        "mal_id": 140,
+        "type": "anime",
+        "name": "Animax",
+        "url": "https://myanimelist.net/anime/producer/140/Animax"
+      },
+      {
+        "mal_id": 843,
+        "type": "anime",
+        "name": "BS Fuji",
+        "url": "https://myanimelist.net/anime/producer/843/BS_Fuji"
+      },
+      {
+        "mal_id": 1011,
+        "type": "anime",
+        "name": "Warner Music Japan",
+        "url": "https://myanimelist.net/anime/producer/1011/Warner_Music_Japan"
+      },
+      {
+        "mal_id": 1334,
+        "type": "anime",
+        "name": "Docomo Anime Store",
+        "url": "https://myanimelist.net/anime/producer/1334/Docomo_Anime_Store"
+      },
+      {
+        "mal_id": 1443,
+        "type": "anime",
+        "name": "Overlap",
+        "url": "https://myanimelist.net/anime/producer/1443/Overlap"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      },
+      {
+        "mal_id": 1494,
+        "type": "anime",
+        "name": "Kanon Sound",
+        "url": "https://myanimelist.net/anime/producer/1494/Kanon_Sound"
+      },
+      {
+        "mal_id": 2236,
+        "type": "anime",
+        "name": "CTW",
+        "url": "https://myanimelist.net/anime/producer/2236/CTW"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "My Status as an Assassin Obviously Exceeds the Hero's",
+    "title_japanese": "暗殺者である俺のステータスが勇者よりも明らかに強いのだが"
   },
   {
     "id": "5",
@@ -783,14 +1023,19 @@
     "releaseYear": 2023,
     "season": "spring",
     "episodes": 24,
-    "duration": 24,
-    "status": "finished",
+    "duration": "25 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Drama",
       "Music"
     ],
     "studios": [
-      "Nippon Animation"
+      {
+        "mal_id": 22,
+        "type": "anime",
+        "name": "Nippon Animation",
+        "url": "https://myanimelist.net/anime/producer/22/Nippon_Animation"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -930,7 +1175,7 @@
         "\"夕さりのカノン\" by soshina (粗品) feat. Yuika"
       ]
     },
-    "popularity": 22869,
+    "popularity": 2938,
     "favourites": 491,
     "episodeGuide": [
       {
@@ -1111,7 +1356,31 @@
         "relationType": "Sequel"
       }
     ],
-    "rank": 3637
+    "rank": 3637,
+    "malId": 51614,
+    "members": 68277,
+    "favorites": 284,
+    "source": "Web manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2023,
+    "producers": [
+      {
+        "mal_id": 111,
+        "type": "anime",
+        "name": "NHK",
+        "url": "https://myanimelist.net/anime/producer/111/NHK"
+      },
+      {
+        "mal_id": 1797,
+        "type": "anime",
+        "name": "NHK Enterprises",
+        "url": "https://myanimelist.net/anime/producer/1797/NHK_Enterprises"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "青のオーケストラ"
   },
   {
     "id": "6",
@@ -1121,15 +1390,20 @@
     "description": "Bird Kazami, aiming to become a pro Blader, meets former champion Ekusu Kurosu, also known as 'Kamen X', and forms a team so that they can aim for the \"top\" of the X Tower. But what awaits them is a spectacular battle that no one has ever seen before. The yet unseen 'X'. The super accelerated (Xtreme) Beyblade runs through a new era!\n\n(Source: Official website)",
     "releaseYear": 2023,
     "season": "fall",
-    "duration": 22,
-    "status": "releasing",
+    "duration": "24 min",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Adventure",
       "Sports"
     ],
     "studios": [
-      "OLM"
+      {
+        "mal_id": 28,
+        "type": "anime",
+        "name": "OLM",
+        "url": "https://myanimelist.net/anime/producer/28/OLM"
+      }
     ],
     "ratings": {
       "music": 9.24,
@@ -1272,7 +1546,7 @@
         "3: \"Stay Gold\" by Jax Jones, Ado (eps 75-)"
       ]
     },
-    "popularity": 3411,
+    "popularity": 8517,
     "favourites": 118,
     "episodeGuide": [
       {
@@ -1663,7 +1937,25 @@
         "relationType": "Other"
       }
     ],
-    "rank": 5221
+    "rank": 5221,
+    "malId": 56566,
+    "members": 6261,
+    "favorites": 58,
+    "source": "Manga",
+    "rating": "PG - Children",
+    "year": 2023,
+    "producers": [
+      {
+        "mal_id": 16,
+        "type": "anime",
+        "name": "TV Tokyo",
+        "url": "https://myanimelist.net/anime/producer/16/TV_Tokyo"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "ベイブレードエックス"
   },
   {
     "id": "7",
@@ -1674,22 +1966,27 @@
     "releaseYear": 2016,
     "season": "spring",
     "episodes": 13,
-    "duration": 24,
-    "status": "finished",
+    "duration": "24 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Action",
       "Adventure",
       "Comedy"
     ],
     "studios": [
-      "bones"
+      {
+        "mal_id": 4,
+        "type": "anime",
+        "name": "Bones",
+        "url": "https://myanimelist.net/anime/producer/4/Bones"
+      }
     ],
     "ratings": {
       "music": 9.64,
       "visual": 8.1,
       "story": 7.3,
       "character": 6.18,
-      "site": 7.87
+      "site": 7.83
     },
     "characters": [
       {
@@ -1826,7 +2123,7 @@
         "\"HEROES\" by Brian the Sun"
       ]
     },
-    "popularity": 777004,
+    "popularity": 7,
     "favourites": 20697,
     "episodeGuide": [
       {
@@ -1951,7 +2248,56 @@
         "relationType": "Summary"
       }
     ],
-    "rank": 1024
+    "rank": 1024,
+    "malId": 31964,
+    "members": 3231498,
+    "favorites": 54288,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2016,
+    "producers": [
+      {
+        "mal_id": 53,
+        "type": "anime",
+        "name": "Dentsu",
+        "url": "https://myanimelist.net/anime/producer/53/Dentsu"
+      },
+      {
+        "mal_id": 143,
+        "type": "anime",
+        "name": "Mainichi Broadcasting System",
+        "url": "https://myanimelist.net/anime/producer/143/Mainichi_Broadcasting_System"
+      },
+      {
+        "mal_id": 166,
+        "type": "anime",
+        "name": "Movic",
+        "url": "https://myanimelist.net/anime/producer/166/Movic"
+      },
+      {
+        "mal_id": 1143,
+        "type": "anime",
+        "name": "TOHO animation",
+        "url": "https://myanimelist.net/anime/producer/1143/TOHO_animation"
+      },
+      {
+        "mal_id": 1365,
+        "type": "anime",
+        "name": "Shueisha",
+        "url": "https://myanimelist.net/anime/producer/1365/Shueisha"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 102,
+        "type": "anime",
+        "name": "Funimation",
+        "url": "https://myanimelist.net/anime/producer/102/Funimation"
+      }
+    ],
+    "background": "Mangaka Horikoushi Kouhei has noted that American superhero comics are the inspiration for the series, and has based character pages on logos for Marvel and DC comic characters.",
+    "title_english": "My Hero Academia",
+    "title_japanese": "僕のヒーローアカデミア"
   },
   {
     "id": "8",
@@ -1962,12 +2308,19 @@
     "releaseYear": 1995,
     "season": "spring",
     "episodes": 48,
-    "duration": 15,
-    "status": "finished",
+    "duration": "5 min",
+    "status": "Currently Airing",
     "genres": [
       "Comedy"
     ],
-    "studios": [],
+    "studios": [
+      {
+        "mal_id": 191,
+        "type": "anime",
+        "name": "Eiken",
+        "url": "https://myanimelist.net/anime/producer/191/Eiken"
+      }
+    ],
     "ratings": {
       "music": 10,
       "visual": 10,
@@ -2043,7 +2396,7 @@
         "\"Bonobono suru (bonobonoする)\" by Monobright (モノブライト)"
       ]
     },
-    "popularity": 631,
+    "popularity": 9968,
     "favourites": 6,
     "episodeGuide": [
       {
@@ -2389,7 +2742,31 @@
         "relationType": "Other"
       }
     ],
-    "rank": 7776
+    "rank": 7776,
+    "malId": 32353,
+    "members": 4071,
+    "favorites": 19,
+    "source": "4-koma manga",
+    "rating": "G - All Ages",
+    "year": 2016,
+    "producers": [
+      {
+        "mal_id": 169,
+        "type": "anime",
+        "name": "Fuji TV",
+        "url": "https://myanimelist.net/anime/producer/169/Fuji_TV"
+      },
+      {
+        "mal_id": 1255,
+        "type": "anime",
+        "name": "Glovision",
+        "url": "https://myanimelist.net/anime/producer/1255/Glovision"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Bono Bono",
+    "title_japanese": "ぼのぼの"
   },
   {
     "id": "9",
@@ -2400,21 +2777,26 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Romance"
     ],
     "studios": [
-      "Studio elle"
+      {
+        "mal_id": 1521,
+        "type": "anime",
+        "name": "Studio Elle",
+        "url": "https://myanimelist.net/anime/producer/1521/Studio_Elle"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8.5,
       "story": 8.5,
       "character": 7,
-      "site": 6.85
+      "site": 6.84
     },
     "characters": [
       {
@@ -2516,7 +2898,7 @@
         "\"Bukiyou ni Kimi no Tonari (不器用に 君のとなり)\" by Ami Maeshima (前島亜美) (eps 1-5,7-)"
       ]
     },
-    "popularity": 19803,
+    "popularity": 3557,
     "favourites": 244,
     "episodeGuide": [
       {
@@ -2570,7 +2952,79 @@
       }
     ],
     "seasons": [],
-    "rank": 5295
+    "rank": 5295,
+    "malId": 60531,
+    "members": 48153,
+    "favorites": 142,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 58,
+        "type": "anime",
+        "name": "Square Enix",
+        "url": "https://myanimelist.net/anime/producer/58/Square_Enix"
+      },
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 517,
+        "type": "anime",
+        "name": "Asmik Ace",
+        "url": "https://myanimelist.net/anime/producer/517/Asmik_Ace"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1344,
+        "type": "anime",
+        "name": "King Records",
+        "url": "https://myanimelist.net/anime/producer/1344/King_Records"
+      },
+      {
+        "mal_id": 1551,
+        "type": "anime",
+        "name": "Kadokawa Media House",
+        "url": "https://myanimelist.net/anime/producer/1551/Kadokawa_Media_House"
+      },
+      {
+        "mal_id": 1680,
+        "type": "anime",
+        "name": "BS NTV",
+        "url": "https://myanimelist.net/anime/producer/1680/BS_NTV"
+      },
+      {
+        "mal_id": 1986,
+        "type": "anime",
+        "name": "arma bianca",
+        "url": "https://myanimelist.net/anime/producer/1986/arma_bianca"
+      },
+      {
+        "mal_id": 2074,
+        "type": "anime",
+        "name": "Bit grooove promotion",
+        "url": "https://myanimelist.net/anime/producer/2074/Bit_grooove_promotion"
+      },
+      {
+        "mal_id": 2751,
+        "type": "anime",
+        "name": "Happinet Media Marketing",
+        "url": "https://myanimelist.net/anime/producer/2751/Happinet_Media_Marketing"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "My Awkward Senpai",
+    "title_japanese": "不器用な先輩。"
   },
   {
     "id": "10",
@@ -2581,15 +3035,20 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Slice of Life",
       "Supernatural"
     ],
     "studios": [
-      "feel."
+      {
+        "mal_id": 91,
+        "type": "anime",
+        "name": "feel.",
+        "url": "https://myanimelist.net/anime/producer/91/feel"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -2728,7 +3187,7 @@
         "\"Senkou Hanabi (線香花火)\" by H△G, Luna Ishikawa (CV: Minami Tanaka)"
       ]
     },
-    "popularity": 11252,
+    "popularity": 4851,
     "favourites": 133,
     "episodeGuide": [
       {
@@ -2781,7 +3240,91 @@
       }
     ],
     "seasons": [],
-    "rank": 6064
+    "rank": 6064,
+    "malId": 60933,
+    "members": 25564,
+    "favorites": 58,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 104,
+        "type": "anime",
+        "name": "Lantis",
+        "url": "https://myanimelist.net/anime/producer/104/Lantis"
+      },
+      {
+        "mal_id": 238,
+        "type": "anime",
+        "name": "AT-X",
+        "url": "https://myanimelist.net/anime/producer/238/AT-X"
+      },
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 719,
+        "type": "anime",
+        "name": "Studio Mausu",
+        "url": "https://myanimelist.net/anime/producer/719/Studio_Mausu"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1412,
+        "type": "anime",
+        "name": "Kansai TV",
+        "url": "https://myanimelist.net/anime/producer/1412/Kansai_TV"
+      },
+      {
+        "mal_id": 1583,
+        "type": "anime",
+        "name": "U-NEXT",
+        "url": "https://myanimelist.net/anime/producer/1583/U-NEXT"
+      },
+      {
+        "mal_id": 1696,
+        "type": "anime",
+        "name": "Kadokawa",
+        "url": "https://myanimelist.net/anime/producer/1696/Kadokawa"
+      },
+      {
+        "mal_id": 1986,
+        "type": "anime",
+        "name": "arma bianca",
+        "url": "https://myanimelist.net/anime/producer/1986/arma_bianca"
+      },
+      {
+        "mal_id": 2185,
+        "type": "anime",
+        "name": "BS Asahi",
+        "url": "https://myanimelist.net/anime/producer/2185/BS_Asahi"
+      },
+      {
+        "mal_id": 2425,
+        "type": "anime",
+        "name": "Bandai Namco Music Live",
+        "url": "https://myanimelist.net/anime/producer/2425/Bandai_Namco_Music_Live"
+      },
+      {
+        "mal_id": 2751,
+        "type": "anime",
+        "name": "Happinet Media Marketing",
+        "url": "https://myanimelist.net/anime/producer/2751/Happinet_Media_Marketing"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Li'l Miss Vampire Can't Suck Right",
+    "title_japanese": "ちゃんと吸えない吸血鬼ちゃん"
   },
   {
     "id": "11",
@@ -2792,21 +3335,26 @@
     "releaseYear": 1990,
     "season": "winter",
     "episodes": 142,
-    "duration": 25,
-    "status": "finished",
+    "duration": "24 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Comedy",
       "Slice of Life"
     ],
     "studios": [
-      "Nippon Animation"
+      {
+        "mal_id": 22,
+        "type": "anime",
+        "name": "Nippon Animation",
+        "url": "https://myanimelist.net/anime/producer/22/Nippon_Animation"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 9.12,
       "story": 8.22,
       "character": 7.56,
-      "site": 7.53
+      "site": 7.65
     },
     "characters": [
       {
@@ -2929,7 +3477,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 3380,
+    "popularity": 6144,
     "favourites": 83,
     "episodeGuide": [
       {
@@ -3324,7 +3872,37 @@
         "relationType": "Other"
       }
     ],
-    "rank": 1486
+    "rank": 1486,
+    "malId": 951,
+    "members": 13957,
+    "favorites": 121,
+    "source": "Manga",
+    "rating": "G - All Ages",
+    "year": 1990,
+    "producers": [
+      {
+        "mal_id": 169,
+        "type": "anime",
+        "name": "Fuji TV",
+        "url": "https://myanimelist.net/anime/producer/169/Fuji_TV"
+      },
+      {
+        "mal_id": 312,
+        "type": "anime",
+        "name": "Life Work",
+        "url": "https://myanimelist.net/anime/producer/312/Life_Work"
+      },
+      {
+        "mal_id": 611,
+        "type": "anime",
+        "name": "Sakura Production",
+        "url": "https://myanimelist.net/anime/producer/611/Sakura_Production"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "ちびまる子ちゃん"
   },
   {
     "id": "12",
@@ -3335,21 +3913,26 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Fantasy",
       "Romance"
     ],
     "studios": [
-      "J.C.STAFF"
+      {
+        "mal_id": 7,
+        "type": "anime",
+        "name": "J.C.Staff",
+        "url": "https://myanimelist.net/anime/producer/7/JCStaff"
+      }
     ],
     "ratings": {
       "music": 9.5,
       "visual": 6.76,
       "story": 6.76,
       "character": 6.76,
-      "site": 6.8
+      "site": 6.78
     },
     "characters": [
       {
@@ -3482,10 +4065,58 @@
         "\"Family\" by Yui Nishio (ゆいにしお)"
       ]
     },
-    "popularity": 16275,
+    "popularity": 4073,
     "favourites": 237,
     "seasons": [],
-    "rank": 5625
+    "rank": 5625,
+    "malId": 57888,
+    "members": 37424,
+    "favorites": 78,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 29,
+        "type": "anime",
+        "name": "VAP",
+        "url": "https://myanimelist.net/anime/producer/29/VAP"
+      },
+      {
+        "mal_id": 306,
+        "type": "anime",
+        "name": "Magic Capsule",
+        "url": "https://myanimelist.net/anime/producer/306/Magic_Capsule"
+      },
+      {
+        "mal_id": 323,
+        "type": "anime",
+        "name": "Nippon Columbia",
+        "url": "https://myanimelist.net/anime/producer/323/Nippon_Columbia"
+      },
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 1414,
+        "type": "anime",
+        "name": "bilibili",
+        "url": "https://myanimelist.net/anime/producer/1414/bilibili"
+      },
+      {
+        "mal_id": 1696,
+        "type": "anime",
+        "name": "Kadokawa",
+        "url": "https://myanimelist.net/anime/producer/1696/Kadokawa"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Dad is a Hero, Mom is a Spirit, I'm a Reincarnator",
+    "title_japanese": "父は英雄、母は精霊、娘の私は転生者。"
   },
   {
     "id": "13",
@@ -3495,21 +4126,26 @@
     "description": "The sometimes happy, sometimes sad, and a tad stressful daily life of \"some sort of small, cute creature\" known as Chiikawa. Chiikawa enjoys delicious food with bees and rabbits, toils hard every day for the rewards of work, and still maintains a smile.\n\n(Source: Anime News Network)\n",
     "releaseYear": 2022,
     "season": "spring",
-    "duration": 2,
-    "status": "releasing",
+    "duration": "1 min",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Slice of Life"
     ],
     "studios": [
-      "Doga Kobo"
+      {
+        "mal_id": 95,
+        "type": "anime",
+        "name": "Doga Kobo",
+        "url": "https://myanimelist.net/anime/producer/95/Doga_Kobo"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8.4,
       "story": 8,
       "character": 4,
-      "site": 8.44
+      "site": 8.45
     },
     "characters": [
       {
@@ -3643,7 +4279,7 @@
         "4: \"Hitorigotsu (ひとりごつ)\" by Hachiware (CV: Makoto Tanaka)"
       ]
     },
-    "popularity": 6067,
+    "popularity": 6149,
     "favourites": 602,
     "episodeGuide": [
       {
@@ -3838,7 +4474,25 @@
         "relationType": "Character"
       }
     ],
-    "rank": 178
+    "rank": 178,
+    "malId": 50250,
+    "members": 13891,
+    "favorites": 430,
+    "source": "Web manga",
+    "rating": "G - All Ages",
+    "year": 2022,
+    "producers": [],
+    "licensors": [
+      {
+        "mal_id": 376,
+        "type": "anime",
+        "name": "Sentai Filmworks",
+        "url": "https://myanimelist.net/anime/producer/376/Sentai_Filmworks"
+      }
+    ],
+    "background": "",
+    "title_english": "Chiikawa",
+    "title_japanese": "ちいかわ"
   },
   {
     "id": "14",
@@ -3849,14 +4503,19 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 13,
-    "duration": null,
-    "status": "releasing",
+    "duration": "25 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Romance"
     ],
     "studios": [
-      "feel."
+      {
+        "mal_id": 91,
+        "type": "anime",
+        "name": "feel.",
+        "url": "https://myanimelist.net/anime/producer/91/feel"
+      }
     ],
     "ratings": {
       "music": 8.9,
@@ -3996,7 +4655,7 @@
         "\"Kagerou (陽炎)\" by Cidergirl (サイダーガール)"
       ]
     },
-    "popularity": 21047,
+    "popularity": 3519,
     "favourites": 299,
     "episodeGuide": [
       {
@@ -4050,7 +4709,97 @@
         "relationType": "Sequel"
       }
     ],
-    "rank": 3465
+    "rank": 3465,
+    "malId": 59517,
+    "members": 49101,
+    "favorites": 166,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 58,
+        "type": "anime",
+        "name": "Square Enix",
+        "url": "https://myanimelist.net/anime/producer/58/Square_Enix"
+      },
+      {
+        "mal_id": 238,
+        "type": "anime",
+        "name": "AT-X",
+        "url": "https://myanimelist.net/anime/producer/238/AT-X"
+      },
+      {
+        "mal_id": 719,
+        "type": "anime",
+        "name": "Studio Mausu",
+        "url": "https://myanimelist.net/anime/producer/719/Studio_Mausu"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1261,
+        "type": "anime",
+        "name": "Good Smile Company",
+        "url": "https://myanimelist.net/anime/producer/1261/Good_Smile_Company"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      },
+      {
+        "mal_id": 1430,
+        "type": "anime",
+        "name": "Shogakukan",
+        "url": "https://myanimelist.net/anime/producer/1430/Shogakukan"
+      },
+      {
+        "mal_id": 1551,
+        "type": "anime",
+        "name": "Kadokawa Media House",
+        "url": "https://myanimelist.net/anime/producer/1551/Kadokawa_Media_House"
+      },
+      {
+        "mal_id": 1696,
+        "type": "anime",
+        "name": "Kadokawa",
+        "url": "https://myanimelist.net/anime/producer/1696/Kadokawa"
+      },
+      {
+        "mal_id": 1779,
+        "type": "anime",
+        "name": "NewGin",
+        "url": "https://myanimelist.net/anime/producer/1779/NewGin"
+      },
+      {
+        "mal_id": 1899,
+        "type": "anime",
+        "name": "Good Smile Film",
+        "url": "https://myanimelist.net/anime/producer/1899/Good_Smile_Film"
+      },
+      {
+        "mal_id": 2903,
+        "type": "anime",
+        "name": "Studio Tenjin",
+        "url": "https://myanimelist.net/anime/producer/2903/Studio_Tenjin"
+      },
+      {
+        "mal_id": 3103,
+        "type": "anime",
+        "name": "REMOW",
+        "url": "https://myanimelist.net/anime/producer/3103/REMOW"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Chitose Is in the Ramune Bottle",
+    "title_japanese": "千歳くんはラムネ瓶のなか"
   },
   {
     "id": "15",
@@ -4059,23 +4808,28 @@
     "bannerImage": null,
     "description": "A surreal gag anime about female junior high school students who along with mysterious creatures attend a junior high school set in the real Kashiwa town, together loosely conveying the charm of Kashiwa with contents related to the town and its events.",
     "releaseYear": 2016,
-    "season": "winter",
+    "season": null,
     "episodes": 10,
-    "duration": 6,
-    "status": "finished",
+    "duration": "6 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Comedy",
       "Fantasy"
     ],
     "studios": [
-      "Super Normal Studio"
+      {
+        "mal_id": 2080,
+        "type": "anime",
+        "name": "Super Normal Studio",
+        "url": "https://myanimelist.net/anime/producer/2080/Super_Normal_Studio"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 7.34,
       "story": 7.34,
       "character": 7.34,
-      "site": 4.71
+      "site": 5.09
     },
     "characters": [
       {
@@ -4127,7 +4881,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 703,
+    "popularity": 14592,
     "favourites": 2,
     "seasons": [
       {
@@ -4159,7 +4913,18 @@
         "relationType": "Other"
       }
     ],
-    "rank": 13641
+    "rank": 13641,
+    "malId": 42054,
+    "members": 1078,
+    "favorites": 0,
+    "source": "Original",
+    "rating": "G - All Ages",
+    "year": null,
+    "producers": [],
+    "licensors": [],
+    "background": "Chou Futsuu Toshi Kashiwa Densetsu was funded through a successful FAAVO campaign in 2016.",
+    "title_english": null,
+    "title_japanese": "超普通都市カシワ伝説"
   },
   {
     "id": "16",
@@ -4169,15 +4934,20 @@
     "description": "Crayon Shin-chan follows the wacky antics and adventures of five-year-old Shinnosuke \"Shin\" Nohara and his parents, neighbors, and friends and is set in Kasukabe, Saitama Prefecture, Japan.\nMany of the jokes in the series stem from Shin-chan's occasionally weird, unnatural and inappropriate use of language, as well as from his inappropriate behavior. A typical gag involves Shin-chan confounding his parents by using the wrong phrase for the occasion; for example, saying \"Welcome back!\" instead of \"I am back!\" when he comes home.\nDuring the beginning of the series, the TV show was mostly based on the storyline in the original manga. As the show progressed, more and more episodes became anime-original.",
     "releaseYear": 1992,
     "season": "spring",
-    "duration": 21,
-    "status": "releasing",
+    "duration": "21 min",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Ecchi",
       "Slice of Life"
     ],
     "studios": [
-      "Shin-Ei Animation"
+      {
+        "mal_id": 247,
+        "type": "anime",
+        "name": "Shin-Ei Animation",
+        "url": "https://myanimelist.net/anime/producer/247/Shin-Ei_Animation"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -4346,7 +5116,7 @@
         "18: \"OLA!!\" by Yuzu"
       ]
     },
-    "popularity": 17698,
+    "popularity": 2440,
     "favourites": 870,
     "episodeGuide": [
       {
@@ -5015,7 +5785,32 @@
         "relationType": "Other"
       }
     ],
-    "rank": 1061
+    "rank": 1061,
+    "malId": 966,
+    "members": 92341,
+    "favorites": 1382,
+    "source": "Manga",
+    "rating": "G - All Ages",
+    "year": 1992,
+    "producers": [
+      {
+        "mal_id": 55,
+        "type": "anime",
+        "name": "TV Asahi",
+        "url": "https://myanimelist.net/anime/producer/55/TV_Asahi"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 102,
+        "type": "anime",
+        "name": "Funimation",
+        "url": "https://myanimelist.net/anime/producer/102/Funimation"
+      }
+    ],
+    "background": "The first English dubbed version was produced with many famous voice actors through 2001–2002 by Vitello Productions. In 2004, Phuuz Entertainment produced a continuation of the Vitello dub with different Los Angeles-based voice actors. The Phuuz and Vitello dub aired in the United Kingdom, Australia, and Republic of Ireland, and translations of these dubs aired in Europe and Latin America. The dubs were close to the original but had seen some censorship. The English dubbed version by Funimation was produced in 2005, featuring a Texas-based cast of voice actors, and was altered in comparison to the original—sexual references, dark humor, and references to popular American culture were added later on. Additionally, many non-existent backstories and different personalities were created. Crayon Shin-chan has also been adapted into video games, mobile games and tons of anime movies.",
+    "title_english": "Shin Chan",
+    "title_japanese": "クレヨンしんちゃん"
   },
   {
     "id": "17",
@@ -5025,22 +5820,27 @@
     "description": "Yumeko is a quiet, downcast office worker, weighed down by crippling insecurities and self-loathing—until a sudden accident leaves her with amnesia…and a sparkling new personality. Her dramatic transformation baffles everyone around her, but with a new zest for life and unshakeable confidence, Yumeko is ready to tackle anything: love, work, friendship…and maybe even an attempted-murder mystery.\n\n(Source: Crunchyroll)",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 25,
-    "status": "releasing",
+    "duration": "25 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Drama",
       "Romance"
     ],
     "studios": [
-      "Marvy Jack"
+      {
+        "mal_id": 553,
+        "type": "anime",
+        "name": "Marvy Jack",
+        "url": "https://myanimelist.net/anime/producer/553/Marvy_Jack"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8.5,
       "story": 8.5,
       "character": 6.5,
-      "site": 6.24
+      "site": 6.25
     },
     "characters": [
       {
@@ -5168,11 +5968,101 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 4065,
+    "popularity": 6697,
     "favourites": 42,
     "seasons": [],
     "episodes": 12,
-    "rank": 8871
+    "rank": 8871,
+    "malId": 57189,
+    "members": 11353,
+    "favorites": 36,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 109,
+        "type": "anime",
+        "name": "Shochiku",
+        "url": "https://myanimelist.net/anime/producer/109/Shochiku"
+      },
+      {
+        "mal_id": 719,
+        "type": "anime",
+        "name": "Studio Mausu",
+        "url": "https://myanimelist.net/anime/producer/719/Studio_Mausu"
+      },
+      {
+        "mal_id": 843,
+        "type": "anime",
+        "name": "BS Fuji",
+        "url": "https://myanimelist.net/anime/producer/843/BS_Fuji"
+      },
+      {
+        "mal_id": 1011,
+        "type": "anime",
+        "name": "Warner Music Japan",
+        "url": "https://myanimelist.net/anime/producer/1011/Warner_Music_Japan"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1344,
+        "type": "anime",
+        "name": "King Records",
+        "url": "https://myanimelist.net/anime/producer/1344/King_Records"
+      },
+      {
+        "mal_id": 1500,
+        "type": "anime",
+        "name": "ABC Animation",
+        "url": "https://myanimelist.net/anime/producer/1500/ABC_Animation"
+      },
+      {
+        "mal_id": 1604,
+        "type": "anime",
+        "name": "Sun TV",
+        "url": "https://myanimelist.net/anime/producer/1604/Sun_TV"
+      },
+      {
+        "mal_id": 1817,
+        "type": "anime",
+        "name": "Rakuten",
+        "url": "https://myanimelist.net/anime/producer/1817/Rakuten"
+      },
+      {
+        "mal_id": 1986,
+        "type": "anime",
+        "name": "arma bianca",
+        "url": "https://myanimelist.net/anime/producer/1986/arma_bianca"
+      },
+      {
+        "mal_id": 2071,
+        "type": "anime",
+        "name": "AQUA ARIS",
+        "url": "https://myanimelist.net/anime/producer/2071/AQUA_ARIS"
+      },
+      {
+        "mal_id": 2228,
+        "type": "anime",
+        "name": "Bushiroad Move",
+        "url": "https://myanimelist.net/anime/producer/2228/Bushiroad_Move"
+      },
+      {
+        "mal_id": 3225,
+        "type": "anime",
+        "name": "NTT Solmare",
+        "url": "https://myanimelist.net/anime/producer/3225/NTT_Solmare"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Plus-sized Misadventures in Love!",
+    "title_japanese": "デブとラブと過ちと!"
   },
   {
     "id": "18",
@@ -5182,15 +6072,20 @@
     "description": "GLITCH THE FUTURE.\n\nTomoro Tenma lives in a world where human thoughts and emotions—known as “e-Pulse”—power AI devices called Sapotama. But when Digimon begin materializing from Sapotama and feeding on e-Pulse, society begins to fracture. After Gekkomon appears from his device, Tomoro joins Glowing Dawn, a secret team investigating rogue Digimon and the dark truth of a system both fueled and corrupted by emotion. What new future will be forged by humans and Digimon? \n\n(Source: Crunchyroll, DIGIMON BEATBREAK Official Site, edited)",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min",
+    "status": "Currently Airing",
     "genres": [
       "Adventure",
       "Fantasy",
       "Sci-Fi"
     ],
     "studios": [
-      "Toei Animation"
+      {
+        "mal_id": 18,
+        "type": "anime",
+        "name": "Toei Animation",
+        "url": "https://myanimelist.net/anime/producer/18/Toei_Animation"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -5330,7 +6225,7 @@
         "\"beat up\" by Ai Tomioka (冨岡愛)"
       ]
     },
-    "popularity": 9079,
+    "popularity": 5438,
     "favourites": 121,
     "episodeGuide": [
       {
@@ -5392,7 +6287,37 @@
         "relationType": "Other"
       }
     ],
-    "rank": 3813
+    "rank": 3813,
+    "malId": 61269,
+    "members": 19308,
+    "favorites": 67,
+    "source": "Other",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 127,
+        "type": "anime",
+        "name": "Yomiko Advertising",
+        "url": "https://myanimelist.net/anime/producer/127/Yomiko_Advertising"
+      },
+      {
+        "mal_id": 169,
+        "type": "anime",
+        "name": "Fuji TV",
+        "url": "https://myanimelist.net/anime/producer/169/Fuji_TV"
+      },
+      {
+        "mal_id": 1761,
+        "type": "anime",
+        "name": "Tavac",
+        "url": "https://myanimelist.net/anime/producer/1761/Tavac"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Digimon Beatbreak",
+    "title_japanese": "DIGIMON BEATBREAK（デジモンビートブレイク）"
   },
   {
     "id": "19",
@@ -5403,20 +6328,27 @@
     "releaseYear": 1973,
     "season": "spring",
     "episodes": 26,
-    "duration": 25,
-    "status": "finished",
+    "duration": "25 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Adventure",
       "Comedy",
       "Fantasy"
     ],
-    "studios": [],
+    "studios": [
+      {
+        "mal_id": 2948,
+        "type": "anime",
+        "name": "Nippon TV Douga",
+        "url": "https://myanimelist.net/anime/producer/2948/Nippon_TV_Douga"
+      }
+    ],
     "ratings": {
       "music": 10,
       "visual": 8.14,
       "story": 6.86,
       "character": 5,
-      "site": 7.82
+      "site": 7.4
     },
     "characters": [
       {
@@ -5519,7 +6451,7 @@
         "\"Doraemon Rumba (1973 ED)\" by Harumi Naitoh"
       ]
     },
-    "popularity": 5891,
+    "popularity": 5175,
     "favourites": 116,
     "episodeGuide": [
       {
@@ -5696,7 +6628,18 @@
         "relationType": "Sequel"
       }
     ],
-    "rank": 2459
+    "rank": 2474,
+    "malId": 501,
+    "members": 21953,
+    "favorites": 141,
+    "source": "Manga",
+    "rating": "PG - Children",
+    "year": 1973,
+    "producers": [],
+    "licensors": [],
+    "background": "Note: The series has been poorly preserved, and never released on any format, nor has it ever been re-aired. Nearly all the footage within the series (except for the opening and closing credits) was destroyed in an accidental fire sometime after the series was cancelled. Surviving reels from the show are occasionally shown at Doraemon fan conventions in Japan. In addition, the audio of several episodes still survives. Still images from episodes 1 and 24 exists. (Source: Wikipedia)",
+    "title_english": null,
+    "title_japanese": "ドラえもん"
   },
   {
     "id": "20",
@@ -5707,21 +6650,26 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 13,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Slice of Life"
     ],
     "studios": [
-      "Voil"
+      {
+        "mal_id": 2698,
+        "type": "anime",
+        "name": "Voil",
+        "url": "https://myanimelist.net/anime/producer/2698/Voil"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 5,
       "story": 5,
       "character": 5,
-      "site": 6.86
+      "site": 6.87
     },
     "characters": [
       {
@@ -5854,7 +6802,7 @@
         "\"Thankful\" by Sizuk"
       ]
     },
-    "popularity": 9003,
+    "popularity": 5564,
     "favourites": 93,
     "episodeGuide": [
       {
@@ -5908,7 +6856,79 @@
       }
     ],
     "seasons": [],
-    "rank": 5158
+    "rank": 5158,
+    "malId": 57859,
+    "members": 18137,
+    "favorites": 36,
+    "source": "Web manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 144,
+        "type": "anime",
+        "name": "Pony Canyon",
+        "url": "https://myanimelist.net/anime/producer/144/Pony_Canyon"
+      },
+      {
+        "mal_id": 238,
+        "type": "anime",
+        "name": "AT-X",
+        "url": "https://myanimelist.net/anime/producer/238/AT-X"
+      },
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 1041,
+        "type": "anime",
+        "name": "Ai Addiction",
+        "url": "https://myanimelist.net/anime/producer/1041/Ai_Addiction"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1817,
+        "type": "anime",
+        "name": "Rakuten",
+        "url": "https://myanimelist.net/anime/producer/1817/Rakuten"
+      },
+      {
+        "mal_id": 1986,
+        "type": "anime",
+        "name": "arma bianca",
+        "url": "https://myanimelist.net/anime/producer/1986/arma_bianca"
+      },
+      {
+        "mal_id": 2185,
+        "type": "anime",
+        "name": "BS Asahi",
+        "url": "https://myanimelist.net/anime/producer/2185/BS_Asahi"
+      },
+      {
+        "mal_id": 2751,
+        "type": "anime",
+        "name": "Happinet Media Marketing",
+        "url": "https://myanimelist.net/anime/producer/2751/Happinet_Media_Marketing"
+      },
+      {
+        "mal_id": 3224,
+        "type": "anime",
+        "name": "Iwate Menkoi TV",
+        "url": "https://myanimelist.net/anime/producer/3224/Iwate_Menkoi_TV"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "A Mangaka's Weirdly Wonderful Workplace",
+    "title_japanese": "笑顔のたえない職場です。"
   },
   {
     "id": "21",
@@ -5919,8 +6939,8 @@
     "releaseYear": 2021,
     "season": "spring",
     "episodes": 20,
-    "duration": 25,
-    "status": "finished",
+    "duration": "25 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Adventure",
       "Drama",
@@ -5929,14 +6949,19 @@
       "Supernatural"
     ],
     "studios": [
-      "Brain's Base"
+      {
+        "mal_id": 112,
+        "type": "anime",
+        "name": "Brain's Base",
+        "url": "https://myanimelist.net/anime/producer/112/Brains_Base"
+      }
     ],
     "ratings": {
       "music": 9.8,
       "visual": 8.38,
       "story": 7.36,
       "character": 5.86,
-      "site": 8.3
+      "site": 8.35
     },
     "characters": [
       {
@@ -6049,7 +7074,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 279167,
+    "popularity": 194,
     "favourites": 8745,
     "episodeGuide": [
       {
@@ -6209,7 +7234,38 @@
         "relationType": "Summary"
       }
     ],
-    "rank": 254
+    "rank": 254,
+    "malId": 41025,
+    "members": 967397,
+    "favorites": 15910,
+    "source": "Manga",
+    "rating": "R - 17+ (violence & profanity)",
+    "year": 2021,
+    "producers": [
+      {
+        "mal_id": 111,
+        "type": "anime",
+        "name": "NHK",
+        "url": "https://myanimelist.net/anime/producer/111/NHK"
+      },
+      {
+        "mal_id": 1797,
+        "type": "anime",
+        "name": "NHK Enterprises",
+        "url": "https://myanimelist.net/anime/producer/1797/NHK_Enterprises"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 119,
+        "type": "anime",
+        "name": "VIZ Media",
+        "url": "https://myanimelist.net/anime/producer/119/VIZ_Media"
+      }
+    ],
+    "background": "",
+    "title_english": "To Your Eternity",
+    "title_japanese": "不滅のあなたへ"
   },
   {
     "id": "22",
@@ -6220,20 +7276,25 @@
     "releaseYear": 2025,
     "season": "summer",
     "episodes": 24,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Slice of Life"
     ],
     "studios": [
-      "SynergySP"
+      {
+        "mal_id": 118,
+        "type": "anime",
+        "name": "SynergySP",
+        "url": "https://myanimelist.net/anime/producer/118/SynergySP"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8.34,
       "story": 7.84,
       "character": 5,
-      "site": 6.61
+      "site": 6.62
     },
     "characters": [
       {
@@ -6370,7 +7431,7 @@
         "\"Futari Camp (ふたりキャンプ) feat. SPECIAL OTHERS\" by Masayoshi Ooishi"
       ]
     },
-    "popularity": 16558,
+    "popularity": 4362,
     "favourites": 176,
     "episodeGuide": [
       {
@@ -6515,7 +7576,43 @@
       }
     ],
     "seasons": [],
-    "rank": 6605
+    "rank": 6605,
+    "malId": 60665,
+    "members": 32425,
+    "favorites": 85,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 144,
+        "type": "anime",
+        "name": "Pony Canyon",
+        "url": "https://myanimelist.net/anime/producer/144/Pony_Canyon"
+      },
+      {
+        "mal_id": 159,
+        "type": "anime",
+        "name": "Kodansha",
+        "url": "https://myanimelist.net/anime/producer/159/Kodansha"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      },
+      {
+        "mal_id": 2185,
+        "type": "anime",
+        "name": "BS Asahi",
+        "url": "https://myanimelist.net/anime/producer/2185/BS_Asahi"
+      }
+    ],
+    "licensors": [],
+    "background": "Futari Solo Camp was released on Blu-ray in two box sets by Pony Canyon from October 29, 2025, to January 28, 2026.",
+    "title_english": "Solo Camping for Two",
+    "title_japanese": "ふたりソロキャンプ"
   },
   {
     "id": "23",
@@ -6526,15 +7623,20 @@
     "releaseYear": 2025,
     "season": "summer",
     "episodes": 24,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Drama",
       "Fantasy"
     ],
     "studios": [
-      "bones film"
+      {
+        "mal_id": 3045,
+        "type": "anime",
+        "name": "Bones Film",
+        "url": "https://myanimelist.net/anime/producer/3045/Bones_Film"
+      }
     ],
     "ratings": {
       "music": 9.64,
@@ -6681,7 +7783,7 @@
         "3: \"Ban (番)\" by Karanoah (カラノア) (eps 14-)"
       ]
     },
-    "popularity": 144038,
+    "popularity": 794,
     "favourites": 4362,
     "seasons": [
       {
@@ -6699,7 +7801,55 @@
         "relationType": "Other"
       }
     ],
-    "rank": 618
+    "rank": 618,
+    "malId": 59062,
+    "members": 338526,
+    "favorites": 2970,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 4,
+        "type": "anime",
+        "name": "Bones",
+        "url": "https://myanimelist.net/anime/producer/4/Bones"
+      },
+      {
+        "mal_id": 53,
+        "type": "anime",
+        "name": "Dentsu",
+        "url": "https://myanimelist.net/anime/producer/53/Dentsu"
+      },
+      {
+        "mal_id": 1284,
+        "type": "anime",
+        "name": "Avex Pictures",
+        "url": "https://myanimelist.net/anime/producer/1284/Avex_Pictures"
+      },
+      {
+        "mal_id": 1542,
+        "type": "anime",
+        "name": "DMM.com",
+        "url": "https://myanimelist.net/anime/producer/1542/DMMcom"
+      },
+      {
+        "mal_id": 1856,
+        "type": "anime",
+        "name": "dugout",
+        "url": "https://myanimelist.net/anime/producer/1856/dugout"
+      },
+      {
+        "mal_id": 3155,
+        "type": "anime",
+        "name": "Team-MAX",
+        "url": "https://myanimelist.net/anime/producer/3155/Team-MAX"
+      }
+    ],
+    "licensors": [],
+    "background": "Gachiakuta aired on CBC and TBS' Agaru Anime block.",
+    "title_english": "Gachiakuta",
+    "title_japanese": "ガチアクタ"
   },
   {
     "id": "24",
@@ -6709,18 +7859,23 @@
     "description": "Set in the early 2000's, the story of Ganglion follows the everyday adventures of Kenji Isobe, a professional henchman for the Ganglion Corporation, which plots world domination with evil schemes such as “Operation: Tokyo Cedar Pollen” and “Operation: Mount Fuji Detonation”. Kenji's workplace is a battlefield, where every day he has to deal with workplace drama, unreasonable bosses and crushing defeat at the hands of the hero HOPEMAN.\n\n(Source: Crunchyroll)",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 3,
-    "status": "releasing",
+    "duration": "3 min",
+    "status": "Currently Airing",
     "genres": [],
     "studios": [
-      "studio maf"
+      {
+        "mal_id": 3186,
+        "type": "anime",
+        "name": "studio maf",
+        "url": "https://myanimelist.net/anime/producer/3186/studio_maf"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 6.66,
       "story": 6.66,
       "character": 4,
-      "site": 5.98
+      "site": 6
     },
     "characters": [
       {
@@ -6820,10 +7975,52 @@
         "\"Miracle (ミラクル)\" by NIKO NIKO TAN TAN"
       ]
     },
-    "popularity": 2312,
+    "popularity": 8528,
     "favourites": 27,
     "seasons": [],
-    "rank": 10249
+    "rank": 10249,
+    "malId": 62378,
+    "members": 6246,
+    "favorites": 16,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 238,
+        "type": "anime",
+        "name": "AT-X",
+        "url": "https://myanimelist.net/anime/producer/238/AT-X"
+      },
+      {
+        "mal_id": 1820,
+        "type": "anime",
+        "name": "Yoshimoto Creative Agency",
+        "url": "https://myanimelist.net/anime/producer/1820/Yoshimoto_Creative_Agency"
+      },
+      {
+        "mal_id": 2640,
+        "type": "anime",
+        "name": "INSPION Edge",
+        "url": "https://myanimelist.net/anime/producer/2640/INSPION_Edge"
+      },
+      {
+        "mal_id": 3206,
+        "type": "anime",
+        "name": "LDH Japan",
+        "url": "https://myanimelist.net/anime/producer/3206/LDH_Japan"
+      },
+      {
+        "mal_id": 3218,
+        "type": "anime",
+        "name": "INSPION",
+        "url": "https://myanimelist.net/anime/producer/3218/INSPION"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "ガングリオン"
   },
   {
     "id": "25",
@@ -6833,22 +8030,27 @@
     "description": "The story of GNOSIA takes place on a ship drifting through space. Gnosia is an enemy that disguises itself as a human and attacks them. It is now on the spaceship, causing everyone onboard to be suspicious of each other. The crew decides to vote on the most suspicious-looking person every day and put them into a cold sleep.\n\nIf the humans succeed in putting Gnosia to sleep, they'll win. On the other hand, if they don't, everyone on board is in danger. The right decision must be made. No matter what decision is made by the main character, Yuri, she finds herself in a time loop that returns her to the first day of the crisis. \n\nWill the crew on board make the right decision? What is the secret behind the time loop? What secrets hide behind the faces of everyone on board?\n\nGNOSIA begins now – a story of looping, fleeting moments that feels like an eternity but passes by in an instant.\n\nHave a pleasant journey.\n(Source: Crunchyroll)",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": null,
-    "status": "releasing",
+    "duration": "26 min",
+    "status": "Currently Airing",
     "genres": [
       "Drama",
       "Mystery",
       "Sci-Fi"
     ],
     "studios": [
-      "domerica"
+      {
+        "mal_id": 1380,
+        "type": "anime",
+        "name": "domerica",
+        "url": "https://myanimelist.net/anime/producer/1380/domerica"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 7.5,
       "story": 7.5,
       "character": 6.76,
-      "site": 7.25
+      "site": 7.26
     },
     "characters": [
       {
@@ -6977,7 +8179,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 11790,
+    "popularity": 4783,
     "favourites": 147,
     "episodeGuide": [
       {
@@ -7024,7 +8226,49 @@
       }
     ],
     "seasons": [],
-    "rank": 3131
+    "rank": 3131,
+    "malId": 60427,
+    "members": 26399,
+    "favorites": 86,
+    "source": "Game",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 17,
+        "type": "anime",
+        "name": "Aniplex",
+        "url": "https://myanimelist.net/anime/producer/17/Aniplex"
+      },
+      {
+        "mal_id": 166,
+        "type": "anime",
+        "name": "Movic",
+        "url": "https://myanimelist.net/anime/producer/166/Movic"
+      },
+      {
+        "mal_id": 719,
+        "type": "anime",
+        "name": "Studio Mausu",
+        "url": "https://myanimelist.net/anime/producer/719/Studio_Mausu"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      }
+    ],
+    "licensors": [],
+    "background": "Gnosia adapts the 2019 video game of the same title. The series was released on Blu-ray and DVD in seven volumes from December 24, 2025, to June 24, 2026.",
+    "title_english": "Gnosia",
+    "title_japanese": "グノーシア"
   },
   {
     "id": "26",
@@ -7035,15 +8279,25 @@
     "releaseYear": 2024,
     "season": "spring",
     "episodes": 51,
-    "duration": 24,
-    "status": "finished",
+    "duration": "23 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Music",
       "Slice of Life"
     ],
     "studios": [
-      "Dongwoo Animation",
-      "OLM"
+      {
+        "mal_id": 28,
+        "type": "anime",
+        "name": "OLM",
+        "url": "https://myanimelist.net/anime/producer/28/OLM"
+      },
+      {
+        "mal_id": 1025,
+        "type": "anime",
+        "name": "Dongwoo A&E",
+        "url": "https://myanimelist.net/anime/producer/1025/Dongwoo_A_E"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -7185,7 +8439,7 @@
         "2: \"AiPri Verse In!\" by Himari Aozora (CV: Minori Fujidera), Mitsuki Hoshikawa (CV: Sae Hiratsuka) (eps 31-)"
       ]
     },
-    "popularity": 2330,
+    "popularity": 10176,
     "favourites": 48,
     "seasons": [
       {
@@ -7203,7 +8457,18 @@
         "relationType": "Other"
       }
     ],
-    "rank": 8172
+    "rank": 8172,
+    "malId": 57946,
+    "members": 3814,
+    "favorites": 18,
+    "source": "Game",
+    "rating": "PG - Children",
+    "year": 2024,
+    "producers": [],
+    "licensors": [],
+    "background": "Himitsu no AiPri is an adaptation of the arcade games Secret AiPri and AiPri Verse developed by syn Sophia.",
+    "title_english": null,
+    "title_japanese": "ひみつのアイプリ"
   },
   {
     "id": "27",
@@ -7214,21 +8479,26 @@
     "releaseYear": 2023,
     "season": "summer",
     "episodes": 12,
-    "duration": 4,
-    "status": "finished",
+    "duration": "4 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Comedy",
       "Slice of Life"
     ],
     "studios": [
-      "Pie in the sky"
+      {
+        "mal_id": 1229,
+        "type": "anime",
+        "name": "Pie in the sky",
+        "url": "https://myanimelist.net/anime/producer/1229/Pie_in_the_sky"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8.5,
       "story": 6.5,
       "character": 5,
-      "site": 6.77
+      "site": 6.75
     },
     "characters": [
       {
@@ -7357,7 +8627,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 2161,
+    "popularity": 9185,
     "favourites": 22,
     "seasons": [
       {
@@ -7375,7 +8645,49 @@
         "relationType": "Side Story"
       }
     ],
-    "rank": 5784
+    "rank": 5784,
+    "malId": 53426,
+    "members": 5178,
+    "favorites": 4,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2023,
+    "producers": [
+      {
+        "mal_id": 963,
+        "type": "anime",
+        "name": "MAGES.",
+        "url": "https://myanimelist.net/anime/producer/963/MAGES"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1672,
+        "type": "anime",
+        "name": "Shinshokan",
+        "url": "https://myanimelist.net/anime/producer/1672/Shinshokan"
+      },
+      {
+        "mal_id": 2185,
+        "type": "anime",
+        "name": "BS Asahi",
+        "url": "https://myanimelist.net/anime/producer/2185/BS_Asahi"
+      },
+      {
+        "mal_id": 2747,
+        "type": "anime",
+        "name": "Precious Tone",
+        "url": "https://myanimelist.net/anime/producer/2747/Precious_Tone"
+      }
+    ],
+    "licensors": [],
+    "background": "The agricultural aspects featured in Hyakushou Kizoku are supervised by Japan Agriculture Group's Central Union of Agricultural Cooperatives.",
+    "title_english": null,
+    "title_japanese": "百姓貴族"
   },
   {
     "id": "28",
@@ -7384,13 +8696,20 @@
     "description": "Relay PVs with original animation that was not reused in main series.",
     "releaseYear": 2025,
     "genres": [],
-    "studios": [],
+    "studios": [
+      {
+        "mal_id": 443,
+        "type": "anime",
+        "name": "Studio PuYUKAI",
+        "url": "https://myanimelist.net/anime/producer/443/Studio_PuYUKAI"
+      }
+    ],
     "ratings": {
       "music": 9.92,
       "visual": 8.22,
       "story": 7.08,
       "character": 5.78,
-      "site": 7.38
+      "site": 6.31
     },
     "characters": [],
     "recommendations": [],
@@ -7436,7 +8755,23 @@
         "relationType": "Character"
       }
     ],
-    "episodes": 4
+    "episodes": 4,
+    "malId": 39993,
+    "rank": null,
+    "popularity": 7653,
+    "members": 8147,
+    "favorites": 3,
+    "source": "Original",
+    "duration": "1 min per ep",
+    "rating": "PG-13 - Teens 13 or older",
+    "season": null,
+    "year": null,
+    "producers": [],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "『異世界かるてっと』 リレーPV",
+    "status": "Finished Airing"
   },
   {
     "id": "29",
@@ -7447,22 +8782,27 @@
     "releaseYear": 2018,
     "season": "spring",
     "episodes": 26,
-    "duration": 23,
-    "status": "finished",
+    "duration": "23 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Drama",
       "Romance",
       "Supernatural"
     ],
     "studios": [
-      "GONZO"
+      {
+        "mal_id": 3,
+        "type": "anime",
+        "name": "Gonzo",
+        "url": "https://myanimelist.net/anime/producer/3/Gonzo"
+      }
     ],
     "ratings": {
       "music": 9.4,
       "visual": 7.96,
       "story": 7.1,
       "character": 5.96,
-      "site": 7.52
+      "site": 7.54
     },
     "characters": [
       {
@@ -7610,7 +8950,7 @@
         "11: \"Eien no Kizuna (永遠の絆)\" by Ranmaru (Kaito Ishikawa) (eps 25)"
       ]
     },
-    "popularity": 45155,
+    "popularity": 1389,
     "favourites": 859,
     "episodeGuide": [
       {
@@ -7805,7 +9145,74 @@
         "relationType": "Sequel"
       }
     ],
-    "rank": 1893
+    "rank": 1893,
+    "malId": 36754,
+    "members": 193917,
+    "favorites": 1571,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2018,
+    "producers": [
+      {
+        "mal_id": 276,
+        "type": "anime",
+        "name": "DLE",
+        "url": "https://myanimelist.net/anime/producer/276/DLE"
+      },
+      {
+        "mal_id": 464,
+        "type": "anime",
+        "name": "flying DOG",
+        "url": "https://myanimelist.net/anime/producer/464/flying_DOG"
+      },
+      {
+        "mal_id": 719,
+        "type": "anime",
+        "name": "Studio Mausu",
+        "url": "https://myanimelist.net/anime/producer/719/Studio_Mausu"
+      },
+      {
+        "mal_id": 843,
+        "type": "anime",
+        "name": "BS Fuji",
+        "url": "https://myanimelist.net/anime/producer/843/BS_Fuji"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1612,
+        "type": "anime",
+        "name": "NADA Holdings",
+        "url": "https://myanimelist.net/anime/producer/1612/NADA_Holdings"
+      },
+      {
+        "mal_id": 1696,
+        "type": "anime",
+        "name": "Kadokawa",
+        "url": "https://myanimelist.net/anime/producer/1696/Kadokawa"
+      },
+      {
+        "mal_id": 1933,
+        "type": "anime",
+        "name": "Happinet",
+        "url": "https://myanimelist.net/anime/producer/1933/Happinet"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 102,
+        "type": "anime",
+        "name": "Funimation",
+        "url": "https://myanimelist.net/anime/producer/102/Funimation"
+      }
+    ],
+    "background": "",
+    "title_english": "Kakuriyo -Bed & Breakfast for Spirits-",
+    "title_japanese": "かくりよの宿飯"
   },
   {
     "id": "30",
@@ -7815,15 +9222,20 @@
     "description": "Kashiwada-san’s face is a masterpiece of stoicism. Her classmate Oota-kun? A walking explosion of emotions determined to crack her calm with over-the-top antics. (Spoiler: It’s not working.) But between his failed surprises and her secret smiles, these polar-opposite classmates might just be into each other! Witness a rom-com where love speaks louder than expressions.\n\n(Source: Crunchyroll)",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Romance",
       "Slice of Life"
     ],
     "studios": [
-      "STUDIO POLON"
+      {
+        "mal_id": 2828,
+        "type": "anime",
+        "name": "Studio Polon",
+        "url": "https://myanimelist.net/anime/producer/2828/Studio_Polon"
+      }
     ],
     "ratings": {
       "music": 8.66,
@@ -7962,7 +9374,7 @@
         "\"Amanojaku Hero (あまのじゃくヒーロー)\" by Sangatsu no Phantasia (三月のパンタシア)"
       ]
     },
-    "popularity": 13490,
+    "popularity": 4340,
     "favourites": 145,
     "episodeGuide": [
       {
@@ -8025,7 +9437,73 @@
       }
     ],
     "episodes": 12,
-    "rank": 5835
+    "rank": 5864,
+    "malId": 61209,
+    "members": 32822,
+    "favorites": 108,
+    "source": "Web manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 166,
+        "type": "anime",
+        "name": "Movic",
+        "url": "https://myanimelist.net/anime/producer/166/Movic"
+      },
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 1113,
+        "type": "anime",
+        "name": "NBCUniversal Entertainment Japan",
+        "url": "https://myanimelist.net/anime/producer/1113/NBCUniversal_Entertainment_Japan"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1412,
+        "type": "anime",
+        "name": "Kansai TV",
+        "url": "https://myanimelist.net/anime/producer/1412/Kansai_TV"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      },
+      {
+        "mal_id": 1696,
+        "type": "anime",
+        "name": "Kadokawa",
+        "url": "https://myanimelist.net/anime/producer/1696/Kadokawa"
+      },
+      {
+        "mal_id": 2228,
+        "type": "anime",
+        "name": "Bushiroad Move",
+        "url": "https://myanimelist.net/anime/producer/2228/Bushiroad_Move"
+      },
+      {
+        "mal_id": 2840,
+        "type": "anime",
+        "name": "qooop",
+        "url": "https://myanimelist.net/anime/producer/2840/qooop"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Inexpressive Kashiwada and Expressive Oota",
+    "title_japanese": "顔に出ない柏田さんと顔に出る太田君"
   },
   {
     "id": "31",
@@ -8036,8 +9514,8 @@
     "releaseYear": 2024,
     "season": "winter",
     "episodes": 12,
-    "duration": 24,
-    "status": "finished",
+    "duration": "23 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Adventure",
       "Comedy",
@@ -8046,7 +9524,12 @@
       "Romance"
     ],
     "studios": [
-      "Staple Entertainment"
+      {
+        "mal_id": 2405,
+        "type": "anime",
+        "name": "Staple Entertainment",
+        "url": "https://myanimelist.net/anime/producer/2405/Staple_Entertainment"
+      }
     ],
     "ratings": {
       "music": 9.74,
@@ -8187,7 +9670,7 @@
         "\"Kokoro no Naka (ココロノナカ)\" by AliA"
       ]
     },
-    "popularity": 42684,
+    "popularity": 1889,
     "favourites": 732,
     "seasons": [
       {
@@ -8198,7 +9681,86 @@
         "relationType": "Sequel"
       }
     ],
-    "rank": 9893
+    "rank": 9893,
+    "malId": 54265,
+    "members": 133998,
+    "favorites": 386,
+    "source": "Manga",
+    "rating": "R+ - Mild Nudity",
+    "year": 2024,
+    "producers": [
+      {
+        "mal_id": 58,
+        "type": "anime",
+        "name": "Square Enix",
+        "url": "https://myanimelist.net/anime/producer/58/Square_Enix"
+      },
+      {
+        "mal_id": 141,
+        "type": "anime",
+        "name": "Toei Video",
+        "url": "https://myanimelist.net/anime/producer/141/Toei_Video"
+      },
+      {
+        "mal_id": 144,
+        "type": "anime",
+        "name": "Pony Canyon",
+        "url": "https://myanimelist.net/anime/producer/144/Pony_Canyon"
+      },
+      {
+        "mal_id": 238,
+        "type": "anime",
+        "name": "AT-X",
+        "url": "https://myanimelist.net/anime/producer/238/AT-X"
+      },
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 719,
+        "type": "anime",
+        "name": "Studio Mausu",
+        "url": "https://myanimelist.net/anime/producer/719/Studio_Mausu"
+      },
+      {
+        "mal_id": 1333,
+        "type": "anime",
+        "name": "Hakuhodo DY Music & Pictures",
+        "url": "https://myanimelist.net/anime/producer/1333/Hakuhodo_DY_Music___Pictures"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      },
+      {
+        "mal_id": 1883,
+        "type": "anime",
+        "name": "APDREAM",
+        "url": "https://myanimelist.net/anime/producer/1883/APDREAM"
+      },
+      {
+        "mal_id": 2228,
+        "type": "anime",
+        "name": "Bushiroad Move",
+        "url": "https://myanimelist.net/anime/producer/2228/Bushiroad_Move"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      }
+    ],
+    "background": "",
+    "title_english": "Tales of Wedding Rings",
+    "title_japanese": "結婚指輪物語"
   },
   {
     "id": "32",
@@ -8209,22 +9771,27 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Drama",
       "Fantasy",
       "Romance"
     ],
     "studios": [
-      "Millepensee"
+      {
+        "mal_id": 1237,
+        "type": "anime",
+        "name": "Millepensee",
+        "url": "https://myanimelist.net/anime/producer/1237/Millepensee"
+      }
     ],
     "ratings": {
       "music": 9.34,
       "visual": 8.44,
       "story": 7.78,
       "character": 6.22,
-      "site": 6.91
+      "site": 6.81
     },
     "characters": [
       {
@@ -8352,7 +9919,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 9177,
+    "popularity": 4933,
     "favourites": 125,
     "episodeGuide": [
       {
@@ -8399,7 +9966,43 @@
       }
     ],
     "seasons": [],
-    "rank": 5450
+    "rank": 5450,
+    "malId": 60765,
+    "members": 24640,
+    "favorites": 120,
+    "source": "Web manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 719,
+        "type": "anime",
+        "name": "Studio Mausu",
+        "url": "https://myanimelist.net/anime/producer/719/Studio_Mausu"
+      },
+      {
+        "mal_id": 1365,
+        "type": "anime",
+        "name": "Shueisha",
+        "url": "https://myanimelist.net/anime/producer/1365/Shueisha"
+      },
+      {
+        "mal_id": 3103,
+        "type": "anime",
+        "name": "REMOW",
+        "url": "https://myanimelist.net/anime/producer/3103/REMOW"
+      },
+      {
+        "mal_id": 3156,
+        "type": "anime",
+        "name": "Shueisha DeNA Projects",
+        "url": "https://myanimelist.net/anime/producer/3156/Shueisha_DeNA_Projects"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "With You, Our Love Will Make It Through",
+    "title_japanese": "キミと越えて恋になる"
   },
   {
     "id": "33",
@@ -8410,21 +10013,26 @@
     "releaseYear": 2012,
     "season": "summer",
     "episodes": 38,
-    "duration": 25,
-    "status": "finished",
+    "duration": "25 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Action",
       "Drama"
     ],
     "studios": [
-      "Studio Pierrot"
+      {
+        "mal_id": 1,
+        "type": "anime",
+        "name": "Studio Pierrot",
+        "url": "https://myanimelist.net/anime/producer/1/Studio_Pierrot"
+      }
     ],
     "ratings": {
       "music": 9.82,
       "visual": 8.42,
       "story": 7.4,
       "character": 5.44,
-      "site": 8.28
+      "site": 7.88
     },
     "characters": [
       {
@@ -8557,7 +10165,7 @@
         "3: \"Never Ending\" by Dasoku (eps 31-38)"
       ]
     },
-    "popularity": 49548,
+    "popularity": 1084,
     "favourites": 804,
     "episodeGuide": [
       {
@@ -8836,7 +10444,38 @@
         "relationType": "Sequel"
       }
     ],
-    "rank": 914
+    "rank": 914,
+    "malId": 12031,
+    "members": 250370,
+    "favorites": 2186,
+    "source": "Manga",
+    "rating": "R - 17+ (violence & profanity)",
+    "year": 2012,
+    "producers": [
+      {
+        "mal_id": 111,
+        "type": "anime",
+        "name": "NHK",
+        "url": "https://myanimelist.net/anime/producer/111/NHK"
+      },
+      {
+        "mal_id": 161,
+        "type": "anime",
+        "name": "Sogo Vision",
+        "url": "https://myanimelist.net/anime/producer/161/Sogo_Vision"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 102,
+        "type": "anime",
+        "name": "Funimation",
+        "url": "https://myanimelist.net/anime/producer/102/Funimation"
+      }
+    ],
+    "background": "Kingdom adapts chapters 1-173 of the original manga.",
+    "title_english": "Kingdom",
+    "title_japanese": "キングダム"
   },
   {
     "id": "34",
@@ -8846,13 +10485,18 @@
     "description": "The story of the series follows the everyday adventures of Koupen-chan and his friends as they enjoy the little things in life.\n(Source: Crunchyroll News, edited)\n",
     "releaseYear": 2025,
     "season": "spring",
-    "duration": 1,
-    "status": "releasing",
+    "duration": "1 min",
+    "status": "Currently Airing",
     "genres": [
       "Slice of Life"
     ],
     "studios": [
-      "Lesprit"
+      {
+        "mal_id": 1829,
+        "type": "anime",
+        "name": "Lesprit",
+        "url": "https://myanimelist.net/anime/producer/1829/Lesprit"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -8968,7 +10612,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 2173,
+    "popularity": 8949,
     "favourites": 43,
     "seasons": [
       {
@@ -8986,7 +10630,25 @@
         "relationType": "Character"
       }
     ],
-    "rank": 2250
+    "rank": 2250,
+    "malId": 60534,
+    "members": 5557,
+    "favorites": 75,
+    "source": "Original",
+    "rating": "G - All Ages",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 2402,
+        "type": "anime",
+        "name": "Stay Luck",
+        "url": "https://myanimelist.net/anime/producer/2402/Stay_Luck"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "コウペンちゃん"
   },
   {
     "id": "35",
@@ -8996,22 +10658,27 @@
     "description": "Samara “Sam” Young is a developer in Los Angeles who’s about to achieve her dreams with her first video game, Ruminate. That is, until a popular streamer gives the game a scathing review. Even worse, Sam finds out the troublesome critic is now her new neighbor! Get lost in a comedic, romantic, and all-too-real story about gaming, memes, and social anxiety. Come for the plot, stay for the doggo. \n\n(Source: Crunchyroll) ",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 23,
-    "status": "releasing",
+    "duration": "22 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Romance",
       "Slice of Life"
     ],
     "studios": [
-      "OLM"
+      {
+        "mal_id": 28,
+        "type": "anime",
+        "name": "OLM",
+        "url": "https://myanimelist.net/anime/producer/28/OLM"
+      }
     ],
     "ratings": {
       "music": 9.56,
       "visual": 8,
       "story": 7.12,
       "character": 6.22,
-      "site": 6.2
+      "site": 6.22
     },
     "characters": [
       {
@@ -9144,7 +10811,7 @@
         "\"Left & Right\" by Toshinobu Kubota (久保田利伸)"
       ]
     },
-    "popularity": 9285,
+    "popularity": 5177,
     "favourites": 96,
     "episodeGuide": [
       {
@@ -9206,7 +10873,73 @@
     ],
     "seasons": [],
     "episodes": 12,
-    "rank": 9014
+    "rank": 9014,
+    "malId": 61773,
+    "members": 21928,
+    "favorites": 72,
+    "source": "Other",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 169,
+        "type": "anime",
+        "name": "Fuji TV",
+        "url": "https://myanimelist.net/anime/producer/169/Fuji_TV"
+      },
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 735,
+        "type": "anime",
+        "name": "Slow Curve",
+        "url": "https://myanimelist.net/anime/producer/735/Slow_Curve"
+      },
+      {
+        "mal_id": 769,
+        "type": "anime",
+        "name": "Fujipacific Music",
+        "url": "https://myanimelist.net/anime/producer/769/Fujipacific_Music"
+      },
+      {
+        "mal_id": 1412,
+        "type": "anime",
+        "name": "Kansai TV",
+        "url": "https://myanimelist.net/anime/producer/1412/Kansai_TV"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      },
+      {
+        "mal_id": 1499,
+        "type": "anime",
+        "name": "Techno Sound",
+        "url": "https://myanimelist.net/anime/producer/1499/Techno_Sound"
+      },
+      {
+        "mal_id": 1556,
+        "type": "anime",
+        "name": "Fuji Creative",
+        "url": "https://myanimelist.net/anime/producer/1556/Fuji_Creative"
+      },
+      {
+        "mal_id": 1563,
+        "type": "anime",
+        "name": "Hakuhodo",
+        "url": "https://myanimelist.net/anime/producer/1563/Hakuhodo"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Let's Play",
+    "title_japanese": "Let's Play クエストだらけのマイライフ"
   },
   {
     "id": "36",
@@ -9216,8 +10949,8 @@
     "description": "Kudo Shinichi is a seventeen year-old high school detective whom people call the \"Modern Sherlock Holmes.\" However, one night after a date with his childhood sweetheart, Ran, Shinichi witnessed an illegal trade and, caught off his guard, was knocked unconscious and fed a drug that was supposed to kill him... but he woke up and found himself shrunken to a seven year-old. In order to track down the men who did this to him, Shinichi hid his identity and lived with Ran, whose father happened to be a hopeless detective, and with that came a series of murders and mysteries that he must solve. \n(Source: Anime News Network)\n\nNote:\n- Includes Keisatsu Gakkou-hen - Wild Police Story in episodes 1029, 1038, 1042, 1061\n- Episodes 11, 52, 76, 118, 162, 184, 208, 342, 356, 449, 452, 487, 488, 489, 490, 515, 516, 521, 522, 651, 734, 804, 805, 927, 928 aired with a runtime of ~50 minutes as opposed to the standard 25 minute long episode.\n- Episodes 96, 129, 174, 219, 263, 304, 383, 479 aired with a runtime of ~90 minutes as opposed to the standard 25 minute long episode.\n- Episode 345, 425 aired with a runtime of ~115 minutes as opposed to the standard 25 minute long episode.\n",
     "releaseYear": 1996,
     "season": "winter",
-    "duration": 25,
-    "status": "releasing",
+    "duration": "24 min",
+    "status": "Currently Airing",
     "genres": [
       "Adventure",
       "Comedy",
@@ -9225,7 +10958,12 @@
       "Psychological"
     ],
     "studios": [
-      "TMS Entertainment"
+      {
+        "mal_id": 73,
+        "type": "anime",
+        "name": "TMS Entertainment",
+        "url": "https://myanimelist.net/anime/producer/73/TMS_Entertainment"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -9495,7 +11233,7 @@
         "74: \"Fun! Fun! Fun!\" by Leon Niihama"
       ]
     },
-    "popularity": 71417,
+    "popularity": 709,
     "favourites": 5228,
     "episodeGuide": [
       {
@@ -10418,7 +12156,62 @@
         "relationType": "Other"
       }
     ],
-    "rank": 451
+    "rank": 451,
+    "malId": 235,
+    "members": 372156,
+    "favorites": 15794,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 1996,
+    "producers": [
+      {
+        "mal_id": 76,
+        "type": "anime",
+        "name": "Yomiuri Telecasting",
+        "url": "https://myanimelist.net/anime/producer/76/Yomiuri_Telecasting"
+      },
+      {
+        "mal_id": 1430,
+        "type": "anime",
+        "name": "Shogakukan",
+        "url": "https://myanimelist.net/anime/producer/1430/Shogakukan"
+      },
+      {
+        "mal_id": 1506,
+        "type": "anime",
+        "name": "Audio Planning U",
+        "url": "https://myanimelist.net/anime/producer/1506/Audio_Planning_U"
+      },
+      {
+        "mal_id": 1846,
+        "type": "anime",
+        "name": "Tokyo Movie",
+        "url": "https://myanimelist.net/anime/producer/1846/Tokyo_Movie"
+      },
+      {
+        "mal_id": 3017,
+        "type": "anime",
+        "name": "Polydor Records",
+        "url": "https://myanimelist.net/anime/producer/3017/Polydor_Records"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 102,
+        "type": "anime",
+        "name": "Funimation",
+        "url": "https://myanimelist.net/anime/producer/102/Funimation"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      }
+    ],
+    "background": "In 2003, FUNimation licensed the first 104 episodes of the series for North American production under the name Case Closed. They later decided to stop pursuing more episodes past episode 123 due to poor sales. In 2014, Crunchyroll obtained a license to stream simulcast episodes of Detective Conan on their website starting with episode 754. Winner of the Animation Award (DIVE Award) of the 2010 Japanese Movie Critics Awards.",
+    "title_english": "Case Closed",
+    "title_japanese": "名探偵コナン"
   },
   {
     "id": "37",
@@ -10427,13 +12220,20 @@
     "description": "Mikata ga Yowasugite Hojo Mahou ni Tesshiteita Kyuutei Mahoushi, Tsuihou sarete Saikyou wo Mezasu is an anime series.",
     "releaseYear": 2025,
     "genres": [],
-    "studios": [],
+    "studios": [
+      {
+        "mal_id": 2554,
+        "type": "anime",
+        "name": "Gekkou",
+        "url": "https://myanimelist.net/anime/producer/2554/Gekkou"
+      }
+    ],
     "ratings": {
       "music": 9,
       "visual": 6.5,
       "story": 5.76,
       "character": 4,
-      "site": 6.28
+      "site": 6.27
     },
     "characters": [],
     "recommendations": [],
@@ -10457,7 +12257,59 @@
     ],
     "seasons": [],
     "episodes": 12,
-    "rank": 8736
+    "rank": 8736,
+    "malId": 61276,
+    "popularity": 3836,
+    "members": 42357,
+    "favorites": 62,
+    "source": "Light novel",
+    "duration": "23 min per ep",
+    "rating": "PG-13 - Teens 13 or older",
+    "season": "fall",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 55,
+        "type": "anime",
+        "name": "TV Asahi",
+        "url": "https://myanimelist.net/anime/producer/55/TV_Asahi"
+      },
+      {
+        "mal_id": 159,
+        "type": "anime",
+        "name": "Kodansha",
+        "url": "https://myanimelist.net/anime/producer/159/Kodansha"
+      },
+      {
+        "mal_id": 1422,
+        "type": "anime",
+        "name": "CyberAgent",
+        "url": "https://myanimelist.net/anime/producer/1422/CyberAgent"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      },
+      {
+        "mal_id": 1600,
+        "type": "anime",
+        "name": "On-Lead",
+        "url": "https://myanimelist.net/anime/producer/1600/On-Lead"
+      },
+      {
+        "mal_id": 2741,
+        "type": "anime",
+        "name": "Daito Giken",
+        "url": "https://myanimelist.net/anime/producer/2741/Daito_Giken"
+      }
+    ],
+    "licensors": [],
+    "background": "Mikata ga Yowasugite Hojo Mahou ni Tesshiteita Kyuutei Mahoushi, Tsuihou sarete Saikyou wo Mezasu aired on TV Asahi's IMAnimation block.",
+    "title_english": "The Banished Court Magician Aims to Become the Strongest",
+    "title_japanese": "味方が弱すぎて補助魔法に徹していた宮廷魔法師、追放されて最強を目指す",
+    "status": "Currently Airing"
   },
   {
     "id": "38",
@@ -10466,13 +12318,20 @@
     "description": "Mushoku no Eiyuu: Betsu ni Skill Nanka Iranakatta n da ga is an anime series.",
     "releaseYear": 2025,
     "genres": [],
-    "studios": [],
+    "studios": [
+      {
+        "mal_id": 1209,
+        "type": "anime",
+        "name": "Studio A-CAT",
+        "url": "https://myanimelist.net/anime/producer/1209/Studio_A-CAT"
+      }
+    ],
     "ratings": {
       "music": 10,
       "visual": 8.34,
       "story": 8.34,
       "character": 6.34,
-      "site": 6.35
+      "site": 6.34
     },
     "characters": [],
     "recommendations": [],
@@ -10552,7 +12411,78 @@
     ],
     "seasons": [],
     "episodes": 12,
-    "rank": 8257
+    "rank": 8257,
+    "malId": 56854,
+    "popularity": 3395,
+    "members": 52340,
+    "favorites": 113,
+    "source": "Light novel",
+    "duration": "23 min per ep",
+    "rating": "PG-13 - Teens 13 or older",
+    "season": "fall",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 315,
+        "type": "anime",
+        "name": "DAX Production",
+        "url": "https://myanimelist.net/anime/producer/315/DAX_Production"
+      },
+      {
+        "mal_id": 843,
+        "type": "anime",
+        "name": "BS Fuji",
+        "url": "https://myanimelist.net/anime/producer/843/BS_Fuji"
+      },
+      {
+        "mal_id": 925,
+        "type": "anime",
+        "name": "Earth Star Entertainment",
+        "url": "https://myanimelist.net/anime/producer/925/Earth_Star_Entertainment"
+      },
+      {
+        "mal_id": 1334,
+        "type": "anime",
+        "name": "Docomo Anime Store",
+        "url": "https://myanimelist.net/anime/producer/1334/Docomo_Anime_Store"
+      },
+      {
+        "mal_id": 1492,
+        "type": "anime",
+        "name": "Yomiuri TV Enterprise",
+        "url": "https://myanimelist.net/anime/producer/1492/Yomiuri_TV_Enterprise"
+      },
+      {
+        "mal_id": 1996,
+        "type": "anime",
+        "name": "MAGNET",
+        "url": "https://myanimelist.net/anime/producer/1996/MAGNET"
+      },
+      {
+        "mal_id": 2017,
+        "type": "anime",
+        "name": "Culture Entertainment",
+        "url": "https://myanimelist.net/anime/producer/2017/Culture_Entertainment"
+      },
+      {
+        "mal_id": 2228,
+        "type": "anime",
+        "name": "Bushiroad Move",
+        "url": "https://myanimelist.net/anime/producer/2228/Bushiroad_Move"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 376,
+        "type": "anime",
+        "name": "Sentai Filmworks",
+        "url": "https://myanimelist.net/anime/producer/376/Sentai_Filmworks"
+      }
+    ],
+    "background": "Each episode was streamed one week in advance of the TV broadcast starting on September 24, 2025, on HIDIVE, d-anime Store, ABEMA, U-NEXT, and Anime Houdai. Regular broadcasting began on October 1, 2025.",
+    "title_english": "Hero Without a Class: Who Even Needs Skills?!",
+    "title_japanese": "無職の英雄 別にスキルなんか要らなかったんだが",
+    "status": "Currently Airing"
   },
   {
     "id": "39",
@@ -10563,22 +12493,27 @@
     "releaseYear": 2024,
     "season": "fall",
     "episodes": 13,
-    "duration": 24,
-    "status": "finished",
+    "duration": "23 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Action",
       "Comedy",
       "Fantasy"
     ],
     "studios": [
-      "Zero-G"
+      {
+        "mal_id": 1379,
+        "type": "anime",
+        "name": "Zero-G",
+        "url": "https://myanimelist.net/anime/producer/1379/Zero-G"
+      }
     ],
     "ratings": {
       "music": 9.82,
       "visual": 8.18,
       "story": 6.76,
       "character": 5.2,
-      "site": 7.06
+      "site": 7.04
     },
     "characters": [
       {
@@ -10711,7 +12646,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 49563,
+    "popularity": 1779,
     "favourites": 1097,
     "episodeGuide": [
       {
@@ -10820,7 +12755,62 @@
         "relationType": "Sequel"
       }
     ],
-    "rank": 4372
+    "rank": 4372,
+    "malId": 58172,
+    "members": 144177,
+    "favorites": 460,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2024,
+    "producers": [
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1284,
+        "type": "anime",
+        "name": "Avex Pictures",
+        "url": "https://myanimelist.net/anime/producer/1284/Avex_Pictures"
+      },
+      {
+        "mal_id": 1680,
+        "type": "anime",
+        "name": "BS NTV",
+        "url": "https://myanimelist.net/anime/producer/1680/BS_NTV"
+      },
+      {
+        "mal_id": 1896,
+        "type": "anime",
+        "name": "Micro Magazine Publishing",
+        "url": "https://myanimelist.net/anime/producer/1896/Micro_Magazine_Publishing"
+      },
+      {
+        "mal_id": 2289,
+        "type": "anime",
+        "name": "GREE Entertainment",
+        "url": "https://myanimelist.net/anime/producer/2289/GREE_Entertainment"
+      },
+      {
+        "mal_id": 2671,
+        "type": "anime",
+        "name": "Saber Links",
+        "url": "https://myanimelist.net/anime/producer/2671/Saber_Links"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      }
+    ],
+    "background": "",
+    "title_english": "Let This Grieving Soul Retire",
+    "title_japanese": "嘆きの亡霊は引退したい"
   },
   {
     "id": "40",
@@ -10830,21 +12820,26 @@
     "description": "The ninja banish evil from the shadows. The gokudo gather lonely outcasts and commit crimes. The grudge they forged centuries ago is rekindled in the present day. The ninja Shinoha meets Kiwami, a gokudo with the face of a businessman. Unknowing of the other's identity, they bond over anime, but the war between ninja and gokudo intensifies. Who will survive and who will perish, ninja or gokudo?\n\n(Source: Amazon Prime Video)",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 23,
-    "status": "releasing",
+    "duration": "23 min",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Drama"
     ],
     "studios": [
-      "Studio DEEN"
+      {
+        "mal_id": 37,
+        "type": "anime",
+        "name": "Studio Deen",
+        "url": "https://myanimelist.net/anime/producer/37/Studio_Deen"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8,
       "story": 4.66,
       "character": 3.34,
-      "site": 6.19
+      "site": 6.17
     },
     "characters": [
       {
@@ -10977,10 +12972,58 @@
         "2: \"Kodoku no Uta (孤独の唄)\" by Shiori Sasaki (佐々木詩織) (eps 3)"
       ]
     },
-    "popularity": 4442,
+    "popularity": 6753,
     "favourites": 58,
     "seasons": [],
-    "rank": 9317
+    "rank": 9317,
+    "malId": 61067,
+    "members": 11133,
+    "favorites": 33,
+    "source": "Web manga",
+    "rating": "R - 17+ (violence & profanity)",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 159,
+        "type": "anime",
+        "name": "Kodansha",
+        "url": "https://myanimelist.net/anime/producer/159/Kodansha"
+      },
+      {
+        "mal_id": 306,
+        "type": "anime",
+        "name": "Magic Capsule",
+        "url": "https://myanimelist.net/anime/producer/306/Magic_Capsule"
+      },
+      {
+        "mal_id": 1003,
+        "type": "anime",
+        "name": "Nippon Television Network",
+        "url": "https://myanimelist.net/anime/producer/1003/Nippon_Television_Network"
+      },
+      {
+        "mal_id": 1418,
+        "type": "anime",
+        "name": "Nippon Television Music",
+        "url": "https://myanimelist.net/anime/producer/1418/Nippon_Television_Music"
+      },
+      {
+        "mal_id": 1899,
+        "type": "anime",
+        "name": "Good Smile Film",
+        "url": "https://myanimelist.net/anime/producer/1899/Good_Smile_Film"
+      },
+      {
+        "mal_id": 3106,
+        "type": "anime",
+        "name": "NK Animation",
+        "url": "https://myanimelist.net/anime/producer/3106/NK_Animation"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Ninja vs. Gokudo",
+    "title_japanese": "忍者と極道"
   },
   {
     "id": "41",
@@ -10990,12 +13033,25 @@
     "description": "Rantarou, Shinbei and Kirimaru are ninja apprentices in the Ninja Gakuen, where first grade ones are called \"Nintamas\" (contraction of the words ninja+tama (egg). They must learn everything a ninja must know, but as for our heroes, money, food or playing are more interesting. The series show the everyday adventures of our heroes, segmentated in a cartoon fashion, like 2 small episodes in a 30-min show. The cast also includes the teachers (Doi-sensei and crossdressing Yamada-sensei), nintama kunoichis, evil guys (Dokutake ninjas) and even family members of all the cast...\n\n(Source: Anime News Network)",
     "releaseYear": 1993,
     "season": "spring",
-    "duration": 24,
-    "status": "releasing",
+    "duration": "10 min",
+    "status": "Currently Airing",
     "genres": [
       "Comedy"
     ],
-    "studios": [],
+    "studios": [
+      {
+        "mal_id": 30,
+        "type": "anime",
+        "name": "Ajia-do",
+        "url": "https://myanimelist.net/anime/producer/30/Ajia-do"
+      },
+      {
+        "mal_id": 198,
+        "type": "anime",
+        "name": "Gakken",
+        "url": "https://myanimelist.net/anime/producer/198/Gakken"
+      }
+    ],
     "ratings": {
       "music": 10,
       "visual": 8,
@@ -11109,7 +13165,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 2020,
+    "popularity": 7549,
     "favourites": 29,
     "episodeGuide": [
       {
@@ -11509,7 +13565,37 @@
         "relationType": "Other"
       }
     ],
-    "rank": 4056
+    "rank": 4056,
+    "malId": 1199,
+    "members": 8480,
+    "favorites": 83,
+    "source": "Manga",
+    "rating": "G - All Ages",
+    "year": 1993,
+    "producers": [
+      {
+        "mal_id": 111,
+        "type": "anime",
+        "name": "NHK",
+        "url": "https://myanimelist.net/anime/producer/111/NHK"
+      },
+      {
+        "mal_id": 161,
+        "type": "anime",
+        "name": "Sogo Vision",
+        "url": "https://myanimelist.net/anime/producer/161/Sogo_Vision"
+      },
+      {
+        "mal_id": 1797,
+        "type": "anime",
+        "name": "NHK Enterprises",
+        "url": "https://myanimelist.net/anime/producer/1797/NHK_Enterprises"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Ninjaboy Rantaro",
+    "title_japanese": "忍たま乱太郎"
   },
   {
     "id": "42",
@@ -11519,20 +13605,25 @@
     "description": "Follows the funny and amusing daily lives of two cats who want to live life doing only fun things.\n\n(Source: Anime News Network)",
     "releaseYear": 2025,
     "season": "spring",
-    "duration": 2,
-    "status": "releasing",
+    "duration": "1 min",
+    "status": "Currently Airing",
     "genres": [
       "Comedy"
     ],
     "studios": [
-      "Kumarba"
+      {
+        "mal_id": 3074,
+        "type": "anime",
+        "name": "Kumarba",
+        "url": "https://myanimelist.net/anime/producer/3074/Kumarba"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 2,
       "story": 2,
       "character": 2,
-      "site": 6.16
+      "site": 6.17
     },
     "characters": [
       {
@@ -11604,10 +13695,21 @@
         "3: \"Inimini Maigo (イニミニまいご)\" by Mio Ookami (eps 27-)"
       ]
     },
-    "popularity": 295,
+    "popularity": 15996,
     "favourites": 4,
     "seasons": [],
-    "rank": 9340
+    "rank": 9340,
+    "malId": 60947,
+    "members": 742,
+    "favorites": 1,
+    "source": "Web manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "ンめねこ"
   },
   {
     "id": "43",
@@ -11617,14 +13719,19 @@
     "description": "Hiroshi Nohara, Japan's ultimate family man, is obsessed with lunch in order to work hard in the afternoon! The official spin-off gourmet manga of the popular \"Crayon Shin-chan\"!\n\n(Source: Comic Action, translated)",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Slice of Life"
     ],
     "studios": [
-      "DLE"
+      {
+        "mal_id": 276,
+        "type": "anime",
+        "name": "DLE",
+        "url": "https://myanimelist.net/anime/producer/276/DLE"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -11666,7 +13773,7 @@
       ],
       "endings": []
     },
-    "popularity": 1073,
+    "popularity": 10720,
     "favourites": 18,
     "seasons": [
       {
@@ -11678,7 +13785,55 @@
       }
     ],
     "episodes": 12,
-    "rank": 9149
+    "rank": 9149,
+    "malId": 61184,
+    "members": 3230,
+    "favorites": 9,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 55,
+        "type": "anime",
+        "name": "TV Asahi",
+        "url": "https://myanimelist.net/anime/producer/55/TV_Asahi"
+      },
+      {
+        "mal_id": 247,
+        "type": "anime",
+        "name": "Shin-Ei Animation",
+        "url": "https://myanimelist.net/anime/producer/247/Shin-Ei_Animation"
+      },
+      {
+        "mal_id": 1377,
+        "type": "anime",
+        "name": "Futabasha",
+        "url": "https://myanimelist.net/anime/producer/1377/Futabasha"
+      },
+      {
+        "mal_id": 2118,
+        "type": "anime",
+        "name": "ADK Emotions",
+        "url": "https://myanimelist.net/anime/producer/2118/ADK_Emotions"
+      },
+      {
+        "mal_id": 2185,
+        "type": "anime",
+        "name": "BS Asahi",
+        "url": "https://myanimelist.net/anime/producer/2185/BS_Asahi"
+      },
+      {
+        "mal_id": 2424,
+        "type": "anime",
+        "name": "Bandai Namco Filmworks",
+        "url": "https://myanimelist.net/anime/producer/2424/Bandai_Namco_Filmworks"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Style of Hiroshi Nohara's Lunch",
+    "title_japanese": "野原ひろし 昼メシの流儀"
   },
   {
     "id": "44",
@@ -11687,9 +13842,9 @@
     "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/21-wf37VakJmZqs.jpg",
     "description": "Gold Roger was known as the Pirate King, the strongest and most infamous being to have sailed the Grand Line. The capture and death of Roger by the World Government brought a change throughout the world. His last words before his death revealed the location of the greatest treasure in the world, One Piece. It was this revelation that brought about the Grand Age of Pirates, men who dreamed of finding One Piece (which promises an unlimited amount of riches and fame), and quite possibly the most coveted of titles for the person who found it, the title of the Pirate King.\nEnter Monkey D. Luffy, a 17-year-old boy that defies your standard definition of a pirate. Rather than the popular persona of a wicked, hardened, toothless pirate who ransacks villages for fun, Luffy’s reason for being a pirate is one of pure wonder; the thought of an exciting adventure and meeting new and intriguing people, along with finding One Piece, are his reasons of becoming a pirate. Following in the footsteps of his childhood hero, Luffy and his crew travel across the Grand Line, experiencing crazy adventures, unveiling dark mysteries and battling strong enemies, all in order to reach One Piece.\n*This includes following special episodes:\n- Chopperman to the Rescue! Protect the TV Station by the Shore! (Episode 336)\n- The Strongest Tag-Team! Luffy and Toriko's Hard Struggle! (Episode 492)\n- Team Formation! Save Chopper (Episode 542)\n- History's Strongest Collaboration vs. Glutton of the Sea (Episode 590)\n- 20th Anniversary! Special Romance Dawn (Episode 907)",
     "releaseYear": 1999,
-    "season": "fall",
-    "duration": 24,
-    "status": "releasing",
+    "season": null,
+    "duration": "50 min",
+    "status": "Finished Airing",
     "genres": [
       "Action",
       "Adventure",
@@ -11698,14 +13853,19 @@
       "Fantasy"
     ],
     "studios": [
-      "Toei Animation"
+      {
+        "mal_id": 18,
+        "type": "anime",
+        "name": "Toei Animation",
+        "url": "https://myanimelist.net/anime/producer/18/Toei_Animation"
+      }
     ],
     "ratings": {
       "music": 9.48,
       "visual": 7.66,
       "story": 6.92,
       "character": 6,
-      "site": 8.73
+      "site": 7.09
     },
     "characters": [
       {
@@ -11837,7 +13997,7 @@
         "\"Memories\" by Maki Otsuki"
       ]
     },
-    "popularity": 642566,
+    "popularity": 1708,
     "favourites": 89602,
     "seasons": [
       {
@@ -11849,7 +14009,18 @@
       }
     ],
     "episodes": 1,
-    "rank": 4126
+    "rank": 4126,
+    "malId": 459,
+    "members": 151192,
+    "favorites": 458,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": null,
+    "producers": [],
+    "licensors": [],
+    "background": "One Piece Movie 01 was aired in theaters as a double feature alongside Digimon Adventure: Bokura no War Game as part of Toei's Spring 2000 Anime fair.",
+    "title_english": "One Piece: The Movie",
+    "title_japanese": "ONE PIECE"
   },
   {
     "id": "45",
@@ -11860,8 +14031,8 @@
     "releaseYear": 2015,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "finished",
+    "duration": "24 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Action",
       "Comedy",
@@ -11869,14 +14040,19 @@
       "Supernatural"
     ],
     "studios": [
-      "MADHOUSE"
+      {
+        "mal_id": 11,
+        "type": "anime",
+        "name": "Madhouse",
+        "url": "https://myanimelist.net/anime/producer/11/Madhouse"
+      }
     ],
     "ratings": {
       "music": 9.42,
       "visual": 7.98,
       "story": 7.14,
       "character": 5.94,
-      "site": 7.79
+      "site": 8.48
     },
     "characters": [
       {
@@ -12009,7 +14185,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 689208,
+    "popularity": 4,
     "favourites": 24894,
     "episodeGuide": [
       {
@@ -12134,7 +14310,74 @@
         "relationType": "Other"
       }
     ],
-    "rank": 160
+    "rank": 160,
+    "malId": 30276,
+    "members": 3451496,
+    "favorites": 66301,
+    "source": "Web manga",
+    "rating": "R - 17+ (violence & profanity)",
+    "year": 2015,
+    "producers": [
+      {
+        "mal_id": 16,
+        "type": "anime",
+        "name": "TV Tokyo",
+        "url": "https://myanimelist.net/anime/producer/16/TV_Tokyo"
+      },
+      {
+        "mal_id": 23,
+        "type": "anime",
+        "name": "Bandai Visual",
+        "url": "https://myanimelist.net/anime/producer/23/Bandai_Visual"
+      },
+      {
+        "mal_id": 104,
+        "type": "anime",
+        "name": "Lantis",
+        "url": "https://myanimelist.net/anime/producer/104/Lantis"
+      },
+      {
+        "mal_id": 142,
+        "type": "anime",
+        "name": "Asatsu DK",
+        "url": "https://myanimelist.net/anime/producer/142/Asatsu_DK"
+      },
+      {
+        "mal_id": 1121,
+        "type": "anime",
+        "name": "Banpresto",
+        "url": "https://myanimelist.net/anime/producer/1121/Banpresto"
+      },
+      {
+        "mal_id": 1261,
+        "type": "anime",
+        "name": "Good Smile Company",
+        "url": "https://myanimelist.net/anime/producer/1261/Good_Smile_Company"
+      },
+      {
+        "mal_id": 1365,
+        "type": "anime",
+        "name": "Shueisha",
+        "url": "https://myanimelist.net/anime/producer/1365/Shueisha"
+      },
+      {
+        "mal_id": 1501,
+        "type": "anime",
+        "name": "JR East Marketing & Communications",
+        "url": "https://myanimelist.net/anime/producer/1501/JR_East_Marketing___Communications"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 119,
+        "type": "anime",
+        "name": "VIZ Media",
+        "url": "https://myanimelist.net/anime/producer/119/VIZ_Media"
+      }
+    ],
+    "background": "Episodes 1 and 2 were previewed at a screening in Saitama city cultural center (small hall) on September 6, 2015. Regular broadcasting began on October 5, 2015. One Punch Man is based on Yusuke Murata's manga remake of ONE's original web comic. The anime adapts the first seven volumes of the manga.",
+    "title_english": "One-Punch Man",
+    "title_japanese": "ワンパンマン"
   },
   {
     "id": "46",
@@ -12144,15 +14387,20 @@
     "description": "A new dream and adventure set throughout the entire Pokémon world unfolds in a brand new Pokémon-series following a girl named Liko and a boy named Roy.",
     "releaseYear": 2023,
     "season": "spring",
-    "duration": 24,
-    "status": "releasing",
+    "duration": "24 min",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Adventure",
       "Fantasy"
     ],
     "studios": [
-      "OLM"
+      {
+        "mal_id": 28,
+        "type": "anime",
+        "name": "OLM",
+        "url": "https://myanimelist.net/anime/producer/28/OLM"
+      }
     ],
     "ratings": {
       "music": 9.58,
@@ -12300,7 +14548,7 @@
         "5: \"READY GO\" by ME:I (eps 90)"
       ]
     },
-    "popularity": 20499,
+    "popularity": 3949,
     "favourites": 664,
     "episodeGuide": [
       {
@@ -12719,7 +14967,31 @@
         "relationType": "Other"
       }
     ],
-    "rank": 2389
+    "rank": 2389,
+    "malId": 53876,
+    "members": 39864,
+    "favorites": 386,
+    "source": "Game",
+    "rating": "PG - Children",
+    "year": 2023,
+    "producers": [
+      {
+        "mal_id": 16,
+        "type": "anime",
+        "name": "TV Tokyo",
+        "url": "https://myanimelist.net/anime/producer/16/TV_Tokyo"
+      },
+      {
+        "mal_id": 3067,
+        "type": "anime",
+        "name": "Soranone",
+        "url": "https://myanimelist.net/anime/producer/3067/Soranone"
+      }
+    ],
+    "licensors": [],
+    "background": "Pokemon (2023) features elements and settings from the 2022 Nintendo Switch games Pokémon Scarlet and Violet by Game Freak.",
+    "title_english": "Pokémon Horizons: The Series",
+    "title_japanese": "ポケットモンスター(2023)"
   },
   {
     "id": "47",
@@ -12729,21 +15001,31 @@
     "description": "Kaede, an ordinary high school girl, suddenly wakes up in an unfamiliar alleyway—only to realize she's been transported to a mysterious world inhabited by beastmen, elves, and dragons. Among her belongings, she discovers a strange book that wasn't there before. To her surprise, it allows her to create potions simply by chanting the word \"create.\" Relying on these potions to survive, Kaede navigates the challenges of this fantastical world while clinging to the hope of one day returning to Japan. Her journey of struggle and discovery in this otherworldly realm is just beginning...",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 13,
-    "status": "releasing",
+    "duration": "13 min",
+    "status": "Currently Airing",
     "genres": [
       "Fantasy"
     ],
     "studios": [
-      "Imagica Infos",
-      "Imageworks Studio"
+      {
+        "mal_id": 2844,
+        "type": "anime",
+        "name": "Imagica Infos",
+        "url": "https://myanimelist.net/anime/producer/2844/Imagica_Infos"
+      },
+      {
+        "mal_id": 2983,
+        "type": "anime",
+        "name": "Imageworks Studio",
+        "url": "https://myanimelist.net/anime/producer/2983/Imageworks_Studio"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 9,
       "story": 9,
       "character": 5.66,
-      "site": 5.33
+      "site": 5.35
     },
     "characters": [
       {
@@ -12816,7 +15098,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 4262,
+    "popularity": 6871,
     "favourites": 64,
     "episodeGuide": [
       {
@@ -12870,7 +15152,43 @@
       }
     ],
     "seasons": [],
-    "rank": 13065
+    "rank": 13065,
+    "malId": 62144,
+    "members": 10660,
+    "favorites": 20,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 315,
+        "type": "anime",
+        "name": "DAX Production",
+        "url": "https://myanimelist.net/anime/producer/315/DAX_Production"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1549,
+        "type": "anime",
+        "name": "Dai Nippon Printing",
+        "url": "https://myanimelist.net/anime/producer/1549/Dai_Nippon_Printing"
+      },
+      {
+        "mal_id": 1996,
+        "type": "anime",
+        "name": "MAGNET",
+        "url": "https://myanimelist.net/anime/producer/1996/MAGNET"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "ポーション、わが身を助ける"
   },
   {
     "id": "48",
@@ -12880,22 +15198,27 @@
     "description": "The anime takes place in Alicepia, which is a mysterious country that has existed since ancient times. The inhabitants of Alicepia, the Alicepians, are a fun-loving people, but one day mysterious monsters called Jamaock appeared to threaten the peace of Alicepia. The story follows a trio of \"princesses\" who never forget the song in their hearts, even when facing such danger and step up to save the day with the power of music. \n\n(Source: Anime News Network, Crunchyroll News, edited)",
     "releaseYear": 2025,
     "season": "spring",
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Mahou Shoujo",
       "Music"
     ],
     "studios": [
-      "SILVER LINK."
+      {
+        "mal_id": 300,
+        "type": "anime",
+        "name": "SILVER LINK.",
+        "url": "https://myanimelist.net/anime/producer/300/SILVER_LINK"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8.66,
       "story": 8.66,
       "character": 8.66,
-      "site": 6.68
+      "site": 6.69
     },
     "characters": [
       {
@@ -13029,7 +15352,7 @@
         "2: \"ONENESS HARMONY\" by Orkelia (オルケリア)"
       ]
     },
-    "popularity": 4205,
+    "popularity": 8388,
     "favourites": 56,
     "episodeGuide": [
       {
@@ -13250,7 +15573,25 @@
       }
     ],
     "seasons": [],
-    "rank": 6174
+    "rank": 6174,
+    "malId": 59078,
+    "members": 6512,
+    "favorites": 32,
+    "source": "Original",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 1344,
+        "type": "anime",
+        "name": "King Records",
+        "url": "https://myanimelist.net/anime/producer/1344/King_Records"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "プリンセッション・オーケストラ"
   },
   {
     "id": "49",
@@ -13259,23 +15600,28 @@
     "bannerImage": "https://s4.anilist.co/file/anilistcdn/media/anime/banner/185731-LUMIdwsqtTrX.jpg",
     "description": "The second season of Ranma 1/2 (2024).\n\nBrace yourselves for the hilarious romantic comedy's return! What antics and arguments will Ranma and Akane get into next?\n\n(Source: Netflix Anime)",
     "releaseYear": 2025,
-    "season": "fall",
-    "duration": 23,
-    "status": "releasing",
+    "season": "spring",
+    "duration": "24 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Action",
       "Comedy",
       "Romance"
     ],
     "studios": [
-      "MAPPA"
+      {
+        "mal_id": 37,
+        "type": "anime",
+        "name": "Studio Deen",
+        "url": "https://myanimelist.net/anime/producer/37/Studio_Deen"
+      }
     ],
     "ratings": {
       "music": 9.58,
       "visual": 8.52,
       "story": 8.3,
       "character": 7.3,
-      "site": 8
+      "site": 7.77
     },
     "characters": [
       {
@@ -13422,7 +15768,7 @@
         "9: \"Niji to Taiyou no Oka\" by Piyo Piyo (eps 136-161)"
       ]
     },
-    "popularity": 21427,
+    "popularity": 973,
     "favourites": 279,
     "seasons": [
       {
@@ -13525,7 +15871,44 @@
       }
     ],
     "episodes": 161,
-    "rank": 1169
+    "rank": 1169,
+    "malId": 210,
+    "members": 278993,
+    "favorites": 4616,
+    "source": "Manga",
+    "rating": "R+ - Mild Nudity",
+    "year": 1989,
+    "producers": [
+      {
+        "mal_id": 99,
+        "type": "anime",
+        "name": "Kitty Films",
+        "url": "https://myanimelist.net/anime/producer/99/Kitty_Films"
+      },
+      {
+        "mal_id": 169,
+        "type": "anime",
+        "name": "Fuji TV",
+        "url": "https://myanimelist.net/anime/producer/169/Fuji_TV"
+      },
+      {
+        "mal_id": 1430,
+        "type": "anime",
+        "name": "Shogakukan",
+        "url": "https://myanimelist.net/anime/producer/1430/Shogakukan"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 119,
+        "type": "anime",
+        "name": "VIZ Media",
+        "url": "https://myanimelist.net/anime/producer/119/VIZ_Media"
+      }
+    ],
+    "background": "The 2011 live-action adaptation is produced by Nippon Television and is directed by Ryo Nishimura.",
+    "title_english": "Ranma ½",
+    "title_japanese": "らんま1/2"
   },
   {
     "id": "50",
@@ -13536,22 +15919,27 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 24,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Music",
       "Sci-Fi"
     ],
     "studios": [
-      "Studio VOLN"
+      {
+        "mal_id": 1244,
+        "type": "anime",
+        "name": "Studio VOLN",
+        "url": "https://myanimelist.net/anime/producer/1244/Studio_VOLN"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 9,
       "story": 9,
       "character": 9,
-      "site": 6.04
+      "site": 6.05
     },
     "characters": [
       {
@@ -13683,7 +16071,7 @@
         "\"FRIENDS & SMILE\" by SI-VIS"
       ]
     },
-    "popularity": 3218,
+    "popularity": 8243,
     "favourites": 34,
     "episodeGuide": [
       {
@@ -13737,7 +16125,49 @@
       }
     ],
     "seasons": [],
-    "rank": 9977
+    "rank": 9977,
+    "malId": 62126,
+    "members": 6782,
+    "favorites": 14,
+    "source": "Original",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 17,
+        "type": "anime",
+        "name": "Aniplex",
+        "url": "https://myanimelist.net/anime/producer/17/Aniplex"
+      },
+      {
+        "mal_id": 169,
+        "type": "anime",
+        "name": "Fuji TV",
+        "url": "https://myanimelist.net/anime/producer/169/Fuji_TV"
+      },
+      {
+        "mal_id": 213,
+        "type": "anime",
+        "name": "Half H.P Studio",
+        "url": "https://myanimelist.net/anime/producer/213/Half_HP_Studio"
+      },
+      {
+        "mal_id": 757,
+        "type": "anime",
+        "name": "Sony Music Entertainment",
+        "url": "https://myanimelist.net/anime/producer/757/Sony_Music_Entertainment"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "SI-VIS: The Sound of Heroes",
+    "title_japanese": "SI-VIS: The Sound of Heroes"
   },
   {
     "id": "51",
@@ -13748,8 +16178,8 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 13,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Comedy",
@@ -13758,14 +16188,19 @@
       "Romance"
     ],
     "studios": [
-      "LIDENFILMS"
+      {
+        "mal_id": 839,
+        "type": "anime",
+        "name": "LIDENFILMS",
+        "url": "https://myanimelist.net/anime/producer/839/LIDENFILMS"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 9.34,
       "story": 8.66,
       "character": 6,
-      "site": 7.61
+      "site": 7.6
     },
     "characters": [
       {
@@ -13894,7 +16329,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 43472,
+    "popularity": 2206,
     "favourites": 813,
     "episodeGuide": [
       {
@@ -13970,7 +16405,61 @@
         "relationType": "Other"
       }
     ],
-    "rank": 1656
+    "rank": 1656,
+    "malId": 59846,
+    "members": 107946,
+    "favorites": 487,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 17,
+        "type": "anime",
+        "name": "Aniplex",
+        "url": "https://myanimelist.net/anime/producer/17/Aniplex"
+      },
+      {
+        "mal_id": 166,
+        "type": "anime",
+        "name": "Movic",
+        "url": "https://myanimelist.net/anime/producer/166/Movic"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      },
+      {
+        "mal_id": 2074,
+        "type": "anime",
+        "name": "Bit grooove promotion",
+        "url": "https://myanimelist.net/anime/producer/2074/Bit_grooove_promotion"
+      },
+      {
+        "mal_id": 2592,
+        "type": "anime",
+        "name": "AlphaPolis",
+        "url": "https://myanimelist.net/anime/producer/2592/AlphaPolis"
+      }
+    ],
+    "licensors": [],
+    "background": "Episodes 1 and 2 were streamed on Prime Video Japan on October 4, 2025. Each subsequent episode was streamed one week in advance of the TV broadcast on the same platform. Regular broadcasting began on October 4, 2025.",
+    "title_english": "May I Ask for One Final Thing?",
+    "title_japanese": "最後にひとつだけお願いしてもよろしいでしょうか"
   },
   {
     "id": "52",
@@ -13981,14 +16470,19 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "24 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Drama",
       "Mystery"
     ],
     "studios": [
-      "Science SARU"
+      {
+        "mal_id": 1591,
+        "type": "anime",
+        "name": "Science SARU",
+        "url": "https://myanimelist.net/anime/producer/1591/Science_SARU"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -14128,7 +16622,7 @@
         "\"Diary (ダイアリー)\" by Soushi Sakiyama (崎山蒼志)"
       ]
     },
-    "popularity": 30857,
+    "popularity": 2914,
     "favourites": 381,
     "episodeGuide": [
       {
@@ -14190,7 +16684,43 @@
         "relationType": "Other"
       }
     ],
-    "rank": 2172
+    "rank": 2172,
+    "malId": 59267,
+    "members": 69250,
+    "favorites": 176,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 53,
+        "type": "anime",
+        "name": "Dentsu",
+        "url": "https://myanimelist.net/anime/producer/53/Dentsu"
+      },
+      {
+        "mal_id": 143,
+        "type": "anime",
+        "name": "Mainichi Broadcasting System",
+        "url": "https://myanimelist.net/anime/producer/143/Mainichi_Broadcasting_System"
+      },
+      {
+        "mal_id": 577,
+        "type": "anime",
+        "name": "Tohokushinsha Film Corporation",
+        "url": "https://myanimelist.net/anime/producer/577/Tohokushinsha_Film_Corporation"
+      },
+      {
+        "mal_id": 1373,
+        "type": "anime",
+        "name": "Akita Shoten",
+        "url": "https://myanimelist.net/anime/producer/1373/Akita_Shoten"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Sanda",
+    "title_japanese": "SANDA"
   },
   {
     "id": "53",
@@ -14201,8 +16731,8 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 12,
-    "status": "releasing",
+    "duration": "12 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Ecchi",
@@ -14210,14 +16740,19 @@
       "Sports"
     ],
     "studios": [
-      "Quad"
+      {
+        "mal_id": 2314,
+        "type": "anime",
+        "name": "Quad",
+        "url": "https://myanimelist.net/anime/producer/2314/Quad"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8,
       "story": 8,
       "character": 6,
-      "site": 6.26
+      "site": 6.25
     },
     "characters": [
       {
@@ -14325,7 +16860,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 11319,
+    "popularity": 4688,
     "favourites": 156,
     "episodeGuide": [
       {
@@ -14387,7 +16922,37 @@
         "relationType": "Other"
       }
     ],
-    "rank": 8840
+    "rank": 8840,
+    "malId": 61142,
+    "members": 27802,
+    "favorites": 80,
+    "source": "Web manga",
+    "rating": "R+ - Mild Nudity",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 2640,
+        "type": "anime",
+        "name": "INSPION Edge",
+        "url": "https://myanimelist.net/anime/producer/2640/INSPION_Edge"
+      },
+      {
+        "mal_id": 2892,
+        "type": "anime",
+        "name": "WWWave",
+        "url": "https://myanimelist.net/anime/producer/2892/WWWave"
+      },
+      {
+        "mal_id": 3112,
+        "type": "anime",
+        "name": "Deregula",
+        "url": "https://myanimelist.net/anime/producer/3112/Deregula"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Hands Off: Sawaranaide Kotesashi-kun",
+    "title_japanese": "さわらないで小手指くん"
   },
   {
     "id": "54",
@@ -14397,14 +16962,19 @@
     "description": "The main character is a mother named Sazae-san. She lives in a house with her husband, her kid, her siblings and her parents. The show is the ultimate family program and tends to follow traditional themes. Think of this show as the Japanese equivalent to \"The Partridge Family\" and you'll get a good feel for this show's atmosphere. Don't expect to see things like violence, swearing, kung-fu action or magical girls. The plots are more like \"Today, Sazae-san goes to the new mall and gets lost\". Such \"boring\" plotlines and the simplistic art are often a turn-off to non-Japanese audiences, but most Japanese find the show incredibly good. As a result, it continues to be one of the top ratings grabbers on TV and is one of the few anime that is considered \"acceptable\" by adults.",
     "releaseYear": 1969,
     "season": "fall",
-    "duration": 24,
-    "status": "releasing",
+    "duration": "24 min",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Slice of Life"
     ],
     "studios": [
-      "Eiken"
+      {
+        "mal_id": 191,
+        "type": "anime",
+        "name": "Eiken",
+        "url": "https://myanimelist.net/anime/producer/191/Eiken"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -14527,7 +17097,7 @@
       ],
       "endings": []
     },
-    "popularity": 2234,
+    "popularity": 7025,
     "favourites": 43,
     "seasons": [
       {
@@ -14559,7 +17129,25 @@
         "relationType": "Other"
       }
     ],
-    "rank": 9444
+    "rank": 9444,
+    "malId": 2406,
+    "members": 10178,
+    "favorites": 41,
+    "source": "4-koma manga",
+    "rating": "G - All Ages",
+    "year": 1969,
+    "producers": [
+      {
+        "mal_id": 169,
+        "type": "anime",
+        "name": "Fuji TV",
+        "url": "https://myanimelist.net/anime/producer/169/Fuji_TV"
+      }
+    ],
+    "licensors": [],
+    "background": "Sazae-san currently holds the Guinness World Record for the longest running animated television series.",
+    "title_english": "Mrs. Sazae",
+    "title_japanese": "サザエさん"
   },
   {
     "id": "55",
@@ -14570,14 +17158,19 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 13,
-    "duration": 23,
-    "status": "releasing",
+    "duration": "22 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Fantasy",
       "Mystery"
     ],
     "studios": [
-      "Bandai Namco Pictures"
+      {
+        "mal_id": 1258,
+        "type": "anime",
+        "name": "Bandai Namco Pictures",
+        "url": "https://myanimelist.net/anime/producer/1258/Bandai_Namco_Pictures"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -14716,7 +17309,7 @@
         "\"Myakumyaku (脈脈)\" by KAFUNÉ"
       ]
     },
-    "popularity": 4197,
+    "popularity": 6633,
     "favourites": 33,
     "episodeGuide": [
       {
@@ -14785,7 +17378,61 @@
         "relationType": "Other"
       }
     ],
-    "rank": 9086
+    "rank": 9086,
+    "malId": 60378,
+    "members": 11630,
+    "favorites": 21,
+    "source": "Novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 17,
+        "type": "anime",
+        "name": "Aniplex",
+        "url": "https://myanimelist.net/anime/producer/17/Aniplex"
+      },
+      {
+        "mal_id": 53,
+        "type": "anime",
+        "name": "Dentsu",
+        "url": "https://myanimelist.net/anime/producer/53/Dentsu"
+      },
+      {
+        "mal_id": 166,
+        "type": "anime",
+        "name": "Movic",
+        "url": "https://myanimelist.net/anime/producer/166/Movic"
+      },
+      {
+        "mal_id": 169,
+        "type": "anime",
+        "name": "Fuji TV",
+        "url": "https://myanimelist.net/anime/producer/169/Fuji_TV"
+      },
+      {
+        "mal_id": 719,
+        "type": "anime",
+        "name": "Studio Mausu",
+        "url": "https://myanimelist.net/anime/producer/719/Studio_Mausu"
+      },
+      {
+        "mal_id": 1550,
+        "type": "anime",
+        "name": "Shinchosha",
+        "url": "https://myanimelist.net/anime/producer/1550/Shinchosha"
+      },
+      {
+        "mal_id": 2425,
+        "type": "anime",
+        "name": "Bandai Namco Music Live",
+        "url": "https://myanimelist.net/anime/producer/2425/Bandai_Namco_Music_Live"
+      }
+    ],
+    "licensors": [],
+    "background": "Shabake aired on Fuji TV's noitaminA block.",
+    "title_english": "Shabake",
+    "title_japanese": "しゃばけ"
   },
   {
     "id": "56",
@@ -14796,22 +17443,27 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Adventure",
       "Fantasy"
     ],
     "studios": [
-      "J.C.STAFF"
+      {
+        "mal_id": 7,
+        "type": "anime",
+        "name": "J.C.Staff",
+        "url": "https://myanimelist.net/anime/producer/7/JCStaff"
+      }
     ],
     "ratings": {
       "music": 8.56,
       "visual": 6.82,
       "story": 5.5,
       "character": 3.68,
-      "site": 6.57
+      "site": 6.59
     },
     "characters": [
       {
@@ -14944,7 +17596,7 @@
         "2: \"Shirogarasu (シロガラス)\" by Nowlu (eps 2-)"
       ]
     },
-    "popularity": 26908,
+    "popularity": 3234,
     "favourites": 562,
     "episodeGuide": [
       {
@@ -15011,7 +17663,74 @@
       }
     ],
     "seasons": [],
-    "rank": 6740
+    "rank": 6740,
+    "malId": 60303,
+    "members": 56842,
+    "favorites": 177,
+    "source": "Light novel",
+    "rating": "R - 17+ (violence & profanity)",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 104,
+        "type": "anime",
+        "name": "Lantis",
+        "url": "https://myanimelist.net/anime/producer/104/Lantis"
+      },
+      {
+        "mal_id": 143,
+        "type": "anime",
+        "name": "Mainichi Broadcasting System",
+        "url": "https://myanimelist.net/anime/producer/143/Mainichi_Broadcasting_System"
+      },
+      {
+        "mal_id": 306,
+        "type": "anime",
+        "name": "Magic Capsule",
+        "url": "https://myanimelist.net/anime/producer/306/Magic_Capsule"
+      },
+      {
+        "mal_id": 547,
+        "type": "anime",
+        "name": "Hobby Japan",
+        "url": "https://myanimelist.net/anime/producer/547/Hobby_Japan"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      },
+      {
+        "mal_id": 2424,
+        "type": "anime",
+        "name": "Bandai Namco Filmworks",
+        "url": "https://myanimelist.net/anime/producer/2424/Bandai_Namco_Filmworks"
+      },
+      {
+        "mal_id": 2425,
+        "type": "anime",
+        "name": "Bandai Namco Music Live",
+        "url": "https://myanimelist.net/anime/producer/2425/Bandai_Namco_Music_Live"
+      },
+      {
+        "mal_id": 2741,
+        "type": "anime",
+        "name": "Daito Giken",
+        "url": "https://myanimelist.net/anime/producer/2741/Daito_Giken"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 376,
+        "type": "anime",
+        "name": "Sentai Filmworks",
+        "url": "https://myanimelist.net/anime/producer/376/Sentai_Filmworks"
+      }
+    ],
+    "background": "",
+    "title_english": "My Gift Lvl 9999 Unlimited Gacha: Backstabbed in a Backwater Dungeon, I'm Out for Revenge!",
+    "title_japanese": "信じていた仲間達にダンジョン奥地で殺されかけたがギフト『無限ガチャ』でレベル9999の仲間達を手に入れて元パーティーメンバーと世界に復讐＆『ざまぁ！』します!"
   },
   {
     "id": "57",
@@ -15022,22 +17741,27 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Adventure",
       "Sci-Fi",
       "Slice of Life"
     ],
     "studios": [
-      "Nexus"
+      {
+        "mal_id": 852,
+        "type": "anime",
+        "name": "Nexus",
+        "url": "https://myanimelist.net/anime/producer/852/Nexus"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8,
       "story": 8,
       "character": 8,
-      "site": 6.81
+      "site": 6.8
     },
     "characters": [
       {
@@ -15119,7 +17843,7 @@
         "\"Glide (グライド)\" by Myuk"
       ]
     },
-    "popularity": 8820,
+    "popularity": 5570,
     "favourites": 78,
     "episodeGuide": [
       {
@@ -15173,7 +17897,67 @@
       }
     ],
     "seasons": [],
-    "rank": 5490
+    "rank": 5490,
+    "malId": 61072,
+    "members": 18098,
+    "favorites": 34,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 17,
+        "type": "anime",
+        "name": "Aniplex",
+        "url": "https://myanimelist.net/anime/producer/17/Aniplex"
+      },
+      {
+        "mal_id": 76,
+        "type": "anime",
+        "name": "Yomiuri Telecasting",
+        "url": "https://myanimelist.net/anime/producer/76/Yomiuri_Telecasting"
+      },
+      {
+        "mal_id": 306,
+        "type": "anime",
+        "name": "Magic Capsule",
+        "url": "https://myanimelist.net/anime/producer/306/Magic_Capsule"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1261,
+        "type": "anime",
+        "name": "Good Smile Company",
+        "url": "https://myanimelist.net/anime/producer/1261/Good_Smile_Company"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      },
+      {
+        "mal_id": 1554,
+        "type": "anime",
+        "name": "Contents Seed",
+        "url": "https://myanimelist.net/anime/producer/1554/Contents_Seed"
+      },
+      {
+        "mal_id": 1696,
+        "type": "anime",
+        "name": "Kadokawa",
+        "url": "https://myanimelist.net/anime/producer/1696/Kadokawa"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Touring After the Apocalypse",
+    "title_japanese": "終末ツーリング"
   },
   {
     "id": "58",
@@ -15183,14 +17967,19 @@
     "description": "One night, a Star of Life falls down the chimney of a bakery nestled deep in the forest, causing the dough in the oven to come to life. The dough becomes Anpanman, a superhero made of anpan (a sweet roll with bean jam filling). Together with his friends, Anpanman fights his rival Baikinman and helps the malnourished.\n\n(Source: Anime News Network)",
     "releaseYear": 1988,
     "season": "fall",
-    "duration": 24,
-    "status": "releasing",
+    "duration": "24 min",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Fantasy"
     ],
     "studios": [
-      "TMS Entertainment"
+      {
+        "mal_id": 73,
+        "type": "anime",
+        "name": "TMS Entertainment",
+        "url": "https://myanimelist.net/anime/producer/73/TMS_Entertainment"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -15331,7 +18120,7 @@
         "7: \"DoReMiFa Anpanman\" by Dreaming (April 2003 ~ March 2010)"
       ]
     },
-    "popularity": 1284,
+    "popularity": 9213,
     "favourites": 33,
     "seasons": [
       {
@@ -16042,7 +18831,31 @@
         "relationType": "Other"
       }
     ],
-    "rank": 6657
+    "rank": 6657,
+    "malId": 1960,
+    "members": 5144,
+    "favorites": 35,
+    "source": "Picture book",
+    "rating": "PG - Children",
+    "year": 1988,
+    "producers": [
+      {
+        "mal_id": 64,
+        "type": "anime",
+        "name": "Sotsu",
+        "url": "https://myanimelist.net/anime/producer/64/Sotsu"
+      },
+      {
+        "mal_id": 1003,
+        "type": "anime",
+        "name": "Nippon Television Network",
+        "url": "https://myanimelist.net/anime/producer/1003/Nippon_Television_Network"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": null,
+    "title_japanese": "それいけ！アンパンマン"
   },
   {
     "id": "59",
@@ -16053,8 +18866,8 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Adventure",
       "Comedy",
@@ -16062,8 +18875,18 @@
       "Slice of Life"
     ],
     "studios": [
-      "Tatsunoko Production",
-      "SynergySP"
+      {
+        "mal_id": 103,
+        "type": "anime",
+        "name": "Tatsunoko Production",
+        "url": "https://myanimelist.net/anime/producer/103/Tatsunoko_Production"
+      },
+      {
+        "mal_id": 118,
+        "type": "anime",
+        "name": "SynergySP",
+        "url": "https://myanimelist.net/anime/producer/118/SynergySP"
+      }
     ],
     "ratings": {
       "music": 9.76,
@@ -16172,10 +18995,64 @@
         "\"Mugen Trip (夢幻トリップ)\" by Nakigoto (なきごと)"
       ]
     },
-    "popularity": 18098,
+    "popularity": 3921,
     "favourites": 284,
     "seasons": [],
-    "rank": 10268
+    "rank": 10268,
+    "malId": 61174,
+    "members": 40612,
+    "favorites": 80,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 79,
+        "type": "anime",
+        "name": "Genco",
+        "url": "https://myanimelist.net/anime/producer/79/Genco"
+      },
+      {
+        "mal_id": 82,
+        "type": "anime",
+        "name": "Marvelous Entertainment",
+        "url": "https://myanimelist.net/anime/producer/82/Marvelous_Entertainment"
+      },
+      {
+        "mal_id": 1041,
+        "type": "anime",
+        "name": "Ai Addiction",
+        "url": "https://myanimelist.net/anime/producer/1041/Ai_Addiction"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      },
+      {
+        "mal_id": 1583,
+        "type": "anime",
+        "name": "U-NEXT",
+        "url": "https://myanimelist.net/anime/producer/1583/U-NEXT"
+      },
+      {
+        "mal_id": 1786,
+        "type": "anime",
+        "name": "Muse Communication",
+        "url": "https://myanimelist.net/anime/producer/1786/Muse_Communication"
+      },
+      {
+        "mal_id": 2592,
+        "type": "anime",
+        "name": "AlphaPolis",
+        "url": "https://myanimelist.net/anime/producer/2592/AlphaPolis"
+      }
+    ],
+    "licensors": [],
+    "background": "Each episode was streamed one week in advance of the TV broadcast starting on September 30, 2025, on U-NEXT. Regular broadcasting began on October 7, 2025.",
+    "title_english": "A Gatherer's Adventure in Isekai",
+    "title_japanese": "素材採取家の異世界旅行記"
   },
   {
     "id": "60",
@@ -16186,8 +19063,8 @@
     "releaseYear": 2022,
     "season": "spring",
     "episodes": 12,
-    "duration": 24,
-    "status": "finished",
+    "duration": "24 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Action",
       "Comedy",
@@ -16195,15 +19072,25 @@
       "Supernatural"
     ],
     "studios": [
-      "CloverWorks",
-      "WIT STUDIO"
+      {
+        "mal_id": 858,
+        "type": "anime",
+        "name": "Wit Studio",
+        "url": "https://myanimelist.net/anime/producer/858/Wit_Studio"
+      },
+      {
+        "mal_id": 1835,
+        "type": "anime",
+        "name": "CloverWorks",
+        "url": "https://myanimelist.net/anime/producer/1835/CloverWorks"
+      }
     ],
     "ratings": {
       "music": 9.86,
       "visual": 8.24,
       "story": 7.3,
       "character": 6.02,
-      "site": 8.34
+      "site": 8.44
     },
     "characters": [
       {
@@ -16340,7 +19227,7 @@
         "\"Kigeki (喜劇)\" by Gen Hoshino (星源野) (eps 2-?)"
       ]
     },
-    "popularity": 486291,
+    "popularity": 59,
     "favourites": 22229,
     "episodeGuide": [
       {
@@ -16444,7 +19331,50 @@
         "relationType": "Character"
       }
     ],
-    "rank": 189
+    "rank": 189,
+    "malId": 50265,
+    "members": 1815595,
+    "favorites": 40734,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2022,
+    "producers": [
+      {
+        "mal_id": 16,
+        "type": "anime",
+        "name": "TV Tokyo",
+        "url": "https://myanimelist.net/anime/producer/16/TV_Tokyo"
+      },
+      {
+        "mal_id": 62,
+        "type": "anime",
+        "name": "Shogakukan-Shueisha Productions",
+        "url": "https://myanimelist.net/anime/producer/62/Shogakukan-Shueisha_Productions"
+      },
+      {
+        "mal_id": 1143,
+        "type": "anime",
+        "name": "TOHO animation",
+        "url": "https://myanimelist.net/anime/producer/1143/TOHO_animation"
+      },
+      {
+        "mal_id": 1365,
+        "type": "anime",
+        "name": "Shueisha",
+        "url": "https://myanimelist.net/anime/producer/1365/Shueisha"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 102,
+        "type": "anime",
+        "name": "Funimation",
+        "url": "https://myanimelist.net/anime/producer/102/Funimation"
+      }
+    ],
+    "background": "Winner of the Anime of the Year (TV Series) at the 2023 Tokyo Anime Award Festival (TAAF).",
+    "title_english": null,
+    "title_japanese": "SPY×FAMILY"
   },
   {
     "id": "61",
@@ -16455,13 +19385,18 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Romance"
     ],
     "studios": [
-      "Studio KAI"
+      {
+        "mal_id": 1997,
+        "type": "anime",
+        "name": "Studio KAI",
+        "url": "https://myanimelist.net/anime/producer/1997/Studio_KAI"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -16592,7 +19527,7 @@
         "2: \"Saishinwa (最新話)\" by Wanuka (和ぬか) (eps 2-)"
       ]
     },
-    "popularity": 11268,
+    "popularity": 4622,
     "favourites": 126,
     "episodeGuide": [
       {
@@ -16661,7 +19596,67 @@
         "relationType": "Other"
       }
     ],
-    "rank": 4103
+    "rank": 4103,
+    "malId": 60969,
+    "members": 28595,
+    "favorites": 87,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 145,
+        "type": "anime",
+        "name": "TBS",
+        "url": "https://myanimelist.net/anime/producer/145/TBS"
+      },
+      {
+        "mal_id": 166,
+        "type": "anime",
+        "name": "Movic",
+        "url": "https://myanimelist.net/anime/producer/166/Movic"
+      },
+      {
+        "mal_id": 315,
+        "type": "anime",
+        "name": "DAX Production",
+        "url": "https://myanimelist.net/anime/producer/315/DAX_Production"
+      },
+      {
+        "mal_id": 1397,
+        "type": "anime",
+        "name": "Universal Music Japan",
+        "url": "https://myanimelist.net/anime/producer/1397/Universal_Music_Japan"
+      },
+      {
+        "mal_id": 1585,
+        "type": "anime",
+        "name": "Nichion",
+        "url": "https://myanimelist.net/anime/producer/1585/Nichion"
+      },
+      {
+        "mal_id": 1986,
+        "type": "anime",
+        "name": "arma bianca",
+        "url": "https://myanimelist.net/anime/producer/1986/arma_bianca"
+      },
+      {
+        "mal_id": 1996,
+        "type": "anime",
+        "name": "MAGNET",
+        "url": "https://myanimelist.net/anime/producer/1996/MAGNET"
+      },
+      {
+        "mal_id": 2111,
+        "type": "anime",
+        "name": "Pia",
+        "url": "https://myanimelist.net/anime/producer/2111/Pia"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "A Star Brighter Than the Sun",
+    "title_japanese": "太陽よりも眩しい星"
   },
   {
     "id": "62",
@@ -16672,22 +19667,27 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Fantasy",
       "Romance"
     ],
     "studios": [
-      "Studio DEEN"
+      {
+        "mal_id": 37,
+        "type": "anime",
+        "name": "Studio Deen",
+        "url": "https://myanimelist.net/anime/producer/37/Studio_Deen"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 7.66,
       "story": 6,
       "character": 5.34,
-      "site": 6.56
+      "site": 6.54
     },
     "characters": [
       {
@@ -16820,7 +19820,7 @@
         "\"Regene (リジェネ)\" by Zerofrom"
       ]
     },
-    "popularity": 11309,
+    "popularity": 4752,
     "favourites": 130,
     "episodeGuide": [
       {
@@ -16874,7 +19874,79 @@
       }
     ],
     "seasons": [],
-    "rank": 7092
+    "rank": 7092,
+    "malId": 58146,
+    "members": 26921,
+    "favorites": 71,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 16,
+        "type": "anime",
+        "name": "TV Tokyo",
+        "url": "https://myanimelist.net/anime/producer/16/TV_Tokyo"
+      },
+      {
+        "mal_id": 82,
+        "type": "anime",
+        "name": "Marvelous Entertainment",
+        "url": "https://myanimelist.net/anime/producer/82/Marvelous_Entertainment"
+      },
+      {
+        "mal_id": 148,
+        "type": "anime",
+        "name": "Hakusensha",
+        "url": "https://myanimelist.net/anime/producer/148/Hakusensha"
+      },
+      {
+        "mal_id": 213,
+        "type": "anime",
+        "name": "Half H.P Studio",
+        "url": "https://myanimelist.net/anime/producer/213/Half_HP_Studio"
+      },
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 1185,
+        "type": "anime",
+        "name": "81 Produce",
+        "url": "https://myanimelist.net/anime/producer/1185/81_Produce"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      },
+      {
+        "mal_id": 1590,
+        "type": "anime",
+        "name": "FuRyu",
+        "url": "https://myanimelist.net/anime/producer/1590/FuRyu"
+      },
+      {
+        "mal_id": 2999,
+        "type": "anime",
+        "name": "Hike",
+        "url": "https://myanimelist.net/anime/producer/2999/Hike"
+      },
+      {
+        "mal_id": 3063,
+        "type": "anime",
+        "name": "Anici",
+        "url": "https://myanimelist.net/anime/producer/3063/Anici"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "The Dark History of the Reincarnated Villainess",
+    "title_japanese": "転生悪女の黒歴史"
   },
   {
     "id": "63",
@@ -16884,14 +19956,24 @@
     "description": "To celebrate \"Cheese Day,\" (November 11 in Japan), Cartoon Network Japan debuted an anime spin on Tom and Jerry that combines the fast-paced humor of the original with a cute, \"pop\" worldview. The pair are joined by the diaper-wearing Tuffy Mouse, another recurring character from the classic cartoon.\n\n(Source: Crunchyroll)",
     "releaseYear": 2022,
     "season": "fall",
-    "duration": 1,
-    "status": "releasing",
+    "duration": "1 min",
+    "status": "Currently Airing",
     "genres": [
       "Comedy"
     ],
     "studios": [
-      "Fanworks",
-      "Studio Nanahoshi"
+      {
+        "mal_id": 866,
+        "type": "anime",
+        "name": "Fanworks",
+        "url": "https://myanimelist.net/anime/producer/866/Fanworks"
+      },
+      {
+        "mal_id": 1763,
+        "type": "anime",
+        "name": "Studio Nanahoshi",
+        "url": "https://myanimelist.net/anime/producer/1763/Studio_Nanahoshi"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -17017,7 +20099,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 881,
+    "popularity": 13172,
     "favourites": 8,
     "episodeGuide": [
       {
@@ -17205,7 +20287,25 @@
         "relationType": "Other"
       }
     ],
-    "rank": 6557
+    "rank": 6557,
+    "malId": 53907,
+    "members": 1562,
+    "favorites": 4,
+    "source": "Other",
+    "rating": "G - All Ages",
+    "year": 2022,
+    "producers": [
+      {
+        "mal_id": 415,
+        "type": "anime",
+        "name": "Warner Bros. Japan",
+        "url": "https://myanimelist.net/anime/producer/415/Warner_Bros_Japan"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Tom and Jerry",
+    "title_japanese": "とむとじぇりーごっこ"
   },
   {
     "id": "64",
@@ -17216,22 +20316,27 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 23,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Romance",
       "Slice of Life"
     ],
     "studios": [
-      "BLADE"
+      {
+        "mal_id": 1547,
+        "type": "anime",
+        "name": "Blade",
+        "url": "https://myanimelist.net/anime/producer/1547/Blade"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 6.5,
       "story": 6.5,
       "character": 6,
-      "site": 6.45
+      "site": 6.44
     },
     "characters": [
       {
@@ -17344,7 +20449,7 @@
         "\"Hoshi no Kodou (星の鼓動)\" by Kohana Lam (こはならむ)"
       ]
     },
-    "popularity": 33551,
+    "popularity": 2542,
     "favourites": 494,
     "episodeGuide": [
       {
@@ -17356,7 +20461,79 @@
       }
     ],
     "seasons": [],
-    "rank": 7668
+    "rank": 7668,
+    "malId": 47158,
+    "members": 86666,
+    "favorites": 386,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 55,
+        "type": "anime",
+        "name": "TV Asahi",
+        "url": "https://myanimelist.net/anime/producer/55/TV_Asahi"
+      },
+      {
+        "mal_id": 58,
+        "type": "anime",
+        "name": "Square Enix",
+        "url": "https://myanimelist.net/anime/producer/58/Square_Enix"
+      },
+      {
+        "mal_id": 517,
+        "type": "anime",
+        "name": "Asmik Ace",
+        "url": "https://myanimelist.net/anime/producer/517/Asmik_Ace"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      },
+      {
+        "mal_id": 1517,
+        "type": "anime",
+        "name": "Jinnan Studio",
+        "url": "https://myanimelist.net/anime/producer/1517/Jinnan_Studio"
+      },
+      {
+        "mal_id": 1585,
+        "type": "anime",
+        "name": "Nichion",
+        "url": "https://myanimelist.net/anime/producer/1585/Nichion"
+      },
+      {
+        "mal_id": 2111,
+        "type": "anime",
+        "name": "Pia",
+        "url": "https://myanimelist.net/anime/producer/2111/Pia"
+      },
+      {
+        "mal_id": 2117,
+        "type": "anime",
+        "name": "SB Creative",
+        "url": "https://myanimelist.net/anime/producer/2117/SB_Creative"
+      },
+      {
+        "mal_id": 2234,
+        "type": "anime",
+        "name": "TV Asahi Music",
+        "url": "https://myanimelist.net/anime/producer/2234/TV_Asahi_Music"
+      },
+      {
+        "mal_id": 3106,
+        "type": "anime",
+        "name": "NK Animation",
+        "url": "https://myanimelist.net/anime/producer/3106/NK_Animation"
+      }
+    ],
+    "licensors": [],
+    "background": "Tomodachi no Imouto ga Ore ni dake Uzai aired on TV Asahi's NUMAnimation block.",
+    "title_english": "My Friend's Little Sister Has It In for Me!",
+    "title_japanese": "友達の妹が俺にだけウザい"
   },
   {
     "id": "65",
@@ -17367,15 +20544,20 @@
     "releaseYear": 2023,
     "season": "winter",
     "episodes": 12,
-    "duration": 24,
-    "status": "finished",
+    "duration": "23 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Adventure",
       "Comedy",
       "Fantasy"
     ],
     "studios": [
-      "MAPPA"
+      {
+        "mal_id": 569,
+        "type": "anime",
+        "name": "MAPPA",
+        "url": "https://myanimelist.net/anime/producer/569/MAPPA"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -17511,7 +20693,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 91294,
+    "popularity": 880,
     "favourites": 2884,
     "episodeGuide": [
       {
@@ -17608,7 +20790,32 @@
         "relationType": "Sequel"
       }
     ],
-    "rank": 1516
+    "rank": 1516,
+    "malId": 53446,
+    "members": 310562,
+    "favorites": 2322,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2023,
+    "producers": [
+      {
+        "mal_id": 1856,
+        "type": "anime",
+        "name": "dugout",
+        "url": "https://myanimelist.net/anime/producer/1856/dugout"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      }
+    ],
+    "background": "Tondemo Skill de Isekai Hourou Meshi was released on Blu-ray and DVD in three volumes from April 26, 2023, to June 28, 2023.",
+    "title_english": "Campfire Cooking in Another World with My Absurd Skill",
+    "title_japanese": "とんでもスキルで異世界放浪メシ"
   },
   {
     "id": "66",
@@ -17619,15 +20826,20 @@
     "releaseYear": 2025,
     "season": "summer",
     "episodes": 24,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "24 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Mystery",
       "Supernatural"
     ],
     "studios": [
-      "Studio Hibari"
+      {
+        "mal_id": 101,
+        "type": "anime",
+        "name": "Studio Hibari",
+        "url": "https://myanimelist.net/anime/producer/101/Studio_Hibari"
+      }
     ],
     "ratings": {
       "music": 9.32,
@@ -17772,7 +20984,7 @@
         "2: \"ACTION\" by eill"
       ]
     },
-    "popularity": 50730,
+    "popularity": 2050,
     "favourites": 828,
     "episodeGuide": [
       {
@@ -17911,7 +21123,43 @@
         "relationType": "Other"
       }
     ],
-    "rank": 6913
+    "rank": 6913,
+    "malId": 58811,
+    "members": 120399,
+    "favorites": 559,
+    "source": "Manga",
+    "rating": "R - 17+ (violence & profanity)",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 53,
+        "type": "anime",
+        "name": "Dentsu",
+        "url": "https://myanimelist.net/anime/producer/53/Dentsu"
+      },
+      {
+        "mal_id": 144,
+        "type": "anime",
+        "name": "Pony Canyon",
+        "url": "https://myanimelist.net/anime/producer/144/Pony_Canyon"
+      },
+      {
+        "mal_id": 1003,
+        "type": "anime",
+        "name": "Nippon Television Network",
+        "url": "https://myanimelist.net/anime/producer/1003/Nippon_Television_Network"
+      },
+      {
+        "mal_id": 1373,
+        "type": "anime",
+        "name": "Akita Shoten",
+        "url": "https://myanimelist.net/anime/producer/1373/Akita_Shoten"
+      }
+    ],
+    "licensors": [],
+    "background": "Tougen Anki aired on Nippon TV's Friday Anime Night block.",
+    "title_english": "Tougen Anki",
+    "title_japanese": "桃源暗鬼"
   },
   {
     "id": "67",
@@ -17921,21 +21169,26 @@
     "description": "The story of Tojima Wants to Be a Kamen Rider follows Tanzaburo Tojima, a forty-year-old man who is abnormally obsessed with the Kamen Rider franchise. Tojima is about to give up on his dream of becoming a hero until a chance encounter with a robber changes his fate forever.\n\n(Source: Crunchyroll News)",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Comedy"
     ],
     "studios": [
-      "LIDENFILMS"
+      {
+        "mal_id": 839,
+        "type": "anime",
+        "name": "LIDENFILMS",
+        "url": "https://myanimelist.net/anime/producer/839/LIDENFILMS"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8.5,
       "story": 7.5,
       "character": 6,
-      "site": 7.68
+      "site": 7.67
     },
     "characters": [
       {
@@ -18067,10 +21320,52 @@
         "\"One More Time (ワンモアタイム)\" by TeddyLoid feat. Ryoji Tokito (時任良治)"
       ]
     },
-    "popularity": 13419,
+    "popularity": 4142,
     "favourites": 225,
     "seasons": [],
-    "rank": 1427
+    "rank": 1427,
+    "malId": 61159,
+    "members": 36202,
+    "favorites": 90,
+    "source": "Manga",
+    "rating": "R - 17+ (violence & profanity)",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 17,
+        "type": "anime",
+        "name": "Aniplex",
+        "url": "https://myanimelist.net/anime/producer/17/Aniplex"
+      },
+      {
+        "mal_id": 719,
+        "type": "anime",
+        "name": "Studio Mausu",
+        "url": "https://myanimelist.net/anime/producer/719/Studio_Mausu"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      },
+      {
+        "mal_id": 1653,
+        "type": "anime",
+        "name": "Kinoshita Group Holdings",
+        "url": "https://myanimelist.net/anime/producer/1653/Kinoshita_Group_Holdings"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Tojima Wants to Be a Kamen Rider",
+    "title_japanese": "東島丹三郎は仮面ライダーになりたい"
   },
   {
     "id": "68",
@@ -18079,13 +21374,20 @@
     "description": "Towa no Yuugure: Asa wo Kokoro ni, Ichi, Ni to Kazoe yo is an anime series.",
     "releaseYear": 2025,
     "genres": [],
-    "studios": [],
+    "studios": [
+      {
+        "mal_id": 132,
+        "type": "anime",
+        "name": "P.A. Works",
+        "url": "https://myanimelist.net/anime/producer/132/PA_Works"
+      }
+    ],
     "ratings": {
       "music": 9.6,
       "visual": 7.4,
       "story": 6.4,
       "character": 5.2,
-      "site": 6.91
+      "site": 6.82
     },
     "characters": [],
     "recommendations": [],
@@ -18160,7 +21462,66 @@
       }
     ],
     "episodes": 12,
-    "rank": 5415
+    "rank": 5415,
+    "malId": 61917,
+    "popularity": 3232,
+    "members": 56928,
+    "favorites": 131,
+    "source": "Original",
+    "duration": "23 min per ep",
+    "rating": "R - 17+ (violence & profanity)",
+    "season": "fall",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 135,
+        "type": "anime",
+        "name": "MediaNet",
+        "url": "https://myanimelist.net/anime/producer/135/MediaNet"
+      },
+      {
+        "mal_id": 143,
+        "type": "anime",
+        "name": "Mainichi Broadcasting System",
+        "url": "https://myanimelist.net/anime/producer/143/Mainichi_Broadcasting_System"
+      },
+      {
+        "mal_id": 166,
+        "type": "anime",
+        "name": "Movic",
+        "url": "https://myanimelist.net/anime/producer/166/Movic"
+      },
+      {
+        "mal_id": 1856,
+        "type": "anime",
+        "name": "dugout",
+        "url": "https://myanimelist.net/anime/producer/1856/dugout"
+      },
+      {
+        "mal_id": 2045,
+        "type": "anime",
+        "name": "Myrica Music",
+        "url": "https://myanimelist.net/anime/producer/2045/Myrica_Music"
+      },
+      {
+        "mal_id": 2680,
+        "type": "anime",
+        "name": "Sankyo",
+        "url": "https://myanimelist.net/anime/producer/2680/Sankyo_"
+      }
+    ],
+    "licensors": [
+      {
+        "mal_id": 376,
+        "type": "anime",
+        "name": "Sentai Filmworks",
+        "url": "https://myanimelist.net/anime/producer/376/Sentai_Filmworks"
+      }
+    ],
+    "background": "Towa no Yuugure aired on MBS and TBS' Super Animeism Turbo block.",
+    "title_english": "Dusk Beyond the End of the World",
+    "title_japanese": "永久のユウグレ",
+    "status": "Currently Airing"
   },
   {
     "id": "69",
@@ -18171,14 +21532,19 @@
     "releaseYear": 2025,
     "season": "spring",
     "episodes": 13,
-    "duration": 24,
-    "status": "finished",
+    "duration": "23 min per ep",
+    "status": "Finished Airing",
     "genres": [
       "Drama",
       "Sports"
     ],
     "studios": [
-      "CygamesPictures"
+      {
+        "mal_id": 1893,
+        "type": "anime",
+        "name": "CygamesPictures",
+        "url": "https://myanimelist.net/anime/producer/1893/CygamesPictures"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -18318,7 +21684,7 @@
         "\"∞\" by Oguri Cap (CV: Tomoyo Takayanagi)"
       ]
     },
-    "popularity": 28773,
+    "popularity": 2887,
     "favourites": 1519,
     "episodeGuide": [
       {
@@ -18429,7 +21795,49 @@
         "relationType": "Parent Story"
       }
     ],
-    "rank": 124
+    "rank": 124,
+    "malId": 59636,
+    "members": 70514,
+    "favorites": 907,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 145,
+        "type": "anime",
+        "name": "TBS",
+        "url": "https://myanimelist.net/anime/producer/145/TBS"
+      },
+      {
+        "mal_id": 1397,
+        "type": "anime",
+        "name": "Universal Music Japan",
+        "url": "https://myanimelist.net/anime/producer/1397/Universal_Music_Japan"
+      },
+      {
+        "mal_id": 1587,
+        "type": "anime",
+        "name": "Cygames",
+        "url": "https://myanimelist.net/anime/producer/1587/Cygames"
+      },
+      {
+        "mal_id": 2074,
+        "type": "anime",
+        "name": "Bit grooove promotion",
+        "url": "https://myanimelist.net/anime/producer/2074/Bit_grooove_promotion"
+      },
+      {
+        "mal_id": 2751,
+        "type": "anime",
+        "name": "Happinet Media Marketing",
+        "url": "https://myanimelist.net/anime/producer/2751/Happinet_Media_Marketing"
+      }
+    ],
+    "licensors": [],
+    "background": "Uma Musume: Cinderella Gray was released on Blu-ray in four volumes from September 17, 2025, to December 17, 2025.",
+    "title_english": "Umamusume: Cinderella Gray",
+    "title_japanese": "ウマ娘 シンデレラグレイ"
   },
   {
     "id": "70",
@@ -18440,15 +21848,25 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 23,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Drama",
       "Sports"
     ],
     "studios": [
-      "MADHOUSE",
-      "Cyclone Graphics"
+      {
+        "mal_id": 11,
+        "type": "anime",
+        "name": "Madhouse",
+        "url": "https://myanimelist.net/anime/producer/11/Madhouse"
+      },
+      {
+        "mal_id": 1099,
+        "type": "anime",
+        "name": "Cyclone Graphics",
+        "url": "https://myanimelist.net/anime/producer/1099/Cyclone_Graphics"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -18578,7 +21996,7 @@
         "\"Wondrous\" by ELSEE"
       ]
     },
-    "popularity": 14549,
+    "popularity": 4597,
     "favourites": 141,
     "episodeGuide": [
       {
@@ -18632,7 +22050,49 @@
       }
     ],
     "seasons": [],
-    "rank": 8583
+    "rank": 8583,
+    "malId": 59623,
+    "members": 28861,
+    "favorites": 92,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 55,
+        "type": "anime",
+        "name": "TV Asahi",
+        "url": "https://myanimelist.net/anime/producer/55/TV_Asahi"
+      },
+      {
+        "mal_id": 159,
+        "type": "anime",
+        "name": "Kodansha",
+        "url": "https://myanimelist.net/anime/producer/159/Kodansha"
+      },
+      {
+        "mal_id": 517,
+        "type": "anime",
+        "name": "Asmik Ace",
+        "url": "https://myanimelist.net/anime/producer/517/Asmik_Ace"
+      },
+      {
+        "mal_id": 1294,
+        "type": "anime",
+        "name": "Sound Team Don Juan",
+        "url": "https://myanimelist.net/anime/producer/1294/Sound_Team_Don_Juan"
+      },
+      {
+        "mal_id": 3216,
+        "type": "anime",
+        "name": "Current",
+        "url": "https://myanimelist.net/anime/producer/3216/Current"
+      }
+    ],
+    "licensors": [],
+    "background": "Wandance aired on TV Asahi's IMAnimation W block.",
+    "title_english": "Wandance",
+    "title_japanese": "ワンダンス"
   },
   {
     "id": "71",
@@ -18643,8 +22103,8 @@
     "releaseYear": 2025,
     "season": "summer",
     "episodes": 26,
-    "duration": 23,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Drama",
@@ -18652,7 +22112,12 @@
       "Slice of Life"
     ],
     "studios": [
-      "Staple Entertainment"
+      {
+        "mal_id": 2405,
+        "type": "anime",
+        "name": "Staple Entertainment",
+        "url": "https://myanimelist.net/anime/producer/2405/Staple_Entertainment"
+      }
     ],
     "ratings": {
       "music": 8.5,
@@ -18792,7 +22257,7 @@
         "2: \"Shippai Shinai Menhera no Sodatekata (失敗しないメンヘラの育て方)\" by Yurina Hirate (平手友梨奈)"
       ]
     },
-    "popularity": 21022,
+    "popularity": 3299,
     "favourites": 311,
     "episodeGuide": [
       {
@@ -18944,7 +22409,61 @@
       }
     ],
     "seasons": [],
-    "rank": 9459
+    "rank": 9459,
+    "malId": 56693,
+    "members": 54894,
+    "favorites": 165,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 159,
+        "type": "anime",
+        "name": "Kodansha",
+        "url": "https://myanimelist.net/anime/producer/159/Kodansha"
+      },
+      {
+        "mal_id": 315,
+        "type": "anime",
+        "name": "DAX Production",
+        "url": "https://myanimelist.net/anime/producer/315/DAX_Production"
+      },
+      {
+        "mal_id": 1113,
+        "type": "anime",
+        "name": "NBCUniversal Entertainment Japan",
+        "url": "https://myanimelist.net/anime/producer/1113/NBCUniversal_Entertainment_Japan"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1468,
+        "type": "anime",
+        "name": "Crunchyroll",
+        "url": "https://myanimelist.net/anime/producer/1468/Crunchyroll"
+      },
+      {
+        "mal_id": 1680,
+        "type": "anime",
+        "name": "BS NTV",
+        "url": "https://myanimelist.net/anime/producer/1680/BS_NTV"
+      },
+      {
+        "mal_id": 2232,
+        "type": "anime",
+        "name": "ADK Marketing Solutions",
+        "url": "https://myanimelist.net/anime/producer/2232/ADK_Marketing_Solutions"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Watari-kun's ****** Is about to Collapse",
+    "title_japanese": "渡くんの××が崩壊寸前"
   },
   {
     "id": "72",
@@ -18955,8 +22474,8 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 13,
-    "duration": 24,
-    "status": "releasing",
+    "duration": "23 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Drama",
       "Horror",
@@ -18965,7 +22484,12 @@
       "Supernatural"
     ],
     "studios": [
-      "Studio Lings"
+      {
+        "mal_id": 1813,
+        "type": "anime",
+        "name": "Studio Lings",
+        "url": "https://myanimelist.net/anime/producer/1813/Studio_Lings"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -19101,7 +22625,7 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 27614,
+    "popularity": 3296,
     "favourites": 401,
     "episodeGuide": [
       {
@@ -19162,7 +22686,79 @@
       }
     ],
     "seasons": [],
-    "rank": 3190
+    "rank": 3190,
+    "malId": 60168,
+    "members": 54994,
+    "favorites": 223,
+    "source": "Manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 141,
+        "type": "anime",
+        "name": "Toei Video",
+        "url": "https://myanimelist.net/anime/producer/141/Toei_Video"
+      },
+      {
+        "mal_id": 144,
+        "type": "anime",
+        "name": "Pony Canyon",
+        "url": "https://myanimelist.net/anime/producer/144/Pony_Canyon"
+      },
+      {
+        "mal_id": 238,
+        "type": "anime",
+        "name": "AT-X",
+        "url": "https://myanimelist.net/anime/producer/238/AT-X"
+      },
+      {
+        "mal_id": 719,
+        "type": "anime",
+        "name": "Studio Mausu",
+        "url": "https://myanimelist.net/anime/producer/719/Studio_Mausu"
+      },
+      {
+        "mal_id": 1211,
+        "type": "anime",
+        "name": "Tokyo MX",
+        "url": "https://myanimelist.net/anime/producer/1211/Tokyo_MX"
+      },
+      {
+        "mal_id": 1386,
+        "type": "anime",
+        "name": "Infinite",
+        "url": "https://myanimelist.net/anime/producer/1386/Infinite"
+      },
+      {
+        "mal_id": 1551,
+        "type": "anime",
+        "name": "Kadokawa Media House",
+        "url": "https://myanimelist.net/anime/producer/1551/Kadokawa_Media_House"
+      },
+      {
+        "mal_id": 1680,
+        "type": "anime",
+        "name": "BS NTV",
+        "url": "https://myanimelist.net/anime/producer/1680/BS_NTV"
+      },
+      {
+        "mal_id": 1696,
+        "type": "anime",
+        "name": "Kadokawa",
+        "url": "https://myanimelist.net/anime/producer/1696/Kadokawa"
+      },
+      {
+        "mal_id": 1986,
+        "type": "anime",
+        "name": "arma bianca",
+        "url": "https://myanimelist.net/anime/producer/1986/arma_bianca"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "This Monster Wants to Eat Me",
+    "title_japanese": "私を喰べたい、ひとでなし"
   },
   {
     "id": "73",
@@ -19173,15 +22769,20 @@
     "releaseYear": 2025,
     "season": "fall",
     "episodes": 12,
-    "duration": 22,
-    "status": "releasing",
+    "duration": "22 min per ep",
+    "status": "Currently Airing",
     "genres": [
       "Comedy",
       "Romance",
       "Slice of Life"
     ],
     "studios": [
-      "Ajiado"
+      {
+        "mal_id": 30,
+        "type": "anime",
+        "name": "Ajia-do",
+        "url": "https://myanimelist.net/anime/producer/30/Ajia-do"
+      }
     ],
     "ratings": {
       "music": 10,
@@ -19310,7 +22911,7 @@
         "\"Better Off\" by iScream"
       ]
     },
-    "popularity": 17455,
+    "popularity": 3875,
     "favourites": 204,
     "episodeGuide": [
       {
@@ -19371,7 +22972,91 @@
       }
     ],
     "seasons": [],
-    "rank": 3540
+    "rank": 3540,
+    "malId": 60254,
+    "members": 41586,
+    "favorites": 80,
+    "source": "Web manga",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 166,
+        "type": "anime",
+        "name": "Movic",
+        "url": "https://myanimelist.net/anime/producer/166/Movic"
+      },
+      {
+        "mal_id": 238,
+        "type": "anime",
+        "name": "AT-X",
+        "url": "https://myanimelist.net/anime/producer/238/AT-X"
+      },
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 517,
+        "type": "anime",
+        "name": "Asmik Ace",
+        "url": "https://myanimelist.net/anime/producer/517/Asmik_Ace"
+      },
+      {
+        "mal_id": 1003,
+        "type": "anime",
+        "name": "Nippon Television Network",
+        "url": "https://myanimelist.net/anime/producer/1003/Nippon_Television_Network"
+      },
+      {
+        "mal_id": 1416,
+        "type": "anime",
+        "name": "BS11",
+        "url": "https://myanimelist.net/anime/producer/1416/BS11"
+      },
+      {
+        "mal_id": 1418,
+        "type": "anime",
+        "name": "Nippon Television Music",
+        "url": "https://myanimelist.net/anime/producer/1418/Nippon_Television_Music"
+      },
+      {
+        "mal_id": 1986,
+        "type": "anime",
+        "name": "arma bianca",
+        "url": "https://myanimelist.net/anime/producer/1986/arma_bianca"
+      },
+      {
+        "mal_id": 2074,
+        "type": "anime",
+        "name": "Bit grooove promotion",
+        "url": "https://myanimelist.net/anime/producer/2074/Bit_grooove_promotion"
+      },
+      {
+        "mal_id": 2431,
+        "type": "anime",
+        "name": "Happinet Phantom Studios",
+        "url": "https://myanimelist.net/anime/producer/2431/Happinet_Phantom_Studios"
+      },
+      {
+        "mal_id": 2751,
+        "type": "anime",
+        "name": "Happinet Media Marketing",
+        "url": "https://myanimelist.net/anime/producer/2751/Happinet_Media_Marketing"
+      },
+      {
+        "mal_id": 3206,
+        "type": "anime",
+        "name": "LDH Japan",
+        "url": "https://myanimelist.net/anime/producer/3206/LDH_Japan"
+      }
+    ],
+    "licensors": [],
+    "background": "",
+    "title_english": "Yano-kun's Ordinary Days",
+    "title_japanese": "矢野くんの普通の日々"
   },
   {
     "id": "74",
@@ -19381,22 +23066,27 @@
     "description": "An MMO gamer awakens as the Black-Winged Tyrant, Lufas Maphaahl, rising from her sealed fate—only to find this is very real. Her defeat 200 years ago unleashed monsters of death, and the legend is one of terror. Now, trapped in the body of history’s most feared conqueror, he must survive a world that wants her dead…and uncover why he’s here.\n\n(Source: Crunchyroll)",
     "releaseYear": 2025,
     "season": "fall",
-    "duration": 23,
-    "status": "releasing",
+    "duration": "23 min",
+    "status": "Currently Airing",
     "genres": [
       "Action",
       "Adventure",
       "Fantasy"
     ],
     "studios": [
-      "WAO World"
+      {
+        "mal_id": 318,
+        "type": "anime",
+        "name": "WAO World",
+        "url": "https://myanimelist.net/anime/producer/318/WAO_World"
+      }
     ],
     "ratings": {
       "music": 10,
       "visual": 8.24,
       "story": 7.76,
       "character": 6.76,
-      "site": 7.38
+      "site": 7.37
     },
     "characters": [
       {
@@ -19525,9 +23215,69 @@
       "openings": [],
       "endings": []
     },
-    "popularity": 25373,
+    "popularity": 3203,
     "favourites": 474,
     "seasons": [],
-    "rank": 2574
+    "rank": 2574,
+    "malId": 59644,
+    "members": 57757,
+    "favorites": 181,
+    "source": "Light novel",
+    "rating": "PG-13 - Teens 13 or older",
+    "year": 2025,
+    "producers": [
+      {
+        "mal_id": 460,
+        "type": "anime",
+        "name": "KlockWorx",
+        "url": "https://myanimelist.net/anime/producer/460/KlockWorx"
+      },
+      {
+        "mal_id": 577,
+        "type": "anime",
+        "name": "Tohokushinsha Film Corporation",
+        "url": "https://myanimelist.net/anime/producer/577/Tohokushinsha_Film_Corporation"
+      },
+      {
+        "mal_id": 925,
+        "type": "anime",
+        "name": "Earth Star Entertainment",
+        "url": "https://myanimelist.net/anime/producer/925/Earth_Star_Entertainment"
+      },
+      {
+        "mal_id": 1113,
+        "type": "anime",
+        "name": "NBCUniversal Entertainment Japan",
+        "url": "https://myanimelist.net/anime/producer/1113/NBCUniversal_Entertainment_Japan"
+      },
+      {
+        "mal_id": 1412,
+        "type": "anime",
+        "name": "Kansai TV",
+        "url": "https://myanimelist.net/anime/producer/1412/Kansai_TV"
+      },
+      {
+        "mal_id": 2185,
+        "type": "anime",
+        "name": "BS Asahi",
+        "url": "https://myanimelist.net/anime/producer/2185/BS_Asahi"
+      },
+      {
+        "mal_id": 2228,
+        "type": "anime",
+        "name": "Bushiroad Move",
+        "url": "https://myanimelist.net/anime/producer/2228/Bushiroad_Move"
+      },
+      {
+        "mal_id": 2408,
+        "type": "anime",
+        "name": "WOWMAX",
+        "url": "https://myanimelist.net/anime/producer/2408/WOWMAX"
+      }
+    ],
+    "licensors": [],
+    "background": "Each episode was streamed one week in advance of the TV broadcast starting on September 27, 2025, on ABEMA and U-NEXT. Regular broadcasting began on October 4, 2025.",
+    "title_english": "A Wild Last Boss Appeared!",
+    "title_japanese": "野生のラスボスが現れた！"
   }
 ]
