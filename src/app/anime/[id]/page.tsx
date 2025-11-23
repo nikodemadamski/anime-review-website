@@ -95,7 +95,7 @@ export default async function AnimePage({ params }: PageProps) {
               {/* MAL Score Display */}
               {anime.malScore && (
                 <div className="flex items-center justify-between border-b border-border pb-3">
-                  <span className="text-muted-foreground text-sm font-medium">Global Score</span>
+                  <span className="text-muted-foreground text-sm font-medium">Overall Score</span>
                   <div className="flex items-center gap-1 text-indigo-500 font-black text-lg">
                     <span className="text-xs font-bold bg-indigo-500/10 px-2 py-0.5 rounded text-indigo-500 mr-1">MAL</span>
                     {anime.malScore.toFixed(2)}

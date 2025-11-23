@@ -5,6 +5,7 @@ import Image from 'next/image';
 import Link from 'next/link';
 import { motion } from 'framer-motion';
 import { SkeletonGrid } from '@/components/loading/SkeletonGrid';
+import { Container } from '@/components/ui';
 import { getTrendingAnimeLink } from '@/lib/match-trending-anime';
 import { TrendingUp, Star, Users } from 'lucide-react';
 
@@ -93,7 +94,7 @@ export function TrendingSection() {
       {/* Background Glow */}
       <div className="absolute top-1/2 left-1/2 -translate-x-1/2 -translate-y-1/2 w-full h-full max-w-7xl bg-gradient-to-r from-pink-500/5 via-purple-500/5 to-cyan-500/5 blur-3xl -z-10" />
 
-      <div className="container mx-auto px-4">
+      <Container size="xl">
         <div className="flex items-center justify-between mb-8">
           <div className="flex items-center gap-3">
             <div className="p-2 rounded-xl bg-pink-500/10 text-pink-500">
@@ -116,21 +117,21 @@ export function TrendingSection() {
           initial="hidden"
           whileInView="show"
           viewport={{ once: true }}
-          className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-6 gap-4"
+          className="flex overflow-x-auto snap-x snap-mandatory gap-4 pb-4 -mx-4 px-4 md:grid md:grid-cols-3 lg:grid-cols-6 md:gap-6 md:pb-0 md:mx-0 md:px-0 scrollbar-hide"
         >
           {trending.map((anime, index) => {
             const animeLink = getTrendingAnimeLink(anime, allAnime);
 
             return (
-              <motion.div key={anime.id} variants={item}>
+              <motion.div key={anime.id} variants={item} className="flex-none w-[140px] md:w-auto snap-center">
                 <Link
                   href={animeLink}
                   className="group relative block h-full"
                 >
-                  <div className="relative rounded-2xl overflow-hidden aspect-[2/3] mb-3 glass-panel transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-pink-500/20">
+                  <div className="relative rounded-2xl overflow-hidden aspect-[2/3] mb-2 md:mb-3 glass-panel transition-transform duration-300 group-hover:-translate-y-2 group-hover:shadow-xl group-hover:shadow-pink-500/20">
                     {/* Rank Badge */}
                     <div
-                      className={`absolute top-2 left-2 z-10 w-8 h-8 rounded-xl flex items-center justify-center font-black text-sm shadow-lg backdrop-blur-md
+                      className={`absolute top-1 left-1 md:top-2 md:left-2 z-10 w-6 h-6 md:w-8 md:h-8 rounded-lg flex items-center justify-center font-black text-sm md:text-lg shadow-lg backdrop-blur-md
                         ${index === 0 ? 'bg-yellow-400/90 text-black' :
                           index === 1 ? 'bg-slate-300/90 text-black' :
                             index === 2 ? 'bg-amber-600/90 text-white' :
@@ -144,7 +145,7 @@ export function TrendingSection() {
                       alt={anime.title}
                       fill
                       className="object-cover transition-transform duration-500 group-hover:scale-110"
-                      sizes="(max-width: 768px) 50vw, (max-width: 1024px) 33vw, 16vw"
+                      sizes="(max-width: 768px) 140px, (max-width: 1024px) 33vw, 16vw"
                     />
 
                     {/* Hover Overlay */}
@@ -157,10 +158,10 @@ export function TrendingSection() {
 
                   {/* Info */}
                   <div className="px-1">
-                    <h3 className="font-bold text-sm line-clamp-1 mb-1 group-hover:text-pink-500 transition-colors">
+                    <h3 className="font-bold text-sm md:text-lg line-clamp-1 mb-1 group-hover:text-pink-500 transition-colors">
                       {anime.title}
                     </h3>
-                    <div className="flex items-center justify-between text-xs text-muted">
+                    <div className="flex items-center justify-between text-xs md:text-sm text-muted">
                       <div className="flex items-center gap-1 text-yellow-500 font-bold">
                         <Star className="w-3 h-3 fill-current" />
                         {anime.ratings.site.toFixed(1)}
@@ -178,7 +179,7 @@ export function TrendingSection() {
             );
           })}
         </motion.div>
-      </div>
+      </Container>
     </section>
   );
 }
