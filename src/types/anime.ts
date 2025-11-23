@@ -41,6 +41,47 @@ export const AnimeSchema = z.object({
   popularity: z.number().optional(),
   members: z.number().optional(),
   reviews: z.array(z.any()).optional(),
+
+  // New Enriched Fields
+  characters: z.array(z.object({
+    name: z.string(),
+    role: z.string(),
+    image: z.string().optional(),
+    voiceActor: z.object({
+      name: z.string(),
+      image: z.string().optional(),
+      language: z.string().optional(),
+    }).optional(),
+  })).optional(),
+
+  music: z.object({
+    openings: z.array(z.string()).optional(),
+    endings: z.array(z.string()).optional(),
+  }).optional(),
+
+  gallery: z.array(z.string()).optional(),
+
+  recommendations: z.array(z.object({
+    id: z.number(),
+    title: z.string(),
+    coverImage: z.string(),
+  })).optional(),
+
+  trailer: z.object({
+    id: z.string(),
+    site: z.string(),
+    thumbnail: z.string().optional(),
+  }).optional(),
+
+  // Episode Guide
+  episodeGuide: z.array(z.object({
+    number: z.number(),
+    title: z.string(),
+    airDate: z.string().optional(),
+    score: z.number().optional(),
+    filler: z.boolean().optional(),
+  })).optional(),
+
   createdAt: z.date().optional(),
   updatedAt: z.date().optional(),
 });

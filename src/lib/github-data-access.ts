@@ -12,7 +12,7 @@ let reviewsData: Map<string, any> | null = null;
 
 async function loadReviewsData(): Promise<Map<string, any>> {
   if (reviewsData) return reviewsData;
-  
+
   try {
     const csvText = await fs.readFile(REVIEWS_CSV_PATH, 'utf-8');
     return new Promise((resolve) => {
@@ -22,11 +22,11 @@ async function loadReviewsData(): Promise<Map<string, any>> {
         complete: (results) => {
           const map = new Map();
           const reviewsByAnime = new Map<string, any[]>();
-          
+
           results.data.forEach((row: any) => {
             const title = row.franchise_root_title;
             if (!title) return;
-            
+
             // Store anime metadata
             if (!map.has(title)) {
               map.set(title, {
@@ -46,7 +46,7 @@ async function loadReviewsData(): Promise<Map<string, any>> {
                 members: row.members ? parseInt(row.members) : undefined,
               });
             }
-            
+
             // Store reviews
             if (row.review_content && row.review_username) {
               if (!reviewsByAnime.has(title)) {
@@ -62,7 +62,7 @@ async function loadReviewsData(): Promise<Map<string, any>> {
               });
             }
           });
-          
+
           // Add reviews to metadata
           reviewsByAnime.forEach((reviews, title) => {
             const metadata = map.get(title);
@@ -70,7 +70,7 @@ async function loadReviewsData(): Promise<Map<string, any>> {
               metadata.reviews = reviews;
             }
           });
-          
+
           reviewsData = map;
           resolve(map);
         },
@@ -86,7 +86,7 @@ async function loadReviewsData(): Promise<Map<string, any>> {
 function transformAnimeRow(row: any, index: number, reviewsMap: Map<string, any>): Anime {
   const title = row.franchise_root_title || 'Unknown Title';
   const reviewData = reviewsMap.get(title) || {};
-  
+
   // Individual scores are out of 5, convert to 10 for consistency
   const ratings = {
     music: (parseFloat(row.music_score) || 0) * 2,
@@ -95,7 +95,7 @@ function transformAnimeRow(row: any, index: number, reviewsMap: Map<string, any>
     character: (parseFloat(row.character_score) || 0) * 2,
     site: parseFloat(row.site_score) || 0,
   };
-  
+
   return {
     id: String(index + 1),
     title,
@@ -106,8 +106,8 @@ function transformAnimeRow(row: any, index: number, reviewsMap: Map<string, any>
     genres: reviewData.genres || [],
     themes: reviewData.themes || [],
     demographics: reviewData.demographics || [],
-    status: reviewData.status?.toLowerCase().includes('airing') ? 'ongoing' : 
-            reviewData.status?.toLowerCase().includes('finished') ? 'completed' : 'ongoing',
+    status: reviewData.status?.toLowerCase().includes('airing') ? 'ongoing' :
+      reviewData.status?.toLowerCase().includes('finished') ? 'completed' : 'ongoing',
     duration: reviewData.duration,
     episodes: reviewData.episodes,
     season: reviewData.season,
@@ -125,9 +125,34 @@ function transformAnimeRow(row: any, index: number, reviewsMap: Map<string, any>
 // Read and parse CSV from local file
 async function fetchGitHubCSV(): Promise<Anime[]> {
   try {
+    // Try to load enriched JSON first
+    const ENRICHED_JSON_PATH = path.join(process.cwd(), 'src', 'data', 'anime-enriched.json');
+
+    if (await fs.access(ENRICHED_JSON_PATH).then(() => true).catch(() => false)) {
+      console.log('📦 Loading enriched anime data from JSON...');
+      const jsonText = await fs.readFile(ENRICHED_JSON_PATH, 'utf-8');
+      const enrichedData = JSON.parse(jsonText);
+
+      // Merge with reviews data
+      const reviewsMap = await loadReviewsData();
+
+      return enrichedData.map((anime: any) => {
+        const reviewData = reviewsMap.get(anime.title) || {};
+        return {
+          ...anime,
+          reviews: reviewData.reviews || anime.reviews || [],
+          // Ensure dates are Date objects
+          createdAt: anime.createdAt ? new Date(anime.createdAt) : new Date(),
+          updatedAt: anime.updatedAt ? new Date(anime.updatedAt) : new Date(),
+        };
+      });
+    }
+
+    // Fallback to CSV if JSON doesn't exist
+    console.log('📄 Loading anime data from CSV (fallback)...');
     const csvText = await fs.readFile(CSV_FILE_PATH, 'utf-8');
     const reviewsMap = await loadReviewsData();
-    
+
     return new Promise((resolve, reject) => {
       Papa.parse(csvText, {
         header: true,
@@ -161,7 +186,7 @@ export class GitHubDataAccess {
   // Get all anime
   static async getAllAnime(): Promise<Anime[]> {
     const now = Date.now();
-    
+
     // Return cached data if still valid
     if (this.animeCache && (now - this.cacheTimestamp) < this.CACHE_DURATION) {
       return this.animeCache;
@@ -196,7 +221,7 @@ export class GitHubDataAccess {
   static async searchAnime(query: string): Promise<Anime[]> {
     const allAnime = await this.getAllAnime();
     const lowerQuery = query.toLowerCase();
-    return allAnime.filter(anime => 
+    return allAnime.filter(anime =>
       anime.title.toLowerCase().includes(lowerQuery)
     );
   }

@@ -163,7 +163,6 @@ export function BrowseContent() {
           </div>
         ) : (
           <motion.div
-            layout
             className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-6"
           >
             <AnimatePresence mode='popLayout'>
@@ -172,7 +171,6 @@ export function BrowseContent() {
 
                 return (
                   <motion.div
-                    layout
                     initial={{ opacity: 0, scale: 0.9 }}
                     animate={{ opacity: 1, scale: 1 }}
                     exit={{ opacity: 0, scale: 0.9 }}

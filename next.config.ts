@@ -34,6 +34,24 @@ const nextConfig: NextConfig = {
         protocol: 'https',
         hostname: 'cdn.myanimelist.net',
       },
+      // Crunchyroll images
+      {
+        protocol: 'https',
+        hostname: 'img1.ak.crunchyroll.com',
+      },
+      {
+        protocol: 'https',
+        hostname: 'static.crunchyroll.com',
+      },
+      // Additional anime image sources
+      {
+        protocol: 'https',
+        hostname: 'gogocdn.net',
+      },
+      {
+        protocol: 'https',
+        hostname: 'cdn.animenewsnetwork.com',
+      },
     ],
   },
 };
