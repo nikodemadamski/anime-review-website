@@ -109,13 +109,11 @@ export function MobileHome() {
                 {/* 
                     Grid Layout:
                     - grid-rows-2: 2 rows fixed
-                    - grid-flow-col: Fills columns first (so items go 1,2 down, then 3,4 next col)
-                    - auto-cols-[minmax(45%,1fr)]: Columns take up ~45% of screen width
-                    - overflow-x-auto: Horizontal scroll
+                    - auto-cols: Larger width for detailed cards
                 */}
-                <div className="grid grid-rows-2 grid-flow-col auto-cols-[minmax(45%,1fr)] gap-3 px-4 pb-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
+                <div className="grid grid-rows-2 grid-flow-col auto-cols-[minmax(85%,1fr)] md:auto-cols-[minmax(40%,1fr)] gap-3 px-4 pb-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
                     {Object.entries(categoryData).map(([category, items]) => (
-                        <div key={category} className="snap-start h-full">
+                        <div key={category} className="snap-start h-40">
                             <CategoryPodiumCard category={category} items={items} />
                         </div>
                     ))}
