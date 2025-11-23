@@ -68,67 +68,128 @@ export function Synopsis({ text }: { text: string }) {
 }
 
 // --- Characters Section ---
+// --- Characters Section ---
 export function CharactersList({ characters }: { characters: any[] }) {
+    const [showAll, setShowAll] = useState(false);
+
     if (!characters || characters.length === 0) return null;
+
+    const displayedCharacters = characters.slice(0, 4);
+
+    const CharacterCard = ({ char }: { char: any }) => (
+        <div className="flex items-center justify-between p-2 rounded-lg bg-secondary/5 hover:bg-secondary/10 transition-colors border border-border/50">
+            {/* Character */}
+            <a
+                href={char.url || '#'}
+                target="_blank"
+                rel="noopener noreferrer"
+                className={`flex items-center gap-3 flex-1 min-w-0 group ${!char.url ? 'pointer-events-none' : ''}`}
+            >
+                <div className="w-12 h-12 rounded-full overflow-hidden relative bg-gray-800 flex-shrink-0 border border-border group-hover:border-indigo-500 transition-colors">
+                    {char.image ? (
+                        <Image
+                            src={char.image}
+                            alt={char.name}
+                            fill
+                            className="object-cover"
+                        />
+                    ) : (
+                        <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center text-xs font-bold text-white/40">
+                            {char.name.charAt(0)}
+                        </div>
+                    )}
+                </div>
+                <div className="min-w-0">
+                    <p className="font-bold text-sm truncate group-hover:text-indigo-400 transition-colors">{char.name}</p>
+                    <p className="text-xs text-muted-foreground truncate">{char.role}</p>
+                </div>
+            </a>
+
+            {/* Voice Actor */}
+            {char.voiceActor && (
+                <a
+                    href={char.voiceActor.url || '#'}
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className={`flex items-center gap-3 flex-1 min-w-0 justify-end text-right group ${!char.voiceActor.url ? 'pointer-events-none' : ''}`}
+                >
+                    <div className="min-w-0">
+                        <p className="font-bold text-sm truncate group-hover:text-pink-400 transition-colors">{char.voiceActor.name}</p>
+                        <p className="text-xs text-muted-foreground truncate">{char.voiceActor.language}</p>
+                    </div>
+                    <div className="w-12 h-12 rounded-full overflow-hidden relative bg-gray-800 flex-shrink-0 border border-border group-hover:border-pink-500 transition-colors">
+                        {char.voiceActor.image ? (
+                            <Image
+                                src={char.voiceActor.image}
+                                alt={char.voiceActor.name}
+                                fill
+                                className="object-cover"
+                            />
+                        ) : (
+                            <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-violet-500/20 flex items-center justify-center text-xs font-bold text-white/40">
+                                VA
+                            </div>
+                        )}
+                    </div>
+                </a>
+            )}
+        </div>
+    );
 
     return (
         <div className="space-y-3 mt-4">
             <div className="grid grid-cols-1 gap-3">
-                {characters.slice(0, 4).map((char, i) => (
-                    <div key={i} className="flex items-center justify-between p-2 rounded-lg bg-secondary/5 hover:bg-secondary/10 transition-colors border border-border/50">
-                        {/* Character */}
-                        <div className="flex items-center gap-3 flex-1 min-w-0">
-                            <div className="w-12 h-12 rounded-full overflow-hidden relative bg-gray-800 flex-shrink-0 border border-border">
-                                {char.image ? (
-                                    <Image
-                                        src={char.image}
-                                        alt={char.name}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                ) : (
-                                    <div className="absolute inset-0 bg-gradient-to-br from-amber-500/20 to-orange-500/20 flex items-center justify-center text-xs font-bold text-white/40">
-                                        {char.name.charAt(0)}
-                                    </div>
-                                )}
-                            </div>
-                            <div className="min-w-0">
-                                <p className="font-bold text-sm truncate">{char.name}</p>
-                                <p className="text-xs text-muted-foreground truncate">{char.role}</p>
-                            </div>
-                        </div>
-
-                        {/* Voice Actor */}
-                        {char.voiceActor && (
-                            <div className="flex items-center gap-3 flex-1 min-w-0 justify-end text-right">
-                                <div className="min-w-0">
-                                    <p className="font-bold text-sm truncate">{char.voiceActor.name}</p>
-                                    <p className="text-xs text-muted-foreground truncate">{char.voiceActor.language}</p>
-                                </div>
-                                <div className="w-12 h-12 rounded-full overflow-hidden relative bg-gray-800 flex-shrink-0 border border-border">
-                                    {char.voiceActor.image ? (
-                                        <Image
-                                            src={char.voiceActor.image}
-                                            alt={char.voiceActor.name}
-                                            fill
-                                            className="object-cover"
-                                        />
-                                    ) : (
-                                        <div className="absolute inset-0 bg-gradient-to-br from-indigo-500/20 to-violet-500/20 flex items-center justify-center text-xs font-bold text-white/40">
-                                            VA
-                                        </div>
-                                    )}
-                                </div>
-                            </div>
-                        )}
-                    </div>
+                {displayedCharacters.map((char, i) => (
+                    <CharacterCard key={i} char={char} />
                 ))}
             </div>
             {characters.length > 4 && (
-                <button className="w-full py-2 text-xs font-bold text-center text-muted-foreground hover:text-foreground transition-colors border border-dashed border-border rounded-lg">
+                <button
+                    onClick={() => setShowAll(true)}
+                    className="w-full py-2 text-xs font-bold text-center text-muted-foreground hover:text-foreground transition-colors border border-dashed border-border rounded-lg"
+                >
                     View All {characters.length} Characters
                 </button>
             )}
+
+            {/* View All Modal */}
+            <AnimatePresence>
+                {showAll && (
+                    <motion.div
+                        initial={{ opacity: 0 }}
+                        animate={{ opacity: 1 }}
+                        exit={{ opacity: 0 }}
+                        className="fixed inset-0 z-[100] bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
+                        onClick={() => setShowAll(false)}
+                    >
+                        <motion.div
+                            initial={{ scale: 0.9, opacity: 0 }}
+                            animate={{ scale: 1, opacity: 1 }}
+                            exit={{ scale: 0.9, opacity: 0 }}
+                            className="bg-background border border-border rounded-2xl w-full max-w-4xl max-h-[80vh] overflow-hidden flex flex-col shadow-2xl"
+                            onClick={(e) => e.stopPropagation()}
+                        >
+                            <div className="p-6 border-b border-border flex items-center justify-between bg-card">
+                                <h3 className="text-xl font-black flex items-center gap-2">
+                                    <User className="w-5 h-5 text-indigo-500" />
+                                    Cast & Characters
+                                </h3>
+                                <button
+                                    onClick={() => setShowAll(false)}
+                                    className="p-2 hover:bg-secondary/20 rounded-full transition-colors"
+                                >
+                                    <ChevronDown className="w-6 h-6 rotate-180" />
+                                </button>
+                            </div>
+                            <div className="p-6 overflow-y-auto grid grid-cols-1 md:grid-cols-2 gap-4">
+                                {characters.map((char, i) => (
+                                    <CharacterCard key={i} char={char} />
+                                ))}
+                            </div>
+                        </motion.div>
+                    </motion.div>
+                )}
+            </AnimatePresence>
         </div>
     );
 }

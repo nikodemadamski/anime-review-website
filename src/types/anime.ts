@@ -44,6 +44,7 @@ export const AnimeSchema = z.object({
   rank: z.number().optional(),
   popularity: z.number().optional(),
   members: z.number().optional(),
+  malScore: z.number().optional(), // Added MAL Score
   reviews: z.array(z.any()).optional(),
   seasons: z.array(z.object({
     id: z.string(),
@@ -58,10 +59,12 @@ export const AnimeSchema = z.object({
     name: z.string(),
     role: z.string(),
     image: z.string().optional(),
+    url: z.string().optional(), // Added URL
     voiceActor: z.object({
       name: z.string(),
       image: z.string().optional(),
       language: z.string().optional(),
+      url: z.string().optional(), // Added URL
     }).optional(),
   })).optional(),
 
@@ -76,6 +79,7 @@ export const AnimeSchema = z.object({
     id: z.number(),
     title: z.string(),
     coverImage: z.string(),
+    url: z.string().optional(), // Added URL
   })).optional(),
 
   trailer: z.object({

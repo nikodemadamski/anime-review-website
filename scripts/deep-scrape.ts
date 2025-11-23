@@ -46,28 +46,63 @@ async function fetchDeepAnimeData(title: string, currentEpisodes?: number) {
 
         // 3. Fetch Latest Episode for Ongoing Series
         let latestEpisodes = anime.episodes;
-        if (anime.status === 'Currently Airing' && !anime.episodes) {
+        if (anime.status === 'Currently Airing' || !anime.episodes) {
             console.log(`📺 Fetching latest episode count for ongoing series...`);
             await delay(1000);
             const episodesRes = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/episodes`);
             if (episodesRes.ok) {
                 const episodesData = await episodesRes.json();
                 const lastPage = episodesData.pagination?.last_visible_page || 1;
-                // If there are multiple pages, we'd need to fetch the last one, but for now let's estimate or use what we have
-                // A better approach for Jikan is checking the most recent episode in the list
-                if (episodesData.data && episodesData.data.length > 0) {
-                    // This is just the first page, so it might not be the *latest* if there are many. 
-                    // However, Jikan episodes endpoint usually lists them. 
-                    // For One Piece, it's better to trust the 'aired' date or just use a known high number if null.
-                    // Actually, let's try to get the last page if possible or just use a safe fallback.
-                    // For now, we will leave it as null if we can't determine, or use the 'aired' count if available in other endpoints.
-                    // But wait, the user said One Piece is 1123. Jikan might return null for 'episodes' field on ongoing.
-                    // Let's try to get the episodes endpoint and take the highest number we see?
-                    // Or better, just don't overwrite if we have a manual entry? 
-                    // The user wants us to scrape it.
-                    // Let's rely on 'episodes' from full data, if null, we try to find it.
+                if (lastPage > 1) {
+                    // Fetch last page to get the latest episode
+                    await delay(1000);
+                    const lastPageRes = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/episodes?page=${lastPage}`);
+                    if (lastPageRes.ok) {
+                        const lastPageData = await lastPageRes.json();
+                        if (lastPageData.data && lastPageData.data.length > 0) {
+                            latestEpisodes = lastPageData.data[0].mal_id; // Usually mal_id is the episode number for episodes
+                        }
+                    }
+                } else if (episodesData.data && episodesData.data.length > 0) {
+                    latestEpisodes = episodesData.data[0].mal_id;
                 }
             }
+        }
+
+        // 4. Fetch Characters (with URLs)
+        console.log(`👥 Fetching characters...`);
+        await delay(1000);
+        const charsRes = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/characters`);
+        let characters = [];
+        if (charsRes.ok) {
+            const charsData = await charsRes.json();
+            characters = charsData.data.slice(0, 20).map((c: any) => ({
+                name: c.character.name,
+                role: c.role,
+                image: c.character.images?.jpg?.image_url,
+                url: c.character.url,
+                voiceActor: c.voice_actors?.find((v: any) => v.language === 'Japanese') ? {
+                    name: c.voice_actors.find((v: any) => v.language === 'Japanese').person.name,
+                    image: c.voice_actors.find((v: any) => v.language === 'Japanese').person.images?.jpg?.image_url,
+                    language: 'Japanese',
+                    url: c.voice_actors.find((v: any) => v.language === 'Japanese').person.url
+                } : null
+            }));
+        }
+
+        // 5. Fetch Recommendations
+        console.log(`👍 Fetching recommendations...`);
+        await delay(1000);
+        const recsRes = await fetch(`https://api.jikan.moe/v4/anime/${animeId}/recommendations`);
+        let recommendations = [];
+        if (recsRes.ok) {
+            const recsData = await recsRes.json();
+            recommendations = recsData.data.slice(0, 6).map((r: any) => ({
+                id: r.entry.mal_id,
+                title: r.entry.title,
+                coverImage: r.entry.images?.jpg?.large_image_url || r.entry.images?.jpg?.image_url,
+                url: r.entry.url
+            }));
         }
 
         return {
@@ -80,7 +115,7 @@ async function fetchDeepAnimeData(title: string, currentEpisodes?: number) {
             title_japanese: anime.title_japanese,
             type: anime.type,
             source: anime.source,
-            episodes: anime.episodes, // Jikan might return null for ongoing
+            episodes: latestEpisodes || anime.episodes, // Use fetched latest episodes
             status: anime.status,
             airing: anime.airing,
             aired: anime.aired,
@@ -107,9 +142,10 @@ async function fetchDeepAnimeData(title: string, currentEpisodes?: number) {
             relations: anime.relations,
             theme: anime.theme,
             external: anime.external,
-            streaming: anime.streaming
+            streaming: anime.streaming,
+            characters: characters,
+            recommendations: recommendations
         };
-
     } catch (error) {
         console.error(`💥 Error fetching data for ${title}:`, error);
         return null;
@@ -157,9 +193,13 @@ async function main() {
                     title_japanese: deepData.title_japanese,
                     // Ensure high-res images
                     coverImage: deepData.images?.jpg?.large_image_url || anime.coverImage,
-                    // Ensure accurate stats (prefer deep data, fallback to existing if valid and deep is null)
+                    // Ensure accurate stats
                     episodes: deepData.episodes || anime.episodes,
                     status: deepData.status || anime.status,
+                    // New fields
+                    characters: deepData.characters,
+                    recommendations: deepData.recommendations,
+                    malScore: deepData.score, // Store MAL score separately
                     ratings: {
                         ...anime.ratings,
                         site: protectedSiteRating // Use protected rating
