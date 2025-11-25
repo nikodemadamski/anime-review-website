@@ -2,11 +2,10 @@
 
 import React, { useEffect, useState } from 'react';
 import { WidgetCard } from './WidgetCard';
-import { LongCard } from './LongCard';
-import { CategoryPodiumCard } from './CategoryPodiumCard';
+import { CategoryPodiumWidget } from './CategoryPodiumWidget';
 import { SkeletonGrid } from '@/components/loading/SkeletonGrid';
 import Link from 'next/link';
-import { ChevronRight, Flame, Trophy, Sparkles } from 'lucide-react';
+import { ChevronRight, Sparkles, Flame, Eye, Music, BookOpen, Users } from 'lucide-react';
 
 export function MobileHome() {
     const [trending, setTrending] = useState<any[]>([]);
@@ -19,10 +18,10 @@ export function MobileHome() {
             try {
                 // Map display names to API sort keys
                 const categoryMap = {
-                    'Art': 'visual',
+                    'Visuals': 'visual',
                     'Music': 'music',
-                    'Character': 'character',
-                    'Story': 'story'
+                    'Story': 'story',
+                    'Characters': 'character'
                 };
 
                 const promises = [
@@ -71,6 +70,13 @@ export function MobileHome() {
         );
     }
 
+    const categoryConfig = {
+        'Visuals': { icon: Eye, theme: 'text-pink-400', accent: 'bg-pink-500' },
+        'Music': { icon: Music, theme: 'text-violet-400', accent: 'bg-violet-500' },
+        'Story': { icon: BookOpen, theme: 'text-cyan-400', accent: 'bg-cyan-500' },
+        'Characters': { icon: Users, theme: 'text-amber-400', accent: 'bg-amber-500' },
+    };
+
     return (
         <div className="pb-24 pt-2 space-y-8 overflow-x-hidden bg-background min-h-screen">
 
@@ -101,26 +107,7 @@ export function MobileHome() {
                 </section>
             )}
 
-            {/* Category Podiums (2x2 Scrollable Grid) */}
-            <section>
-                <div className="px-4 flex items-center justify-between mb-3">
-                    <h2 className="font-bold text-xl tracking-tight">Top Categories</h2>
-                </div>
-                {/* 
-                    Grid Layout:
-                    - grid-rows-2: 2 rows fixed
-                    - auto-cols: Larger width for detailed cards
-                */}
-                <div className="grid grid-rows-2 grid-flow-col auto-cols-[minmax(85%,1fr)] md:auto-cols-[minmax(40%,1fr)] gap-3 px-4 pb-4 overflow-x-auto snap-x snap-mandatory scrollbar-hide">
-                    {Object.entries(categoryData).map(([category, items]) => (
-                        <div key={category} className="snap-start h-40">
-                            <CategoryPodiumCard category={category} items={items} />
-                        </div>
-                    ))}
-                </div>
-            </section>
-
-            {/* All Time Best (Sorted by MAL Score) */}
+            {/* All Time Best (Sorted by MAL Score) - MOVED UP */}
             <section>
                 <div className="px-4 flex items-center justify-between mb-3">
                     <h2 className="font-bold text-xl tracking-tight">All Time Best</h2>
@@ -142,6 +129,31 @@ export function MobileHome() {
                             />
                         </div>
                     ))}
+                </div>
+            </section>
+
+            {/* Category Podiums (Horizontal Scroll) */}
+            <section>
+                <div className="px-4 flex items-center justify-between mb-3">
+                    <h2 className="font-bold text-xl tracking-tight">Top Categories</h2>
+                </div>
+
+                <div className="flex overflow-x-auto snap-x snap-mandatory gap-4 px-4 pb-4 scrollbar-hide">
+                    {Object.entries(categoryData).map(([category, items]) => {
+                        const config = categoryConfig[category as keyof typeof categoryConfig] || { icon: Flame, theme: 'text-orange-400', accent: 'bg-orange-500' };
+
+                        return (
+                            <div key={category} className="snap-center shrink-0 h-[380px]">
+                                <CategoryPodiumWidget
+                                    category={category}
+                                    items={items}
+                                    icon={config.icon}
+                                    themeColor={config.theme}
+                                    accentColor={config.accent}
+                                />
+                            </div>
+                        );
+                    })}
                 </div>
             </section>
 
