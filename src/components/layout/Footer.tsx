@@ -8,7 +8,7 @@ interface FooterProps {
 
 const Footer: React.FC<FooterProps> = ({ className }) => {
   return (
-    <footer 
+    <footer
       className={cn('border-t mt-auto', className)}
       style={{
         backgroundColor: 'var(--footer-bg)',
@@ -22,7 +22,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
             {/* Brand */}
             <div className="col-span-1 md:col-span-2">
               <div className="flex items-center space-x-3 mb-4">
-                <div 
+                <div
                   className="w-10 h-10 rounded-xl flex items-center justify-center shadow-lg"
                   style={{ backgroundColor: 'var(--btn-primary)' }}
                 >
@@ -44,8 +44,8 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               </Typography>
               <ul className="space-y-2">
                 <li>
-                  <a 
-                    href="/" 
+                  <a
+                    href="/"
                     className="transition-colors"
                     style={{ color: 'var(--muted)' }}
                     onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -55,8 +55,8 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
                   </a>
                 </li>
                 <li>
-                  <a 
-                    href="/top-rated" 
+                  <a
+                    href="/top-rated"
                     className="transition-colors"
                     style={{ color: 'var(--muted)' }}
                     onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -66,8 +66,8 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
                   </a>
                 </li>
                 <li>
-                  <a 
-                    href="/new-releases" 
+                  <a
+                    href="/new-releases"
                     className="transition-colors"
                     style={{ color: 'var(--muted)' }}
                     onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -86,8 +86,8 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               </Typography>
               <ul className="space-y-2">
                 <li>
-                  <a 
-                    href="/genre/action" 
+                  <a
+                    href="/genre/action"
                     className="transition-colors"
                     style={{ color: 'var(--muted)' }}
                     onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -97,8 +97,8 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
                   </a>
                 </li>
                 <li>
-                  <a 
-                    href="/genre/adventure" 
+                  <a
+                    href="/genre/adventure"
                     className="transition-colors"
                     style={{ color: 'var(--muted)' }}
                     onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -108,8 +108,8 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
                   </a>
                 </li>
                 <li>
-                  <a 
-                    href="/genre/comedy" 
+                  <a
+                    href="/genre/comedy"
                     className="transition-colors"
                     style={{ color: 'var(--muted)' }}
                     onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -132,17 +132,17 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
                 Help keep this website updated and running with a small donation
               </Typography>
               <a
-                href="https://revolut.me/yourhandle"
+                href="https://www.buymeacoffee.com/nick20"
                 target="_blank"
                 rel="noopener noreferrer"
                 className="inline-flex items-center gap-2 px-6 py-3 font-semibold rounded-full transition-all duration-300 hover:scale-105 shadow-lg"
-                style={{ 
+                style={{
                   backgroundColor: 'var(--rating-overall)',
                   color: '#FFFFFF'
                 }}
               >
                 <svg className="w-5 h-5" viewBox="0 0 24 24" fill="currentColor">
-                  <path d="M2 21h19v-3H2v3zM20 8H4V6h16v2zm0-4H4c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 9H5V7h14v6z"/>
+                  <path d="M2 21h19v-3H2v3zM20 8H4V6h16v2zm0-4H4c-1.1 0-2 .9-2 2v8c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm-1 9H5V7h14v6z" />
                 </svg>
                 Buy Me a Coffee
               </a>
@@ -150,7 +150,7 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
           </div>
 
           {/* Bottom section */}
-          <div 
+          <div
             className="mt-6 pt-6 flex flex-col sm:flex-row justify-between items-center"
             style={{ borderTop: '1px solid var(--border)' }}
           >
@@ -158,8 +158,8 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               © 2025 Anime Review Website. All rights reserved.
             </Typography>
             <div className="flex space-x-6 mt-4 sm:mt-0">
-              <a 
-                href="/privacy" 
+              <a
+                href="/privacy"
                 className="transition-colors text-sm"
                 style={{ color: 'var(--muted)' }}
                 onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
@@ -167,8 +167,8 @@ const Footer: React.FC<FooterProps> = ({ className }) => {
               >
                 Privacy Policy
               </a>
-              <a 
-                href="/terms" 
+              <a
+                href="/terms"
                 className="transition-colors text-sm"
                 style={{ color: 'var(--muted)' }}
                 onMouseEnter={(e) => e.currentTarget.style.color = 'var(--accent)'}
