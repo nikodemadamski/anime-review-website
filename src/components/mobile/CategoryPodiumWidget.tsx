@@ -35,12 +35,6 @@ interface CategoryPodiumWidgetProps {
 export function CategoryPodiumWidget({ category, items, icon: Icon, themeColor, accentColor }: CategoryPodiumWidgetProps) {
     const [selectedAnime, setSelectedAnime] = useState<Anime | null>(null);
 
-    const medals = [
-        { color: 'bg-yellow-400', text: 'text-black', label: '1' },
-        { color: 'bg-slate-300', text: 'text-black', label: '2' },
-        { color: 'bg-orange-400', text: 'text-black', label: '3' },
-    ];
-
     // Helper to get the specific rating for this category
     const getCategoryRating = (anime: Anime) => {
         if (!anime.ratings) return 0;
@@ -50,66 +44,70 @@ export function CategoryPodiumWidget({ category, items, icon: Icon, themeColor, 
 
     return (
         <>
-            <div className="w-[85vw] md:w-[360px] h-full flex flex-col bg-secondary/5 border border-white/5 rounded-3xl overflow-hidden relative">
-                {/* Header */}
-                <div className={`px-5 py-4 flex items-center justify-between relative overflow-hidden`}>
-                    <div className={`absolute inset-0 opacity-10 ${accentColor}`} />
+            <div className="w-[85vw] md:w-[360px] h-full flex flex-col bg-secondary/5 border border-white/5 rounded-[28px] overflow-hidden relative shadow-sm">
+                {/* Header - More integrated and subtle */}
+                <div className="px-4 py-3 flex items-center justify-between relative">
+                    <div className={`absolute inset-0 opacity-[0.08] bg-gradient-to-r from-${accentColor.replace('bg-', '')} to-transparent`} />
                     <div className="flex items-center gap-2 relative z-10">
-                        <div className={`p-2 rounded-xl ${accentColor} bg-opacity-20`}>
-                            <Icon className={`w-5 h-5 ${themeColor}`} />
+                        <div className={`p-1.5 rounded-lg ${accentColor} bg-opacity-10 border border-white/5`}>
+                            <Icon className={`w-3.5 h-3.5 ${themeColor}`} />
                         </div>
-                        <span className="font-black text-lg tracking-tight">{category}</span>
+                        <span className="font-bold text-[15px] tracking-tight text-foreground/90">{category}</span>
                     </div>
                 </div>
 
-                {/* List */}
-                <div className="flex-1 p-3 space-y-2">
+                {/* List - Compact Layout */}
+                <div className="flex-1 px-3 pb-3 space-y-2">
                     {items.slice(0, 3).map((anime, index) => {
-                        const medal = medals[index];
                         const rating = getCategoryRating(anime);
+                        const rank = index + 1;
 
                         return (
-                            <div key={anime.id} className="group relative flex items-center gap-3 p-2 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-colors">
-                                {/* Rank Medal */}
-                                <div className={`absolute -left-1 top-4 w-6 h-6 ${medal.color} flex items-center justify-center rounded-r-lg shadow-lg z-20`}>
-                                    <span className={`font-black text-xs ${medal.text}`}>{medal.label}</span>
-                                </div>
+                            <div key={anime.id} className="group relative flex items-center gap-3 p-1.5 pr-3 rounded-2xl bg-white/5 border border-white/5 hover:bg-white/10 transition-all active:scale-[0.99]">
 
-                                {/* Cover Image */}
-                                <Link href={`/anime/${anime.id}`} className="relative shrink-0 w-[60px] aspect-[2/3] rounded-xl overflow-hidden shadow-md ml-3">
+                                {/* Image Container with Rank Badge */}
+                                <Link href={`/anime/${anime.id}`} className="relative shrink-0 w-[48px] aspect-[2/3] rounded-xl overflow-hidden shadow-sm">
                                     <Image
                                         src={anime.coverImage}
                                         alt={anime.title}
                                         fill
                                         className="object-cover"
+                                        sizes="48px"
                                     />
+                                    {/* Glassmorphism Rank Badge */}
+                                    <div className="absolute top-0 left-0 w-5 h-5 bg-black/40 backdrop-blur-md flex items-center justify-center rounded-br-lg border-r border-b border-white/10">
+                                        <span className={`text-[10px] font-black ${index === 0 ? 'text-yellow-400' : index === 1 ? 'text-slate-300' : 'text-orange-400'}`}>
+                                            {rank}
+                                        </span>
+                                    </div>
                                 </Link>
 
                                 {/* Info */}
-                                <div className="flex-1 min-w-0 py-1">
-                                    <Link href={`/anime/${anime.id}`} className="block">
-                                        <h4 className="font-bold text-sm leading-tight line-clamp-1 mb-1">{anime.title}</h4>
-                                        <p className="text-[11px] text-muted-foreground line-clamp-2 leading-relaxed mb-2">
-                                            {anime.description || "No description available."}
+                                <div className="flex-1 min-w-0 py-0.5">
+                                    <Link href={`/anime/${anime.id}`} className="block mb-1">
+                                        <h4 className="font-bold text-[13px] leading-tight line-clamp-1 text-foreground/90 mb-0.5">{anime.title}</h4>
+                                        <p className="text-[10px] text-muted-foreground line-clamp-1 font-medium">
+                                            {anime.genres?.[0] || "Anime"} • {anime.releaseYear || "2025"}
                                         </p>
                                     </Link>
 
                                     <div className="flex items-center justify-between">
-                                        <div className={`flex items-center gap-1.5 px-2 py-0.5 rounded-md bg-white/5 border border-white/5`}>
-                                            <Icon className={`w-3 h-3 ${themeColor}`} />
-                                            <span className={`text-xs font-bold ${themeColor}`}>{rating.toFixed(1)}</span>
+                                        {/* Rating Pill */}
+                                        <div className={`flex items-center gap-1 px-1.5 py-0.5 rounded-md ${accentColor} bg-opacity-10 border border-white/5`}>
+                                            <Icon className={`w-2.5 h-2.5 ${themeColor}`} />
+                                            <span className={`text-[10px] font-bold ${themeColor}`}>{rating.toFixed(1)}</span>
                                         </div>
 
-                                        {/* Quick Preview Trigger */}
+                                        {/* Quick Preview Trigger - Subtle */}
                                         <button
                                             onClick={(e) => {
                                                 e.preventDefault();
                                                 e.stopPropagation();
                                                 setSelectedAnime(anime);
                                             }}
-                                            className="p-1.5 rounded-full hover:bg-white/10 text-muted-foreground hover:text-foreground transition-colors"
+                                            className="p-1.5 -mr-1 rounded-full text-muted-foreground/50 hover:text-foreground hover:bg-white/5 transition-colors"
                                         >
-                                            <Info className="w-4 h-4" />
+                                            <Info className="w-3.5 h-3.5" />
                                         </button>
                                     </div>
                                 </div>
