@@ -29,9 +29,34 @@ export async function generateMetadata({ params }: PageProps): Promise<Metadata>
     return { title: 'Anime Not Found' };
   }
 
+  const score = anime.malScore ? anime.malScore.toFixed(2) : anime.ratings.site.toFixed(1);
+  const descriptionText = anime.description || 'No description available.';
+  const description = `${anime.title} (${anime.year || 'Unknown Year'}) - ${anime.genres.join(', ')}. Rated ${score}/10. ${descriptionText.slice(0, 150)}...`;
+
   return {
-    title: `${anime.title} - Anime Review`,
-    description: anime.description,
+    title: `${anime.title} Review & Rating`,
+    description: description,
+    openGraph: {
+      title: `${anime.title} Review - Haki`,
+      description: description,
+      images: [
+        {
+          url: anime.coverImage,
+          width: 800,
+          height: 1200,
+          alt: `${anime.title} Cover`,
+        },
+      ],
+      type: 'article',
+      section: 'Anime Reviews',
+      tags: anime.genres,
+    },
+    twitter: {
+      card: 'summary_large_image',
+      title: `${anime.title} Review`,
+      description: description,
+      images: [anime.coverImage],
+    },
   };
 }
 
@@ -42,6 +67,27 @@ export default async function AnimePage({ params }: PageProps) {
   if (!anime) {
     notFound();
   }
+
+  const jsonLd = {
+    '@context': 'https://schema.org',
+    '@type': 'TVSeries',
+    name: anime.title,
+    image: anime.coverImage,
+    description: anime.description || 'No description available.',
+    datePublished: (anime.year || '2025').toString(),
+    genre: anime.genres,
+    aggregateRating: {
+      '@type': 'AggregateRating',
+      ratingValue: anime.malScore ? anime.malScore.toFixed(2) : anime.ratings.site.toFixed(1),
+      bestRating: '10',
+      worstRating: '1',
+      ratingCount: anime.members || 100,
+    },
+    actor: anime.characters?.map(char => ({
+      '@type': 'Person',
+      name: char.name,
+    })) || [],
+  };
 
   return (
     <div className="min-h-screen bg-background pb-20">
@@ -70,6 +116,12 @@ export default async function AnimePage({ params }: PageProps) {
 
       {/* Mobile Compact Header */}
       <MobileParallaxHeader image={anime.coverImage} title={anime.title} />
+
+      {/* Structured Data */}
+      <script
+        type="application/ld+json"
+        dangerouslySetInnerHTML={{ __html: JSON.stringify(jsonLd) }}
+      />
 
       <Container className="-mt-12 md:-mt-32 relative z-20">
         <div className="grid grid-cols-1 lg:grid-cols-12 gap-8">
