@@ -1,10 +1,10 @@
 import { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 import { GitHubDataAccess } from '@/lib/github-data-access';
-import { Container, Badge } from '@/components/ui';
+import { Container } from '@/components/ui';
 import Image from 'next/image';
 import Link from 'next/link';
-import { Star, Calendar, Clock, PlayCircle, ArrowLeft, ExternalLink, MapPin, Play, ChevronDown, ChevronUp } from 'lucide-react';
+import { Star, PlayCircle, ArrowLeft, Play, ChevronDown } from 'lucide-react';
 import { CharactersList, MusicList, GalleryGrid, RecommendationsList, EpisodeList, Synopsis, SeasonsList } from '@/components/anime/AnimeComponents';
 import { SegmentedProgressBar } from '@/components/anime/RatingSystem';
 import { MobileParallaxHeader } from '@/components/mobile/MobileParallaxHeader';
@@ -283,7 +283,7 @@ export default async function AnimePage({ params }: PageProps) {
                 >
                   <div className="mt-4 p-4 rounded-xl bg-blue-500/5 border border-blue-500/10">
                     <p className="text-sm text-muted-foreground italic line-clamp-4">
-                      "{anime.description || 'No story summary available.'}"
+                      &quot;{anime.description || 'No story summary available.'}&quot;
                     </p>
                   </div>
                 </RatingCard>
