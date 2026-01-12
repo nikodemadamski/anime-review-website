@@ -11,6 +11,14 @@ interface BrowseFiltersProps {
     statusFilter: string;
     setStatusFilter: (status: any) => void;
     clearFilters: () => void;
+
+    // New Props for Deep Search
+    selectedYear: string;
+    setSelectedYear: (year: string) => void;
+    selectedStudio: string;
+    setSelectedStudio: (studio: string) => void;
+    availableYears: number[];
+    availableStudios: string[];
 }
 
 const genres = [
@@ -33,9 +41,15 @@ export function BrowseFilters({
     setSortBy,
     statusFilter,
     setStatusFilter,
-    clearFilters
+    clearFilters,
+    selectedYear,
+    setSelectedYear,
+    selectedStudio,
+    setSelectedStudio,
+    availableYears,
+    availableStudios
 }: BrowseFiltersProps) {
-    const hasActiveFilters = selectedGenres.length > 0 || statusFilter !== 'all' || sortBy !== 'site';
+    const hasActiveFilters = selectedGenres.length > 0 || statusFilter !== 'all' || sortBy !== 'site' || selectedYear !== '' || selectedStudio !== '';
 
     return (
         <div className="sticky top-20 z-30 mb-8">
@@ -67,8 +81,32 @@ export function BrowseFilters({
                         </div>
                     </div>
 
-                    {/* Sort & Status */}
-                    <div className="flex items-center gap-3 w-full md:w-auto border-t md:border-t-0 border-border pt-4 md:pt-0">
+                    {/* Sort & Status & Deep Filters */}
+                    <div className="flex flex-wrap items-center gap-3 w-full md:w-auto border-t md:border-t-0 border-border pt-4 md:pt-0">
+                        {/* Studio Filter */}
+                        <select
+                            value={selectedStudio}
+                            onChange={(e) => setSelectedStudio(e.target.value)}
+                            className="bg-secondary/10 border-none rounded-lg text-sm font-medium py-2 pl-3 pr-8 focus:ring-2 focus:ring-indigo-500 cursor-pointer max-w-[140px]"
+                        >
+                            <option value="">Studio: All</option>
+                            {availableStudios.map(studio => (
+                                <option key={studio} value={studio}>{studio}</option>
+                            ))}
+                        </select>
+
+                        {/* Year Filter */}
+                        <select
+                            value={selectedYear}
+                            onChange={(e) => setSelectedYear(e.target.value)}
+                            className="bg-secondary/10 border-none rounded-lg text-sm font-medium py-2 pl-3 pr-8 focus:ring-2 focus:ring-indigo-500 cursor-pointer w-[110px]"
+                        >
+                            <option value="">Year: All</option>
+                            {availableYears.map(year => (
+                                <option key={year} value={year}>{year}</option>
+                            ))}
+                        </select>
+
                         <select
                             value={sortBy}
                             onChange={(e) => setSortBy(e.target.value)}

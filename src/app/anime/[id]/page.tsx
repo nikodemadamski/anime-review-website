@@ -424,7 +424,7 @@ export default async function AnimePage({ params }: PageProps) {
           </div>
         </div>
       </Container>
-      <MobileActionDock title={anime.title} />
+      <MobileActionDock title={anime.title} id={anime.id} />
     </div>
   );
 }

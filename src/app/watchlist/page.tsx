@@ -11,48 +11,56 @@ const categoryColors = {
 };
 
 export default function WatchlistPage() {
-  const { watchlist, toggleAnime } = useWatchlist();
+  const { watchlist, loading: authLoading, removeFromWatchlist } = useWatchlist();
   const [animeData, setAnimeData] = useState<any[]>([]);
-  const [loading, setLoading] = useState(true);
+  const [dataLoading, setDataLoading] = useState(true);
+
+  const isLoading = authLoading || (dataLoading && watchlist.length > 0);
 
   useEffect(() => {
     async function fetchWatchlistAnime() {
+      // If auth is loading, wait
+      if (authLoading) return;
+
       if (watchlist.length === 0) {
-        setLoading(false);
+        setAnimeData([]);
+        setDataLoading(false);
         return;
       }
 
       try {
         // Fetch all anime
+        // Note: In a real app, we'd fetch only specific IDs: /api/anime?ids=${ids.join(',')}
         const response = await fetch('/api/anime');
         const data = await response.json();
-        
+
         if (data.success) {
+          const savedIds = watchlist.map(w => w.anime_id);
           // Filter to only watchlist items
-          const watchlistAnime = data.data.filter((anime: any) => 
-            watchlist.includes(anime.id)
+          const watchlistAnime = data.data.filter((anime: any) =>
+            savedIds.includes(anime.id)
           );
           setAnimeData(watchlistAnime);
         }
       } catch (error) {
         console.error('Error fetching watchlist anime:', error);
       } finally {
-        setLoading(false);
+        setDataLoading(false);
       }
     }
 
     fetchWatchlistAnime();
-  }, [watchlist]);
+  }, [watchlist, authLoading]);
 
   return (
     <div className="min-h-screen py-8" style={{ backgroundColor: 'var(--background)' }}>
       <Container>
         {/* Header */}
         <div className="mb-8">
-          <Link 
-            href="/browse" 
+          <Link
+            href="/browse"
             className="inline-flex items-center gap-2 px-4 py-2 rounded-xl hover:scale-105 transition-all mb-4 font-semibold text-sm"
-            style={{ 
+            style={{
               backgroundColor: 'var(--card-background)',
               color: 'var(--foreground)',
               borderWidth: '2px',
@@ -67,18 +75,18 @@ export default function WatchlistPage() {
 
           <div className="flex items-center justify-between flex-wrap gap-4">
             <div>
-              <h1 
+              <h1
                 className="text-3xl md:text-4xl font-black mb-2"
                 style={{ color: 'var(--foreground)' }}
               >
                 ❤️ My Watchlist
               </h1>
-              <p 
+              <p
                 className="text-lg"
                 style={{ color: 'var(--secondary)' }}
               >
-                {watchlist.length === 0 
-                  ? 'No anime saved yet. Start adding your favorites!' 
+                {watchlist.length === 0
+                  ? 'No anime saved yet. Start adding your favorites!'
                   : `${watchlist.length} anime saved`}
               </p>
             </div>
@@ -86,11 +94,11 @@ export default function WatchlistPage() {
         </div>
 
         {/* Loading State */}
-        {loading && (
+        {isLoading && (
           <div className="text-center py-20">
-            <div 
+            <div
               className="inline-block animate-spin rounded-full h-16 w-16 border-4"
-              style={{ 
+              style={{
                 borderColor: 'var(--border)',
                 borderTopColor: 'var(--btn-primary)'
               }}
@@ -102,8 +110,8 @@ export default function WatchlistPage() {
         )}
 
         {/* Empty State */}
-        {!loading && watchlist.length === 0 && (
-          <div 
+        {!isLoading && watchlist.length === 0 && (
+          <div
             className="text-center py-20 rounded-3xl border-2"
             style={{
               backgroundColor: 'var(--card-background)',
@@ -111,13 +119,13 @@ export default function WatchlistPage() {
             }}
           >
             <div className="text-8xl mb-6">💔</div>
-            <h2 
+            <h2
               className="text-2xl font-bold mb-4"
               style={{ color: 'var(--foreground)' }}
             >
               Your watchlist is empty
             </h2>
-            <p 
+            <p
               className="text-lg mb-8 max-w-md mx-auto"
               style={{ color: 'var(--secondary)' }}
             >
@@ -137,16 +145,16 @@ export default function WatchlistPage() {
         )}
 
         {/* Watchlist Grid */}
-        {!loading && animeData.length > 0 && (
+        {!isLoading && animeData.length > 0 && (
           <div className="grid grid-cols-2 sm:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 gap-4 md:gap-6">
             {animeData.map((item) => {
               const colors = categoryColors.site;
               return (
                 <div key={item.id} className="group relative">
                   <Link href={`/anime/${item.id}`}>
-                    <div 
+                    <div
                       className="relative overflow-hidden rounded-3xl transition-all duration-300 hover:scale-105 hover:shadow-2xl"
-                      style={{ 
+                      style={{
                         backgroundColor: 'var(--card-background)',
                       }}
                     >
@@ -159,12 +167,12 @@ export default function WatchlistPage() {
                           className="object-cover transition-all duration-500 group-hover:scale-110 group-hover:brightness-110"
                           sizes="(max-width: 640px) 50vw, (max-width: 1024px) 33vw, (max-width: 1280px) 25vw, 20vw"
                         />
-                        
+
                         {/* Gradient Overlay */}
                         <div className="absolute inset-0 bg-gradient-to-t from-black/80 via-black/20 to-transparent" />
-                        
+
                         {/* Rating Badge */}
-                        <div 
+                        <div
                           className="absolute top-3 right-3 px-4 py-2 rounded-2xl font-black text-white shadow-2xl backdrop-blur-sm"
                           style={{ backgroundColor: colors.color }}
                         >
@@ -183,13 +191,13 @@ export default function WatchlistPage() {
                       </div>
 
                       {/* Quick Stats Bar */}
-                      <div 
+                      <div
                         className="p-3"
                         style={{ backgroundColor: 'var(--text-block)' }}
                       >
                         <div className="flex items-center justify-between text-xs">
                           <span style={{ color: 'var(--muted)' }}>Overall</span>
-                          <span 
+                          <span
                             className="font-bold"
                             style={{ color: 'var(--rating-overall)' }}
                           >
@@ -205,7 +213,7 @@ export default function WatchlistPage() {
                     onClick={(e) => {
                       e.preventDefault();
                       e.stopPropagation();
-                      toggleAnime(item.id);
+                      removeFromWatchlist(item.id);
                     }}
                     className="absolute bottom-16 right-3 w-10 h-10 rounded-full shadow-xl backdrop-blur-sm transition-all duration-300 hover:scale-110 z-10 flex items-center justify-center"
                     style={{
@@ -214,9 +222,9 @@ export default function WatchlistPage() {
                     }}
                     aria-label="Remove from watchlist"
                   >
-                    <svg 
-                      className="w-5 h-5" 
-                      fill="currentColor" 
+                    <svg
+                      className="w-5 h-5"
+                      fill="currentColor"
                       viewBox="0 0 24 24"
                     >
                       <path d="M4.318 6.318a4.5 4.5 0 000 6.364L12 20.364l7.682-7.682a4.5 4.5 0 00-6.364-6.364L12 7.636l-1.318-1.318a4.5 4.5 0 00-6.364 0z" />

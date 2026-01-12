@@ -93,7 +93,10 @@ export function CategoryPodiumWidget({ category, items, icon: Icon, themeColor, 
 
                                     <div className="flex items-center justify-between">
                                         {/* Rating Pill */}
-                                        <div className={`flex items-center gap-1 px-1.5 py-0.5 rounded-md ${accentColor} bg-opacity-10 border border-white/5`}>
+                                        <div
+                                            className={`flex items-center gap-1 px-1.5 py-0.5 rounded-md ${accentColor} bg-opacity-10 border border-white/5`}
+                                            title={`${category} Score: ${rating.toFixed(1)} / 10`}
+                                        >
                                             <Icon className={`w-2.5 h-2.5 ${themeColor}`} />
                                             <span className={`text-[10px] font-bold ${themeColor}`}>{rating.toFixed(1)}</span>
                                         </div>

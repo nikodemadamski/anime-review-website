@@ -9,49 +9,81 @@ interface QuizStats {
   shareRate: number;
 }
 
+// Simple seeded random number generator
+function seededRandom(seed: number) {
+  const x = Math.sin(seed) * 10000;
+  return x - Math.floor(x);
+}
+
+// Generate deterministic daily stats
+function getDailyStats() {
+  const today = new Date();
+  const dateStr = `${today.getFullYear()}-${today.getMonth() + 1}-${today.getDate()}`;
+
+  // Create a seed from the date string
+  let seed = 0;
+  for (let i = 0; i < dateStr.length; i++) {
+    seed = ((seed << 5) - seed) + dateStr.charCodeAt(i);
+    seed |= 0;
+  }
+
+  // Base numbers
+  const baseTotal = 12450;
+  const dailyGrowth = 142; // Approx daily growth
+
+  // Calculate days since "launch" (Jan 1, 2025)
+  const launchDate = new Date('2025-01-01');
+  const daysSinceLaunch = Math.floor((today.getTime() - launchDate.getTime()) / (1000 * 60 * 60 * 24));
+
+  // Mock Total: Grows consistently every day
+  const totalCompletions = baseTotal + (daysSinceLaunch * dailyGrowth) + Math.floor(seededRandom(seed) * 50);
+
+  // Mock Today: Varies based on today's seed
+  const todayCompletions = 150 + Math.floor(seededRandom(seed + 1) * 200);
+
+  // Mock Share Rate: Stable but varies slightly
+  const shareRate = 22 + Math.floor(seededRandom(seed + 2) * 8);
+
+  return {
+    totalCompletions,
+    todayCompletions,
+    mostPopularCharacter: 'Luffy', // Should rotate this too eventually
+    shareRate
+  };
+}
+
 export function QuizStats() {
   const [stats, setStats] = useState<QuizStats>({
     totalCompletions: 0,
     todayCompletions: 0,
-    mostPopularCharacter: 'Naruto',
+    mostPopularCharacter: '...',
     shareRate: 0,
   });
 
   useEffect(() => {
-    // Load stats from localStorage (in production, this would come from a database)
-    const loadStats = () => {
-      const stored = localStorage.getItem('quiz_stats');
+    // 1. Get the base "globally consistent" stats for today
+    const dailyBase = getDailyStats();
+
+    // 2. Check independent local user actions
+    let myCompletion = 0;
+    if (typeof window !== 'undefined') {
+      const stored = localStorage.getItem('quiz_stats_local_user');
       if (stored) {
-        try {
-          const parsed = JSON.parse(stored);
-          setStats(parsed);
-        } catch (error) {
-          console.error('Error parsing quiz stats:', error);
-        }
-      } else {
-        // Initialize with demo numbers
-        const demoStats = {
-          totalCompletions: Math.floor(Math.random() * 5000) + 10000, // 10k-15k
-          todayCompletions: Math.floor(Math.random() * 200) + 50, // 50-250
-          mostPopularCharacter: 'Naruto',
-          shareRate: Math.floor(Math.random() * 15) + 20, // 20-35%
-        };
-        setStats(demoStats);
-        localStorage.setItem('quiz_stats', JSON.stringify(demoStats));
+        const userStats = JSON.parse(stored);
+        myCompletion = userStats.completed ? 1 : 0;
       }
-    };
+    }
 
-    loadStats();
+    // 3. Merge them
+    setStats({
+      ...dailyBase,
+      totalCompletions: dailyBase.totalCompletions + myCompletion,
+      todayCompletions: dailyBase.todayCompletions + myCompletion
+    });
 
-    // Update today's completions every minute
-    const interval = setInterval(() => {
-      setStats(prev => ({
-        ...prev,
-        todayCompletions: prev.todayCompletions + Math.floor(Math.random() * 3),
-      }));
-    }, 60000);
+    // We removed the "fake live incrementing" interval because it resets on refresh and breaks trust.
+    // Stable numbers are better than fake moving numbers.
 
-    return () => clearInterval(interval);
   }, []);
 
   return (
@@ -62,7 +94,7 @@ export function QuizStats() {
         style={{ backgroundColor: 'var(--card-background)' }}
       >
         <div className="text-3xl font-black mb-1" style={{ color: 'var(--accent)' }}>
-          {stats.totalCompletions.toLocaleString()}+
+          {stats.totalCompletions > 0 ? stats.totalCompletions.toLocaleString() : '...'}
         </div>
         <div className="text-xs font-semibold" style={{ color: 'var(--muted)' }}>
           Total Quizzes Taken
@@ -75,7 +107,7 @@ export function QuizStats() {
         style={{ backgroundColor: 'var(--card-background)' }}
       >
         <div className="text-3xl font-black mb-1" style={{ color: 'var(--accent)' }}>
-          {stats.todayCompletions}
+          {stats.todayCompletions > 0 ? stats.todayCompletions.toLocaleString() : '...'}
         </div>
         <div className="text-xs font-semibold" style={{ color: 'var(--muted)' }}>
           Taken Today 🔥
@@ -101,7 +133,7 @@ export function QuizStats() {
         style={{ backgroundColor: 'var(--card-background)' }}
       >
         <div className="text-3xl font-black mb-1" style={{ color: 'var(--accent)' }}>
-          {stats.shareRate}%
+          {stats.shareRate > 0 ? stats.shareRate : '...'}%
         </div>
         <div className="text-xs font-semibold" style={{ color: 'var(--muted)' }}>
           Share Their Results
@@ -111,33 +143,16 @@ export function QuizStats() {
   );
 }
 
-// Helper function to increment quiz completion
+// Helper: Call this when user finishes quiz
 export function incrementQuizCompletion(characterName: string) {
-  const stored = localStorage.getItem('quiz_stats');
-  if (stored) {
-    try {
-      const stats = JSON.parse(stored);
-      stats.totalCompletions += 1;
-      stats.todayCompletions += 1;
-      stats.mostPopularCharacter = characterName; // Simplified - in production, track all characters
-      localStorage.setItem('quiz_stats', JSON.stringify(stats));
-    } catch (error) {
-      console.error('Error updating quiz stats:', error);
-    }
+  if (typeof window !== 'undefined') {
+    localStorage.setItem('quiz_stats_local_user', JSON.stringify({
+      completed: true,
+      result: characterName,
+      timestamp: Date.now()
+    }));
+    // We don't need to force update the UI here usually as they will be redirected, 
+    // but if they come back to home, the effect will pick it up.
   }
 }
 
-// Helper function to increment share count
-export function incrementShareCount() {
-  const stored = localStorage.getItem('quiz_stats');
-  if (stored) {
-    try {
-      const stats = JSON.parse(stored);
-      const totalShares = Math.floor((stats.totalCompletions * stats.shareRate) / 100) + 1;
-      stats.shareRate = Math.floor((totalShares / stats.totalCompletions) * 100);
-      localStorage.setItem('quiz_stats', JSON.stringify(stats));
-    } catch (error) {
-      console.error('Error updating share stats:', error);
-    }
-  }
-}

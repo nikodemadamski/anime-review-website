@@ -18,6 +18,7 @@
     "collect-covers": "ts-node --project tsconfig.scripts.json scripts/collect-anime-covers.ts"
   },
   "dependencies": {
+    "@supabase/supabase-js": "^2.90.1",
     "@types/papaparse": "^5.3.16",
     "clsx": "^2.1.1",
     "esutils": "^2.0.3",

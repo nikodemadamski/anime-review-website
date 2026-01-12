@@ -1,72 +1,126 @@
-'use client';
+import { useEffect, useState } from 'react';
+import { supabase } from '@/lib/supabase/client';
+import { useAuth } from '@/context/AuthContext';
 
-import { useState, useEffect, useCallback } from 'react';
-import {
-  getWatchlist,
-  addToWatchlist,
-  removeFromWatchlist,
-  isInWatchlist,
-  toggleWatchlist as toggleWatchlistUtil,
-  getWatchlistCount,
-} from '@/lib/watchlist';
+export interface WatchlistItem {
+  id: string;
+  anime_id: string;
+  status: 'plan_to_watch' | 'watching' | 'completed' | 'dropped';
+  created_at: string;
+}
 
 export function useWatchlist() {
-  const [watchlist, setWatchlist] = useState<string[]>([]);
-  const [count, setCount] = useState(0);
+  const { user } = useAuth();
+  const [watchlist, setWatchlist] = useState<WatchlistItem[]>([]);
+  const [loading, setLoading] = useState(true);
 
-  // Load watchlist on mount
+  // Fetch watchlist on mount or user change
   useEffect(() => {
-    const loadWatchlist = () => {
-      const items = getWatchlist();
-      setWatchlist(items);
-      setCount(items.length);
-    };
+    if (!user) {
+      setWatchlist([]);
+      setLoading(false);
+      return;
+    }
 
-    loadWatchlist();
+    const fetchWatchlist = async () => {
+      try {
+        const { data, error } = await supabase
+          .from('watchlists')
+          .select('*')
+          .eq('user_id', user.id);
 
-    // Listen for storage events (cross-tab sync)
-    const handleStorageChange = (e: StorageEvent) => {
-      if (e.key === 'anime-watchlist') {
-        loadWatchlist();
+        if (error) throw error;
+        setWatchlist(data || []);
+      } catch (error) {
+        console.error('Error fetching watchlist:', error);
+      } finally {
+        setLoading(false);
       }
     };
 
-    // Listen for custom watchlist events (same-tab updates)
-    const handleWatchlistUpdate = () => {
-      loadWatchlist();
-    };
+    fetchWatchlist();
 
-    window.addEventListener('storage', handleStorageChange);
-    window.addEventListener('watchlistUpdated', handleWatchlistUpdate);
+    // Subscribe to realtime changes
+    const subscription = supabase
+      .channel('watchlists_channel')
+      .on('postgres_changes', {
+        event: '*',
+        schema: 'public',
+        table: 'watchlists',
+        filter: `user_id=eq.${user.id}`
+      }, (payload) => {
+        fetchWatchlist(); // Reload on any change
+      })
+      .subscribe();
 
     return () => {
-      window.removeEventListener('storage', handleStorageChange);
-      window.removeEventListener('watchlistUpdated', handleWatchlistUpdate);
+      subscription.unsubscribe();
     };
-  }, []);
+  }, [user]);
 
-  const addAnime = useCallback((animeId: string) => {
-    addToWatchlist(animeId);
-  }, []);
+  const isInWatchlist = (animeId: string) => {
+    return watchlist.some(item => item.anime_id === animeId);
+  };
 
-  const removeAnime = useCallback((animeId: string) => {
-    removeFromWatchlist(animeId);
-  }, []);
+  const addToWatchlist = async (animeId: string, status: WatchlistItem['status'] = 'plan_to_watch') => {
+    if (!user) {
+      alert('Please sign in to add to watchlist!');
+      return;
+    }
 
-  const toggleAnime = useCallback((animeId: string) => {
-    return toggleWatchlistUtil(animeId);
-  }, []);
+    try {
+      // Optimistic update
+      const tempId = Math.random().toString();
+      const newItem: WatchlistItem = { id: tempId, anime_id: animeId, status, created_at: new Date().toISOString() };
+      setWatchlist(prev => [...prev, newItem]);
 
-  const checkInWatchlist = useCallback((animeId: string) => {
-    return isInWatchlist(animeId);
-  }, []);
+      const { error } = await supabase
+        .from('watchlists')
+        .insert({ user_id: user.id, anime_id: animeId, status });
+
+      if (error) throw error;
+    } catch (error) {
+      console.error('Error adding to watchlist:', error);
+      // Revert optimistic update
+      setWatchlist(prev => prev.filter(item => item.anime_id !== animeId));
+    }
+  };
+
+  const removeFromWatchlist = async (animeId: string) => {
+    if (!user) return;
+
+    try {
+      // Optimistic update
+      setWatchlist(prev => prev.filter(item => item.anime_id !== animeId));
+
+      const { error } = await supabase
+        .from('watchlists')
+        .delete()
+        .eq('user_id', user.id)
+        .eq('anime_id', animeId);
+
+      if (error) throw error;
+    } catch (error) {
+      console.error('Error removing from watchlist:', error);
+      const { data } = await supabase.from('watchlists').select('*').eq('user_id', user.id);
+      setWatchlist(data || []);
+    }
+  };
+
+  const toggleWatchlist = async (animeId: string) => {
+    if (isInWatchlist(animeId)) {
+      await removeFromWatchlist(animeId);
+    } else {
+      await addToWatchlist(animeId);
+    }
+  };
 
   return {
     watchlist,
-    count,
-    addAnime,
-    removeAnime,
-    toggleAnime,
-    isInWatchlist: checkInWatchlist,
+    loading,
+    isInWatchlist,
+    addToWatchlist,
+    removeFromWatchlist,
+    toggleWatchlist
   };
 }

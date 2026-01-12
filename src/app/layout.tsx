@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import "./globals.css";
 import { Layout } from "@/components/layout";
 import { ThemeProvider } from "@/components/ThemeProvider";
+import { AuthProvider } from "@/context/AuthContext";
 import { ImageUpgradeButton } from "@/components/dev/ImageUpgradeButton";
 
 export const metadata: Metadata = {
@@ -43,9 +44,11 @@ export default function RootLayout({
       <head />
       <body className="antialiased" suppressHydrationWarning>
         <ThemeProvider>
-          <Layout>
-            {children}
-          </Layout>
+          <AuthProvider>
+            <Layout>
+              {children}
+            </Layout>
+          </AuthProvider>
           {/* Dev Tools - Hidden button for image upgrades */}
           <ImageUpgradeButton />
         </ThemeProvider>

@@ -19,15 +19,25 @@ type StatusOption = 'all' | 'airing' | 'finished' | 'upcoming';
 export function BrowseContent() {
   const searchParams = useSearchParams();
   const initialSearch = searchParams.get('search') || '';
+  const initialGenre = searchParams.get('genre');
 
   const [allAnime, setAllAnime] = useState<any[]>([]);
   const [loading, setLoading] = useState(true);
   const [searchQuery, setSearchQuery] = useState(initialSearch);
-  const [selectedGenres, setSelectedGenres] = useState<string[]>([]);
+  const [selectedGenres, setSelectedGenres] = useState<string[]>(initialGenre ? [initialGenre] : []);
   const [activeCategory, setActiveCategory] = useState<CategoryType>('overall');
   const [statusFilter, setStatusFilter] = useState<StatusOption>('all');
+  const [selectedYear, setSelectedYear] = useState('');
+  const [selectedStudio, setSelectedStudio] = useState('');
 
   const debouncedSearch = useDebounce(searchQuery, 300);
+
+  // Derive unique years and studios
+  const { years, studios } = useMemo(() => {
+    const uniqueYears = Array.from(new Set(allAnime.map(a => a.releaseYear).filter(Boolean))).sort((a, b) => b - a);
+    const uniqueStudios = Array.from(new Set(allAnime.flatMap(a => a.studios).filter(Boolean))).sort();
+    return { years: uniqueYears, studios: uniqueStudios };
+  }, [allAnime]);
 
   // Load Data
   useEffect(() => {
@@ -83,6 +93,18 @@ export function BrowseContent() {
       });
     }
 
+    // Year
+    if (selectedYear) {
+      filtered = filtered.filter((anime) => anime.releaseYear === parseInt(selectedYear));
+    }
+
+    // Studio
+    if (selectedStudio) {
+      filtered = filtered.filter((anime) =>
+        anime.studios.some((s: string) => s.toLowerCase() === selectedStudio.toLowerCase())
+      );
+    }
+
     // Sort by Active Category
     filtered.sort((a, b) => {
       const key = activeCategory === 'overall' ? 'site' : activeCategory;
@@ -92,7 +114,7 @@ export function BrowseContent() {
     });
 
     return filtered;
-  }, [allAnime, debouncedSearch, selectedGenres, statusFilter, activeCategory]);
+  }, [allAnime, debouncedSearch, selectedGenres, statusFilter, activeCategory, selectedYear, selectedStudio]);
 
   const toggleGenre = (genre: string) => {
     setSelectedGenres(prev =>
@@ -105,6 +127,8 @@ export function BrowseContent() {
     setSelectedGenres([]);
     setStatusFilter('all');
     setActiveCategory('overall');
+    setSelectedYear('');
+    setSelectedStudio('');
   };
 
   // Helper to get score and icon based on active category
@@ -142,6 +166,13 @@ export function BrowseContent() {
             statusFilter={statusFilter}
             setStatusFilter={setStatusFilter}
             clearFilters={clearFilters}
+
+            selectedYear={selectedYear}
+            setSelectedYear={setSelectedYear}
+            selectedStudio={selectedStudio}
+            setSelectedStudio={setSelectedStudio}
+            availableYears={years}
+            availableStudios={studios}
           />
           {/* Desktop Grid */}
           {loading ? (

@@ -12,6 +12,39 @@ import { trackResultCardViewed, trackResultCardDownloaded, trackShareLinkClicked
 import Image from 'next/image';
 import Link from 'next/link';
 
+
+// Helper to map characters to relevant genres
+function mapCharacterToGenre(id: string): string {
+  const mapping: Record<string, string> = {
+    'goku': 'Action',
+    'naruto': 'Action',
+    'luffy': 'Adventure',
+    'saitama': 'Comedy',
+    'levi': 'Action',
+    'sailor-moon': 'Fantasy',
+    'mikasa': 'Action',
+    'nezuko': 'Fantasy',
+    'anya': 'Comedy',
+    'pikachu': 'Adventure',
+    'violet': 'Drama',
+    'yor': 'Action',
+    'makima': 'Mystery',
+    'mai': 'Romance',
+    'death-note': 'Thriller',
+    'light': 'Thriller',
+    'edward': 'Adventure',
+    'ichigo': 'Action',
+    'eren': 'Action',
+    'tanjiro': 'Fantasy',
+    'zero-two': 'Sci-Fi',
+    'rem': 'Fantasy',
+    'hinata': 'Romance',
+    'power': 'Action',
+    'nami': 'Adventure'
+  };
+  return mapping[id] || 'Action';
+}
+
 export default function QuizResultPage() {
   const params = useParams();
   const searchParams = useSearchParams();
@@ -19,10 +52,10 @@ export default function QuizResultPage() {
   const [imageError, setImageError] = useState(false);
 
   const result = characterResults.find(c => c.id === characterId);
-  
+
   // Get image URLs with fallback
   const imageUrl = imageError && result ? generateFallbackUrl(result.name, result.color) : (result?.image || '');
-  
+
   const handleImageError = () => {
     console.warn(`Failed to load image for ${result?.name}, using fallback`);
     setImageError(true);
@@ -73,7 +106,7 @@ export default function QuizResultPage() {
     }
   }, [result, generateCard]);
 
-  const shareUrl = typeof window !== 'undefined' 
+  const shareUrl = typeof window !== 'undefined'
     ? `${window.location.origin}/quiz?ref=share&char=${characterId}`
     : '';
 
@@ -128,7 +161,7 @@ export default function QuizResultPage() {
                   </span>
                 </div>
               </div>
-              
+
               <div className="text-5xl md:text-6xl mb-3">{result.emoji}</div>
               <h1 className="text-3xl md:text-4xl font-black mb-2" style={{ color: result.color }}>
                 {result.name}
@@ -285,14 +318,14 @@ export default function QuizResultPage() {
             </Link>
 
             <Link
-              href="/browse"
+              href={`/browse?genre=${mapCharacterToGenre(result.id)}&recommended=true`}
               className="block text-center px-6 py-3 rounded-xl font-semibold transition-all duration-300 hover:scale-105"
               style={{
                 backgroundColor: 'var(--text-block)',
                 color: 'var(--foreground)'
               }}
             >
-              Browse Anime Like {result.anime} →
+              Browse {mapCharacterToGenre(result.id)} Anime Like {result.anime} →
             </Link>
           </div>
         </div>

@@ -9,6 +9,7 @@ import { cn } from '@/utils/cn';
 import { ThemeToggle } from '@/components/ThemeToggle';
 import { useTheme } from 'next-themes';
 import { useMobileMenu } from '@/hooks/useMobileMenu';
+import { useAuth } from '@/context/AuthContext';
 import { MobileSearchPage } from '@/components/mobile/MobileSearchPage';
 
 interface HeaderProps {
@@ -17,6 +18,7 @@ interface HeaderProps {
 
 const Header: React.FC<HeaderProps> = ({ className }) => {
   const { theme } = useTheme();
+  const { user, signInWithGoogle, signOut } = useAuth();
   const { isOpen: mobileMenuOpen, open: openMobileMenu, close: closeMobileMenu } = useMobileMenu();
   const [watchlistCount, setWatchlistCount] = useState(0);
 
@@ -230,6 +232,35 @@ const Header: React.FC<HeaderProps> = ({ className }) => {
               Contact
             </Link>
             <ThemeToggle />
+
+            {/* Auth Button */}
+            {user ? (
+              <div className="flex items-center gap-3 pl-4 border-l border-border/50">
+                <div className="text-right hidden lg:block">
+                  <p className="text-sm font-bold leading-none">{user.user_metadata?.full_name || 'User'}</p>
+                  <p className="text-[10px] text-muted-foreground">Level 1</p>
+                </div>
+                <button
+                  onClick={() => signOut()}
+                  className="relative w-10 h-10 rounded-full overflow-hidden border-2 border-primary/20 hover:border-primary transition-colors"
+                >
+                  <Image
+                    src={user.user_metadata?.avatar_url || `https://ui-avatars.com/api/?name=${user.email}`}
+                    alt="Avatar"
+                    fill
+                    className="object-cover"
+                  />
+                </button>
+              </div>
+            ) : (
+              <button
+                onClick={() => signInWithGoogle()}
+                className="px-4 py-2 rounded-xl text-sm font-bold bg-primary text-white hover:opacity-90 transition-opacity flex items-center gap-2"
+              >
+                <span>Sign In</span>
+                <svg className="w-4 h-4" fill="currentColor" viewBox="0 0 24 24"><path d="M12.545,10.239v3.821h5.445c-0.712,2.315-2.647,3.972-5.445,3.972c-3.332,0-6.033-2.701-6.033-6.032s2.701-6.032,6.033-6.032c1.498,0,2.866,0.549,3.921,1.453l2.814-2.814C17.503,2.988,15.139,2,12.545,2C7.021,2,2.543,6.477,2.543,12s4.478,10,10.002,10c8.396,0,10.249-7.85,9.426-11.748L12.545,10.239z" /></svg>
+              </button>
+            )}
           </nav>
 
           {/* Mobile menu - Hidden as we use Bottom Nav */}
