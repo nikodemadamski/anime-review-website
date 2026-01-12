@@ -1,8 +1,9 @@
 'use client';
 
 import React, { useState, useEffect } from 'react';
+import { useSearchParams } from 'next/navigation';
 import { LongCard } from './LongCard';
-import { Filter, Grid, List as ListIcon } from 'lucide-react';
+import { Filter, Grid, List as ListIcon, Sparkles } from 'lucide-react';
 import { MobileSheet } from './MobileSheet';
 import { BrowseFilters } from '@/components/browse/BrowseFilters';
 

@@ -78,7 +78,7 @@ describe('AnimeCardLarge', () => {
   it('calls watchlist toggle callback when button is clicked', async () => {
     const user = userEvent.setup();
     const mockToggle = vi.fn();
-    
+
     render(<AnimeCardLarge {...mockProps} onWatchlistToggle={mockToggle} />);
 
     const watchlistButton = screen.getByRole('button', { name: /add.*to watchlist/i });
@@ -90,7 +90,7 @@ describe('AnimeCardLarge', () => {
   it('calls watch now callback when button is clicked', async () => {
     const user = userEvent.setup();
     const mockWatchNow = vi.fn();
-    
+
     render(<AnimeCardLarge {...mockProps} onWatchNowClick={mockWatchNow} />);
 
     const watchNowButton = screen.getByRole('button', { name: /watch now/i });
@@ -102,7 +102,7 @@ describe('AnimeCardLarge', () => {
   it('shows correct watchlist button state when in watchlist', () => {
     render(<AnimeCardLarge {...mockProps} isInWatchlist={true} />);
 
-    const watchlistButton = screen.getByRole('button', { name: /in watchlist/i });
+    const watchlistButton = screen.getByRole('button', { name: /remove.*from watchlist/i });
     expect(watchlistButton).toBeInTheDocument();
     expect(watchlistButton).toHaveAttribute('aria-pressed', 'true');
   });

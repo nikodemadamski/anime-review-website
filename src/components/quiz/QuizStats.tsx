@@ -143,6 +143,7 @@ export function QuizStats() {
   );
 }
 
+
 // Helper: Call this when user finishes quiz
 export function incrementQuizCompletion(characterName: string) {
   if (typeof window !== 'undefined') {
@@ -155,4 +156,24 @@ export function incrementQuizCompletion(characterName: string) {
     // but if they come back to home, the effect will pick it up.
   }
 }
+
+export function incrementShareCount() {
+  if (typeof window !== 'undefined') {
+    const stored = localStorage.getItem('quiz_stats_local_user');
+    let data = {};
+    if (stored) {
+      try {
+        data = JSON.parse(stored);
+      } catch (e) {
+        console.error('Error parsing quiz stats', e);
+      }
+    }
+    localStorage.setItem('quiz_stats_local_user', JSON.stringify({
+      ...data,
+      shared: true,
+      lastShared: Date.now()
+    }));
+  }
+}
+
 

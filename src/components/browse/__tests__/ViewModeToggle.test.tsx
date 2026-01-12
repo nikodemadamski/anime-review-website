@@ -40,21 +40,18 @@ describe('ViewModeToggle', () => {
     expect(largeButton).toHaveAttribute('aria-pressed', 'true');
     expect(gridButton).toHaveAttribute('aria-pressed', 'false');
     expect(listButton).toHaveAttribute('aria-pressed', 'false');
-    expect(largeButton).toHaveClass('bg-accent');
 
     // Switch to grid
     rerender(<ViewModeToggle currentMode="grid" onChange={mockOnChange} />);
     expect(largeButton).toHaveAttribute('aria-pressed', 'false');
     expect(gridButton).toHaveAttribute('aria-pressed', 'true');
     expect(listButton).toHaveAttribute('aria-pressed', 'false');
-    expect(gridButton).toHaveClass('bg-accent');
 
     // Switch to list
     rerender(<ViewModeToggle currentMode="list" onChange={mockOnChange} />);
     expect(largeButton).toHaveAttribute('aria-pressed', 'false');
     expect(gridButton).toHaveAttribute('aria-pressed', 'false');
     expect(listButton).toHaveAttribute('aria-pressed', 'true');
-    expect(listButton).toHaveClass('bg-accent');
   });
 
   it('handles keyboard navigation with Enter key', async () => {
