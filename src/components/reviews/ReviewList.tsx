@@ -6,15 +6,21 @@ import { formatDistanceToNow } from 'date-fns'; // We might need to install date
 import { Star, User } from 'lucide-react';
 import Image from 'next/image';
 
+// Optional: pass reviews directly (e.g. for profile page) or fetch by animeId
 interface ReviewListProps {
-    animeId: string;
+    animeId?: string;
+    reviews?: any[]; // Using any[] temporarily, should be Review[] from types
+    mode?: 'anime' | 'profile';
 }
 
-export function ReviewList({ animeId }: ReviewListProps) {
-    const { reviews, loading, error, deleteReview } = useReviews(animeId);
-    // We can add current user check here to show delete button
+export function ReviewList({ animeId, reviews: propReviews, mode = 'anime' }: ReviewListProps) {
+    const { reviews: fetchedReviews, loading, error, deleteReview } = useReviews(animeId || '');
 
-    if (loading) {
+    const reviews = propReviews || fetchedReviews;
+    const isLoading = !propReviews && loading;
+    const isError = !propReviews && error;
+
+    if (isLoading) {
         return (
             <div className="space-y-4">
                 {[...Array(3)].map((_, i) => (
@@ -30,8 +36,8 @@ export function ReviewList({ animeId }: ReviewListProps) {
         );
     }
 
-    if (error) {
-        return <div className="text-red-500">Error loading reviews: {error}</div>;
+    if (isError) {
+        return <div className="text-red-500">Error loading reviews: {isError}</div>;
     }
 
     if (reviews.length === 0) {
@@ -48,25 +54,45 @@ export function ReviewList({ animeId }: ReviewListProps) {
                 <div key={review.id} className="glass-panel p-6 rounded-xl space-y-4">
                     <div className="flex justify-between items-start">
                         <div className="flex items-center gap-3">
-                            {/* User Avatar */}
-                            <div className="relative w-10 h-10 rounded-full overflow-hidden bg-secondary/20">
-                                {review.user?.avatar_url ? (
-                                    <Image
-                                        src={review.user.avatar_url}
-                                        alt={review.user.full_name || 'User'}
-                                        fill
-                                        className="object-cover"
-                                    />
-                                ) : (
-                                    <div className="w-full h-full flex items-center justify-center">
-                                        <User className="w-5 h-5 text-muted" />
-                                    </div>
-                                )}
-                            </div>
+                            {mode === 'anime' ? (
+                                /* User Avatar (Anime Mode) */
+                                <div className="relative w-10 h-10 rounded-full overflow-hidden bg-secondary/20">
+                                    {review.user?.avatar_url ? (
+                                        <Image
+                                            src={review.user.avatar_url}
+                                            alt={review.user.full_name || 'User'}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center">
+                                            <User className="w-5 h-5 text-muted" />
+                                        </div>
+                                    )}
+                                </div>
+                            ) : (
+                                /* Anime Info (Profile Mode) */
+                                <div className="relative w-12 h-16 rounded-md overflow-hidden bg-secondary/20 flex-shrink-0">
+                                    {review.anime?.cover_image ? (
+                                        <Image
+                                            src={review.anime.cover_image}
+                                            alt={review.anime.title || 'Anime'}
+                                            fill
+                                            className="object-cover"
+                                        />
+                                    ) : (
+                                        <div className="w-full h-full flex items-center justify-center">
+                                            <Star className="w-5 h-5 text-muted" />
+                                        </div>
+                                    )}
+                                </div>
+                            )}
 
                             <div>
                                 <div className="font-bold text-foreground">
-                                    {review.user?.full_name || 'Anonymous User'}
+                                    {mode === 'anime'
+                                        ? (review.user?.full_name || 'Anonymous User')
+                                        : (review.anime?.title || 'Unknown Anime')}
                                 </div>
                                 <div className="text-xs text-muted">
                                     {formatDistanceToNow(new Date(review.created_at), { addSuffix: true })}

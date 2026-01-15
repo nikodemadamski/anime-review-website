@@ -10,4 +10,9 @@ export interface Review {
     full_name: string | null;
     avatar_url: string | null;
   };
+  anime?: {
+    id: string;
+    title: string;
+    cover_image: string;
+  };
 }
