@@ -9,6 +9,8 @@ import { CharactersList, MusicList, GalleryGrid, RecommendationsList, EpisodeLis
 import { SegmentedProgressBar } from '@/components/anime/RatingSystem';
 import { MobileParallaxHeader } from '@/components/mobile/MobileParallaxHeader';
 import { MobileActionDock } from '@/components/mobile/MobileActionDock';
+import { ReviewList } from '@/components/reviews/ReviewList';
+import { WriteReviewForm } from '@/components/reviews/WriteReviewForm';
 
 interface Review {
   username: string;
@@ -377,43 +379,18 @@ export default async function AnimePage({ params }: PageProps) {
               </section>
             )}
 
-            {/* Reviews Section (Restored) */}
-            {anime.reviews && anime.reviews.length > 0 && (
-              <section className="space-y-6">
-                <div className="flex items-center justify-between">
-                  <h2 className="text-2xl font-bold flex items-center gap-2">
-                    <span className="w-2 h-8 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full" />
-                    Community Reviews
-                  </h2>
-                  <button className="text-sm font-bold text-indigo-500 hover:text-indigo-400">Write a Review</button>
-                </div>
+            {/* Reviews Section */}
+            <section className="space-y-6">
+              <div className="flex items-center justify-between">
+                <h2 className="text-2xl font-bold flex items-center gap-2">
+                  <span className="w-2 h-8 bg-gradient-to-b from-amber-500 to-orange-500 rounded-full" />
+                  Community Reviews
+                </h2>
+              </div>
 
-                <div className="grid gap-4">
-                  {anime.reviews.slice(0, 3).map((review: Review, i: number) => (
-                    <div key={i} className="glass-panel p-6 rounded-xl">
-                      <div className="flex items-center justify-between mb-4">
-                        <div className="flex items-center gap-3">
-                          <div className="w-10 h-10 rounded-full bg-gradient-to-br from-gray-700 to-gray-800 flex items-center justify-center font-bold text-white">
-                            {review.username?.[0]?.toUpperCase() || 'U'}
-                          </div>
-                          <div>
-                            <p className="font-bold text-sm">{review.username || 'Anonymous'}</p>
-                            <p className="text-xs text-muted-foreground">{review.date || 'Recently'}</p>
-                          </div>
-                        </div>
-                        <div className="flex items-center gap-1 text-yellow-500 font-bold">
-                          <Star className="w-4 h-4 fill-current" />
-                          <span>{review.score?.toFixed(1) || 'N/A'}</span>
-                        </div>
-                      </div>
-                      <p className="text-muted-foreground text-sm leading-relaxed line-clamp-4">
-                        {review.content || 'No review content available.'}
-                      </p>
-                    </div>
-                  ))}
-                </div>
-              </section>
-            )}
+              <WriteReviewForm animeId={anime.id} />
+              <ReviewList animeId={anime.id} />
+            </section>
 
             {/* Mobile Recommendations */}
             <div className="lg:hidden">
